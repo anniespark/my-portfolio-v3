@@ -1,0 +1,1799 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Annie S. Koo — Senior Product Designer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700&family=Nunito+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --cream: #efece0;
+    --cream-2: #e7e3d4;
+    --cream-3: #dcd7c4;
+    --ink: #1e1c18;
+    --ink-2: #2a2824;
+    --ink-mute: #6d675a;
+    --ink-faint: #a29a87;
+    --forest: #3a4a21;
+    --forest-2: #2f3d1a;
+    --forest-3: #253112;
+    --rust: #c0643a;
+    --rust-2: #a85329;
+    --line: #bfb9a4;
+    --line-soft: #d3cdb8;
+
+    --serif: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+    --sans: "Nunito Sans", -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --display-weight: 500;
+    --display-italic-style: italic;
+    --display-tracking: -0.015em;
+    --section-pad: 120px;
+    --hero-pad-top: 72px;
+    --hero-pad-bot: 140px;
+  }
+
+  /* ========== MOOD: EARTH (default, already set above) ========== */
+
+  /* ========== MOOD: INK ========== */
+  html[data-mood="ink"]{
+    --cream:  #ecebe6;
+    --cream-2:#e3e1d9;
+    --cream-3:#d6d3c9;
+    --ink:    #141311;
+    --ink-2:  #22201c;
+    --ink-mute:#67625a;
+    --ink-faint:#a09b92;
+    --forest: #2b2a27;
+    --forest-2:#201f1c;
+    --forest-3:#161513;
+    --rust:   #3a3934;
+    --rust-2: #2c2b27;
+    --line:   #bab5a7;
+    --line-soft:#d0ccc0;
+  }
+
+  /* ========== MOOD: GARDEN ========== */
+  html[data-mood="garden"]{
+    --cream:  #f4f1e2;
+    --cream-2:#ece8d4;
+    --cream-3:#e1dcc2;
+    --ink:    #1f2015;
+    --ink-2:  #2a2c1f;
+    --ink-mute:#6a6d58;
+    --ink-faint:#a5a791;
+    --forest: #5c7a38;
+    --forest-2:#4c6a2a;
+    --forest-3:#3c5a1e;
+    --rust:   #d9733f;
+    --rust-2: #b9592a;
+    --line:   #c5c1a9;
+    --line-soft:#d8d4ba;
+  }
+
+  /* ========== VOICE: EDITORIAL (default) ========== */
+  html[data-voice="editorial"]{
+    --serif: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+    --sans: "Nunito Sans", -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --display-weight: 500;
+    --display-italic-style: italic;
+    --display-tracking: -0.015em;
+  }
+
+  /* ========== VOICE: TECHNICAL ========== */
+  html[data-voice="technical"]{
+    --serif: "Inter", -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sans:  "Inter", -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --mono:  "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --display-weight: 600;
+    --display-italic-style: normal;
+    --display-tracking: -0.035em;
+  }
+  html[data-voice="technical"] .display .ital,
+  html[data-voice="technical"] h1 .ital,
+  html[data-voice="technical"] h2 .ital,
+  html[data-voice="technical"] .ital{
+    font-style: normal !important;
+    font-weight: 400 !important;
+    color: var(--forest) !important;
+  }
+
+  /* ========== VOICE: WARM ========== */
+  html[data-voice="warm"]{
+    --serif: "Fraunces", "Cormorant Garamond", Georgia, serif;
+    --sans:  "Nunito Sans", -apple-system, Helvetica, Arial, sans-serif;
+    --mono:  "JetBrains Mono", ui-monospace, monospace;
+    --display-weight: 500;
+    --display-italic-style: italic;
+    --display-tracking: -0.02em;
+    font-optical-sizing: auto;
+  }
+
+  /* ========== RHYTHM: GENEROUS ========== */
+  html[data-rhythm="generous"]{
+    --section-pad: 160px;
+    --hero-pad-top: 96px;
+    --hero-pad-bot: 180px;
+  }
+  /* ========== RHYTHM: BALANCED (default) ========== */
+  html[data-rhythm="balanced"]{
+    --section-pad: 120px;
+    --hero-pad-top: 72px;
+    --hero-pad-bot: 140px;
+  }
+  /* ========== RHYTHM: TIGHT ========== */
+  html[data-rhythm="tight"]{
+    --section-pad: 80px;
+    --hero-pad-top: 48px;
+    --hero-pad-bot: 90px;
+  }
+  html[data-rhythm="tight"] .hero h1{ font-size: clamp(52px, 7vw, 104px); }
+  html[data-rhythm="tight"] .principle{ padding: 30px 0; }
+  html[data-rhythm="tight"] .principle h3{ font-size: clamp(32px, 3.6vw, 50px); }
+  html[data-rhythm="tight"] .step{ padding: 22px 0; }
+  html[data-rhythm="tight"] .step h3{ font-size: 32px; }
+  html[data-rhythm="tight"] .case{ padding: 22px 26px; margin-bottom: 20px; }
+  html[data-rhythm="tight"] .case h3{ font-size: 28px; }
+  html[data-rhythm="tight"] .case .metric{ font-size: 36px; }
+
+  html[data-rhythm="generous"] .hero h1{ font-size: clamp(72px, 9.4vw, 144px); }
+  html[data-rhythm="generous"] .principle{ padding: 54px 0; }
+  html[data-rhythm="generous"] .step{ padding: 42px 0; }
+  html[data-rhythm="generous"] .case{ padding: 38px 42px; margin-bottom: 36px; }
+
+  /* Hide the torn wave in tight rhythm — feels less theatrical */
+  html[data-rhythm="tight"] .wave{ display: none; }
+  html[data-rhythm="tight"] .wave + .about{ border-top: 1px solid rgba(0,0,0,.1); }
+
+  *{ box-sizing: border-box; }
+  html,body{ margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+
+  /* ============== TOP NAV ============== */
+  .nav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 40px;
+    background: var(--cream);
+    border-bottom: 1px solid transparent;
+    transition: background .25s ease, border-color .25s ease;
+  }
+  .nav.scrolled{
+    background: rgba(231,227,212,.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .nav.on-dark{
+    background: rgba(58,74,33,.92);
+    backdrop-filter: blur(10px);
+    color: var(--cream);
+    border-bottom-color: rgba(255,255,255,.08);
+  }
+  .nav .brand{
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: .2px;
+  }
+  .nav .links{
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .nav .links a{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: 6px 2px;
+    opacity: .85;
+    transition: opacity .2s;
+  }
+  .nav .links a:hover{ opacity: 1; }
+  .nav .contact-btn{
+    border: 1px solid currentColor;
+    padding: 10px 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    opacity: .95;
+    transition: background .2s, color .2s;
+  }
+  .nav .contact-btn:hover{
+    background: var(--ink);
+    color: var(--cream);
+    opacity: 1;
+  }
+  .nav.on-dark .contact-btn:hover{
+    background: var(--cream);
+    color: var(--forest);
+  }
+
+  /* ============== SHARED ============== */
+  .section{
+    position: relative;
+    padding: var(--section-pad) 40px;
+  }
+  .wrap{
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .display{
+    font-family: var(--serif);
+    font-weight: var(--display-weight);
+    line-height: 1.02;
+    letter-spacing: var(--display-tracking);
+    color: var(--ink);
+    margin: 0;
+  }
+  .display .ital{
+    font-style: var(--display-italic-style);
+    color: var(--forest);
+    font-weight: var(--display-weight);
+  }
+  .rule{
+    height: 1px;
+    background: var(--line-soft);
+    border: 0;
+    margin: 0;
+  }
+  .rule.on-dark{
+    background: rgba(255,255,255,.12);
+  }
+
+  /* ============== HERO ============== */
+  .hero{
+    position: relative;
+    padding: var(--hero-pad-top) 40px 0;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .hero-inner{
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 60px;
+    align-items: start;
+    min-height: calc(100vh - var(--hero-pad-top));
+    padding-bottom: var(--hero-pad-bot);
+  }
+  .hero .meta{
+    margin-top: 40px;
+    margin-bottom: 28px;
+  }
+  .hero h1{
+    font-family: var(--serif);
+    font-weight: var(--display-weight);
+    font-size: clamp(64px, 8.4vw, 128px);
+    line-height: .98;
+    letter-spacing: var(--display-tracking);
+    margin: 0 0 36px;
+    color: var(--ink);
+  }
+  .hero h1 .ital{
+    font-style: var(--display-italic-style);
+    color: var(--forest);
+  }
+  .hero .name-line{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: 22px;
+  }
+  .hero .lede{
+    max-width: 440px;
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--ink-2);
+    margin: 0 0 44px;
+  }
+  .cta-row{
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+  .btn{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    padding: 14px 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform .2s, background .2s, color .2s;
+  }
+  .btn.primary{
+    background: var(--forest);
+    color: var(--cream);
+    border: 1px solid var(--forest);
+  }
+  .btn.primary:hover{ background: var(--forest-3); }
+  .btn.ghost{
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+  .btn.ghost:hover{ background: var(--ink); color: var(--cream); }
+
+  .hero .portrait{
+    position: relative;
+    height: 100%;
+    min-height: 560px;
+  }
+  .portrait-holder{
+    position: absolute;
+    right: -20px;
+    top: 24px;
+    width: 100%;
+    max-width: 460px;
+    aspect-ratio: 3 / 4.2;
+  }
+  .scroll-cue{
+    position: absolute;
+    left: 40px;
+    bottom: 120px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .scroll-cue::after{
+    content: "";
+    width: 1px;
+    height: 22px;
+    background: var(--ink-mute);
+    display: inline-block;
+    animation: scrollpulse 1.8s ease-in-out infinite;
+    transform-origin: top;
+  }
+  @keyframes scrollpulse{
+    0%,100%{ transform: scaleY(.3); opacity: .4; }
+    50%   { transform: scaleY(1);   opacity: 1;   }
+  }
+
+  /* Green torn wave between hero and about */
+  .green-panel{
+    position: relative;
+    z-index: 2;
+    will-change: transform;
+  }
+  .wave{
+    position: relative;
+    background: transparent;
+    margin-top: -1px;
+  }
+  .wave svg{
+    display: block;
+    width: 100%;
+    height: 150px;
+    filter: drop-shadow(0 -10px 28px rgba(0,0,0,.18));
+  }
+  .about{
+    will-change: transform;
+  }
+
+  /* ============== ABOUT (green) ============== */
+  .about{
+    background: var(--forest);
+    color: var(--cream);
+    padding: calc(var(--section-pad) * 0.65) 40px var(--section-pad);
+    position: relative;
+    overflow: hidden;
+  }
+  .about .eyebrow{ color: rgba(239,236,224,.55); }
+  .about .wrap{
+    display: grid;
+    grid-template-columns: minmax(0, 720px) 1fr;
+    gap: 60px;
+  }
+  .principles{ padding-top: 40px; }
+  .principle{
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 24px;
+    padding: 42px 0;
+    border-top: 1px solid rgba(255,255,255,.12);
+  }
+  .principle:first-child{ border-top: 1px solid rgba(255,255,255,.12); }
+  .principle .num{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .22em;
+    color: var(--rust);
+    padding-top: 14px;
+  }
+  .principle h3{
+    font-family: var(--serif);
+    font-weight: var(--display-weight);
+    font-size: clamp(38px, 4.2vw, 60px);
+    line-height: 1.0;
+    letter-spacing: var(--display-tracking);
+    margin: 0 0 18px;
+    color: var(--cream);
+  }
+  .principle p{
+    max-width: 620px;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: rgba(239,236,224,.78);
+    margin: 0;
+  }
+  .about-art{
+    position: relative;
+  }
+  .about-art{
+    position: relative;
+  }
+  .magnifier-wrap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+  .magnifier-img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: auto;
+    transform-origin: 50% 22%;
+    will-change: transform;
+    filter: drop-shadow(0 10px 24px rgba(0,0,0,.3));
+  }
+  .dashed-trail{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  .dashed-trail svg{ width: 100%; height: 100%; display:block; }
+
+  @media (max-width: 960px){
+    .magnifier-wrap{ display: none; }
+  }
+
+  /* ============== PROCESS ============== */
+  .process-work-group{
+    position: relative;
+  }
+  .shared-portrait-rail{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 40%;
+    max-width: 560px;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .shared-portrait-sticky{
+    position: sticky;
+    top: 140px;
+    display: flex;
+    justify-content: center;
+    padding-right: 40px;
+  }
+  .shared-portrait-inner{
+    position: relative;
+    width: 260px;
+    aspect-ratio: 3/5;
+  }
+  .shared-portrait-img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .shared-lightbulb{
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 38px;
+    height: auto;
+    opacity: 0;
+    transition: opacity .5s ease;
+    transform-origin: 50% 100%;
+  }
+  .shared-lightbulb.lit{
+    opacity: 1;
+  }
+  .shared-lightbulb.pulsing{
+    animation: bulbPulse 1.4s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 220, 120, .7)) drop-shadow(0 0 22px rgba(255, 200, 80, .45));
+  }
+  @keyframes bulbPulse{
+    0%, 100% { transform: translateX(-50%) scale(1) rotate(-2deg); }
+    50%      { transform: translateX(-50%) scale(1.12) rotate(2deg); }
+  }
+
+  .process{
+    background: var(--cream);
+    padding: var(--section-pad) 40px;
+    position: relative;
+  }
+  .process .wrap{
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+  }
+  .process h2{
+    font-family: var(--serif);
+    font-weight: var(--display-weight);
+    font-size: clamp(56px, 6.8vw, 96px);
+    line-height: 1;
+    letter-spacing: var(--display-tracking);
+    margin: 22px 0 72px;
+  }
+  .process h2 .ital{
+    font-style: var(--display-italic-style);
+    color: var(--forest);
+  }
+  .steps{ max-width: 640px; }
+  .step{
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 20px;
+    padding: 34px 0;
+    border-top: 1px solid var(--line-soft);
+    transition: opacity .3s;
+    cursor: pointer;
+  }
+  .step:last-child{ border-bottom: 1px solid var(--line-soft); }
+  .step.inactive{ opacity: .35; }
+  .step .badge{
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid var(--line);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .12em;
+    color: var(--ink-mute);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: border-color .25s, color .25s, background .25s;
+  }
+  .step.active .badge{
+    border-color: var(--rust);
+    color: var(--rust);
+    background: rgba(192,100,58,.06);
+  }
+  .step h3{
+    font-family: var(--serif);
+    font-weight: var(--display-weight);
+    font-size: 40px;
+    line-height: 1;
+    margin: 0 0 14px;
+    color: var(--ink);
+  }
+  .chip-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chip{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    border: 1px solid var(--line);
+    padding: 6px 10px;
+    border-radius: 2px;
+    background: transparent;
+  }
+
+  .process-art{
+    position: relative;
+  }
+  .process-art .sticky{
+    position: sticky;
+    top: 140px;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* ============== SELECTED WORK ============== */
+  .work{
+    background: var(--cream-2);
+    padding: var(--section-pad) 40px 80px;
+  }
+  .work .wrap{
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 60px;
+  }
+  .work .left{ max-width: 640px; }
+  .work h2{
+    font-family: var(--serif);
+    font-weight: var(--display-weight);
+    font-size: clamp(52px, 6.2vw, 88px);
+    line-height: 1;
+    letter-spacing: var(--display-tracking);
+    margin: 18px 0 64px;
+  }
+  .work h2 .ital{ font-style: var(--display-italic-style); color: var(--forest); }
+
+  .case{
+    background: #f4f1e4;
+    border: 1px solid rgba(0,0,0,.06);
+    padding: 30px 34px;
+    margin-bottom: 28px;
+    position: relative;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .case:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px -22px rgba(0,0,0,.25);
+  }
+  .case .case-num{
+    position: absolute;
+    left: -48px;
+    top: 32px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .2em;
+    color: var(--ink-mute);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .case .case-num::after{
+    content:"";
+    width: 30px;
+    height: 1px;
+    background: var(--ink-mute);
+  }
+  .case .head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .case .date{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .2em;
+    color: var(--ink-mute);
+  }
+  .case .tags{
+    display: flex;
+    gap: 6px;
+  }
+  .case .company{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 6px;
+  }
+  .case h3{
+    font-family: var(--serif);
+    font-weight: var(--display-weight);
+    font-size: 34px;
+    line-height: 1.05;
+    margin: 0 0 14px;
+    color: var(--ink);
+  }
+  .case .blurb{
+    color: var(--ink-mute);
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin: 0 0 24px;
+    max-width: 520px;
+  }
+  .case .hr{
+    height: 1px;
+    background: var(--line-soft);
+    margin: 20px 0 18px;
+  }
+  .case .metric-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .case .metric{
+    font-family: var(--serif);
+    font-weight: var(--display-weight);
+    font-size: 44px;
+    color: var(--rust);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .case .metric-label{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .15em;
+    color: var(--ink-mute);
+  }
+  .case .arrow{
+    width: 26px; height: 26px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-mute);
+    transition: transform .2s, color .2s;
+  }
+  .case:hover .arrow{
+    transform: translate(3px, -3px);
+    color: var(--rust);
+  }
+
+  /* ============== ALL WORK ============== */
+  .allwork{
+    background: var(--cream-2);
+    padding: 40px 40px 0;
+  }
+  .allwork .wrap{ max-width: 1200px; margin: 0 auto; }
+  .allwork .label{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 28px;
+  }
+  .role{
+    display: grid;
+    grid-template-columns: 110px 1fr 300px 80px 30px;
+    gap: 24px;
+    align-items: baseline;
+    padding: 28px 0;
+    border-top: 1px solid var(--line-soft);
+    transition: padding .2s, background .2s;
+  }
+  .role:last-child{ border-bottom: 1px solid var(--line-soft); }
+  .role:hover{ padding-left: 10px; background: rgba(255,255,255,.18); }
+  .role .yr{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .16em;
+    color: var(--ink-mute);
+  }
+  .role .title{
+    font-family: var(--serif);
+    font-size: clamp(22px, 2.2vw, 30px);
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  .role .title .ital{
+    font-style: var(--display-italic-style);
+    color: var(--ink-mute);
+  }
+  .role .tags2{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-align: right;
+  }
+  .role .metric2{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--rust);
+    text-align: right;
+  }
+  .role .arrow2{
+    color: var(--ink-mute);
+    text-align: right;
+  }
+
+  /* Archive table */
+  .archive{
+    padding: 70px 40px 40px;
+    background: var(--cream-2);
+  }
+  .archive .wrap{ max-width: 1200px; margin: 0 auto; }
+  .archive .label{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 20px;
+  }
+  .archive .row{
+    display: grid;
+    grid-template-columns: 110px 1fr 260px;
+    gap: 24px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line-soft);
+    font-size: 14px;
+    color: var(--ink-mute);
+    align-items: baseline;
+  }
+  .archive .row:last-child{ border-bottom: 1px solid var(--line-soft); }
+  .archive .row .yr{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .16em;
+  }
+  .archive .row .name{ color: var(--ink-2); }
+  .archive .row .domain{
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    text-align: right;
+  }
+
+  /* ============== PORTFOLIO VALUE ============== */
+  .values{
+    background: var(--cream);
+    padding: var(--section-pad) 40px var(--section-pad);
+  }
+  .values .wrap{
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .values h2{
+    font-family: var(--serif);
+    font-weight: var(--display-weight);
+    font-size: clamp(54px, 6.6vw, 92px);
+    line-height: 1.02;
+    letter-spacing: var(--display-tracking);
+    margin: 18px 0 60px;
+  }
+  .values h2 .ital{ font-style: var(--display-italic-style); color: var(--forest); }
+  .value-block{
+    padding: 22px 0 22px 22px;
+    border-left: 2px solid var(--forest);
+    margin-bottom: 10px;
+  }
+  .value-block h4{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--forest);
+    margin: 0 0 10px;
+  }
+  .value-block p{
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--ink-2);
+    margin: 0;
+    max-width: 520px;
+  }
+  .values .footline{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-mute);
+    margin-top: 38px;
+  }
+
+  /* ============== SKILLS ============== */
+  .skills{
+    background: var(--cream-2);
+    padding: 100px 40px;
+  }
+  .skills .wrap{
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 60px;
+  }
+  .skills-left{ max-width: 620px; }
+  .skill-group{ margin-bottom: 40px; }
+  .skill-group h5{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin: 0 0 16px;
+  }
+  .skill-group .chip-row{ gap: 8px; }
+  .skill-group .chip{
+    padding: 8px 12px;
+    border-radius: 3px;
+    transition: border-color .2s, color .2s, background .2s;
+  }
+  .skill-group .chip:hover{
+    border-color: var(--forest);
+    color: var(--forest);
+    background: rgba(58,74,33,.04);
+  }
+  .skills-right{
+    border-left: 1px solid var(--line-soft);
+    padding-left: 60px;
+    min-height: 300px;
+    position: relative;
+  }
+  .edu .eyebrow{ margin-bottom: 14px; }
+  .edu h4{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0 0 10px;
+  }
+  .edu p{
+    font-size: 14px;
+    color: var(--ink-mute);
+    margin: 0;
+  }
+
+  /* ============== CTA ============== */
+  .cta{
+    background: var(--cream-3);
+    padding: calc(var(--section-pad) * 0.9) 40px;
+    border-top: 1px solid rgba(0,0,0,.05);
+  }
+  .cta .wrap{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+  }
+  .cta .eyebrow{ margin-bottom: 22px; display: block; }
+  .cta h2{
+    font-family: var(--serif);
+    font-weight: var(--display-weight);
+    font-size: clamp(54px, 6.4vw, 88px);
+    line-height: 1.02;
+    letter-spacing: var(--display-tracking);
+    margin: 0;
+    max-width: 720px;
+  }
+  .cta h2 .ital{ font-style: var(--display-italic-style); color: var(--forest); }
+  .cta .big-btn{
+    border: 1.5px solid var(--forest);
+    color: var(--forest);
+    padding: 22px 32px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    transition: background .2s, color .2s;
+  }
+  .cta .big-btn:hover{
+    background: var(--forest);
+    color: var(--cream);
+  }
+
+  /* ============== FOOTER ============== */
+  footer{
+    background: var(--cream-3);
+    padding: 40px;
+    border-top: 1px solid rgba(0,0,0,.08);
+  }
+  footer .wrap{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 40px;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  footer .brand{
+    font-family: var(--serif);
+    font-size: 20px;
+  }
+  footer nav{
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+  }
+  footer nav a{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  footer nav a:hover{ color: var(--ink); }
+  footer .copy{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .18em;
+    color: var(--ink-mute);
+    text-align: right;
+  }
+
+  /* ============== PORTRAIT IMAGES ============== */
+  .portrait-img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+  .portrait-img.ghost{
+    opacity: .22;
+    filter: saturate(.4);
+  }
+  .lightbulb-float{
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-30%) rotate(-6deg);
+    width: 72px;
+    height: auto;
+    filter: drop-shadow(0 6px 14px rgba(0,0,0,.18));
+  }
+  .skills-portrait{
+    display: block;
+    width: 60%;
+    max-width: 220px;
+    height: auto;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ============== PORTRAIT PLACEHOLDER ============== */
+  .portrait-ph{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background:
+      repeating-linear-gradient(
+        135deg,
+        rgba(58,74,33,.08) 0 8px,
+        transparent 8px 18px
+      ),
+      linear-gradient(180deg, #e8e2cf 0%, #d9d2b8 100%);
+    border: 1px solid rgba(58,74,33,.15);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-mute);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 20px;
+  }
+  .portrait-ph .inner{
+    border: 1px dashed rgba(0,0,0,.15);
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 6px;
+  }
+  .portrait-ph .inner small{
+    font-size: 9.5px;
+    color: var(--ink-faint);
+    letter-spacing: .2em;
+  }
+
+  .portrait-ph.ghost{
+    opacity: .28;
+  }
+
+  /* ============== RESPONSIVE BASICS ============== */
+  @media (max-width: 960px){
+    .hero-inner,
+    .about .wrap,
+    .process .wrap,
+    .work .wrap,
+    .values .wrap,
+    .skills .wrap,
+    .cta .wrap,
+    footer .wrap{
+      grid-template-columns: 1fr !important;
+    }
+    .portrait-holder{ position: relative; right: 0; top: 0; max-width: 320px; }
+    .role{ grid-template-columns: 80px 1fr; }
+    .role .tags2, .role .metric2, .role .arrow2{ display:none; }
+    .archive .row{ grid-template-columns: 80px 1fr; }
+    .archive .row .domain{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a href="#top" class="brand">Annie S. Koo</a>
+  <div class="links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="contact-btn" style="color: rgb(58, 74, 33)">Contact</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <div class="meta eyebrow">Senior Product Designer · 8+ Years · Taipei → Irvine, CA</div>
+      <h1>Designing<br/>with <span class="ital">intention.</span></h1>
+      <div class="name-line">Annie S. Koo — Senior Product Designer</div>
+      <p class="lede">
+        I design for outcomes — turning complex systems and ambiguous problems into measurable results through research-grounded decisions and tight cross-functional collaboration. Seven product contexts. The process travels; the domain doesn't need to.
+      </p>
+      <div class="cta-row">
+        <a href="#work" class="btn primary">View Work</a>
+        <a href="#" class="btn ghost">Resume</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <div class="portrait-holder">
+        <img src="assets/annie-side.png" alt="Annie holding a latte, side profile illustration" class="portrait-img"/>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- ============ ABOUT + WAVE (overlapping parallax panel) ============ -->
+<div class="green-panel" id="green-panel">
+<div class="wave">
+  <svg viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,90 C120,60 260,130 400,100 C560,68 680,120 820,95 C960,70 1100,130 1240,95 C1340,72 1400,95 1440,80 L1440,150 L0,150 Z" fill="var(--forest)"/>
+  </svg>
+</div>
+
+<!-- ============ ABOUT (green) ============ -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">About Me</div>
+      <div class="principles">
+        <div class="principle">
+          <div class="num">01</div>
+          <div>
+            <h3>Research-Grounded</h3>
+            <p>I start with questions, not solutions. Heuristic evaluations, moderated usability testing, A/B testing, card sorting — the method matches the problem. Cognitive Science from UCSD shaped how I think about why people do what they do.</p>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="num">02</div>
+          <div>
+            <h3>Outcome-Focused</h3>
+            <p>+17.47% mobile transactions at Pens.com. 44+ prioritized UX opportunities at LawnStarter in 90 days. +185% reach growth at Acts2 Taipei in 8 months. Design decisions I can trace to a number.</p>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="num">03</div>
+          <div>
+            <h3>Cross-Domain Adaptable</h3>
+            <p>Seven product contexts across eCommerce, SaaS, marketplaces, fleet safety, and campus communities. The research process, the systems thinking, the cross-functional collaboration — those travel. The domain doesn't need to be familiar.</p>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="num">04</div>
+          <div>
+            <h3>Mentor &amp; Collaborator</h3>
+            <p>Led a 7-person design team. Mentored 10+ students 1:1. Wrote JIRA stories, ran standups, stayed close to engineering. I treat collaboration as part of the design — not something that happens after.</p>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="num">05</div>
+          <div>
+            <h3>Always Learning</h3>
+            <p>From Axure RP to Figma to Claude Code. I pick up new tools fast because I'm genuinely curious about them, not because I have to be. Currently: exploring AI-accelerated design workflows.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-art" id="about-art">
+      <div class="magnifier-wrap">
+        <div class="dashed-trail" aria-hidden="true">
+          <svg id="trail-svg" viewBox="0 0 300 1200" preserveAspectRatio="none">
+            <path id="trail-path"
+                  d="M 240 40 C 220 180, 80 260, 180 440 C 260 600, 120 740, 200 920 C 250 1040, 140 1120, 120 1200"
+                  fill="none" stroke="#c0643a" stroke-width="3"
+                  stroke-dasharray="7 11" stroke-linecap="round"
+                  vector-effect="non-scaling-stroke"/>
+          </svg>
+        </div>
+        <img src="assets/magnifier.png" alt="" class="magnifier-img" id="magnifier-img" aria-hidden="true"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /.green-panel -->
+
+<!-- ============ PROCESS + WORK GROUP (shared sticky portrait) ============ -->
+<div class="process-work-group">
+
+  <!-- Shared sticky portrait rail -->
+  <div class="shared-portrait-rail" aria-hidden="true">
+    <div class="shared-portrait-sticky">
+      <div class="shared-portrait-inner">
+        <img src="assets/annie-magnifier.png" alt="" class="shared-portrait-img"/>
+        <img src="assets/lightbulb.png" alt="" class="shared-lightbulb"/>
+      </div>
+    </div>
+  </div>
+
+<!-- ============ PROCESS ============ -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Design Process</div>
+      <h2>How I get from<br/>problem to<br/><span class="ital">shipped.</span></h2>
+
+      <div class="steps" id="steps">
+        <div class="step active" data-i="0">
+          <div class="badge">01</div>
+          <div>
+            <h3>Discover</h3>
+            <div class="chip-row">
+              <span class="chip">Heuristic Evaluation</span>
+              <span class="chip">User Interviews</span>
+              <span class="chip">Competitive Analysis</span>
+              <span class="chip">Stakeholder Alignment</span>
+            </div>
+          </div>
+        </div>
+        <div class="step inactive" data-i="1">
+          <div class="badge">02</div>
+          <div>
+            <h3>Define</h3>
+            <div class="chip-row">
+              <span class="chip">Synthesis + Prioritization</span>
+              <span class="chip">Problem Framing</span>
+              <span class="chip">Success Metrics</span>
+              <span class="chip">Scope Alignment</span>
+            </div>
+          </div>
+        </div>
+        <div class="step inactive" data-i="2">
+          <div class="badge">03</div>
+          <div>
+            <h3>Design</h3>
+            <div class="chip-row">
+              <span class="chip">Low-fi Wireframes</span>
+              <span class="chip">Hi-fi Prototypes</span>
+              <span class="chip">Design Systems</span>
+              <span class="chip">Multivariant Flows</span>
+            </div>
+          </div>
+        </div>
+        <div class="step inactive" data-i="3">
+          <div class="badge">04</div>
+          <div>
+            <h3>Validate</h3>
+            <div class="chip-row">
+              <span class="chip">Moderated Usability Testing</span>
+              <span class="chip">A/B Testing</span>
+              <span class="chip">Stakeholder Review</span>
+              <span class="chip">Iteration</span>
+            </div>
+          </div>
+        </div>
+        <div class="step inactive" data-i="4">
+          <div class="badge">05</div>
+          <div>
+            <h3>Deliver</h3>
+            <div class="chip-row">
+              <span class="chip">Annotated Handoff</span>
+              <span class="chip">Dev Stand-ups</span>
+              <span class="chip">Documentation</span>
+              <span class="chip">Post-Launch Measurement</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="process-art">
+      <!-- portrait now rendered by shared-portrait-rail -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ SELECTED WORK ============ -->
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="left">
+      <div class="eyebrow">Selected Work</div>
+      <h2>The proof is in <span class="ital">the numbers.</span></h2>
+
+      <article class="case">
+        <div class="case-num">01</div>
+        <div class="head">
+          <div class="date">2020–25</div>
+          <div class="tags"><span class="chip">eCommerce</span><span class="chip">SaaS</span></div>
+        </div>
+        <div class="company">Pens.com</div>
+        <h3>Senior Product Designer</h3>
+        <p class="blurb">A +17.47% lift in mobile transactions through multi-phase, research-driven checkout optimization.</p>
+        <div class="hr"></div>
+        <div class="metric-row">
+          <div>
+            <div class="metric">+17.47%</div>
+            <div class="metric-label">Increase in mobile transactions</div>
+          </div>
+          <div class="arrow">↗</div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-num">02</div>
+        <div class="head">
+          <div class="date">2025</div>
+          <div class="tags"><span class="chip">Growth Design</span><span class="chip">SaaS</span></div>
+        </div>
+        <div class="company">LawnStarter</div>
+        <h3>Senior Product Designer, Growth Squad</h3>
+        <p class="blurb">44+ prioritized UX opportunities in 90 days — new domain, zero prior context, full handoff.</p>
+        <div class="hr"></div>
+        <div class="metric-row">
+          <div>
+            <div class="metric">44+</div>
+            <div class="metric-label">UX opportunities identified &amp; prioritized</div>
+          </div>
+          <div class="arrow">↗</div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-num">03</div>
+        <div class="head">
+          <div class="date">2025–26</div>
+          <div class="tags"><span class="chip">Growth Strategy</span><span class="chip">AI Tools</span></div>
+        </div>
+        <div class="company">Acts2 Network — Journey, Taipei</div>
+        <h3>Design &amp; Growth Strategist</h3>
+        <p class="blurb">+185% reach, 900+ followers, +242% profile visits in 8 months — product thinking applied to community growth.</p>
+        <div class="hr"></div>
+        <div class="metric-row">
+          <div>
+            <div class="metric">+185%</div>
+            <div class="metric-label">Increase in reach</div>
+          </div>
+          <div class="arrow">↗</div>
+        </div>
+      </article>
+    </div>
+
+    <div>
+      <!-- portrait now rendered by shared-portrait-rail -->
+    </div>
+  </div>
+</section>
+
+</div><!-- /.process-work-group -->
+
+<!-- ============ ALL WORK ============ -->
+<section class="allwork">
+  <div class="wrap">
+    <div class="label">All Work</div>
+    <div class="role">
+      <div class="yr">2020–25</div>
+      <div class="title">Pens.com <span class="ital">— Senior Product Designer</span></div>
+      <div class="tags2">eCommerce · SaaS</div>
+      <div class="metric2">+17.47%</div>
+      <div class="arrow2">↗</div>
+    </div>
+    <div class="role">
+      <div class="yr">2025</div>
+      <div class="title">LawnStarter <span class="ital">— Senior Product Designer, Growth Squad</span></div>
+      <div class="tags2">Growth Design · SaaS</div>
+      <div class="metric2">44+</div>
+      <div class="arrow2">↗</div>
+    </div>
+    <div class="role">
+      <div class="yr">2025–26</div>
+      <div class="title">Acts2 Network — Journey, Taipei <span class="ital">— Design &amp; Growth Strategist</span></div>
+      <div class="tags2">Growth Strategy · AI Tools</div>
+      <div class="metric2">+185%</div>
+      <div class="arrow2">↗</div>
+    </div>
+    <div class="role">
+      <div class="yr">2017–18</div>
+      <div class="title">Events.com <span class="ital">— Product Designer</span></div>
+      <div class="tags2">SaaS · Product Design</div>
+      <div class="metric2">2.5×</div>
+      <div class="arrow2">↗</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ARCHIVE ============ -->
+<section class="archive">
+  <div class="wrap">
+    <div class="label">Archive</div>
+    <div class="row">
+      <div class="yr">2016</div>
+      <div class="name">Lytx, Inc. — UI/UX Design Intern</div>
+      <div class="domain">SaaS · Fleet Safety</div>
+    </div>
+    <div class="row">
+      <div class="yr">2015–16</div>
+      <div class="name">UCSD Academic Integrity Office — Web Designer</div>
+      <div class="domain">UX Research · Web Design</div>
+    </div>
+    <div class="row">
+      <div class="yr">2017</div>
+      <div class="name">Galilee Pool Service — Freelance Web Designer</div>
+      <div class="domain">Freelance · Web Design</div>
+    </div>
+    <div class="row">
+      <div class="yr">2018–21</div>
+      <div class="name">Acts2 Network San Diego — Visual Design Lead</div>
+      <div class="domain">Visual Design · Brand Identity</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VALUES ============ -->
+<section class="values">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Why Work With Me</div>
+      <h2>I bring more than a <span class="ital">portfolio.</span></h2>
+
+      <div class="value-block">
+        <h4>Empathy as a Practice</h4>
+        <p>Being a mom changed how I design. Patience, seeing things from a completely different perspective, building for people whose context is nothing like yours — that's not a soft skill. It's the whole job.</p>
+      </div>
+      <div class="value-block">
+        <h4>I Invest in People</h4>
+        <p>I've mentored 7-person design teams and 10+ students 1:1. I care about the people I work with growing. That's not separate from the work — it's part of what makes good work happen.</p>
+      </div>
+      <div class="value-block">
+        <h4>Curiosity Over Comfort</h4>
+        <p>New domain? I'll ramp fast. New tool? I'm already testing it. I went from zero to full strategic handoff at LawnStarter in 90 days. Currently building with Claude Code.</p>
+      </div>
+      <div class="value-block">
+        <h4>I Show Up Off the Clock</h4>
+        <p>Good coffee, long strolls, exploring new neighborhoods — I notice how spaces make people feel, how things are organized, what draws attention. That observational habit doesn't turn off at 5pm.</p>
+      </div>
+
+      <div class="footline">Outside the work: good coffee, long walks, and college mentoring.</div>
+    </div>
+
+    <div>
+      <div style="position:sticky; top:140px; display:flex; justify-content:center;">
+        <div style="width: 340px; aspect-ratio: 3/4.2;">
+          <img src="assets/annie-front.png" alt="Annie smiling with latte" class="portrait-img"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section class="skills">
+  <div class="wrap">
+    <div class="skills-left">
+      <div class="skill-group">
+        <h5>Design</h5>
+        <div class="chip-row">
+          <span class="chip">Figma</span>
+          <span class="chip">Axure RP</span>
+          <span class="chip">Sketch</span>
+          <span class="chip">Adobe Illustrator</span>
+          <span class="chip">Adobe Photoshop</span>
+          <span class="chip">Adobe XD</span>
+          <span class="chip">Canva</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h5>Research</h5>
+        <div class="chip-row">
+          <span class="chip">Moderated Usability Testing</span>
+          <span class="chip">Remote Usability Testing</span>
+          <span class="chip">A/B Testing</span>
+          <span class="chip">Heuristic Evaluation</span>
+          <span class="chip">Competitive Analysis</span>
+          <span class="chip">Card Sorting</span>
+          <span class="chip">User Interviews</span>
+          <span class="chip">CRO</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h5>Delivery</h5>
+        <div class="chip-row">
+          <span class="chip">JIRA</span>
+          <span class="chip">Agile / Scrum</span>
+          <span class="chip">Asana</span>
+          <span class="chip">Trello</span>
+          <span class="chip">WCAG Compliance</span>
+          <span class="chip">Engineering Handoff</span>
+          <span class="chip">Design Systems</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h5>AI &amp; Emerging</h5>
+        <div class="chip-row">
+          <span class="chip">Perplexity AI</span>
+          <span class="chip">AI-Accelerated Workflows</span>
+        </div>
+      </div>
+    </div>
+    <div class="skills-right edu">
+      <div class="eyebrow" style="margin-bottom:14px;">Education</div>
+      <h4>University of California, San Diego</h4>
+      <p>B.S. Cognitive Science — Human-Computer Interaction</p>
+      <img src="assets/latte.png" alt="Latte" class="skills-portrait"/>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Relocating to Irvine, CA — July 2026</span>
+      <h2>Open to senior<br/>product design roles.<br/><span class="ital">Let's work together.</span></h2>
+    </div>
+    <a href="mailto:hello@annieskoo.com" class="big-btn">Get in Touch</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="brand">Annie S. Koo</div>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Resume</a>
+    </nav>
+    <div class="copy">© 2026 Annie S. Koo</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ----- sticky nav tint on scroll + over dark section -----
+  const nav = document.getElementById('nav');
+  const about = document.getElementById('about');
+  function updateNav(){
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 20);
+
+    const rect = about.getBoundingClientRect();
+    const navH = nav.offsetHeight;
+    const overDark = rect.top <= navH/2 && rect.bottom >= navH/2;
+    nav.classList.toggle('on-dark', overDark);
+  }
+  updateNav();
+  window.addEventListener('scroll', updateNav, { passive:true });
+
+  // ----- process steps: highlight the one closest to mid-viewport -----
+  const steps = Array.from(document.querySelectorAll('.step'));
+  function updateSteps(){
+    const mid = window.innerHeight * 0.42;
+    let bestI = -1, bestD = Infinity;
+    steps.forEach((s, i) => {
+      const r = s.getBoundingClientRect();
+      const c = (r.top + r.bottom) / 2;
+      const d = Math.abs(c - mid);
+      if (d < bestD && r.bottom > 0 && r.top < window.innerHeight){
+        bestD = d; bestI = i;
+      }
+    });
+    steps.forEach((s, i) => {
+      s.classList.toggle('active', i === bestI);
+      s.classList.toggle('inactive', i !== bestI);
+    });
+  }
+  updateSteps();
+  window.addEventListener('scroll', updateSteps, { passive:true });
+
+  // Click a step to scroll to it
+  steps.forEach(s => s.addEventListener('click', () => {
+    s.scrollIntoView({ behavior:'smooth', block:'center' });
+  }));
+
+  // ----- magnifier follows the dashed trail on scroll -----
+  const trailPath = document.getElementById('trail-path');
+  const trailSvg  = document.getElementById('trail-svg');
+  const mag       = document.getElementById('magnifier-img');
+  const aboutEl   = document.getElementById('about');
+  const aboutArt  = document.getElementById('about-art');
+
+  function updateMagnifier(){
+    if (!trailPath || !mag || !aboutArt) return;
+
+    // Progress: starts when #about enters viewport, ends when it leaves.
+    const r = aboutEl.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const travel = r.height + vh * 0.5;       // total scroll distance during which we animate
+    const progressed = Math.min(Math.max((vh * 0.5 - r.top) / travel, 0), 1);
+
+    // Walk the SVG path, converting SVG-space coords to the parent div's px coords.
+    const totalLen = trailPath.getTotalLength();
+    const p   = trailPath.getPointAtLength(progressed * totalLen);
+    const p2  = trailPath.getPointAtLength(Math.min(progressed + 0.01, 1) * totalLen);
+
+    const svgRect = trailSvg.getBoundingClientRect();
+    const vb = trailSvg.viewBox.baseVal;      // 0 0 300 1200
+    const sx = svgRect.width  / vb.width;
+    const sy = svgRect.height / vb.height;
+
+    const x = p.x  * sx;
+    const y = p.y  * sy;
+
+    // Tangent → glass sits on the trail, handle tilts back from travel direction.
+    // Magnifier art: glass at top (center ~ 50% x, 22% y), handle straight down at rotation 0.
+    // We want the handle to trail "up and back" as the glass moves down the path.
+    const dx = (p2.x - p.x) * sx;
+    const dy = (p2.y - p.y) * sy;
+    const travelAngle = Math.atan2(dy, dx) * 180 / Math.PI;
+    // At travelAngle = 90° (pure downward), handle tilted ~30° clockwise from up → rot = -60
+    const rot = travelAngle - 150;
+
+    // Center the glass on the path point
+    const magW = mag.offsetWidth;
+    const magH = mag.offsetHeight;
+    const offX = magW * 0.5;
+    const offY = magH * 0.22;  // glass center is ~22% from top
+
+    mag.style.transform =
+      `translate(${x - offX}px, ${y - offY}px) rotate(${rot}deg)`;
+  }
+  // Run when the magnifier image has a measurable size
+  if (mag){
+    if (mag.complete) updateMagnifier();
+    else mag.addEventListener('load', updateMagnifier);
+  }
+  window.addEventListener('scroll', updateMagnifier, { passive:true });
+  window.addEventListener('resize', updateMagnifier);
+
+  // ----- parallax: the green panel rises up over the hero as user scrolls -----
+  const greenPanel = document.getElementById('green-panel');
+  const heroSection = document.querySelector('.hero');
+  function updateParallax(){
+    if (!greenPanel || !heroSection) return;
+    // How far has the user scrolled into the hero?
+    const heroH = heroSection.offsetHeight;
+    const y = window.scrollY;
+    // Lift the green panel up by a fraction of scroll progress, capped.
+    // Start with 0 lift at top, max ~120px lift by the time hero has scrolled.
+    const lift = Math.min(y * 0.22, 140);
+    greenPanel.style.transform = `translate3d(0, ${-lift}px, 0)`;
+  }
+  updateParallax();
+  window.addEventListener('scroll', updateParallax, { passive:true });
+  window.addEventListener('resize', updateParallax);
+
+  // ----- light the bulb when entering Selected Work section -----
+  const lightbulb = document.querySelector('.shared-lightbulb');
+  const workSection = document.querySelector('.work');
+  const caseCards = Array.from(document.querySelectorAll('.work .case'));
+  function updateLightbulb(){
+    if (!lightbulb || !workSection) return;
+    const rect = workSection.getBoundingClientRect();
+    const vh = window.innerHeight;
+    // "lit" only while Selected Work is in view
+    const lit = rect.top < vh * 0.6 && rect.bottom > vh * 0.2;
+    lightbulb.classList.toggle('lit', lit);
+
+    // "pulsing" when a case card is near viewport center (she's "looking at" it)
+    let pulsing = false;
+    if (lit) {
+      const center = vh / 2;
+      for (const card of caseCards) {
+        const r = card.getBoundingClientRect();
+        const cardCenter = r.top + r.height / 2;
+        if (Math.abs(cardCenter - center) < r.height * 0.55) {
+          pulsing = true;
+          break;
+        }
+      }
+    }
+    lightbulb.classList.toggle('pulsing', pulsing);
+  }
+  updateLightbulb();
+  window.addEventListener('scroll', updateLightbulb, { passive:true });
+  window.addEventListener('resize', updateLightbulb);
+})();
+</script>
+
+<!-- ============ TWEAKS ============ -->
+<div id="tweaks-root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<script type="text/babel">
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "mood": "earth",
+    "voice": "editorial",
+    "rhythm": "balanced"
+  }/*EDITMODE-END*/;
+
+  function applyTweaks(t){
+    const root = document.documentElement;
+    root.setAttribute('data-mood', t.mood);
+    root.setAttribute('data-voice', t.voice);
+    root.setAttribute('data-rhythm', t.rhythm);
+  }
+  // Apply immediately so first paint matches persisted state
+  applyTweaks(TWEAK_DEFAULTS);
+
+  function TweaksApp(){
+    const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+    React.useEffect(() => { applyTweaks(t); }, [t]);
+    return (
+      <TweaksPanel title="Tweaks">
+        <TweakSection label="Mood" />
+        <TweakRadio
+          label="Palette"
+          value={t.mood}
+          options={[
+            {value:'earth',  label:'Earth'},
+            {value:'ink',    label:'Ink'},
+            {value:'garden', label:'Garden'},
+          ]}
+          onChange={(v) => setTweak('mood', v)}
+        />
+
+        <TweakSection label="Voice" />
+        <TweakRadio
+          label="Type"
+          value={t.voice}
+          options={[
+            {value:'editorial', label:'Editorial'},
+            {value:'technical', label:'Technical'},
+            {value:'warm',      label:'Warm'},
+          ]}
+          onChange={(v) => setTweak('voice', v)}
+        />
+
+        <TweakSection label="Rhythm" />
+        <TweakRadio
+          label="Density"
+          value={t.rhythm}
+          options={[
+            {value:'generous', label:'Generous'},
+            {value:'balanced', label:'Balanced'},
+            {value:'tight',    label:'Tight'},
+          ]}
+          onChange={(v) => setTweak('rhythm', v)}
+        />
+      </TweaksPanel>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<TweaksApp />);
+</script>
+
+</body>
+</html>
