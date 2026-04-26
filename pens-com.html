@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en" data-mood="earth" data-voice="editorial" data-rhythm="balanced">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pens.com — Revenue Recovery — Annie S. Koo</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Nunito+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+<style>
+  :root{
+    --cream: #efece0;
+    --cream-2: #e7e3d4;
+    --cream-3: #dcd7c4;
+    --ink: #1e1c18;
+    --ink-2: #2a2824;
+    --ink-mute: #6d675a;
+    --ink-faint: #a29a87;
+    --forest: #3a4a21;
+    --forest-2: #2f3d1a;
+    --rust: #c0643a;
+    --line: #bfb9a4;
+    --line-soft: #d3cdb8;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Nunito Sans", -apple-system, Helvetica, Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --display-weight: 500;
+    --display-italic-style: italic;
+    --display-tracking: -0.015em;
+  }
+  *{ box-sizing: border-box; }
+  html,body{ margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color: inherit; text-decoration: none; }
+
+  /* ── NAV ── */
+  .nav{
+    position: sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 40px;
+    background:rgba(231,227,212,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav .brand{ font-family:var(--serif); font-size:22px; font-weight:500; letter-spacing:.2px; }
+  .nav .links{ display:flex; align-items:center; gap:28px; }
+  .nav .links a{
+    font-family:var(--mono); font-size:11px; letter-spacing:.18em;
+    text-transform:uppercase; padding:6px 2px; opacity:.85; transition:opacity .2s;
+  }
+  .nav .links a:hover{ opacity:1; }
+  .nav .contact-btn{
+    background:transparent; color:var(--ink); border:1px solid var(--ink);
+    padding:14px 22px; font-family:var(--mono); font-size:11px;
+    letter-spacing:.22em; text-transform:uppercase; opacity:.95;
+    transition:background .2s, color .2s;
+  }
+  .nav .contact-btn:hover{ background:var(--ink); color:var(--cream); opacity:1; }
+
+  /* ── SHARED ── */
+  .container{ max-width:1080px; margin:0 auto; padding:0 40px; }
+  .container-wide{ max-width:1280px; margin:0 auto; padding:0 40px; }
+  .eyebrow{
+    font-family:var(--mono); font-size:10px; letter-spacing:.24em;
+    text-transform:uppercase; color:var(--ink-mute);
+  }
+  .chip{
+    font-family:var(--mono); font-size:10px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--ink-mute);
+    border:1px solid var(--line); padding:5px 10px;
+  }
+  hr.rule{ height:1px; background:var(--line-soft); border:0; margin:0; }
+
+  /* ── HERO ── */
+  .case-hero{
+    padding:72px 40px 80px;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .case-hero .back{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--ink-mute); display:inline-flex; align-items:center; gap:8px;
+    margin-bottom:52px; transition:color .2s;
+  }
+  .case-hero .back:hover{ color:var(--ink); }
+  .case-hero .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px; }
+  .case-hero .kicker{
+    font-family:var(--mono); font-size:11px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--ink-mute); margin-bottom:16px;
+  }
+  .case-hero h1{
+    font-family:var(--serif); font-weight:var(--display-weight);
+    font-size:clamp(46px,5.6vw,84px); line-height:1.02;
+    letter-spacing:var(--display-tracking); margin:0 0 20px; color:var(--ink);
+  }
+  .case-hero h1 em{ font-style:var(--display-italic-style); color:var(--forest); }
+  .case-hero .role-line{
+    font-family:var(--mono); font-size:11px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--ink-mute); margin-bottom:56px;
+  }
+
+  /* Metric trio */
+  .metric-trio{
+    display:grid; grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--line-soft);
+  }
+  .metric-trio .m{
+    padding:32px 32px 32px 0;
+    border-right:1px solid var(--line-soft);
+  }
+  .metric-trio .m:last-child{ border-right:0; padding-left:32px; }
+  .metric-trio .m:nth-child(2){ padding-left:32px; }
+  .metric-trio .m .val{
+    font-family:var(--mono); font-size:clamp(28px,3.2vw,44px);
+    font-weight:400; letter-spacing:-.02em; color:var(--forest);
+    line-height:1.1; margin-bottom:8px;
+  }
+  .metric-trio .m .desc{
+    font-family:var(--sans); font-size:13px; color:var(--ink-mute); line-height:1.5;
+  }
+  .metric-trio .m .sub{
+    font-family:var(--mono); font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--ink-faint); margin-top:4px;
+  }
+
+  /* ── SECTION BLOCKS ── */
+  .block{
+    padding:80px 40px;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .block:last-of-type{ border-bottom:0; }
+  .block .section-label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.26em;
+    text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px;
+  }
+  .block h2{
+    font-family:var(--serif); font-weight:var(--display-weight);
+    font-size:clamp(30px,3.6vw,52px); line-height:1.06;
+    letter-spacing:var(--display-tracking); margin:0 0 32px; color:var(--ink);
+  }
+  .block h2 em{ font-style:var(--display-italic-style); color:var(--forest); }
+  .block p{
+    font-size:16px; line-height:1.78; color:var(--ink-2); margin:0 0 20px;
+  }
+  .block p:last-child{ margin-bottom:0; }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote{
+    border-left:3px solid var(--forest);
+    padding:24px 0 24px 28px;
+    margin:40px 0;
+  }
+  .pull-quote p{
+    font-family:var(--serif); font-size:clamp(20px,2.4vw,28px);
+    font-weight:var(--display-weight); line-height:1.35;
+    color:var(--ink); font-style:italic; margin:0;
+  }
+
+  /* ── HEURISTIC GRID ── */
+  .heuristic-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:1px;
+    background:var(--line-soft); border:1px solid var(--line-soft);
+    margin-top:40px;
+  }
+  .heuristic-cell{
+    background:var(--cream); padding:36px 32px;
+  }
+  .heuristic-cell .violation{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--rust); margin-bottom:14px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .heuristic-cell .violation::before{
+    content:''; display:inline-block; width:6px; height:6px;
+    background:var(--rust); border-radius:50%;
+  }
+  .heuristic-cell h4{
+    font-family:var(--serif); font-size:22px; font-weight:var(--display-weight);
+    margin:0 0 12px; color:var(--ink); line-height:1.2;
+  }
+  .heuristic-cell p{ font-size:14px; line-height:1.7; color:var(--ink-mute); margin:0; }
+
+  /* Image placeholder */
+  .img-placeholder{
+    width:100%; aspect-ratio:16/7;
+    background:var(--cream-3);
+    border:1px solid var(--line-soft);
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:10px;
+    margin-top:40px;
+  }
+  .img-placeholder .img-label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--ink-faint);
+  }
+  .img-placeholder .img-caption{
+    font-family:var(--sans); font-size:13px; color:var(--ink-faint);
+  }
+
+  /* ── BEFORE / AFTER ── */
+  .before-after{
+    display:grid; grid-template-columns:1fr 1fr; gap:1px;
+    background:var(--line-soft); border:1px solid var(--line-soft);
+    margin-top:40px;
+  }
+  .ba-panel{ background:var(--cream); padding:40px 36px; }
+  .ba-panel.after{ background:var(--forest); color:var(--cream); }
+  .ba-panel .ba-label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.24em;
+    text-transform:uppercase; margin-bottom:20px;
+  }
+  .ba-panel .ba-label{ color:var(--ink-faint); }
+  .ba-panel.after .ba-label{ color:rgba(239,236,224,.5); }
+  .ba-panel .ba-headline{
+    font-family:var(--serif); font-size:clamp(26px,2.8vw,38px);
+    font-weight:var(--display-weight); line-height:1.1; margin:0 0 20px;
+  }
+  .ba-panel .ba-headline{ color:var(--ink); }
+  .ba-panel.after .ba-headline{ color:var(--cream); }
+  .ba-panel ul{
+    list-style:none; margin:0; padding:0;
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .ba-panel li{
+    font-size:14px; line-height:1.6; display:flex; gap:12px;
+  }
+  .ba-panel li{ color:var(--ink-2); }
+  .ba-panel.after li{ color:rgba(239,236,224,.8); }
+  .ba-panel li::before{
+    content:''; display:block; width:16px; height:1px;
+    background:var(--line); flex-shrink:0; margin-top:10px;
+  }
+  .ba-panel.after li::before{ background:rgba(239,236,224,.3); }
+
+  /* ── EXECUTION CARDS ── */
+  .exec-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:40px;
+  }
+  .exec-card{
+    border:1px solid var(--line-soft); padding:32px 28px;
+  }
+  .exec-card .card-num{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em;
+    color:var(--ink-faint); margin-bottom:18px;
+  }
+  .exec-card h4{
+    font-family:var(--serif); font-size:22px; font-weight:var(--display-weight);
+    margin:0 0 12px; color:var(--ink); line-height:1.2;
+  }
+  .exec-card p{ font-size:14px; line-height:1.7; color:var(--ink-mute); margin:0; }
+
+  /* ── RESEARCH SIDEBAR LAYOUT ── */
+  .sidebar-layout{
+    display:grid; grid-template-columns:1fr 340px; gap:60px; align-items:start;
+  }
+  .research-aside{
+    background:var(--cream-2); border:1px solid var(--line-soft);
+    padding:32px 28px;
+    position:sticky; top:88px;
+  }
+  .research-aside .aside-label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--ink-faint); margin-bottom:16px;
+  }
+  .research-aside h4{
+    font-family:var(--serif); font-size:20px; font-weight:var(--display-weight);
+    margin:0 0 14px; color:var(--ink); line-height:1.25;
+  }
+  .research-aside p{ font-size:13px; line-height:1.7; color:var(--ink-mute); margin:0 0 14px; }
+  .research-aside p:last-child{ margin:0; }
+  .research-aside .finding{
+    border-top:1px solid var(--line-soft); padding-top:16px; margin-top:16px;
+  }
+  .research-aside .finding-label{
+    font-family:var(--mono); font-size:9px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--rust); margin-bottom:8px;
+  }
+
+  /* ── LEADERSHIP SPLIT ── */
+  .leadership-split{
+    display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-top:40px;
+  }
+  .leadership-split .col h3{
+    font-family:var(--mono); font-size:10px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--ink-mute); margin:0 0 14px;
+  }
+  .leadership-split .col p{ font-size:15px; line-height:1.75; color:var(--ink-2); margin:0 0 16px; }
+  .leadership-split .col p:last-child{ margin:0; }
+
+  /* Roadmap table */
+  .roadmap{
+    margin-top:16px; border-top:1px solid var(--line-soft);
+  }
+  .roadmap-row{
+    display:grid; grid-template-columns:110px 1fr;
+    gap:20px; padding:16px 0; border-bottom:1px solid var(--line-soft);
+    align-items:start;
+  }
+  .roadmap-row .tag{
+    font-family:var(--mono); font-size:9px; letter-spacing:.18em;
+    text-transform:uppercase; padding:5px 8px; border:1px solid;
+    text-align:center; margin-top:2px;
+  }
+  .roadmap-row .tag.quick{ color:var(--forest); border-color:var(--forest); }
+  .roadmap-row .tag.rock{ color:var(--rust); border-color:var(--rust); }
+  .roadmap-row .item{ font-size:14px; line-height:1.6; color:var(--ink-2); }
+
+  /* ── OUTCOME BANNER ── */
+  .outcome-banner{
+    background:var(--forest); color:var(--cream);
+    padding:64px 40px;
+    margin:0;
+  }
+  .outcome-banner .container{ display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+  .outcome-banner .eyebrow{ color:rgba(239,236,224,.5); margin-bottom:20px; }
+  .outcome-banner h2{
+    font-family:var(--serif); font-weight:var(--display-weight);
+    font-size:clamp(32px,3.8vw,52px); line-height:1.06;
+    letter-spacing:var(--display-tracking); margin:0; color:var(--cream);
+  }
+  .outcome-banner h2 em{ font-style:var(--display-italic-style); color:rgba(239,236,224,.65); }
+  .outcome-metrics{ display:flex; flex-direction:column; gap:28px; }
+  .outcome-metric .val{
+    font-family:var(--mono); font-size:36px; letter-spacing:-.02em;
+    color:var(--cream); line-height:1; margin-bottom:6px;
+  }
+  .outcome-metric .label{ font-size:13px; color:rgba(239,236,224,.65); line-height:1.5; }
+
+  /* ── MORE AT PENS.COM ── */
+  .more-section{
+    padding:72px 40px;
+    border-top:1px solid var(--line-soft);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .more-section .more-label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.26em;
+    text-transform:uppercase; color:var(--ink-faint); margin-bottom:32px;
+  }
+  .more-tiles{
+    display:grid; grid-template-columns:1fr 1fr; gap:1px;
+    background:var(--line-soft); border:1px solid var(--line-soft);
+  }
+  .more-tile{
+    background:var(--cream-2); padding:36px 32px;
+  }
+  .more-tile .tile-tag{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--ink-faint); margin-bottom:14px;
+  }
+  .more-tile h4{
+    font-family:var(--serif); font-size:24px; font-weight:var(--display-weight);
+    margin:0 0 14px; color:var(--ink); line-height:1.2;
+  }
+  .more-tile p{
+    font-size:14px; line-height:1.72; color:var(--ink-mute); margin:0 0 20px;
+  }
+  .more-tile .process-tags{
+    display:flex; flex-wrap:wrap; gap:8px; margin-top:auto;
+  }
+  .more-tile .ptag{
+    font-family:var(--mono); font-size:9px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--ink-mute);
+    border:1px solid var(--line); padding:4px 8px;
+  }
+  @media(max-width:640px){
+    .more-tiles{ grid-template-columns:1fr; }
+    .more-section{ padding:60px 20px; }
+  }
+
+  /* ── NEXT PROJECT ── */
+  .next-project{
+    padding:72px 40px;
+    display:flex; justify-content:space-between; align-items:center; gap:40px;
+    border-top:1px solid var(--line-soft);
+  }
+  .next-project .label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--ink-mute); margin-bottom:10px;
+  }
+  .next-project h3{
+    font-family:var(--serif); font-size:34px; font-weight:var(--display-weight);
+    margin:0; color:var(--ink);
+  }
+  .arrow-btn{
+    font-family:var(--mono); font-size:11px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--forest); border:1px solid var(--forest);
+    padding:14px 22px; white-space:nowrap; display:inline-flex; align-items:center;
+    gap:10px; transition:background .2s, color .2s;
+  }
+  .arrow-btn:hover{ background:var(--forest); color:var(--cream); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    .metric-trio{ grid-template-columns:1fr; }
+    .metric-trio .m{ padding:24px 0; border-right:0; border-bottom:1px solid var(--line-soft); }
+    .metric-trio .m:last-child{ border-bottom:0; }
+    .metric-trio .m:nth-child(2){ padding-left:0; }
+    .heuristic-grid{ grid-template-columns:1fr; }
+    .before-after{ grid-template-columns:1fr; }
+    .exec-grid{ grid-template-columns:1fr; }
+    .sidebar-layout{ grid-template-columns:1fr; }
+    .research-aside{ position:static; }
+    .leadership-split{ grid-template-columns:1fr; gap:40px; }
+    .outcome-banner .container{ grid-template-columns:1fr; gap:48px; }
+  }
+  @media(max-width:600px){
+    .nav{ padding:16px 20px; }
+    .block,.case-hero{ padding:60px 20px; }
+    .outcome-banner{ padding:48px 20px; }
+    .next-project{ flex-direction:column; align-items:flex-start; padding:60px 20px; }
+    .container,.container-wide{ padding:0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <a href="index.html" class="brand">Annie S. Koo</a>
+  <div class="links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact" class="contact-btn">Contact</a>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════
+     01 · HERO
+════════════════════════════════════════════ -->
+<div class="case-hero">
+  <div class="container">
+
+    <a href="index.html#work" class="back">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg>
+      All Work
+    </a>
+
+    <div class="tags">
+      <span class="chip">eCommerce</span>
+      <span class="chip">SaaS</span>
+      <span class="chip">Conversion & Growth</span>
+    </div>
+
+    <div class="kicker">Two Projects · One Through-Line</div>
+    <h1>Checkout optimization — from<br><em>microsite proof to main site.</em></h1>
+    <div class="role-line">Senior Product Designer — Microsite (Solo Lead) · Main Site Checkout (Design Team Contributor)</div>
+
+    <div class="metric-trio">
+      <div class="m">
+        <div class="val">+17.47%</div>
+        <div class="desc">Transaction Growth</div>
+        <div class="sub">Project 2 — main site checkout</div>
+      </div>
+      <div class="m">
+        <div class="val">+13.24%</div>
+        <div class="desc">Conversion Rate Lift</div>
+        <div class="sub">Project 1 — microsite A/B test</div>
+      </div>
+      <div class="m">
+        <div class="val">+$15k</div>
+        <div class="desc">Revenue Recovery</div>
+        <div class="sub">Project 1 — first 12 days</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     02 · THE CHALLENGE
+════════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">02 — The Challenge</div>
+    <h2>Leading through<br>a <em>design vacuum.</em></h2>
+
+    <div class="pull-quote">
+      <p>"No dedicated designer. No dedicated developer. Zero initial leadership buy-in — and significant revenue potential going untapped."</p>
+    </div>
+
+    <p>
+      National Pen's microsite powered high-stakes email and direct mail campaigns — but had been entirely neglected from a design standpoint. No dedicated designer. No dedicated dev. No stakeholder priority. Despite driving real traffic, it was converting poorly and nobody owned the problem.
+    </p>
+    <p>
+      The main site's checkout flow was a separate project with a dedicated design team — but one I wasn't on. The microsite was my entry point: a constrained, under-resourced platform where I could operate independently, prove a hypothesis, and generate the evidence needed to advocate for the larger opportunity.
+    </p>
+    <p>
+      My role on the microsite wasn't just to design — it was to create the conditions for design to matter at all. If the results were strong enough, they'd open the door to the main checkout.
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     03 · DISCOVERY
+════════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">03 — Discovery</div>
+    <h2>Strategy over <em>pixels.</em></h2>
+
+    <p>
+      The microsite had two fundamentally different failure modes depending on device — and both had to be understood before any design work began. I ran a structured UX audit across three methods, synthesized through two workshops with PM + Tech and a final stakeholder alignment session.
+    </p>
+
+    <!-- Mobile vs Desktop findings -->
+    <div class="leadership-split" style="margin-top:40px; margin-bottom:0;">
+      <div class="col">
+        <h3>Mobile Experience — Critical</h3>
+        <p>
+          Hotjar session data showed <strong>high abandonment rates</strong> throughout the mobile funnel — driven by too many steps, too much friction at each one, and a UX that had been designed for desktop and never adapted. Mobile users were navigating a multi-tab, multi-step flow never intended for a small screen.
+        </p>
+      </div>
+      <div class="col">
+        <h3>Desktop Experience — CTA Below the Fold</h3>
+        <p>
+          Desktop had meaningfully less friction than mobile, but one critical structural flaw: the primary CTA was buried far below the fold. Users who completed product customization had to scroll past a long page of already-filled information before reaching the action they came to take.
+        </p>
+      </div>
+    </div>
+
+    <!-- UX Audit methods -->
+    <div class="exec-grid" style="margin-top:40px; margin-bottom:40px;">
+      <div class="exec-card">
+        <div class="card-num">Audit Method 01</div>
+        <h4>Heuristic Evaluation</h4>
+        <p>Applied NNG's 10 Usability Heuristics against the full microsite flow, mapping violations directly against screens in Figjam. Four compounding violations emerged across the checkout arc.</p>
+      </div>
+      <div class="exec-card">
+        <div class="card-num">Audit Method 02</div>
+        <h4>Hotjar Behavioral Data</h4>
+        <p>Hours of session recordings, heatmaps, and direct user survey feedback surfaced where attention dropped, where rage-clicks occurred, and which steps had the highest exit rates.</p>
+      </div>
+      <div class="exec-card">
+        <div class="card-num">Audit Method 03</div>
+        <h4>Competitive Analysis</h4>
+        <p>Benchmarked against comparable promotional product experiences to establish what a low-friction one-page checkout could look like — and where the microsite fell short by comparison.</p>
+      </div>
+      <div class="exec-card">
+        <div class="card-num">Synthesis</div>
+        <h4>2 Workshops → Stakeholder Alignment</h4>
+        <p>Audit findings were workshopped with PM + Tech first, then escalated to a full stakeholder session — converting heuristic violations and behavioral data into a shared, prioritized design direction.</p>
+      </div>
+    </div>
+
+    <p>
+      Four violations were compounding across the checkout arc — identified using Nielsen Norman Group's 10 Usability Heuristics, cross-referenced with Baymard Institute research and Hotjar behavioral data.
+    </p>
+
+    <!-- Heuristic grid -->
+    <div class="heuristic-grid">
+      <div class="heuristic-cell">
+        <div class="violation">Heuristic Violation #1</div>
+        <h4>Visibility of System Status</h4>
+        <p>
+          Users had no reliable way to track their progress through the 8-page checkout. Without a clear position indicator, fatigue-based abandonment was high — people couldn't see the end, so they left. The fix was structural, not cosmetic: the flow itself had to be compressed.
+        </p>
+      </div>
+      <div class="heuristic-cell">
+        <div class="violation">Heuristic Violation #2</div>
+        <h4>Error Prevention</h4>
+        <p>
+          The "Place Order" CTA was placed in a position on mobile where users accidentally triggered it while scrolling — a tap-target problem with real financial consequences. Rage-click data from Hotjar session recordings validated this pattern across device types and sessions.
+        </p>
+      </div>
+      <div class="heuristic-cell">
+        <div class="violation">Heuristic Violation #3</div>
+        <h4>Flexibility &amp; Efficiency of Use</h4>
+        <p>
+          Each page was dense with pre-filled information users had already provided — forcing them to re-scan large blocks of redundant content at every step. The CTA remained hidden below the fold, requiring users to scroll past noise to find the action they came to take.
+        </p>
+      </div>
+      <div class="heuristic-cell">
+        <div class="violation">Heuristic Violation #4</div>
+        <h4>Aesthetic &amp; Minimalist Design</h4>
+        <p>
+          The page presented far more information than any user needed at a given step — competing for attention, creating decision fatigue, and burying the primary action. Every unnecessary element added cognitive cost without adding value to the transaction.
+        </p>
+      </div>
+    </div>
+
+    <!-- Hotjar placeholder -->
+    <div class="img-placeholder">
+      <div class="img-label">Research Artifact — Hotjar Behavioral Data</div>
+      <div class="img-caption">Heatmap & session recordings showing rage-click pattern on "Place Order" CTA</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     04 · PHASE 1: THE PROVING GROUND
+════════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">04 — Project 1: Microsite</div>
+    <h2>Start small. <em>Prove it.</em></h2>
+
+    <p>
+      With the diagnostic complete, I needed internal credibility before asking for anything large. The microsite was the right proving ground — lower risk for leadership to approve experiments on, faster feedback loops, and enough traffic volume to generate statistically significant A/B test results quickly.
+    </p>
+    <p>
+      I proposed a single scoped intervention: a sticky CTA bar on the product landing page, deployable entirely through AB Tasty with zero engineering involvement. The hypothesis was tight — if the primary conversion action is always visible, late-funnel abandonment drops. Tech and PM signed off in one meeting.
+    </p>
+
+    <!-- AB Tasty results -->
+    <figure style="margin:40px 0 0;">
+      <img src="assets/Pens_AB_Analytics.png" alt="AB Tasty dashboard showing A/B test results — +13.24% conversion rate lift at 94% confidence, +$15k revenue recovered in 12 days" style="width:100%; display:block; border:1px solid var(--line-soft);">
+      <div style="font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-faint); margin-top:10px;">AB Tasty Dashboard — +13.24% CR lift · 94% confidence · +$15k revenue in 12 days</div>
+    </figure>
+
+    <div class="metric-trio" style="margin-top:40px;">
+      <div class="m">
+        <div class="val">+13.24%</div>
+        <div class="desc">Conversion Rate Lift</div>
+        <div class="sub">94% confidence</div>
+      </div>
+      <div class="m">
+        <div class="val">+$15k</div>
+        <div class="desc">Revenue Recovered</div>
+        <div class="sub">first 12 days</div>
+      </div>
+      <div class="m">
+        <div class="val">+15.21%</div>
+        <div class="desc">CTR — Order Review</div>
+        <div class="sub">96% confidence</div>
+      </div>
+    </div>
+
+    <div class="pull-quote" style="margin-top:40px; margin-bottom:0;">
+      <p>"Small test. Five-figure evidence in 12 days. The data did the political work."</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     05 · PHASE 2: MAIN CHECKOUT
+════════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">05 — Project 2: Main Site Checkout</div>
+    <h2>Ideal first. <em>Then the MVP.</em></h2>
+
+    <p>
+      The microsite results gave me exactly what I needed: concrete, revenue-denominated evidence that UX improvements moved the needle. I brought those results to the main checkout team as a case for involvement — and got a seat on the project.
+    </p>
+
+    <!-- Payment User Journey Complexity -->
+    <div class="section-label" style="margin-top:56px; margin-bottom:12px;">System Audit — Payment User Journey</div>
+    <h2 style="font-size:clamp(22px,2.4vw,34px); margin-bottom:20px;">Four ways to pay. <em>None of them simple.</em></h2>
+    <p>
+      Before designing a single screen, the team mapped the checkout system as it actually existed. The Payment User Journey audit revealed that customers navigated fundamentally different flows depending on how they'd entered the purchase process — three distinct portal paths, each with their own decision branches, each with real abandonment potential at every fork.
+    </p>
+
+    <div class="exec-grid">
+      <div class="exec-card">
+        <div class="card-num">Portal 01</div>
+        <h4>Order Payment Portal</h4>
+        <p>Triggered when a credit check is not cleared. Customer receives a phone call from customer care, then navigates email → invoice link → payment page — a multi-step, multi-channel flow before reaching a checkout screen.</p>
+      </div>
+      <div class="exec-card">
+        <div class="card-num">Portal 02</div>
+        <h4>Invoice Payment Portal</h4>
+        <p>Customer navigates to pens.com and uses "Pay My Invoice" — selecting from multiple invoice checkboxes, confirming, then entering payment via a credit card modal pop-up. A different interface from the standard checkout entirely.</p>
+      </div>
+      <div class="exec-card">
+        <div class="card-num">Portal 03</div>
+        <h4>One Flow Payment Portal</h4>
+        <p>For customers with multiple open invoices — a separate landing page triggered via email and customer care, leading to yet another distinct UI. Three payment paths means three distinct experiences depending on account state.</p>
+      </div>
+      <div class="exec-card">
+        <div class="card-num">Conclusion</div>
+        <h4>Clear Opportunity to Simplify</h4>
+        <p>Four different payment flows — including the main checkout — each with its own decision tree and UI. The complexity was structural, not cosmetic. The system needed further qualitative and quantitative data to make confident simplification decisions.</p>
+      </div>
+    </div>
+
+    <!-- Data-Informed Hypothesis -->
+    <div class="pull-quote" style="margin-top:48px;">
+      <p>"Problem: Too many friction points, too many steps, significant abandonment and confusion. Hypothesis: Simplifying the checkout process will reduce abandonment and increase user satisfaction."</p>
+    </div>
+
+    <div class="exec-grid" style="margin-top:40px; margin-bottom:0; grid-template-columns:repeat(3,1fr);">
+      <div class="exec-card">
+        <div class="card-num">Design Pillar 01</div>
+        <h4>Low-Fidelity Iterative Design</h4>
+        <p>Started with concepts — testing structural decisions around page compression, CTA placement, and information hierarchy before investing in visual execution. Lo-fi iteration kept decisions reversible and fast.</p>
+      </div>
+      <div class="exec-card">
+        <div class="card-num">Design Pillar 02</div>
+        <h4>Cross-Functional Collaboration</h4>
+        <p>Stakeholder alignment sessions, PM input on scope and priority, and tech feasibility reviews ran in parallel with design — not after. Decisions were made with the full team, not handed to them.</p>
+      </div>
+      <div class="exec-card">
+        <div class="card-num">Design Pillar 03</div>
+        <h4>Design Reviews</h4>
+        <p>Structured UX team reviews and feedback loops throughout — ensuring cross-designer perspective on usability decisions before they reached engineering or stakeholder review. Concepts to high-fidelity with team alignment at every stage.</p>
+      </div>
+    </div>
+
+    <hr class="rule" style="margin-top:56px; margin-bottom:56px;">
+
+    <p>
+      With the dedicated design and engineering team behind it, I started with the ideal — a fully re-architected checkout compressing 8 pages into a single, continuous experience. The proposal cleared design and PM review. Then it hit a hard technical constraint: page merging required a level of engineering scope that wasn't available in the current sprint cycle. So we backtracked.
+    </p>
+    <p>
+      Not in retreat — in strategy. We scoped the MVP around the same core principles as the ideal: reduce friction, surface price early, keep the CTA in reach. Everything achievable without restructuring the page architecture itself.
+    </p>
+
+    <!-- End Goal + Ideal vs MVP panels -->
+    <div class="eyebrow" style="margin-bottom:12px;">End Goal</div>
+    <p style="font-family:var(--serif); font-size:clamp(20px,2.2vw,28px); font-weight:var(--display-weight); line-height:1.3; color:var(--ink); margin-bottom:40px;">A simplified, <em style="font-style:var(--display-italic-style); color:var(--forest);">one-page checkout experience.</em></p>
+
+    <div class="before-after">
+      <div class="ba-panel">
+        <div class="ba-label">The Ideal — Full Vision</div>
+        <div class="ba-headline">One-Page<br>Experience</div>
+        <ul>
+          <li>8 pages → single continuous scroll — no step-navigation friction</li>
+          <li>Progress indicator — full position in the flow visible from step 1</li>
+          <li>Price surfaced upfront — zero late-funnel surprises at review</li>
+          <li>Color and imprint flexibility throughout — not locked to a single step</li>
+          <li>Persistent order summary — user context never lost between steps</li>
+        </ul>
+        <div class="img-placeholder" style="margin-top:28px; aspect-ratio:9/16; max-width:280px;">
+          <div class="img-label">Mockup — One-Page Checkout</div>
+          <div class="img-caption">Full compression concept — Figma prototype</div>
+        </div>
+      </div>
+      <div class="ba-panel after">
+        <div class="ba-label">The MVP — Framing a challenge as a way to validate impact</div>
+        <div class="ba-headline">AB Tasty<br>Deployable</div>
+        <ul>
+          <li>Sticky CTA bar at each checkout step — conversion action always accessible</li>
+          <li>Price transparency at order review — fees shown before final confirmation</li>
+          <li>Default quantity optimization — lower pre-checkout decision friction</li>
+          <li>Imprint preview surfaced earlier — personalization visible before committing</li>
+          <li>Scroll reduction within each step — CTA above fold, noise minimized</li>
+        </ul>
+        <div class="img-placeholder" style="margin-top:28px; aspect-ratio:9/16; max-width:280px; background:rgba(58,74,33,.15); border-color:rgba(239,236,224,.2);">
+          <div class="img-label" style="color:rgba(239,236,224,.5);">Screenshot — MVP Checkout</div>
+          <div class="img-caption" style="color:rgba(239,236,224,.4);">Shipped checkout with sticky CTA and price transparency</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky CTA screenshot -->
+    <div class="img-placeholder" style="margin-top:40px; aspect-ratio:16/7;">
+      <div class="img-label">Screenshot — Sticky CTA Bar</div>
+      <div class="img-caption">Mobile view showing the persistent CTA bar in context — before/after scroll position</div>
+    </div>
+
+    <div class="pull-quote" style="margin-top:40px; margin-bottom:0;">
+      <p>"The MVP couldn't merge the pages. It still delivered +17.47% mobile transaction growth."</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     06 · LEADERSHIP & ROADMAP
+════════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">06 — Leadership & Roadmap</div>
+    <h2>Proving design value<br><em>without permission.</em></h2>
+    <p>
+      The microsite had no team behind it — so design had never been given the conditions to prove its impact there. I used that constraint as a forcing function: every proposal had to carry its own evidence, every test had to speak in revenue language, and every result had to point toward the next opportunity.
+    </p>
+
+    <div class="leadership-split">
+      <div class="col">
+        <h3>Strategic Partnership</h3>
+        <p>
+          On the microsite, I acted as the sole design voice — partnering directly with PMs and SEM teams who had grown accustomed to shipping without design input. I brought Baymard Institute research and Hotjar data to every conversation, translating UX findings into revenue language they could act on immediately.
+        </p>
+        <p>
+          A key insight from stakeholder workshops: returning customers and prospects receive fundamentally different experiences via unique URL parameters, with prospect conversion in North America tracking lower. This shaped how tests were scoped — ensuring variant impact was measured against the right audience segment.
+        </p>
+        <p>
+          The two-phase approach was intentional. Phase 1 on the microsite generated the data. Phase 2 on the main checkout spent it.
+        </p>
+      </div>
+      <div class="col">
+        <h3>Strategic Roadmap</h3>
+        <p>Work was sequenced across two phases to build credibility before tackling the larger system:</p>
+        <div class="roadmap">
+          <div class="roadmap-row">
+            <div class="tag quick">Project 1</div>
+            <div class="item">Sticky CTA Bar — microsite, no-dev deployment via AB Tasty, immediate measurable impact</div>
+          </div>
+          <div class="roadmap-row">
+            <div class="tag quick">Project 1</div>
+            <div class="item">Price transparency at review step — copy + layout change, rapid A/B validation</div>
+          </div>
+          <div class="roadmap-row">
+            <div class="tag quick">Project 2 MVP</div>
+            <div class="item">Sticky CTA + scroll reduction within checkout steps — AB Tasty deployable, no dev required</div>
+          </div>
+          <div class="roadmap-row">
+            <div class="tag quick">Project 2 MVP</div>
+            <div class="item">Default quantity change &amp; imprint preview surfaced — lower friction, higher personalization awareness</div>
+          </div>
+          <div class="roadmap-row">
+            <div class="tag rock">Project 2 Ideal</div>
+            <div class="item">Full checkout re-architecture — 8 pages → one-page experience (requires full dev team)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     OUTCOME BANNER
+════════════════════════════════════════════ -->
+<div class="outcome-banner">
+  <div class="container">
+    <div class="eyebrow">Results — Two Projects · Combined Impact</div>
+    <h2>Numbers that trace back<br>to <em>design decisions.</em></h2>
+    <div class="outcome-metrics">
+      <div class="outcome-metric">
+        <div class="val">+13.24%</div>
+        <div class="label">Conversion rate lift · Project 1 — microsite A/B test · 94% confidence</div>
+      </div>
+      <div class="outcome-metric">
+        <div class="val">+$15k</div>
+        <div class="label">Revenue recovered · Project 1 — microsite · first 12 days of testing</div>
+      </div>
+      <div class="outcome-metric">
+        <div class="val">+15.21%</div>
+        <div class="label">CTR on order review · Project 1 — microsite · 96% confidence</div>
+      </div>
+      <div class="outcome-metric">
+        <div class="val">+8.96%</div>
+        <div class="label">CTR on POC landing page · Project 1 — microsite · 98.55% confidence</div>
+      </div>
+      <div class="outcome-metric">
+        <div class="val">+17.47%</div>
+        <div class="label">Mobile transaction growth · Project 2 — main site checkout</div>
+      </div>
+      <div class="outcome-metric">
+        <div class="val">$275k+</div>
+        <div class="label">Projected annual savings · Project 2 — full checkout re-architecture</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MORE AT PENS.COM
+════════════════════════════════════════════ -->
+<div class="more-section">
+  <div class="container">
+    <div class="more-label">More at Pens.com</div>
+    <div class="more-tiles">
+
+      <div class="more-tile">
+        <div class="tile-tag">Brand & Trust — Jul–Sep 2024</div>
+        <h4>Sustainability Landing Page</h4>
+        <p>
+          Led the full design of Pens.com's Sustainability Landing Page — from a multi-team kickoff with UX, Content, and Creative through Hotjar analysis, competitive audit, and multiple lo-fi to hi-fi iterations. The core design challenge: Hotjar showed users skim and scroll back quickly, so the page had to communicate brand values in a single fast scan.
+        </p>
+        <p>
+          Key principles applied: minimal text with strong visual aid, accessibility-compliant color contrast, and a clear CTA driving to "products made with purpose" — not just an information page, but a conversion surface for sustainability-minded buyers.
+        </p>
+        <div class="process-tags">
+          <span class="ptag">Hotjar Research</span>
+          <span class="ptag">Competitive Audit</span>
+          <span class="ptag">Hi-Fi Execution</span>
+          <span class="ptag">Multi-Team Kickoff</span>
+        </div>
+      </div>
+
+      <div class="more-tile">
+        <div class="tile-tag">Research & Strategy — Oct 2024</div>
+        <h4>Product Naming User Study</h4>
+        <p>
+          Ran a 5-participant unmoderated study to understand how users navigate and decide when shopping promotional products. The finding was definitive and unexpected: users don't compare product names at all — they use sort, filters, reviews, and photos. Names like "Big Sur," "Bryce," and "Himalayan Stainless Steel" caused confusion or were ignored entirely.
+        </p>
+        <p>
+          Delivered a formal strategic recommendation: rename SKUs using material descriptors (Soft-Touch, Stainless Steel, Recycled) — language users already scan for — rather than abstract geographic names that add cognitive load without adding meaning.
+        </p>
+        <div class="process-tags">
+          <span class="ptag">Unmoderated Testing</span>
+          <span class="ptag">UserTesting.com</span>
+          <span class="ptag">Strategic Recommendation</span>
+          <span class="ptag">5 Participants</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     NEXT PROJECT
+════════════════════════════════════════════ -->
+<div class="next-project">
+  <div>
+    <div class="label">Next Project</div>
+    <h3>LawnStarter — Simplifying SaaS Complexity</h3>
+  </div>
+  <a href="lawnstarter.html" class="arrow-btn">
+    View Case Study
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+  </a>
+</div>
+
+</body>
+</html>

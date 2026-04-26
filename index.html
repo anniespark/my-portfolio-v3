@@ -36,8 +36,8 @@
     --display-italic-style: italic;
     --display-tracking: -0.015em;
     --section-pad: 120px;
-    --hero-pad-top: 72px;
-    --hero-pad-bot: 60px;
+    --hero-pad-top: 48px;
+    --hero-pad-bot: 32px;
   }
 
   /* ========== MOOD: INK ========== */
@@ -124,8 +124,8 @@
   /* ========== RHYTHM: BALANCED (default) ========== */
   html[data-rhythm="balanced"]{
     --section-pad: 120px;
-    --hero-pad-top: 72px;
-    --hero-pad-bot: 60px;
+    --hero-pad-top: 48px;
+    --hero-pad-bot: 32px;
   }
   /* ========== RHYTHM: TIGHT ========== */
   html[data-rhythm="tight"]{
@@ -215,10 +215,10 @@
     background: transparent;
     color: var(--ink);
     border: 1px solid var(--ink);
-    padding: 10px 20px;
+    padding: 14px 22px;
     font-family: var(--mono);
     font-size: 11px;
-    letter-spacing: .2em;
+    letter-spacing: .22em;
     text-transform: uppercase;
     opacity: .95;
     transition: background .2s, color .2s;
@@ -290,7 +290,7 @@
     grid-template-columns: 1.1fr .9fr;
     gap: 60px;
     align-items: start;
-    min-height: calc(85vh - var(--hero-pad-top));
+    min-height: calc(66vh - var(--hero-pad-top));
     padding-bottom: var(--hero-pad-bot);
   }
   .hero .meta{
@@ -383,8 +383,9 @@
   }
   .scroll-cue{
     position: absolute;
-    left: 40px;
+    left: max(40px, calc(50% - 640px));
     bottom: 32px;
+    z-index: 10;
     font-family: var(--mono);
     font-size: 10px;
     letter-spacing: .28em;
@@ -413,6 +414,7 @@
     position: relative;
     z-index: 2;
     will-change: transform;
+    margin-top: -24px;
   }
   .wave{
     position: relative;
@@ -1290,11 +1292,11 @@
 <section class="hero" id="top">
   <div class="hero-inner">
     <div>
-      <div class="meta eyebrow">Senior Product Designer · 8+ Years · Taipei → Irvine, CA</div>
-      <h1>Designing <span class="ital">systems,</span><br>not screens.</h1>
-      <div class="name-line">Annie S. Koo — Senior Product Designer</div>
+      <div class="meta eyebrow">8+ Years · Specializing in B2B SaaS, Complex Systems & Growth</div>
+      <h1><span class="ital">Annie S. Koo</span><br></h1>
+      <div class="name-line">Senior Product Designer & Design Lead</div>
       <p class="lede">
-        Senior Product Designer with 8+ years driving measurable outcomes across eCommerce, SaaS, and growth. I work at the intersection of research, AI-accelerated execution, and cross-functional leadership — from early ambiguity to shipped product.
+        Architecting simplicity within complex systems for 8+ years. Proven impact—from 17.47% growth at Pens.com to 185% reach increases via AI-native strategy. Leveraging a Taipei → California trajectory to bridge global user behaviors.
       </p>
       <div class="cta-row">
         <a href="#work" class="btn primary">View Work</a>
@@ -1481,25 +1483,25 @@
       <div class="eyebrow">Selected Work</div>
       <h2>The proof is in <span class="ital">the numbers.</span></h2>
 
-      <article class="case">
+      <article class="case" onclick="window.location='pens-com.html'" style="cursor:pointer;">
         <div class="case-num">01</div>
         <div class="head">
-          <div class="tags"><span class="chip">eCommerce</span><span class="chip">SaaS</span></div>
+          <div class="tags"><span class="chip">eCommerce</span><span class="chip">Global Advertising Service</span></div>
         </div>
         <div class="company">Pens.com</div>
         <h3>Senior Product Designer</h3>
-        <p class="blurb">A +17.47% lift in mobile transactions through multi-phase, research-driven checkout optimization.</p>
+        <p class="blurb">A +17.47% lift in transaction rate growth, then a multi-phase, research-driven checkout optimization.</p>
         <div class="hr"></div>
         <div class="metric-row">
           <div>
             <div class="metric">+17.47%</div>
-            <div class="metric-label">Increase in mobile transactions</div>
+            <div class="metric-label">Increase in transaction rate growth</div>
           </div>
           <div class="arrow">↗</div>
         </div>
       </article>
 
-      <article class="case">
+      <article class="case" onclick="window.location='lawnstarter.html'" style="cursor:pointer;">
         <div class="case-num">02</div>
         <div class="head">
           <div class="tags"><span class="chip">Growth Design</span><span class="chip">SaaS</span></div>
@@ -1517,7 +1519,7 @@
         </div>
       </article>
 
-      <article class="case">
+      <article class="case" onclick="window.location='acts2-journey.html'" style="cursor:pointer;">
         <div class="case-num">03</div>
         <div class="head">
           <div class="tags"><span class="chip">Growth Strategy</span><span class="chip">AI Tools</span></div>

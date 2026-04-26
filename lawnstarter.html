@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en" data-mood="earth" data-voice="editorial" data-rhythm="balanced">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LawnStarter — Annie S. Koo</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Nunito+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+<style>
+  :root{
+    --cream: #efece0;
+    --cream-2: #e7e3d4;
+    --cream-3: #dcd7c4;
+    --ink: #1e1c18;
+    --ink-2: #2a2824;
+    --ink-mute: #6d675a;
+    --ink-faint: #a29a87;
+    --forest: #3a4a21;
+    --forest-2: #2f3d1a;
+    --rust: #c0643a;
+    --line: #bfb9a4;
+    --line-soft: #d3cdb8;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Nunito Sans", -apple-system, Helvetica, Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --display-weight: 500;
+    --display-italic-style: italic;
+    --display-tracking: -0.015em;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--cream); color:var(--ink);
+    font-family:var(--sans); font-size:15px; line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; text-decoration:none; }
+
+  /* ── NAV ── */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 40px;
+    background:rgba(231,227,212,.92); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav .brand{ font-family:var(--serif); font-size:22px; font-weight:500; letter-spacing:.2px; }
+  .nav .links{ display:flex; align-items:center; gap:28px; }
+  .nav .links a{
+    font-family:var(--mono); font-size:11px; letter-spacing:.18em;
+    text-transform:uppercase; padding:6px 2px; opacity:.85; transition:opacity .2s;
+  }
+  .nav .links a:hover{ opacity:1; }
+  .nav .contact-btn{
+    background:transparent; color:var(--ink); border:1px solid var(--ink);
+    padding:14px 22px; font-family:var(--mono); font-size:11px;
+    letter-spacing:.22em; text-transform:uppercase; opacity:.95;
+    transition:background .2s, color .2s;
+  }
+  .nav .contact-btn:hover{ background:var(--ink); color:var(--cream); opacity:1; }
+
+  /* ── SHARED ── */
+  .container{ max-width:1080px; margin:0 auto; padding:0 40px; }
+  .eyebrow{
+    font-family:var(--mono); font-size:10px; letter-spacing:.24em;
+    text-transform:uppercase; color:var(--ink-mute);
+  }
+  .chip{
+    font-family:var(--mono); font-size:10px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--ink-mute); border:1px solid var(--line); padding:5px 10px;
+  }
+
+  /* ── HERO ── */
+  .case-hero{
+    padding:72px 40px 80px;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .case-hero .back{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--ink-mute); display:inline-flex; align-items:center; gap:8px;
+    margin-bottom:52px; transition:color .2s;
+  }
+  .case-hero .back:hover{ color:var(--ink); }
+  .case-hero .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px; }
+  .case-hero .kicker{
+    font-family:var(--mono); font-size:11px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--ink-mute); margin-bottom:16px;
+  }
+  .case-hero h1{
+    font-family:var(--serif); font-weight:var(--display-weight);
+    font-size:clamp(46px,5.6vw,84px); line-height:1.02;
+    letter-spacing:var(--display-tracking); margin:0 0 20px; color:var(--ink);
+  }
+  .case-hero h1 em{ font-style:var(--display-italic-style); color:var(--forest); }
+  .case-hero .role-line{
+    font-family:var(--mono); font-size:11px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--ink-mute); margin-bottom:56px;
+  }
+
+  /* Hero stat — single big number for this one */
+  .hero-single-stat{
+    border-top:1px solid var(--line-soft);
+    padding-top:36px;
+    display:grid; grid-template-columns:auto 1fr; gap:40px; align-items:center;
+    max-width:600px;
+  }
+  .hero-single-stat .val{
+    font-family:var(--mono); font-size:clamp(52px,6vw,80px);
+    font-weight:400; letter-spacing:-.02em; color:var(--forest); line-height:1;
+  }
+  .hero-single-stat .context p{
+    font-size:17px; line-height:1.6; color:var(--ink-2); margin:0 0 8px;
+  }
+  .hero-single-stat .context .sub{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--ink-faint);
+  }
+
+  /* ── SECTION BLOCKS ── */
+  .block{
+    padding:80px 40px;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .block .section-label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.26em;
+    text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px;
+  }
+  .block h2{
+    font-family:var(--serif); font-weight:var(--display-weight);
+    font-size:clamp(30px,3.6vw,52px); line-height:1.06;
+    letter-spacing:var(--display-tracking); margin:0 0 32px; color:var(--ink);
+  }
+  .block h2 em{ font-style:var(--display-italic-style); color:var(--forest); }
+  .block p{
+    font-size:16px; line-height:1.78; color:var(--ink-2); margin:0 0 20px;
+  }
+  .block p:last-child{ margin-bottom:0; }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote{
+    border-left:3px solid var(--forest);
+    padding:22px 0 22px 28px; margin:36px 0;
+  }
+  .pull-quote p{
+    font-family:var(--serif); font-size:clamp(20px,2.2vw,26px);
+    font-weight:var(--display-weight); line-height:1.35;
+    color:var(--ink); font-style:italic; margin:0;
+  }
+
+  /* ── FRICTION LIST (System Problem) ── */
+  .friction-list{
+    margin-top:40px; border:1px solid var(--line-soft);
+  }
+  .friction-item{
+    display:grid; grid-template-columns:48px 1fr;
+    gap:0; border-bottom:1px solid var(--line-soft);
+  }
+  .friction-item:last-child{ border-bottom:0; }
+  .friction-item .fi-num{
+    font-family:var(--mono); font-size:10px; letter-spacing:.18em;
+    color:var(--ink-faint); padding:24px 0 24px 20px; border-right:1px solid var(--line-soft);
+    display:flex; align-items:flex-start; padding-top:26px;
+  }
+  .friction-item .fi-body{ padding:22px 28px; }
+  .friction-item .fi-label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--rust); margin-bottom:8px;
+  }
+  .friction-item h4{
+    font-family:var(--serif); font-size:20px; font-weight:var(--display-weight);
+    margin:0 0 8px; color:var(--ink); line-height:1.2;
+  }
+  .friction-item p{ font-size:14px; line-height:1.68; color:var(--ink-mute); margin:0; }
+
+  /* ── 90-DAY TIMELINE ── */
+  .timeline{
+    margin-top:40px; display:flex; flex-direction:column; gap:0;
+  }
+  .tl-row{
+    display:grid; grid-template-columns:100px 32px 1fr;
+    gap:0 24px; padding:32px 0; position:relative;
+  }
+  .tl-row + .tl-row::before{
+    content:''; position:absolute; left:100px; top:0;
+    width:1px; height:32px; background:var(--line-soft);
+    transform:translateX(15px);
+  }
+  .tl-week{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--ink-faint); padding-top:3px; text-align:right;
+  }
+  .tl-dot{
+    width:10px; height:10px; border-radius:50%;
+    background:var(--forest); border:2px solid var(--forest);
+    margin:4px auto 0; flex-shrink:0;
+  }
+  .tl-content h4{
+    font-family:var(--serif); font-size:22px; font-weight:var(--display-weight);
+    margin:0 0 10px; color:var(--ink); line-height:1.2;
+  }
+  .tl-content p{ font-size:14px; line-height:1.7; color:var(--ink-2); margin:0; }
+
+  /* ── HEURISTIC GRID ── */
+  .heuristic-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:1px;
+    background:var(--line-soft); border:1px solid var(--line-soft); margin-top:40px;
+  }
+  .heuristic-cell{ background:var(--cream); padding:36px 32px; }
+  .heuristic-cell .violation{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--rust); margin-bottom:14px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .heuristic-cell .violation::before{
+    content:''; display:inline-block; width:6px; height:6px;
+    background:var(--rust); border-radius:50%;
+  }
+  .heuristic-cell h4{
+    font-family:var(--serif); font-size:22px; font-weight:var(--display-weight);
+    margin:0 0 12px; color:var(--ink); line-height:1.2;
+  }
+  .heuristic-cell p{ font-size:14px; line-height:1.7; color:var(--ink-mute); margin:0; }
+
+  /* ── WORK BETS ── */
+  .bets-grid{
+    display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; margin-top:40px;
+  }
+  .bet-card{
+    border:1px solid var(--line-soft); padding:36px 32px;
+    display:flex; flex-direction:column; gap:16px;
+  }
+  .bet-card .bet-tag{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--ink-faint);
+  }
+  .bet-card h4{
+    font-family:var(--serif); font-size:24px; font-weight:var(--display-weight);
+    margin:0; color:var(--ink); line-height:1.2;
+  }
+  .bet-card p{ font-size:14px; line-height:1.72; color:var(--ink-mute); margin:0; }
+  .bet-card .impact{
+    margin-top:auto; padding-top:20px; border-top:1px solid var(--line-soft);
+    font-family:var(--mono); font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--forest);
+  }
+
+  /* ── IRON TRIANGLE ── */
+  .triangle-layout{
+    display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px;
+    background:var(--line-soft); border:1px solid var(--line-soft); margin-top:40px;
+  }
+  .triangle-cell{ background:var(--cream); padding:32px 28px; }
+  .triangle-cell .tc-role{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--ink-faint); margin-bottom:14px;
+  }
+  .triangle-cell h4{
+    font-family:var(--serif); font-size:20px; font-weight:var(--display-weight);
+    margin:0 0 12px; color:var(--ink); line-height:1.2;
+  }
+  .triangle-cell p{ font-size:13px; line-height:1.7; color:var(--ink-mute); margin:0; }
+
+  /* ── ROADMAP TABLE ── */
+  .roadmap{ margin-top:16px; border-top:1px solid var(--line-soft); }
+  .roadmap-row{
+    display:grid; grid-template-columns:110px 1fr; gap:20px;
+    padding:16px 0; border-bottom:1px solid var(--line-soft); align-items:start;
+  }
+  .roadmap-row .tag{
+    font-family:var(--mono); font-size:9px; letter-spacing:.18em;
+    text-transform:uppercase; padding:5px 8px; border:1px solid; text-align:center; margin-top:2px;
+  }
+  .roadmap-row .tag.quick{ color:var(--forest); border-color:var(--forest); }
+  .roadmap-row .tag.rock{ color:var(--rust); border-color:var(--rust); }
+  .roadmap-row .item{ font-size:14px; line-height:1.6; color:var(--ink-2); }
+
+  /* ── CLOSING STATEMENT (no hard outcome data — frame the deliverable) ── */
+  .outcome-banner{
+    background:var(--forest); color:var(--cream); padding:64px 40px;
+  }
+  .outcome-banner .container{
+    display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
+  }
+  .outcome-banner .ob-eyebrow{
+    font-family:var(--mono); font-size:10px; letter-spacing:.24em;
+    text-transform:uppercase; color:rgba(239,236,224,.5); margin-bottom:20px;
+  }
+  .outcome-banner h2{
+    font-family:var(--serif); font-weight:var(--display-weight);
+    font-size:clamp(30px,3.6vw,48px); line-height:1.08;
+    letter-spacing:var(--display-tracking); margin:0; color:var(--cream);
+  }
+  .outcome-banner h2 em{ font-style:var(--display-italic-style); color:rgba(239,236,224,.65); }
+  .deliverable-list{
+    display:flex; flex-direction:column; gap:20px;
+  }
+  .deliverable-list .d{
+    padding-bottom:20px; border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .deliverable-list .d:last-child{ border-bottom:0; padding-bottom:0; }
+  .deliverable-list .d .d-val{
+    font-family:var(--mono); font-size:24px; color:var(--cream); margin-bottom:6px; letter-spacing:-.01em;
+  }
+  .deliverable-list .d .d-label{
+    font-size:13px; color:rgba(239,236,224,.6); line-height:1.5;
+  }
+
+  /* ── NEXT PROJECT ── */
+  .next-project{
+    padding:72px 40px; display:flex; justify-content:space-between;
+    align-items:center; gap:40px; border-top:1px solid var(--line-soft);
+  }
+  .next-project .label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--ink-mute); margin-bottom:10px;
+  }
+  .next-project h3{
+    font-family:var(--serif); font-size:34px; font-weight:var(--display-weight); margin:0; color:var(--ink);
+  }
+  .arrow-btn{
+    font-family:var(--mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--forest); border:1px solid var(--forest); padding:14px 22px;
+    white-space:nowrap; display:inline-flex; align-items:center; gap:10px;
+    transition:background .2s, color .2s;
+  }
+  .arrow-btn:hover{ background:var(--forest); color:var(--cream); }
+
+  /* ── IMAGE PLACEHOLDER ── */
+  .img-placeholder{
+    width:100%; aspect-ratio:16/7;
+    background:var(--cream-3); border:1px solid var(--line-soft);
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:8px;
+  }
+  .img-placeholder .img-label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--ink-faint);
+  }
+  .img-placeholder .img-caption{
+    font-family:var(--sans); font-size:13px; color:var(--ink-faint);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:1100px){
+    .bets-grid{ grid-template-columns:1fr 1fr; }
+  }
+  @media(max-width:900px){
+    .heuristic-grid{ grid-template-columns:1fr; }
+    .bets-grid{ grid-template-columns:1fr; }
+    .triangle-layout{ grid-template-columns:1fr; }
+    .outcome-banner .container{ grid-template-columns:1fr; gap:48px; }
+    .hero-single-stat{ grid-template-columns:1fr; gap:12px; }
+    .tl-row{ grid-template-columns:80px 24px 1fr; }
+  }
+  @media(max-width:600px){
+    .nav{ padding:16px 20px; }
+    .block,.case-hero{ padding:60px 20px; }
+    .outcome-banner{ padding:48px 20px; }
+    .next-project{ flex-direction:column; align-items:flex-start; padding:60px 20px; }
+    .container{ padding:0 20px; }
+    .friction-item .fi-body{ padding:20px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <a href="index.html" class="brand">Annie S. Koo</a>
+  <div class="links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact" class="contact-btn">Contact</a>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════
+     01 · HERO
+════════════════════════════════════════ -->
+<div class="case-hero">
+  <div class="container">
+
+    <a href="index.html#work" class="back">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg>
+      All Work
+    </a>
+
+    <div class="tags">
+      <span class="chip">Growth Design</span>
+      <span class="chip">SaaS</span>
+      <span class="chip">Funnel Optimization</span>
+      <span class="chip">Multi-Brand Audit</span>
+    </div>
+
+    <div class="kicker">Simplifying SaaS Complexity</div>
+    <h1>From zero design presence<br>to a <em>full growth roadmap</em><br>in 90 days.</h1>
+    <div class="role-line">Senior Product Designer — Growth Squad</div>
+
+    <div class="hero-single-stat">
+      <div class="val">44+</div>
+      <div class="context">
+        <p>Prioritized UX opportunities identified across three brands — LawnStarter, Lawn Love, and Home Gnome — new domain, zero prior context, full strategic handoff.</p>
+        <div class="sub">90-day diagnostic sprint · 3 brands · 3 strategic initiatives</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     02 · SYSTEM PROBLEM
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">01 — The System Problem</div>
+    <h2>Friction at the <em>front door.</em></h2>
+
+    <p>
+      The audit covered three sister brands — LawnStarter, Lawn Love, and Home Gnome — across SEM landing pages, geo-targeted City Pages, and core conversion flows. All three shared the same root problem: the acquisition surfaces had been built for traffic volume, not for the psychology of a user deciding whether to trust a new service with their home.
+    </p>
+
+    <div class="pull-quote">
+      <p>"There was no dedicated product designer on growth. The funnel had been optimized for traffic — not for the people arriving in it."</p>
+    </div>
+
+    <div class="friction-list">
+      <div class="friction-item">
+        <div class="fi-num">01</div>
+        <div class="fi-body">
+          <div class="fi-label">Trustworthiness Initiative</div>
+          <h4>Trust signals buried, skepticism high</h4>
+          <p>Critical guarantees, insurance, and bonded-provider information were hidden — especially on mobile. Hotjar scroll depth data confirmed users were abandoning before reaching the sections that would have converted their skepticism. The signals existed; they just weren't where decisions were being made.</p>
+        </div>
+      </div>
+      <div class="friction-item">
+        <div class="fi-num">02</div>
+        <div class="fi-body">
+          <div class="fi-label">Information Initiative — Hotjar Validated</div>
+          <h4>Phone number required before showing price</h4>
+          <p>Users clicked "See My Price" expecting a price. Instead, they were asked for their name and phone number with no explanation of why. Session recordings showed visible hesitation at the phone number field — a trust breakdown at the exact moment of conversion intent. A classic bait-and-switch violation of user expectations.</p>
+        </div>
+      </div>
+      <div class="friction-item">
+        <div class="fi-num">03</div>
+        <div class="fi-body">
+          <div class="fi-label">Information Initiative</div>
+          <h4>No ability to edit address — control removed</h4>
+          <p>After submitting an address, users had no way to go back and change it. Reloading the page showed the same locked state. This violated User Control & Freedom and Error Recovery — two core heuristics — and blocked the "test before trust" behavior common among hesitant first-time users.</p>
+        </div>
+      </div>
+      <div class="friction-item">
+        <div class="fi-num">04</div>
+        <div class="fi-body">
+          <div class="fi-label">Conversion Epic</div>
+          <h4>High-intent users, no persistent CTA on mobile</h4>
+          <p>City Pages were dense with content but had no sticky CTA on mobile scroll. Users with genuine purchase intent had to scroll back to the top to act — a friction point that didn't exist on competitor surfaces. The fix was low effort and cross-applicable to all three brands.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     03 · 90-DAY DIAGNOSTIC
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">02 — The Process</div>
+    <h2>90 days of <em>diagnostic rigor.</em></h2>
+
+    <p>
+      I bypassed the typical "getting to know you" ramp by treating the first three months as a structured diagnostic sprint across all three brands simultaneously. The goal wasn't to redesign anything yet — it was to build an evidence-based map of every place the system was failing users, organized into three named initiatives — <strong>Information</strong>, <strong>Trustworthiness</strong>, and a <strong>Conversion Epic</strong> — and stack-ranked by impact and effort.
+    </p>
+
+    <div class="timeline">
+      <div class="tl-row">
+        <div class="tl-week">Weeks 1–3</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>Heuristic audit — three brands, full funnel</h4>
+          <p>Applied NNg's 10 Usability Heuristics across every acquisition surface on LawnStarter, Lawn Love, and Home Gnome: SEM landing pages, City Pages, and core conversion flows. Each violation was documented, categorized by heuristic, and rated by severity and effort — building the raw material for the final roadmap.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-week">Weeks 4–6</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>Behavioral data grounding</h4>
+          <p>Evaluated Hotjar heatmaps and session recordings to validate and pressure-test the heuristic findings. Rage-click patterns confirmed the logo navigation issue. Scroll depth data quantified where mobile users stopped engaging before trust signals appeared.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-week">Weeks 7–10</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>Synthesis and prioritization</h4>
+          <p>Mapped 44+ identified opportunities across an effort/impact matrix. Separated Quick Wins (implementable without engineering dependency) from Larger Rocks (requiring cross-functional resourcing). Aligned the roadmap with SEM team priorities to ensure design work directly supported paid acquisition goals.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-week">Week 12</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>Strategic handoff</h4>
+          <p>Delivered a complete, implementation-ready roadmap to Product and Engineering: prioritized backlog, annotated designs for Quick Wins, and a phased architecture plan for the larger conversion surface redesigns.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FigJam audit board -->
+    <div class="img-placeholder" style="margin-top:40px; aspect-ratio:16/8;">
+      <div class="img-label">Artifact — FigJam Prioritization Board</div>
+      <div class="img-caption">44+ opportunities mapped by impact/effort across all three brands · Quick Wins vs. Larger Rocks</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     03b · HEURISTIC VIOLATIONS
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">02b — Key Findings</div>
+    <h2>What the audit <em>surfaced.</em></h2>
+
+    <p>
+      Of the 44+ opportunities identified, two heuristic violations were the most structurally damaging — both traceable to specific user behaviors in Hotjar recordings, both fixable without full rebuilds.
+    </p>
+
+    <!-- Hotjar data screenshot -->
+    <div class="img-placeholder" style="margin-bottom:40px; aspect-ratio:16/7;">
+      <div class="img-label">Research Artifact — Hotjar Behavioral Data</div>
+      <div class="img-caption">Scroll depth & heatmap showing mobile drop-off before trust signals — LawnStarter City Page</div>
+    </div>
+
+    <div class="heuristic-grid">
+      <div class="heuristic-cell">
+        <div class="violation">Heuristic Violation — User Control &amp; Freedom + Error Recovery</div>
+        <h4>Users couldn't go back or correct mistakes</h4>
+        <p>After submitting an address, there was no back button and no way to edit the input — even on page reload. Users who made a typo, or who wanted to check a different address before committing personal information, hit a dead end. The heuristic violation was explicit: the system removed user agency at exactly the moment it was needed most.</p>
+      </div>
+      <div class="heuristic-cell">
+        <div class="violation">Heuristic Violation — Aesthetic &amp; Minimalist Design + Visibility of System Status</div>
+        <h4>Pages were dense; users couldn't orient themselves</h4>
+        <p>City Pages violated Aesthetic & Minimalist Design — sections like "World-Class Customer Support" and vague high-tech copy added noise without value. On mobile, the lack of a persistent CTA meant users who had scrolled past the fold lost their sense of "what to do next." Both violations compounded to increase abandonment from high-intent visitors.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     04 · THE WORK
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">03 — The Work</div>
+    <h2>High-leverage bets,<br><em>not surface polish.</em></h2>
+
+    <p>
+      Given the absence of a dedicated design resource before my arrival, the strategy wasn't to redesign everything — it was to find the smallest interventions with the largest measurable impact and use them to prove design's value to a team that hadn't had reason to expect it.
+    </p>
+
+    <!-- SEM page before screenshot -->
+    <div class="img-placeholder" style="margin-bottom:40px; aspect-ratio:16/8;">
+      <div class="img-label">Screenshot — SEM Landing Page (Before)</div>
+      <div class="img-caption">Legacy page showing clickable logo, buried trust signals, and dense mobile layout pre-intervention</div>
+    </div>
+
+    <div class="bets-grid">
+      <div class="bet-card">
+        <div class="bet-tag">Conversion Epic — High / Low Effort</div>
+        <h4>Sticky CTA on mobile scroll</h4>
+        <p>
+          Implemented a persistent CTA bar for all three brands on mobile — ensuring the primary conversion action was always accessible regardless of scroll position. Cross-applicable across LawnStarter, Lawn Love, and Home Gnome without requiring separate engineering efforts for each.
+        </p>
+        <div class="impact">Impact: Conversion action always in reach — zero scroll-back required</div>
+      </div>
+      <div class="bet-card">
+        <div class="bet-tag">Trustworthiness Initiative — High / Low Effort</div>
+        <h4>Trust badging at the decision point</h4>
+        <p>
+          Applied Lawn Love's trust badge system to LawnStarter — surfacing guarantees, bonded-provider status, and insurance signals at the moment users were deciding whether to give personal information. Moved these from footer copy to prominent positions within the conversion flow.
+        </p>
+        <div class="impact">Impact: Reduced skepticism at peak drop-off — no product changes required</div>
+      </div>
+      <div class="bet-card">
+        <div class="bet-tag">Information Initiative — High / Low Effort</div>
+        <h4>Phone number field — justify or restructure</h4>
+        <p>
+          Hotjar recordings showed users visibly hesitating before entering their phone number to see a price — with no explanation of why it was needed. Recommended either removing the requirement or providing explicit context inline. Longer-term: restructure the flow so users see a price before being asked for personal details.
+        </p>
+        <div class="impact">Impact: Addressed bait-and-switch anxiety at highest-intent moment</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     05 · IRON TRIANGLE
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">04 — Cross-Functional Leadership</div>
+    <h2>Operating inside the <em>Iron Triangle.</em></h2>
+
+    <p>
+      Growth design at LawnStarter meant sitting at the intersection of three teams with different success metrics and different timelines. I operated as the connective tissue — translating between technical feasibility, marketing performance, and product strategy.
+    </p>
+
+    <div class="triangle-layout">
+      <div class="triangle-cell">
+        <div class="tc-role">Product</div>
+        <h4>Backlog architecture</h4>
+        <p>Translated 44+ audit findings into a structured, effort-ranked backlog that Product could absorb into sprint planning — not a wish list, but an implementation-ready prioritization framework.</p>
+      </div>
+      <div class="triangle-cell">
+        <div class="tc-role">Engineering</div>
+        <h4>Feasibility-first scoping</h4>
+        <p>With no dedicated dev resource available for growth work, I scoped Quick Wins specifically for low-engineering-lift execution — changes deployable via CSS or content updates — to keep velocity high while Larger Rocks were resourced.</p>
+      </div>
+      <div class="triangle-cell">
+        <div class="tc-role">Marketing / SEM</div>
+        <h4>Protecting paid acquisition ROI</h4>
+        <p>Partnered directly with the SEM team to audit landing pages against their campaign targeting. Identified where design decisions (broken navigation, hidden offers) were silently eroding the performance of every paid click.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;">
+      <div class="section-label" style="margin-bottom:16px;">Strategic Roadmap — Quick Wins vs. Larger Rocks</div>
+      <div class="roadmap">
+        <div class="roadmap-row">
+          <div class="tag quick">Quick Win</div>
+          <div class="item">Sticky CTA bar on mobile — applied across LawnStarter, Lawn Love, Home Gnome (Conversion Epic)</div>
+        </div>
+        <div class="roadmap-row">
+          <div class="tag quick">Quick Win</div>
+          <div class="item">Trust badge placement — surface guarantees and bonded-provider info at conversion points (Trustworthiness Initiative)</div>
+        </div>
+        <div class="roadmap-row">
+          <div class="tag quick">Quick Win</div>
+          <div class="item">Phone number field — add inline justification or remove requirement to reduce hesitation (Information Initiative)</div>
+        </div>
+        <div class="roadmap-row">
+          <div class="tag quick">Quick Win</div>
+          <div class="item">Lock SEM page navigation — remove clickable logo, keep users anchored to offer context</div>
+        </div>
+        <div class="roadmap-row">
+          <div class="tag rock">Larger Rock</div>
+          <div class="item">Flow restructure — show price before collecting personal information; add address edit path</div>
+        </div>
+        <div class="roadmap-row">
+          <div class="tag rock">Larger Rock</div>
+          <div class="item">"How It Works" redesign — rebuild across all three brands with stronger storytelling and clearer value proposition</div>
+        </div>
+        <div class="roadmap-row">
+          <div class="tag rock">Larger Rock</div>
+          <div class="item">City Page overhaul — full IA restructure, visual hierarchy, competitive differentiation section</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     OUTCOME BANNER
+════════════════════════════════════════ -->
+<div class="outcome-banner">
+  <div class="container">
+    <div>
+      <div class="ob-eyebrow">The Deliverable</div>
+      <h2>A growth design function<br>built <em>from nothing.</em></h2>
+    </div>
+    <div class="deliverable-list">
+      <div class="d">
+        <div class="d-val">44+</div>
+        <div class="d-label">UX opportunities identified, categorized, and prioritized — across full acquisition funnel</div>
+      </div>
+      <div class="d">
+        <div class="d-val">90 days</div>
+        <div class="d-label">From zero context to full strategic handoff — new domain, no prior design infrastructure</div>
+      </div>
+      <div class="d">
+        <div class="d-val">3 brands</div>
+        <div class="d-label">LawnStarter, Lawn Love, Home Gnome — single audit framework applied across all acquisition surfaces</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     NEXT PROJECT
+════════════════════════════════════════ -->
+<div class="next-project">
+  <div>
+    <div class="label">Next Project</div>
+    <h3>Acts2 Journey — AI-Native Strategy & Leadership</h3>
+  </div>
+  <a href="acts2-journey.html" class="arrow-btn">
+    View Case Study
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+  </a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en" data-mood="earth" data-voice="editorial" data-rhythm="balanced">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Acts2 Journey Taipei — Annie S. Koo</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Nunito+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+<style>
+  :root{
+    --cream: #efece0;
+    --cream-2: #e7e3d4;
+    --cream-3: #dcd7c4;
+    --ink: #1e1c18;
+    --ink-2: #2a2824;
+    --ink-mute: #6d675a;
+    --ink-faint: #a29a87;
+    --forest: #3a4a21;
+    --forest-2: #2f3d1a;
+    --rust: #c0643a;
+    --line: #bfb9a4;
+    --line-soft: #d3cdb8;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Nunito Sans", -apple-system, Helvetica, Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --display-weight: 500;
+    --display-italic-style: italic;
+    --display-tracking: -0.015em;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--cream); color:var(--ink);
+    font-family:var(--sans); font-size:15px; line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; text-decoration:none; }
+
+  /* ── NAV ── */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 40px;
+    background:rgba(231,227,212,.92); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav .brand{ font-family:var(--serif); font-size:22px; font-weight:500; letter-spacing:.2px; }
+  .nav .links{ display:flex; align-items:center; gap:28px; }
+  .nav .links a{
+    font-family:var(--mono); font-size:11px; letter-spacing:.18em;
+    text-transform:uppercase; padding:6px 2px; opacity:.85; transition:opacity .2s;
+  }
+  .nav .links a:hover{ opacity:1; }
+  .nav .contact-btn{
+    background:transparent; color:var(--ink); border:1px solid var(--ink);
+    padding:14px 22px; font-family:var(--mono); font-size:11px;
+    letter-spacing:.22em; text-transform:uppercase; opacity:.95;
+    transition:background .2s, color .2s;
+  }
+  .nav .contact-btn:hover{ background:var(--ink); color:var(--cream); opacity:1; }
+
+  /* ── SHARED ── */
+  .container{ max-width:1080px; margin:0 auto; padding:0 40px; }
+  .chip{
+    font-family:var(--mono); font-size:10px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--ink-mute); border:1px solid var(--line); padding:5px 10px;
+  }
+
+  /* ── HERO ── */
+  .case-hero{ padding:72px 40px 80px; border-bottom:1px solid var(--line-soft); }
+  .case-hero .back{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--ink-mute); display:inline-flex; align-items:center; gap:8px;
+    margin-bottom:52px; transition:color .2s;
+  }
+  .case-hero .back:hover{ color:var(--ink); }
+  .case-hero .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px; }
+  .case-hero .kicker{
+    font-family:var(--mono); font-size:11px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--ink-mute); margin-bottom:16px;
+  }
+  .case-hero h1{
+    font-family:var(--serif); font-weight:var(--display-weight);
+    font-size:clamp(44px,5.4vw,80px); line-height:1.02;
+    letter-spacing:var(--display-tracking); margin:0 0 20px; color:var(--ink);
+  }
+  .case-hero h1 em{ font-style:var(--display-italic-style); color:var(--forest); }
+  .case-hero .role-line{
+    font-family:var(--mono); font-size:11px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--ink-mute); margin-bottom:56px;
+  }
+
+  /* Hero metrics — 3-up top row, 3-up bottom row */
+  .metric-grid{
+    border-top:1px solid var(--line-soft);
+    display:grid; grid-template-columns:repeat(3,1fr);
+  }
+  .metric-grid .mg{
+    padding:28px 28px 28px 0;
+    border-right:1px solid var(--line-soft);
+  }
+  .metric-grid .mg:last-child{ border-right:0; }
+  .metric-grid .mg:not(:first-child){ padding-left:28px; }
+  .metric-grid .mg .val{
+    font-family:var(--mono); font-size:clamp(24px,2.8vw,38px);
+    font-weight:400; letter-spacing:-.02em; color:var(--forest); line-height:1.1; margin-bottom:6px;
+  }
+  .metric-grid .mg .desc{ font-size:13px; color:var(--ink-2); line-height:1.5; }
+  .metric-grid .mg .sub{
+    font-family:var(--mono); font-size:9px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--ink-faint); margin-top:4px;
+  }
+
+  /* ── SECTION BLOCKS ── */
+  .block{ padding:80px 40px; border-bottom:1px solid var(--line-soft); }
+  .block .section-label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.26em;
+    text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px;
+  }
+  .block h2{
+    font-family:var(--serif); font-weight:var(--display-weight);
+    font-size:clamp(30px,3.6vw,52px); line-height:1.06;
+    letter-spacing:var(--display-tracking); margin:0 0 32px; color:var(--ink);
+  }
+  .block h2 em{ font-style:var(--display-italic-style); color:var(--forest); }
+  .block p{ font-size:16px; line-height:1.78; color:var(--ink-2); margin:0 0 20px; }
+  .block p:last-child{ margin-bottom:0; }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote{
+    border-left:3px solid var(--forest); padding:22px 0 22px 28px; margin:36px 0;
+  }
+  .pull-quote p{
+    font-family:var(--serif); font-size:clamp(20px,2.2vw,26px);
+    font-weight:var(--display-weight); line-height:1.35;
+    color:var(--ink); font-style:italic; margin:0;
+  }
+
+  /* ── CONTEXT SPLIT ── */
+  .context-split{
+    display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-top:36px;
+  }
+  .context-split .col h3{
+    font-family:var(--mono); font-size:10px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--ink-mute); margin:0 0 14px;
+  }
+  .context-split .col p{ font-size:15px; line-height:1.75; color:var(--ink-2); margin:0 0 14px; }
+  .context-split .col p:last-child{ margin:0; }
+
+  /* ── FRICTION / DIAGNOSTIC LIST ── */
+  .diag-list{ margin-top:40px; border:1px solid var(--line-soft); }
+  .diag-item{ display:grid; grid-template-columns:48px 1fr; border-bottom:1px solid var(--line-soft); }
+  .diag-item:last-child{ border-bottom:0; }
+  .diag-item .di-num{
+    font-family:var(--mono); font-size:10px; letter-spacing:.18em; color:var(--ink-faint);
+    padding:26px 0 24px 20px; border-right:1px solid var(--line-soft);
+    display:flex; align-items:flex-start;
+  }
+  .diag-item .di-body{ padding:22px 28px; }
+  .diag-item .di-label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--rust); margin-bottom:8px;
+  }
+  .diag-item h4{
+    font-family:var(--serif); font-size:20px; font-weight:var(--display-weight);
+    margin:0 0 8px; color:var(--ink); line-height:1.2;
+  }
+  .diag-item p{ font-size:14px; line-height:1.68; color:var(--ink-mute); margin:0; }
+
+  /* ── PROCESS THREE-COL ── */
+  .process-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line-soft); border:1px solid var(--line-soft); margin-top:40px;
+  }
+  .process-cell{ background:var(--cream); padding:32px 28px; }
+  .process-cell .pc-num{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em;
+    color:var(--ink-faint); margin-bottom:16px;
+  }
+  .process-cell h4{
+    font-family:var(--serif); font-size:20px; font-weight:var(--display-weight);
+    margin:0 0 12px; color:var(--ink); line-height:1.2;
+  }
+  .process-cell p{ font-size:13px; line-height:1.7; color:var(--ink-mute); margin:0; }
+
+  /* ── AI FORCE MULTIPLIER ── */
+  .ai-block{
+    margin-top:40px; border:1px solid var(--line-soft);
+  }
+  .ai-header{
+    padding:24px 32px; border-bottom:1px solid var(--line-soft);
+    display:flex; align-items:center; gap:16px;
+  }
+  .ai-header .ai-badge{
+    font-family:var(--mono); font-size:9px; letter-spacing:.2em;
+    text-transform:uppercase; background:var(--forest); color:var(--cream);
+    padding:5px 10px; white-space:nowrap;
+  }
+  .ai-header .ai-desc{
+    font-size:14px; color:var(--ink-mute); line-height:1.5;
+  }
+  .ai-tools{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line-soft); }
+  .ai-tool{ background:var(--cream-2); padding:24px 24px; }
+  .ai-tool .tool-name{
+    font-family:var(--mono); font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--forest); margin-bottom:10px;
+  }
+  .ai-tool p{ font-size:13px; line-height:1.65; color:var(--ink-mute); margin:0; }
+
+  /* ── WORK SPLIT ── */
+  .work-split{
+    display:grid; grid-template-columns:1fr 1fr; gap:1px;
+    background:var(--line-soft); border:1px solid var(--line-soft); margin-top:40px;
+  }
+  .work-col{ background:var(--cream); padding:40px 36px; }
+  .work-col .wc-label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--ink-faint); margin-bottom:16px;
+  }
+  .work-col h4{
+    font-family:var(--serif); font-size:24px; font-weight:var(--display-weight);
+    margin:0 0 16px; color:var(--ink); line-height:1.2;
+  }
+  .work-col p{ font-size:14px; line-height:1.72; color:var(--ink-mute); margin:0 0 14px; }
+  .work-col p:last-child{ margin:0; }
+  .work-col ul{
+    list-style:none; margin:16px 0 0; padding:0;
+    display:flex; flex-direction:column; gap:10px;
+    border-top:1px solid var(--line-soft); padding-top:16px;
+  }
+  .work-col li{ font-size:13px; color:var(--ink-mute); line-height:1.6; display:flex; gap:10px; }
+  .work-col li::before{
+    content:''; display:block; width:14px; height:1px;
+    background:var(--line); flex-shrink:0; margin-top:9px;
+  }
+
+  /* ── LEADERSHIP SQUAD ── */
+  .squad-layout{
+    display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-top:40px;
+  }
+  .squad-layout .col h3{
+    font-family:var(--mono); font-size:10px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--ink-mute); margin:0 0 14px;
+  }
+  .squad-layout .col p{ font-size:15px; line-height:1.75; color:var(--ink-2); margin:0 0 16px; }
+  .squad-layout .col p:last-child{ margin:0; }
+  .squad-stat{
+    margin-top:24px; padding:20px 24px;
+    background:var(--cream-2); border:1px solid var(--line-soft);
+    display:flex; flex-direction:column; gap:4px;
+  }
+  .squad-stat .ss-val{
+    font-family:var(--mono); font-size:28px; color:var(--forest); letter-spacing:-.01em;
+  }
+  .squad-stat .ss-label{ font-size:13px; color:var(--ink-mute); }
+
+  /* ── GLOBAL PERSPECTIVE ── */
+  .global-block{
+    background:var(--ink); color:var(--cream); padding:72px 40px;
+  }
+  .global-block .container{
+    display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;
+  }
+  .global-block .gb-eyebrow{
+    font-family:var(--mono); font-size:10px; letter-spacing:.24em;
+    text-transform:uppercase; color:rgba(239,236,224,.45); margin-bottom:20px;
+  }
+  .global-block h2{
+    font-family:var(--serif); font-weight:var(--display-weight);
+    font-size:clamp(30px,3.6vw,50px); line-height:1.08;
+    letter-spacing:var(--display-tracking); margin:0 0 24px; color:var(--cream);
+  }
+  .global-block h2 em{ font-style:var(--display-italic-style); color:rgba(239,236,224,.6); }
+  .global-block .gb-body p{ font-size:16px; line-height:1.78; color:rgba(239,236,224,.75); margin:0 0 18px; }
+  .global-block .gb-body p:last-child{ margin:0; }
+  .global-stats{ display:flex; flex-direction:column; gap:0; }
+  .global-stat{
+    padding:24px 0; border-bottom:1px solid rgba(255,255,255,.08);
+    display:grid; grid-template-columns:80px 1fr; gap:20px; align-items:start;
+  }
+  .global-stat:first-child{ border-top:1px solid rgba(255,255,255,.08); }
+  .global-stat .gs-val{
+    font-family:var(--mono); font-size:22px; color:var(--cream);
+    letter-spacing:-.01em; line-height:1;
+  }
+  .global-stat .gs-label{ font-size:14px; color:rgba(239,236,224,.6); line-height:1.55; padding-top:2px; }
+
+  /* ── OUTCOME BANNER ── */
+  .outcome-banner{
+    background:var(--forest); color:var(--cream); padding:64px 40px;
+  }
+  .outcome-banner .container{
+    display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
+  }
+  .outcome-banner .ob-eyebrow{
+    font-family:var(--mono); font-size:10px; letter-spacing:.24em;
+    text-transform:uppercase; color:rgba(239,236,224,.5); margin-bottom:20px;
+  }
+  .outcome-banner h2{
+    font-family:var(--serif); font-weight:var(--display-weight);
+    font-size:clamp(30px,3.6vw,48px); line-height:1.08;
+    letter-spacing:var(--display-tracking); margin:0; color:var(--cream);
+  }
+  .outcome-banner h2 em{ font-style:var(--display-italic-style); color:rgba(239,236,224,.65); }
+  .outcome-metrics{ display:grid; grid-template-columns:1fr 1fr; gap:20px 32px; }
+  .outcome-metric .val{
+    font-family:var(--mono); font-size:28px; color:var(--cream);
+    margin-bottom:5px; letter-spacing:-.01em; line-height:1;
+  }
+  .outcome-metric .label{ font-size:12px; color:rgba(239,236,224,.6); line-height:1.5; }
+
+  /* ── IMAGE PLACEHOLDER ── */
+  .img-placeholder{
+    width:100%;
+    background:var(--cream-3); border:1px solid var(--line-soft);
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:8px;
+    padding:40px 20px;
+  }
+  .img-placeholder .img-label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--ink-faint);
+  }
+  .img-placeholder .img-caption{
+    font-family:var(--sans); font-size:13px; color:var(--ink-faint); text-align:center;
+  }
+
+  /* ── NEXT PROJECT ── */
+  .next-project{
+    padding:72px 40px; display:flex; justify-content:space-between;
+    align-items:center; gap:40px; border-top:1px solid var(--line-soft);
+  }
+  .next-project .label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--ink-mute); margin-bottom:10px;
+  }
+  .next-project h3{
+    font-family:var(--serif); font-size:34px; font-weight:var(--display-weight); margin:0; color:var(--ink);
+  }
+  .arrow-btn{
+    font-family:var(--mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--forest); border:1px solid var(--forest); padding:14px 22px;
+    white-space:nowrap; display:inline-flex; align-items:center; gap:10px;
+    transition:background .2s, color .2s;
+  }
+  .arrow-btn:hover{ background:var(--forest); color:var(--cream); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    .context-split,
+    .squad-layout{ grid-template-columns:1fr; gap:40px; }
+    .process-grid{ grid-template-columns:1fr; }
+    .ai-tools{ grid-template-columns:1fr 1fr; }
+    .work-split{ grid-template-columns:1fr; }
+    .metric-grid{ grid-template-columns:1fr 1fr; }
+    .metric-grid .mg{ border-right:0; border-bottom:1px solid var(--line-soft); padding-left:0 !important; padding-right:0; }
+    .metric-grid .mg:last-child{ border-bottom:0; }
+    .global-block .container{ grid-template-columns:1fr; gap:48px; }
+    .outcome-banner .container{ grid-template-columns:1fr; gap:48px; }
+  }
+  @media(max-width:600px){
+    .nav{ padding:16px 20px; }
+    .block,.case-hero{ padding:60px 20px; }
+    .outcome-banner,.global-block{ padding:48px 20px; }
+    .next-project{ flex-direction:column; align-items:flex-start; padding:60px 20px; }
+    .container{ padding:0 20px; }
+    .ai-tools{ grid-template-columns:1fr; }
+    .diag-item .di-body{ padding:20px; }
+    .outcome-metrics{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <a href="index.html" class="brand">Annie S. Koo</a>
+  <div class="links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact" class="contact-btn">Contact</a>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════
+     01 · HERO
+════════════════════════════════════════ -->
+<div class="case-hero">
+  <div class="container">
+
+    <a href="index.html#work" class="back">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg>
+      All Work
+    </a>
+
+    <div class="tags">
+      <span class="chip">Growth Strategy</span>
+      <span class="chip">AI-Native</span>
+      <span class="chip">Community Design</span>
+      <span class="chip">Cross-Cultural</span>
+    </div>
+
+    <div class="kicker">AI-Native Strategy & Leadership</div>
+    <h1>Product thinking applied<br>to <em>community growth.</em></h1>
+    <div class="role-line">Design & Growth Strategist — Acts2 Network, Journey Taipei · Fu Jen University</div>
+
+    <div class="metric-grid">
+      <div class="mg">
+        <div class="val">+185%</div>
+        <div class="desc">Increase in reach</div>
+        <div class="sub">8.3K total — 8 months</div>
+      </div>
+      <div class="mg">
+        <div class="val">+242%</div>
+        <div class="desc">Profile visits</div>
+        <div class="sub">6.8K total</div>
+      </div>
+      <div class="mg">
+        <div class="val">+923</div>
+        <div class="desc">New followers</div>
+        <div class="sub">+3,700% over baseline</div>
+      </div>
+      <div class="mg">
+        <div class="val">221.2K</div>
+        <div class="desc">Total views</div>
+        <div class="sub">+100% growth</div>
+      </div>
+      <div class="mg">
+        <div class="val">+327%</div>
+        <div class="desc">Link clicks to sign-up pages</div>
+        <div class="sub">high-intent traffic</div>
+      </div>
+      <div class="mg">
+        <div class="val">1.7K</div>
+        <div class="desc">Content interactions</div>
+        <div class="sub">+100% growth</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     02 · CONTEXT
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">01 — Context</div>
+    <h2>The community <em>is the product.</em></h2>
+
+    <p>
+      Acts2 Network is a Christian nonprofit operating a network of 125+ ministry teams and 1,600+ co-vocational ministers — people with day jobs who serve full-time in building community. Journey Taipei is its campus vertical at Fu Jen University: a student-focused community welcoming university and master's students — including non-Christians — into events, Bible study, and faith exploration.
+    </p>
+
+    <div class="context-split">
+      <div class="col">
+        <h3>The Org</h3>
+        <p>
+          Acts2 operates on a "Way of Life" model — 15 spiritual principles enacted through campus ministries, church plants, discipleship programs, and mission trips across Asia. It's a decentralized network: each vertical owns its own local execution within a shared framework.
+        </p>
+        <p>
+          Journey Taipei's audience was twofold: existing community members who needed a reason to stay engaged, and the broader student population of Taipei who didn't yet know the community existed.
+        </p>
+      </div>
+      <div class="col">
+        <h3>My Role</h3>
+        <p>
+          As the most experienced designer on a 10-person cross-functional team, I was brought in not to post content — but to architect the system that determined how the community grew, how it communicated, and how it turned digital reach into real-world participation.
+        </p>
+        <p>
+          I treated the community as a product: the Instagram account was the acquisition funnel, the events were the activation layer, and the 1-on-1 student sessions were user research. Every growth decision was made the same way I'd make a product decision — with data, a hypothesis, and a measurable outcome.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     03 · SYSTEM PROBLEM
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">02 — The System Problem</div>
+    <h2>A leaky funnel with<br><em>no system behind it.</em></h2>
+
+    <div class="pull-quote">
+      <p>"The digital presence wasn't converting passive reach into active community. Traffic existed. Belonging didn't — yet."</p>
+    </div>
+
+    <div class="diag-list">
+      <div class="diag-item">
+        <div class="di-num">01</div>
+        <div class="di-body">
+          <div class="di-label">No Content Strategy</div>
+          <h4>Posts without a system, reach without intent</h4>
+          <p>The organization had a digital presence but no data-driven content strategy behind it. Posts were reactive, not designed to move a specific audience through a defined journey — from discovery to event attendance to community membership.</p>
+        </div>
+      </div>
+      <div class="diag-item">
+        <div class="di-num">02</div>
+        <div class="di-body">
+          <div class="di-label">Leaky Engagement Model</div>
+          <h4>Passive reach not converting to participation</h4>
+          <p>People were seeing the content but not showing up. The gap between digital visibility and physical attendance was wide — and unmeasured. There was no mechanism to understand why people who engaged online didn't take the next step in person.</p>
+        </div>
+      </div>
+      <div class="diag-item">
+        <div class="di-num">03</div>
+        <div class="di-body">
+          <div class="di-label">No Execution Velocity</div>
+          <h4>A lean team with no force multiplier</h4>
+          <p>A 10-person volunteer team with day jobs can't produce agency-level content output without a system. There was no shared design language, no content cadence, and no tooling strategy. The execution ceiling was low — and getting lower as the team's bandwidth compressed.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     04 · PROCESS
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">03 — Process</div>
+    <h2>Diagnosing a community<br>like <em>a product funnel.</em></h2>
+
+    <p>
+      I ran a three-track diagnostic in parallel — analytics, strategy, and lived research — treating each as a data source that the others had to validate against. No single input drove decisions in isolation.
+    </p>
+
+    <div class="process-grid">
+      <div class="process-cell">
+        <div class="pc-num">Track 01 — Quantitative</div>
+        <h4>Full-funnel analytics audit</h4>
+        <p>Analyzed Instagram analytics to identify where reach was high but conversion was low. Mapped the gap between content impressions, profile visits, link clicks, and event sign-ups — treating each as a funnel stage with its own drop-off problem to solve.</p>
+      </div>
+      <div class="process-cell">
+        <div class="pc-num">Track 02 — Strategic</div>
+        <h4>Hyper-local content strategy</h4>
+        <p>Translated the broader Acts2 Network design framework into tactics specific to the FJU campus vertical — bilingual content cadences, culturally relevant visual language, and an event calendar architected around the Taiwanese student academic rhythm.</p>
+      </div>
+      <div class="process-cell">
+        <div class="pc-num">Track 03 — Qualitative</div>
+        <h4>1-on-1 mentorship as user research</h4>
+        <p>Conducted regular 1-on-1 sessions with 10+ students — not as pastoral care, but as structured qualitative research. What made them come back? What almost made them leave? What did they wish existed? Their answers shaped every content and programming decision.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     05 · AI-NATIVE EXECUTION
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">04 — AI-Native Execution</div>
+    <h2>A lean team producing<br><em>agency-level output.</em></h2>
+
+    <p>
+      The constraint was real: a 10-person volunteer team with full-time jobs, expected to run a campus ministry, produce consistent digital content, plan monthly large-scale events, and grow a community — all simultaneously. AI wasn't a novelty; it was an operational necessity.
+    </p>
+
+    <div class="ai-block">
+      <div class="ai-header">
+        <div class="ai-badge">Force Multiplier</div>
+        <div class="ai-desc">AI tools embedded across research, translation, content, and operations — not as a replacement for strategy, but as the infrastructure that made high-velocity execution possible with a lean team.</div>
+      </div>
+      <div class="ai-tools">
+        <div class="ai-tool">
+          <div class="tool-name">Research & Trends</div>
+          <p>Used Perplexity to rapidly synthesize campus engagement trends, benchmark against peer ministry communities, and identify content formats gaining traction with Taiwanese university students.</p>
+        </div>
+        <div class="ai-tool">
+          <div class="tool-name">Bilingual Translation</div>
+          <p>Deployed AI as a Chinese-English translation layer — ensuring all event communications, social copy, and community messaging resonated accurately across both languages without requiring a dedicated translator.</p>
+        </div>
+        <div class="ai-tool">
+          <div class="tool-name">Event Ideation</div>
+          <p>Used AI to rapidly generate and pressure-test event concepts against student interest data — cutting ideation cycles from days to hours and freeing the team to focus on execution and relationship-building.</p>
+        </div>
+        <div class="ai-tool">
+          <div class="tool-name">Operations & Logistics</div>
+          <p>Templated recurring event planning workflows with AI assistance — venue research, logistics checklists, and communication sequences — so the team could run monthly large-scale events without reinventing the operational stack each time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     06 · THE WORK
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">05 — The Work</div>
+    <h2>A digital ecosystem and<br><em>campus brand — built to scale.</em></h2>
+
+    <p>
+      The deliverable wasn't content. It was a system: a defined brand voice, a repeatable content architecture, and an operational rhythm that could outlast any individual team member. I built it to run without me.
+    </p>
+
+    <div class="work-split">
+      <div class="work-col">
+        <div class="wc-label">Digital Presence</div>
+        <h4>Owning how the brand speaks and looks in Taipei</h4>
+        <p>
+          Defined the Journey Taipei brand voice and visual identity for the digital channel — bilingual, warm, and accessible to students who had never encountered a community like this before.
+        </p>
+        <p>
+          Built a content architecture with distinct post types aligned to funnel stage: awareness content for discovery, event content for activation, community content for retention. Every post had an intended outcome, not just an aesthetic.
+        </p>
+        <ul>
+          <li>Instagram content strategy — bilingual, funnel-staged</li>
+          <li>Visual identity applied across digital touchpoints</li>
+          <li>Link-in-bio architecture routing to event sign-ups</li>
+          <li>Content calendar aligned to academic rhythm</li>
+        </ul>
+        <!-- Instagram grid screenshot -->
+        <div class="img-placeholder" style="margin-top:24px; aspect-ratio:1/1;">
+          <div class="img-label">Screenshot — Instagram Content Grid</div>
+          <div class="img-caption">Feed showing the designed content system — bilingual, funnel-staged posts</div>
+        </div>
+      </div>
+      <div class="work-col">
+        <div class="wc-label">Campus Operations</div>
+        <h4>Co-directing the FJU vertical's operational rhythm</h4>
+        <p>
+          Co-led the operational cadence of the Fu Jen University vertical — weekly small groups, monthly large-scale events, and semester-level programming. Every event was treated as a designed experience: a clear journey from discovery through participation to belonging.
+        </p>
+        <p>
+          Monthly large-scale events were planned using a templated operational system built with AI — reducing planning time, increasing consistency, and letting the team focus on the student relationships that actually drive retention.
+        </p>
+        <ul>
+          <li>Weekly group facilitation — FJU vertical</li>
+          <li>Monthly large-scale event production</li>
+          <li>Semester programming calendar</li>
+          <li>Mission trip coordination (Vietnam & Asia outreach)</li>
+        </ul>
+        <!-- Event photo -->
+        <div class="img-placeholder" style="margin-top:24px; aspect-ratio:4/3;">
+          <div class="img-label">Photo — FJU Event</div>
+          <div class="img-caption">Monthly large-scale event or weekly group at Fu Jen University</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     07 · LEADERSHIP
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">06 — Leadership</div>
+    <h2>Senior design lead on a<br><em>10-person cross-functional squad.</em></h2>
+
+    <div class="squad-layout">
+      <div class="col">
+        <h3>Strategic Ownership</h3>
+        <p>
+          As the most experienced designer on the team, I held the design and strategy vision for the FJU vertical — setting direction, translating data into decisions, and ensuring every touchpoint (digital and physical) was coherent with the community's growth goals.
+        </p>
+        <p>
+          I co-led operations with my husband, which meant shared accountability for outcomes and a tight feedback loop between strategy and execution. No bottlenecks between vision and action.
+        </p>
+        <div class="squad-stat">
+          <div class="ss-val">10</div>
+          <div class="ss-label">Person cross-functional team — design, events, discipleship, outreach</div>
+        </div>
+      </div>
+      <div class="col">
+        <h3>Bridge Between Data, Design & Events</h3>
+        <p>
+          The team had energy and relationships — but no design infrastructure. I built the connective layer: a shared visual language, an analytics-informed content strategy, and a planning system that let each function operate without waiting on me for every decision.
+        </p>
+        <p>
+          I also ran 1-on-1 mentorship with 10+ students — not as an add-on to the role, but as the primary qualitative data source informing what the community built next. Student feedback directly shaped event formats, content topics, and the onboarding experience for new members.
+        </p>
+        <div class="squad-stat">
+          <div class="ss-val">10+</div>
+          <div class="ss-label">Students in active mentorship — qualitative research and community development</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     08 · GLOBAL PERSPECTIVE
+════════════════════════════════════════ -->
+<div class="global-block">
+  <div class="container">
+    <div>
+      <div class="gb-eyebrow">Global Perspective — Taipei → California</div>
+      <h2>Designing for humans,<br>not <em>assumptions.</em></h2>
+      <div class="gb-body">
+        <p>
+          Most designers talk about cross-cultural empathy. I lived it. Moving from California to Taipei — navigating a new language, a new cultural market, and a new community from scratch — is the sharpest possible test of whether your design instincts are genuinely universal or just familiar.
+        </p>
+        <p>
+          What I learned: the core human needs that drive community behavior — belonging, trust, recognition, forward momentum — are consistent across cultures. The surface expression changes; the underlying motivation doesn't. Designing for the surface gets you average work. Designing for the motivation gets you +185% reach.
+        </p>
+        <p>
+          That lens is now permanently part of how I approach product design. When I work on a California product team, I bring the fluency of someone who's had to question every assumption — including the ones that feel obvious.
+        </p>
+      </div>
+    </div>
+    <div class="global-stats">
+      <div class="global-stat">
+        <div class="gs-val">2</div>
+        <div class="gs-label">Languages — all content and communications delivered in English and Mandarin</div>
+      </div>
+      <div class="global-stat">
+        <div class="gs-val">12</div>
+        <div class="gs-label">Students in active mentorship — direct source of qualitative design research</div>
+      </div>
+      <div class="global-stat">
+        <div class="gs-val">20+</div>
+        <div class="gs-label">Additional student interviews — career advice, English support, audience research</div>
+      </div>
+      <div class="global-stat">
+        <div class="gs-val">8mo</div>
+        <div class="gs-label">Time to five-figure reach — new market, no prior presence, zero playbook</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     OUTCOME BANNER
+════════════════════════════════════════ -->
+<div class="outcome-banner">
+  <div class="container">
+    <div>
+      <div class="ob-eyebrow">Results — 8 Months · Instagram</div>
+      <h2>Numbers that trace back<br>to <em>system decisions.</em></h2>
+      <!-- Instagram Insights screenshot -->
+      <figure style="margin:32px 0 0;">
+        <img src="assets/Acts2_IG_Analytics_Overview.png" alt="Instagram Insights overview — 221.2K views, 8.3K reach +187%, 1.7K interactions over 8 months" style="width:100%; display:block; border:1px solid rgba(239,236,224,.15);">
+        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(239,236,224,.4); margin-top:10px;">Instagram Insights — Aug 2025 · Mar 2026 · Overview</div>
+      </figure>
+    </div>
+    <div class="outcome-metrics">
+      <div class="outcome-metric">
+        <div class="val">+185%</div>
+        <div class="label">Reach — 8.3K total</div>
+      </div>
+      <div class="outcome-metric">
+        <div class="val">+242%</div>
+        <div class="label">Profile visits — 6.8K total</div>
+      </div>
+      <div class="outcome-metric">
+        <div class="val">+923</div>
+        <div class="label">New followers — +3,700% over baseline</div>
+      </div>
+      <div class="outcome-metric">
+        <div class="val">221.2K</div>
+        <div class="label">Total views — +100% growth</div>
+      </div>
+      <div class="outcome-metric">
+        <div class="val">+327%</div>
+        <div class="label">Link clicks to event sign-ups</div>
+      </div>
+      <div class="outcome-metric">
+        <div class="val">1.7K</div>
+        <div class="label">Content interactions — +100% growth</div>
+      </div>
+    </div>
+  </div>
+  <!-- Detailed analytics charts -->
+  <div class="container" style="padding-top:32px; padding-bottom:48px;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <figure style="margin:0;">
+        <img src="assets/Acts2_IG_Analytics_Results_1.png" alt="Instagram Insights — Views 221.2K, Reach 8.3K +187%, Content interactions 1.7K, Link clicks 47 +327%" style="width:100%; display:block; border:1px solid rgba(239,236,224,.15);">
+        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(239,236,224,.4); margin-top:8px;">Views · Reach · Interactions · Link Clicks</div>
+      </figure>
+      <figure style="margin:0;">
+        <img src="assets/Acts2_IG_Analytics_Results_2.png" alt="Instagram Insights — Profile visits 6.8K +257%, Follows 923 +3700%" style="width:100%; display:block; border:1px solid rgba(239,236,224,.15);">
+        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(239,236,224,.4); margin-top:8px;">Profile Visits · Follower Growth</div>
+      </figure>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     NEXT PROJECT
+════════════════════════════════════════ -->
+<div class="next-project">
+  <div>
+    <div class="label">Start From The Beginning</div>
+    <h3>Pens.com — Conversion & Growth</h3>
+  </div>
+  <a href="pens-com.html" class="arrow-btn">
+    View Case Study
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+  </a>
+</div>
+
+</body>
+</html>
