@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pens.com — Mobile Checkout Prototype</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  background:#b8b8b8;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:36px 16px 72px;
+  font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+.proto-label{
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:#888;margin-bottom:18px;
+}
+
+/* ─── PHONE FRAME ─── */
+.phone-frame{
+  width:375px;height:812px;background:#fff;
+  border-radius:46px;overflow:hidden;
+  box-shadow:0 0 0 11px #111,0 0 0 13px #333,0 28px 80px rgba(0,0,0,.5);
+  position:relative;
+}
+
+/* ─── SCREEN SYSTEM ─── */
+.screen{
+  position:absolute;inset:0;
+  overflow-y:auto;overflow-x:hidden;
+  background:#fff;
+  transform:translateX(100%);
+  transition:transform .26s cubic-bezier(.4,0,.2,1);
+  -webkit-overflow-scrolling:touch;
+}
+.screen.active{transform:translateX(0)}
+.screen.exit{transform:translateX(-20%)}
+
+/* ─── TOKENS ─── */
+:root{
+  --navy:#1c3d74;
+  --link:#3d70ce;
+  --teal:#2070be;
+  --border:#d0d0d0;
+  --focus:#3d70ce;
+  --bar-bg:#e8e8e8;
+  --foot-bg:#f2f2f2;
+  --text:#1a1a1a;
+  --muted:#757575;
+  --dim:#9e9e9e;
+  --green:#2e7d32;
+  --pp-yellow:#ffc439;
+  --selected-bg:#edf2fc;
+}
+
+/* ─── HEADER (checkout) ─── */
+.hdr{
+  background:var(--navy);
+  height:52px;min-height:52px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px;
+  position:sticky;top:0;z-index:30;
+}
+.hdr-logo{display:flex;align-items:center;gap:8px}
+.hdr-words{color:#fff;font-size:11.5px;font-weight:700;line-height:1.2;letter-spacing:.01em}
+.hdr-words .hdr-sub{display:block;font-weight:400;font-size:9.5px;color:rgba(255,255,255,.82);letter-spacing:.01em}
+.hdr-cross{flex-shrink:0}
+.hdr-btn{color:#fff;font-size:13px;background:none;border:none;font-family:inherit;cursor:pointer;padding:0;letter-spacing:0}
+
+/* ─── HEADER (confirmation full-nav) ─── */
+.hdr-full{
+  background:var(--navy);
+  height:52px;min-height:52px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 14px;
+  position:sticky;top:0;z-index:30;
+}
+.hdr-full-center{
+  position:absolute;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:8px;
+}
+.hdr-icon-group{display:flex;align-items:center;gap:16px}
+.hdr-ico{color:#fff;font-size:18px;cursor:pointer;line-height:1}
+
+/* ─── PRODUCT SUMMARY BAR ─── */
+.ps-bar{
+  background:var(--bar-bg);
+  min-height:44px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 16px;
+  cursor:pointer;user-select:none;
+  border-bottom:1px solid var(--border);
+}
+.ps-bar-lbl{font-size:14px;color:var(--text)}
+.ps-bar-rhs{display:flex;align-items:center;gap:7px}
+.ps-amount{font-size:14px;font-weight:700;color:var(--navy)}
+.ps-chevron{color:var(--navy);font-size:10px;transition:transform .2s}
+.ps-chevron.up{transform:rotate(180deg)}
+
+.ps-body{
+  display:none;border-bottom:1px solid var(--border);padding:14px 16px;
+  background:#fff;
+}
+.ps-body.open{display:block}
+
+.ps-item{display:flex;gap:12px;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid var(--border)}
+.ps-thumb{
+  width:62px;height:46px;background:#e8e8e8;border-radius:3px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px;
+}
+.ps-item-info{flex:1;font-size:13px;line-height:1.5}
+.ps-item-name{font-weight:600;color:var(--text)}
+.ps-item-qty{color:var(--muted)}
+.ps-item-price{float:right;font-weight:600}
+
+.ps-attr-block{font-size:13px;margin-bottom:10px}
+.ps-attr-row{display:flex;justify-content:space-between;padding:1px 0}
+.ps-attr-key{color:var(--muted)}
+.ps-attr-val{color:var(--text)}
+
+.ps-custom-block{font-size:13px;margin-bottom:10px;text-align:center}
+.ps-custom-hd{font-weight:600;margin-bottom:4px}
+.ps-custom-val{color:var(--muted);line-height:1.55}
+
+.ps-logo-block{text-align:center;margin-bottom:10px;font-size:13px}
+.ps-logo-hd{font-weight:600;margin-bottom:6px}
+.ps-logo-ico{font-size:26px}
+
+.ps-view-lnk{display:block;text-align:center;font-size:13px;color:var(--link);margin-bottom:12px;cursor:pointer}
+
+.ps-price-block{border-top:1px solid var(--border);padding-top:10px}
+.ps-pr-row{display:flex;justify-content:space-between;font-size:12.5px;padding:2px 0}
+.ps-pr-key{color:var(--muted)}
+.ps-pr-val{color:var(--text)}
+.ps-pr-val .strike{text-decoration:line-through;color:var(--dim);margin-right:3px}
+
+/* ─── SCREEN BODY ─── */
+.body{padding:22px 16px 0}
+
+/* ─── CHECKOUT H1 ─── */
+.co-h1{font-size:22px;font-weight:700;color:var(--text);margin-bottom:2px}
+.co-req{font-size:12px;color:var(--dim);margin-bottom:18px}
+
+/* ─── STEP HEADERS ─── */
+.step-row{
+  display:flex;align-items:baseline;
+  justify-content:space-between;
+  padding:14px 0 10px;
+}
+.step-row-lhs{display:flex;align-items:baseline;gap:9px}
+.step-n{font-size:20px;font-weight:700;color:var(--navy)}
+.step-n.off{color:var(--dim);font-weight:400}
+.step-t{font-size:19px;font-weight:600;color:var(--text)}
+.step-t.off{font-size:18px;font-weight:400;color:var(--dim)}
+.step-edit{
+  font-size:13.5px;color:var(--link);background:none;
+  border:none;font-family:inherit;cursor:pointer;padding:0;
+}
+
+.step-hr{border:none;border-top:1px solid var(--border);margin:0}
+
+/* Completed step summary block */
+.step-sum{font-size:14.5px;color:var(--text);line-height:1.75;margin-bottom:10px}
+.step-sum-extra{margin-top:6px}
+.step-sum-extra strong{font-size:14.5px;font-weight:700;display:block;margin-bottom:2px}
+.step-sum-extra span{font-size:14px;color:var(--text);display:block;line-height:1.6}
+
+/* ─── FLOATING LABEL FIELDS ─── */
+.flds{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+
+.fl{position:relative}
+.fl input,.fl select{
+  width:100%;height:46px;
+  border:1px solid var(--border);border-radius:3px;
+  padding:0 12px;
+  font-size:14px;font-family:inherit;color:var(--text);
+  background:#fff;outline:none;appearance:none;-webkit-appearance:none;
+  transition:border-color .15s;
+}
+.fl input:focus,.fl select:focus{border-color:var(--focus)}
+.fl input::placeholder{color:var(--dim);font-size:14px}
+.fl label{display:none}
+.fl .arr{
+  position:absolute;right:13px;top:50%;transform:translateY(-50%);
+  font-size:10px;color:var(--muted);pointer-events:none;
+}
+
+/* VAT with tooltip */
+.fl .tip-btn{
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  width:22px;height:22px;border-radius:50%;
+  border:1.5px solid var(--border);background:#fff;
+  font-size:12px;color:var(--muted);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-family:inherit;
+}
+.vat-tip{
+  display:none;position:absolute;right:0;top:calc(100% + 5px);z-index:40;
+  background:#fff;border:1px solid var(--border);border-radius:6px;
+  padding:13px 15px;font-size:13px;color:var(--text);line-height:1.55;
+  box-shadow:0 6px 20px rgba(0,0,0,.13);width:290px;
+}
+.vat-tip.show{display:block}
+
+/* ─── DELIVERY DATES ─── */
+.del-section{margin-bottom:18px}
+.del-hd{font-size:15px;font-weight:700;color:var(--text);margin-bottom:3px}
+.del-note{font-size:12.5px;color:var(--muted);margin-bottom:10px}
+
+.del-opt{
+  display:flex;align-items:center;gap:12px;
+  padding:11px 13px;
+  border:1px solid var(--border);border-radius:4px;
+  margin-bottom:6px;cursor:pointer;background:#fff;
+  transition:border-color .12s;
+}
+.del-opt.on{border-color:var(--navy);background:var(--selected-bg)}
+
+.del-radio{
+  width:18px;height:18px;border-radius:50%;
+  border:2px solid var(--border);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color .12s,background .12s;
+}
+.del-opt.on .del-radio{border-color:var(--navy);background:var(--navy)}
+.del-opt.on .del-radio::after{content:'';width:6px;height:6px;border-radius:50%;background:#fff}
+
+.del-info{flex:1}
+.del-date{font-size:14px;font-weight:600;color:var(--text)}
+.del-opt.on .del-date{color:var(--navy)}
+.del-ship{font-size:13px;color:var(--muted)}
+.del-opt.on .del-ship{color:var(--teal)}
+.del-price{font-size:14px;font-weight:600;color:var(--text)}
+.del-opt.on .del-price{color:var(--navy)}
+
+/* ─── PRIMARY BUTTON ─── */
+.btn{
+  display:block;width:100%;
+  padding:15px 20px;margin-bottom:16px;
+  background:var(--navy);color:#fff;
+  font-size:16px;font-weight:600;font-family:inherit;
+  border:none;border-radius:28px;cursor:pointer;text-align:center;
+  letter-spacing:.01em;
+}
+.btn-place{
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  width:100%;padding:15px 20px;margin-bottom:8px;
+  background:var(--navy);color:#fff;
+  font-size:16px;font-weight:600;font-family:inherit;
+  border:none;border-radius:28px;cursor:pointer;
+  letter-spacing:.01em;
+}
+.btn-pp{
+  display:block;width:100%;padding:14px;margin-bottom:8px;
+  background:var(--pp-yellow);color:#253b80;
+  font-size:20px;font-weight:900;font-family:'Arial Black',Arial,sans-serif;
+  font-style:italic;border:none;border-radius:28px;cursor:pointer;text-align:center;
+}
+.btn-create{
+  display:block;width:100%;padding:15px;margin-bottom:16px;
+  background:var(--navy);color:#fff;
+  font-size:16px;font-weight:600;font-family:inherit;
+  border:none;border-radius:28px;cursor:pointer;text-align:center;
+}
+
+/* ─── MARKETING OPT-IN ─── */
+.mkt-lbl{font-size:13.5px;color:var(--text);margin-bottom:11px;line-height:1.5}
+.rg{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+.ro{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 12px;border-radius:5px;cursor:pointer;
+  transition:background .1s;
+}
+.ro.on{background:var(--selected-bg)}
+.rc{
+  width:20px;height:20px;border-radius:50%;
+  border:2px solid var(--border);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .12s;
+}
+.ro.on .rc{border-color:var(--navy);background:var(--navy)}
+.ro.on .rc::after{content:'';width:7px;height:7px;border-radius:50%;background:#fff}
+.ro-txt{font-size:13.5px;color:var(--text)}
+
+/* ─── PAYMENT TABS ─── */
+.pay-tabs{
+  display:flex;border-bottom:2px solid var(--border);margin-bottom:16px;
+}
+.ptab{
+  flex:1;padding:10px 0;text-align:center;
+  font-size:15px;color:var(--muted);
+  background:none;border:none;border-bottom:3px solid transparent;
+  margin-bottom:-2px;cursor:pointer;font-family:inherit;
+  transition:color .15s;
+}
+.ptab.on{color:var(--navy);font-weight:600;border-bottom-color:var(--navy)}
+
+/* ─── PAYMENT OPTIONS ─── */
+.popt{
+  border:1px solid var(--border);border-radius:6px;
+  margin-bottom:9px;cursor:pointer;overflow:hidden;
+  transition:border-color .12s;
+}
+.popt.on{border-color:var(--navy)}
+
+.popt-hd{display:flex;align-items:center;gap:11px;padding:13px 14px}
+.popt-radio{
+  width:18px;height:18px;border-radius:50%;
+  border:2px solid var(--border);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .12s;
+}
+.popt.on .popt-radio{border-color:var(--navy);background:var(--navy)}
+.popt.on .popt-radio::after{content:'';width:6px;height:6px;border-radius:50%;background:#fff}
+
+.popt-lbl{font-size:15px;font-weight:500;flex:1;color:var(--text)}
+.popt-icons{display:flex;align-items:center;gap:4px}
+
+/* Card type chips */
+.ci{
+  display:inline-flex;align-items:center;justify-content:center;
+  height:20px;border:1px solid var(--border);border-radius:3px;padding:0 5px;
+  font-size:9px;font-weight:800;letter-spacing:.02em;
+}
+.ci-visa{background:#1a1f71;color:#fff;min-width:32px}
+.ci-mc{background:#fff;padding:0 3px;min-width:26px;overflow:hidden}
+.ci-jcb{background:#fff;color:#003087;min-width:24px;font-size:8px}
+.ci-pp-lbl{font-size:13.5px;font-weight:800;font-style:italic;color:#003087}
+.ci-pp-lbl em{color:#009cde;font-style:normal}
+
+.popt-body{display:none;padding:0 14px 14px}
+.popt.on .popt-body{display:block}
+
+/* Card input fields */
+.card-fld{
+  width:100%;height:46px;
+  border:1px solid var(--border);border-radius:4px;
+  padding:0 12px;font-size:15px;font-family:inherit;color:var(--text);
+  outline:none;margin-bottom:8px;background:#fff;
+  transition:border-color .15s;
+}
+.card-fld::placeholder{color:var(--dim)}
+.card-fld:focus{border-color:var(--focus)}
+
+.card-fld-wrap{margin-bottom:8px}
+.card-fld-wrap input{
+  width:100%;height:46px;
+  border:1px solid var(--border);border-radius:3px;
+  padding:0 12px;font-size:14px;font-family:inherit;color:var(--text);
+  outline:none;background:#fff;transition:border-color .15s;
+}
+.card-fld-wrap input::placeholder{color:var(--dim)}
+.card-fld-wrap input:focus{border-color:var(--focus)}
+.card-fld-wrap label{display:none}
+.card-row{display:flex;gap:8px}
+.card-row .card-fld-wrap{flex:1}
+
+/* Billing address */
+.bill-section{margin-top:12px;margin-bottom:2px}
+.bill-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:10px}
+.cb-row{display:flex;align-items:center;gap:10px;cursor:pointer;margin-bottom:12px}
+.cb{
+  width:18px;height:18px;border-radius:3px;
+  border:1.5px solid var(--border);background:#fff;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .12s;
+}
+.cb.checked{background:var(--navy);border-color:var(--navy)}
+.cb.checked::after{content:'✓';color:#fff;font-size:11px;font-weight:700;line-height:1}
+.cb-lbl{font-size:14px;color:var(--text)}
+.bill-form{display:none}
+.bill-form.open{display:block}
+
+/* Pay Later */
+.pl-opt{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:13px 14px;
+  border:1px solid var(--navy);border-radius:6px;
+  background:var(--selected-bg);margin-bottom:12px;cursor:pointer;
+}
+.pl-radio{
+  width:18px;height:18px;border-radius:50%;
+  border:2px solid var(--navy);background:var(--navy);
+  flex-shrink:0;margin-top:2px;
+  display:flex;align-items:center;justify-content:center;
+}
+.pl-radio::after{content:'';width:6px;height:6px;border-radius:50%;background:#fff}
+.pl-lbl{font-size:15px;font-weight:600;color:var(--text)}
+.pl-note{
+  font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:16px;
+}
+.pl-note a{color:var(--link)}
+
+/* Terms */
+.terms{font-size:12.5px;color:var(--muted);text-align:center;margin-bottom:16px}
+.terms a{color:var(--link)}
+
+/* Satisfaction */
+.sat{
+  border:1px solid var(--border);border-radius:6px;
+  padding:13px 14px;margin-bottom:16px;
+  font-size:14px;font-weight:600;color:var(--text);
+}
+
+/* ─── ORDER SUMMARY ─── */
+.os-section{margin-bottom:16px}
+.os-hd{font-size:17px;font-weight:700;color:var(--text);margin-bottom:13px}
+.os-row{
+  display:flex;justify-content:space-between;
+  font-size:14px;padding:4px 0;
+}
+.os-lbl{color:var(--teal)}
+.os-val{color:var(--text)}
+.os-div{border:none;border-top:1px solid var(--border);margin:9px 0}
+.os-total{display:flex;justify-content:space-between;font-size:19px;font-weight:700;padding:4px 0}
+.os-saved{text-align:right;font-size:13px;color:var(--green);margin-top:3px;margin-bottom:12px}
+.promo-row{display:flex;gap:8px;margin-top:4px}
+.promo-in{
+  flex:1;height:44px;border:1px solid var(--border);border-radius:4px;
+  padding:0 12px;font-size:14px;font-family:inherit;color:var(--text);outline:none;
+}
+.promo-in::placeholder{color:var(--dim)}
+.promo-in:focus{border-color:var(--focus)}
+.promo-btn{
+  height:44px;padding:0 18px;
+  border:1px solid var(--border);border-radius:22px;
+  background:#fff;font-size:14px;font-weight:600;
+  color:var(--text);cursor:pointer;font-family:inherit;
+}
+
+/* ─── FOOTER ─── */
+.foot{background:var(--foot-bg);padding:20px 16px;border-top:1px solid var(--border)}
+.foot-help{text-align:center;margin-bottom:16px}
+.foot-help strong{font-size:14px;font-weight:700;display:block;margin-bottom:7px}
+.foot-ph{font-size:14px;margin-bottom:5px}
+.foot-links a{display:block;font-size:13.5px;color:var(--text);line-height:2.1;cursor:pointer}
+.foot-pay{text-align:center;border-top:1px solid var(--border);padding-top:14px}
+.foot-pay strong{font-size:13.5px;font-weight:700;display:block;margin-bottom:5px}
+.foot-pay-opts{font-size:13.5px;color:var(--muted);margin-bottom:8px}
+.pay-chips{display:flex;align-items:center;justify-content:center;gap:6px}
+.pchip{
+  height:22px;min-width:34px;padding:0 5px;
+  border:1px solid var(--border);border-radius:3px;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:9px;font-weight:800;letter-spacing:.02em;
+}
+.pchip-visa{background:#1a1f71;color:#fff}
+.pchip-mc{background:#fff;gap:0}
+.mc1{display:inline-block;width:11px;height:16px;border-radius:50%;background:#eb001b}
+.mc2{display:inline-block;width:11px;height:16px;border-radius:50%;background:#f79e1b;margin-left:-5px}
+.pchip-jcb{background:#fff;color:#333;font-size:8px}
+.pchip-pp{background:#009cde;color:#fff;font-style:italic;font-weight:900;font-size:10px}
+
+/* ─── SIGN-IN SCREEN ─── */
+.si-body{padding:26px 16px 0}
+.si-h{font-size:24px;font-weight:700;color:var(--text);margin-bottom:10px}
+.si-sub{font-size:14.5px;color:var(--muted);margin-bottom:22px;line-height:1.5}
+.si-div{border:none;border-top:1px solid var(--border);margin:24px 0}
+.forgot{
+  display:block;text-align:center;font-size:13.5px;color:var(--muted);
+  margin-top:13px;cursor:pointer;
+}
+
+/* ─── CONFIRMATION ─── */
+.conf-body{padding:32px 16px 0;text-align:center}
+.conf-logo{margin-bottom:18px;display:flex;justify-content:center}
+.conf-thanks{font-size:22px;font-weight:700;color:var(--text);margin-bottom:10px;line-height:1.3}
+.conf-ordnum{font-size:15.5px;font-weight:600;color:var(--link);margin-bottom:10px}
+.conf-note{font-size:14px;color:var(--text);margin-bottom:3px}
+.conf-email{font-size:14px;color:var(--link);font-weight:500}
+.conf-div{border:none;border-top:1px solid var(--border);margin:22px 0}
+.conf-acct-hd{font-size:18px;font-weight:700;margin-bottom:16px}
+.benefits{display:flex;justify-content:center;gap:16px;margin-bottom:20px}
+.benefit{flex:1;text-align:center}
+.benefit-ico{margin-bottom:7px;color:var(--navy);font-size:22px}
+.benefit-lbl{font-size:11.5px;color:var(--muted);line-height:1.4}
+.conf-os{text-align:left}
+
+/* ─── RESTART ─── */
+.restart-wrap{margin-top:22px}
+.restart-btn{
+  background:none;border:1.5px solid #999;border-radius:20px;
+  padding:8px 22px;font-size:12px;color:#666;
+  cursor:pointer;font-family:inherit;letter-spacing:.04em;
+}
+</style>
+</head>
+<body>
+
+<p class="proto-label">Interactive Mobile Prototype — Pens.com Checkout Flow</p>
+
+<div class="phone-frame">
+
+<!-- ██████ SCREEN 1: GUEST OR SIGN IN ██████ -->
+<div class="screen active" id="s-signin">
+  <div class="hdr">
+    <div class="hdr-logo">
+      <div class="hdr-words">NATIONAL PEN<span class="hdr-sub">at pens.com</span></div>
+      <svg class="hdr-cross" width="20" height="20" viewBox="0 0 20 20"><rect x="6.5" y="0" width="7" height="10" fill="#00B5C8"/><rect x="6.5" y="10" width="7" height="10" fill="#FFC200"/><rect x="0" y="6.5" width="10" height="7" fill="#1B5BAD"/><rect x="10" y="6.5" width="10" height="7" fill="#D81F26"/></svg>
+    </div>
+    <button class="hdr-btn">Return to Cart</button>
+  </div>
+
+  <div class="si-body">
+    <h2 class="si-h">Guest or New Customer</h2>
+    <p class="si-sub">You can continue without an account and choose to create an account later.</p>
+    <button class="btn" onclick="goTo('s-shipping')">Checkout as Guest</button>
+
+    <hr class="si-div">
+
+    <h2 class="si-h">Returning Customers</h2>
+    <div class="flds" style="margin-bottom:12px">
+      <div class="fl"><input type="email" placeholder="Email Address" id="s1-em"></div>
+      <div class="fl"><input type="password" placeholder="Password" id="s1-pw"></div>
+    </div>
+    <button class="btn">Sign In</button>
+    <a class="forgot">Forgot your password?</a>
+  </div>
+
+  <div style="height:28px"></div>
+  <footer class="foot">
+    <div class="foot-help">
+      <strong>Need Help?</strong>
+      <p class="foot-ph">📞 1800 99 51 86</p>
+      <div class="foot-links"><a>Contact Us</a><a>Frequently Asked Questions</a></div>
+    </div>
+    <div class="foot-pay">
+      <strong>Accepted Forms of Payment</strong>
+      <p class="foot-pay-opts">Bill Me Later</p>
+      <div class="pay-chips">
+        <span class="pchip pchip-visa">VISA</span>
+        <span class="pchip pchip-mc"><span class="mc1"></span><span class="mc2"></span></span>
+        <span class="pchip pchip-jcb">JCB</span>
+        <span class="pchip pchip-pp">P</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ██████ SCREEN 2: GUEST — SHIPPING ██████ -->
+<div class="screen" id="s-shipping">
+  <div class="hdr">
+    <div class="hdr-logo">
+      <div class="hdr-words">NATIONAL PEN<span class="hdr-sub">at pens.com</span></div>
+      <svg class="hdr-cross" width="20" height="20" viewBox="0 0 20 20"><rect x="6.5" y="0" width="7" height="10" fill="#00B5C8"/><rect x="6.5" y="10" width="7" height="10" fill="#FFC200"/><rect x="0" y="6.5" width="10" height="7" fill="#1B5BAD"/><rect x="10" y="6.5" width="10" height="7" fill="#D81F26"/></svg>
+    </div>
+    <button class="hdr-btn">Return to Cart</button>
+  </div>
+
+  <!-- Product Summary -->
+  <div class="ps-bar" onclick="togglePS(this)">
+    <span class="ps-bar-lbl">Product Summary</span>
+    <div class="ps-bar-rhs">
+      <span class="ps-amount">€90.90</span>
+      <span class="ps-chevron">▼</span>
+    </div>
+  </div>
+  <div class="ps-body">
+    <div class="ps-item">
+      <div class="ps-thumb">🖊</div>
+      <div class="ps-item-info">
+        <div class="ps-item-name">Alpha Soft Touch Stylus Pen<span class="ps-item-price" style="float:right">€219.00</span></div>
+        <div class="ps-item-qty">Quantity: 100</div>
+      </div>
+    </div>
+    <div class="ps-attr-block">
+      <div class="ps-attr-row"><span class="ps-attr-key">Barrel Color</span><span class="ps-attr-val">Assorted</span></div>
+      <div class="ps-attr-row"><span class="ps-attr-key">Ink Color</span><span class="ps-attr-val">Black</span></div>
+      <div class="ps-attr-row"><span class="ps-attr-key">Imprint Color</span><span class="ps-attr-val">Silver</span></div>
+    </div>
+    <div class="ps-custom-block">
+      <div class="ps-custom-hd">Your Text</div>
+      <div class="ps-custom-val">National Pen<br>123 Street, San Diego, CA 92122<br>858-123-4568</div>
+    </div>
+    <div class="ps-logo-block">
+      <div class="ps-logo-hd">Your Logo</div>
+      <div class="ps-logo-ico">🏷</div>
+    </div>
+    <a class="ps-view-lnk">View Product Preview</a>
+    <div class="ps-price-block">
+      <div class="ps-pr-row"><span class="ps-pr-key">50 Units ×€2.19 €2.04</span><span class="ps-pr-val">€75.45</span></div>
+      <div class="ps-pr-row"><span class="ps-pr-key">+80 ×€1.19 Special Offer</span><span class="ps-pr-val"></span></div>
+      <div class="ps-pr-row"><span class="ps-pr-key">+80 Free</span><span class="ps-pr-val"></span></div>
+      <div class="ps-pr-row"><span class="ps-pr-key">Logo Charge</span><span class="ps-pr-val">€15.45</span></div>
+      <div class="ps-pr-row"><span class="ps-pr-key">Rush Charge</span><span class="ps-pr-val"><span class="strike">€75.45</span>€0.00</span></div>
+      <div class="ps-pr-row"><span class="ps-pr-key">Setup Charge</span><span class="ps-pr-val"><span class="strike">€75.45</span>€0.00</span></div>
+      <div class="ps-pr-row"><span class="ps-pr-key">Free 48 Hour Rush Production</span><span class="ps-pr-val">€0.00</span></div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="co-h1">Checkout</div>
+    <div class="co-req">* Required Information</div>
+
+    <div class="step-row" style="padding-top:0">
+      <div class="step-row-lhs">
+        <span class="step-n">1</span>
+        <span class="step-t">Shipping</span>
+      </div>
+    </div>
+
+    <div class="flds">
+      <div class="fl"><input type="text" placeholder="First Name*" id="sh-fn"></div>
+      <div class="fl"><input type="text" placeholder="Last Name*" id="sh-ln"></div>
+      <div class="fl"><input type="text" placeholder="Company Name" id="sh-co"></div>
+      <div class="fl"><input type="text" placeholder="Address Line 1*" id="sh-a1"></div>
+      <div class="fl"><input type="text" placeholder="Address Line 2" id="sh-a2"></div>
+      <div class="fl"><input type="text" placeholder="EIR Code*" id="sh-eir"></div>
+      <div class="fl"><input type="text" placeholder="City/Town*" id="sh-city"></div>
+      <div class="fl">
+        <select id="sh-county"><option value="" disabled selected>County*</option><option>Ireland</option><option>Dublin</option><option>Cork</option><option>Galway</option></select>
+        <span class="arr">▼</span>
+      </div>
+      <div class="fl">
+        <select id="sh-country"><option value="" disabled selected>Country*</option><option>Ireland</option><option>United Kingdom</option><option>France</option><option>Germany</option></select>
+        <span class="arr">▼</span>
+      </div>
+      <div class="fl">
+        <input type="text" placeholder="VAT Number" id="sh-vat" style="padding-right:40px">
+        <button class="tip-btn" onclick="toggleVAT(event,'vt-sh')">?</button>
+        <div class="vat-tip" id="vt-sh">National Pen currently provides VAT exemption for Italy, Belgium and the Netherlands. For more information, please contact our Customer Service.</div>
+      </div>
+    </div>
+
+    <div class="del-section">
+      <div class="del-hd">Delivery Date</div>
+      <div class="del-note">Delivery dates below are estimates.</div>
+      <div class="del-opt on" onclick="pickDel(this)">
+        <div class="del-radio"></div>
+        <div class="del-info"><div class="del-date">Dec 21, 2020</div><div class="del-ship">UPS Ground</div></div>
+        <div class="del-price">€27.98</div>
+      </div>
+      <div class="del-opt" onclick="pickDel(this)">
+        <div class="del-radio"></div>
+        <div class="del-info"><div class="del-date">Dec 10, 2020</div><div class="del-ship">UPS 2 Day</div></div>
+        <div class="del-price">€27.98</div>
+      </div>
+      <div class="del-opt" onclick="pickDel(this)">
+        <div class="del-radio"></div>
+        <div class="del-info"><div class="del-date">Dec 8, 2020</div><div class="del-ship">UPS 2 Day</div></div>
+        <div class="del-price">€27.98</div>
+      </div>
+    </div>
+
+    <button class="btn" onclick="goTo('s-contact')">Continue</button>
+
+    <hr class="step-hr">
+    <div class="step-row"><div class="step-row-lhs"><span class="step-n off">2</span><span class="step-t off">Contact</span></div></div>
+    <hr class="step-hr">
+    <div class="step-row"><div class="step-row-lhs"><span class="step-n off">3</span><span class="step-t off">Payment</span></div></div>
+    <div style="height:8px"></div>
+  </div>
+
+  <footer class="foot">
+    <div class="foot-help">
+      <strong>Need Help?</strong>
+      <p class="foot-ph">📞 1800 99 51 86</p>
+      <div class="foot-links"><a>Contact Us</a><a>Frequently Asked Questions</a></div>
+    </div>
+    <div class="foot-pay">
+      <strong>Accepted Forms of Payment</strong>
+      <p class="foot-pay-opts">Bill Me Later</p>
+      <div class="pay-chips">
+        <span class="pchip pchip-visa">VISA</span>
+        <span class="pchip pchip-mc"><span class="mc1"></span><span class="mc2"></span></span>
+        <span class="pchip pchip-jcb">JCB</span>
+        <span class="pchip pchip-pp">P</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ██████ SCREEN 3: EDIT SHIPPING ██████ -->
+<div class="screen" id="s-edit-sh">
+  <div class="hdr">
+    <div class="hdr-logo">
+      <div class="hdr-words">NATIONAL PEN<span class="hdr-sub">at pens.com</span></div>
+      <svg class="hdr-cross" width="20" height="20" viewBox="0 0 20 20"><rect x="6.5" y="0" width="7" height="10" fill="#00B5C8"/><rect x="6.5" y="10" width="7" height="10" fill="#FFC200"/><rect x="0" y="6.5" width="10" height="7" fill="#1B5BAD"/><rect x="10" y="6.5" width="10" height="7" fill="#D81F26"/></svg>
+    </div>
+    <button class="hdr-btn">Return to Cart</button>
+  </div>
+
+  <div class="ps-bar" onclick="togglePS(this)">
+    <span class="ps-bar-lbl">Product Summary</span>
+    <div class="ps-bar-rhs"><span class="ps-amount">€90.90</span><span class="ps-chevron">▼</span></div>
+  </div>
+  <div class="ps-body"></div>
+
+  <div class="body">
+    <div class="co-h1">Checkout</div>
+    <div class="co-req">* Required Information</div>
+
+    <div class="step-row" style="padding-top:0">
+      <div class="step-row-lhs">
+        <span class="step-n">1</span>
+        <span class="step-t">Shipping</span>
+      </div>
+    </div>
+
+    <div class="flds">
+      <div class="fl"><input type="text" placeholder="First Name*" value="Annie" id="es-fn"></div>
+      <div class="fl"><input type="text" placeholder="Last Name*" value="Park" id="es-ln"></div>
+      <div class="fl"><input type="text" placeholder="Company Name" value="National Pen" id="es-co"></div>
+      <div class="fl"><input type="text" placeholder="Address Line 1*" value="123 Street" id="es-a1"></div>
+      <div class="fl"><input type="text" placeholder="Address Line 2" value="APT 214" id="es-a2"></div>
+      <div class="fl"><input type="text" placeholder="EIR Code*" value="1234" id="es-eir"></div>
+      <div class="fl"><input type="text" placeholder="City/Town*" value="City" id="es-city"></div>
+      <div class="fl">
+        <select id="es-county"><option value="Ireland" selected>Ireland</option></select>
+        <span class="arr">▼</span>
+      </div>
+      <div class="fl">
+        <select id="es-country"><option value="Ireland" selected>Ireland</option></select>
+        <span class="arr">▼</span>
+      </div>
+    </div>
+
+    <div class="del-section">
+      <div class="del-hd">Delivery Date</div>
+      <div class="del-note">Delivery dates below are estimates.</div>
+      <div class="del-opt on" onclick="pickDel(this)">
+        <div class="del-radio"></div>
+        <div class="del-info"><div class="del-date">Dec 21, 2020</div><div class="del-ship">UPS Ground</div></div>
+        <div class="del-price">€27.98</div>
+      </div>
+      <div class="del-opt" onclick="pickDel(this)">
+        <div class="del-radio"></div>
+        <div class="del-info"><div class="del-date">Dec 10, 2020</div><div class="del-ship">UPS 2 Day</div></div>
+        <div class="del-price">€27.98</div>
+      </div>
+      <div class="del-opt" onclick="pickDel(this)">
+        <div class="del-radio"></div>
+        <div class="del-info"><div class="del-date">Dec 8, 2020</div><div class="del-ship">UPS 2 Day</div></div>
+        <div class="del-price">€27.98</div>
+      </div>
+    </div>
+
+    <button class="btn" id="es-continue" onclick="goTo('s-contact')">Continue</button>
+
+    <hr class="step-hr">
+    <div class="step-row"><div class="step-row-lhs"><span class="step-n off">2</span><span class="step-t off">Contact</span></div></div>
+    <hr class="step-hr">
+    <div class="step-row"><div class="step-row-lhs"><span class="step-n off">3</span><span class="step-t off">Payment</span></div></div>
+    <div style="height:8px"></div>
+  </div>
+
+  <footer class="foot">
+    <div class="foot-help">
+      <strong>Need Help?</strong>
+      <p class="foot-ph">📞 1800 99 51 86</p>
+      <div class="foot-links"><a>Contact Us</a><a>Frequently Asked Questions</a></div>
+    </div>
+    <div class="foot-pay">
+      <strong>Accepted Forms of Payment</strong>
+      <p class="foot-pay-opts">Bill Me Later</p>
+      <div class="pay-chips">
+        <span class="pchip pchip-visa">VISA</span>
+        <span class="pchip pchip-mc"><span class="mc1"></span><span class="mc2"></span></span>
+        <span class="pchip pchip-jcb">JCB</span>
+        <span class="pchip pchip-pp">P</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ██████ SCREEN 4: CONTACT ██████ -->
+<div class="screen" id="s-contact">
+  <div class="hdr">
+    <div class="hdr-logo">
+      <div class="hdr-words">NATIONAL PEN<span class="hdr-sub">at pens.com</span></div>
+      <svg class="hdr-cross" width="20" height="20" viewBox="0 0 20 20"><rect x="6.5" y="0" width="7" height="10" fill="#00B5C8"/><rect x="6.5" y="10" width="7" height="10" fill="#FFC200"/><rect x="0" y="6.5" width="10" height="7" fill="#1B5BAD"/><rect x="10" y="6.5" width="10" height="7" fill="#D81F26"/></svg>
+    </div>
+    <button class="hdr-btn">Return to Cart</button>
+  </div>
+
+  <div class="ps-bar" onclick="togglePS(this)">
+    <span class="ps-bar-lbl">Product Summary</span>
+    <div class="ps-bar-rhs"><span class="ps-amount">€90.90</span><span class="ps-chevron">▼</span></div>
+  </div>
+  <div class="ps-body"></div>
+
+  <div class="body">
+    <div class="co-h1">Checkout</div>
+    <div class="co-req">* Required Information</div>
+
+    <!-- Step 1: completed -->
+    <div class="step-row" style="padding-top:0">
+      <div class="step-row-lhs"><span class="step-n">1</span><span class="step-t">Shipping</span></div>
+      <button class="step-edit" onclick="editShFrom('s-contact')">Edit</button>
+    </div>
+    <div class="step-sum">
+      Annie Park<br>National Pen<br>123 Street<br>APT 214<br>1234<br>City, County, Country
+    </div>
+    <div class="step-sum-extra">
+      <strong>Delivery Date</strong>
+      <span>Dec 21, 2020</span>
+      <span>UPS Ground</span>
+    </div>
+
+    <hr class="step-hr" style="margin-top:16px">
+
+    <!-- Step 2: active -->
+    <div class="step-row">
+      <div class="step-row-lhs"><span class="step-n">2</span><span class="step-t">Contact</span></div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Any order related information will be sent here.</p>
+
+    <div class="flds">
+      <div class="fl"><input type="email" placeholder="Email Address*" id="ct-em"></div>
+      <div class="fl"><input type="tel" placeholder="Phone Number*" id="ct-ph"></div>
+    </div>
+
+    <p class="mkt-lbl">Would you like to receive National Pen offers by email and benefit from great savings and free samples?</p>
+    <div class="rg" id="rg-ct">
+      <div class="ro" onclick="pickRadio(this,'rg-ct')"><div class="rc"></div><span class="ro-txt">Yes, please send me these offers</span></div>
+      <div class="ro on" onclick="pickRadio(this,'rg-ct')"><div class="rc"></div><span class="ro-txt">No, please do not send me these offers</span></div>
+    </div>
+
+    <button class="btn" onclick="goTo('s-payment')">Continue</button>
+
+    <hr class="step-hr">
+    <div class="step-row"><div class="step-row-lhs"><span class="step-n off">3</span><span class="step-t off">Payment</span></div></div>
+    <div style="height:8px"></div>
+  </div>
+
+  <footer class="foot">
+    <div class="foot-help">
+      <strong>Need Help?</strong>
+      <p class="foot-ph">📞 1800 99 51 86</p>
+      <div class="foot-links"><a>Contact Us</a><a>Frequently Asked Questions</a></div>
+    </div>
+    <div class="foot-pay">
+      <strong>Accepted Forms of Payment</strong>
+      <p class="foot-pay-opts">Bill Me Later</p>
+      <div class="pay-chips">
+        <span class="pchip pchip-visa">VISA</span>
+        <span class="pchip pchip-mc"><span class="mc1"></span><span class="mc2"></span></span>
+        <span class="pchip pchip-jcb">JCB</span>
+        <span class="pchip pchip-pp">P</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ██████ SCREEN 5: PAYMENT ██████ -->
+<div class="screen" id="s-payment">
+  <div class="hdr">
+    <div class="hdr-logo">
+      <div class="hdr-words">NATIONAL PEN<span class="hdr-sub">at pens.com</span></div>
+      <svg class="hdr-cross" width="20" height="20" viewBox="0 0 20 20"><rect x="6.5" y="0" width="7" height="10" fill="#00B5C8"/><rect x="6.5" y="10" width="7" height="10" fill="#FFC200"/><rect x="0" y="6.5" width="10" height="7" fill="#1B5BAD"/><rect x="10" y="6.5" width="10" height="7" fill="#D81F26"/></svg>
+    </div>
+    <button class="hdr-btn">Return to Cart</button>
+  </div>
+
+  <div class="ps-bar" onclick="togglePS(this)">
+    <span class="ps-bar-lbl">Product Summary</span>
+    <div class="ps-bar-rhs"><span class="ps-amount">€90.90</span><span class="ps-chevron">▼</span></div>
+  </div>
+  <div class="ps-body"></div>
+
+  <div class="body">
+    <div class="co-h1">Checkout</div>
+    <div class="co-req">* Required Information</div>
+
+    <!-- Step 1: completed -->
+    <div class="step-row" style="padding-top:0">
+      <div class="step-row-lhs"><span class="step-n">1</span><span class="step-t">Shipping</span></div>
+      <button class="step-edit" onclick="editShFrom('s-payment')">Edit</button>
+    </div>
+    <div class="step-sum">
+      Annie Park<br>National Pen<br>123 Street<br>APT 214<br>1234<br>City, County, Country
+    </div>
+    <div class="step-sum-extra">
+      <strong>Delivery Date</strong>
+      <span>Dec 21, 2020</span>
+      <span>UPS Ground</span>
+    </div>
+
+    <hr class="step-hr" style="margin-top:16px">
+
+    <!-- Step 2: completed -->
+    <div class="step-row">
+      <div class="step-row-lhs"><span class="step-n">2</span><span class="step-t">Contact</span></div>
+      <button class="step-edit" onclick="goTo('s-contact')">Edit</button>
+    </div>
+    <div class="step-sum">
+      annie.park@pens.com<br>858-123-4567<br>No, please do not send me these offers
+    </div>
+
+    <hr class="step-hr" style="margin-top:16px">
+
+    <!-- Step 3: active -->
+    <div class="step-row">
+      <div class="step-row-lhs"><span class="step-n">3</span><span class="step-t">Payment</span></div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="pay-tabs">
+      <button class="ptab on" id="ptab-now" onclick="switchTab('now')">Pay Now</button>
+      <button class="ptab" id="ptab-later" onclick="switchTab('later')">Pay Later</button>
+    </div>
+
+    <!-- PAY NOW -->
+    <div id="panel-now">
+      <!-- Credit/Debit -->
+      <div class="popt on" id="po-card" onclick="pickPayOpt('card')">
+        <div class="popt-hd">
+          <div class="popt-radio"></div>
+          <span class="popt-lbl">Credit/Debit</span>
+          <div class="popt-icons">
+            <span class="ci ci-visa">VISA</span>
+            <span class="ci ci-mc">
+              <span style="display:inline-block;width:10px;height:15px;border-radius:50%;background:#eb001b"></span>
+              <span style="display:inline-block;width:10px;height:15px;border-radius:50%;background:#f79e1b;margin-left:-4px"></span>
+            </span>
+            <span class="ci ci-jcb">JCB</span>
+          </div>
+        </div>
+        <div class="popt-body">
+          <div class="card-fld-wrap">
+            <input type="text" placeholder="Card Number" id="cn">
+          </div>
+          <div class="card-row">
+            <div class="card-fld-wrap">
+              <input type="text" placeholder="MM/YY" id="cexp">
+            </div>
+            <div class="card-fld-wrap">
+              <input type="text" placeholder="CVV" id="ccvv">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PayPal -->
+      <div class="popt" id="po-pp" onclick="pickPayOpt('pp')">
+        <div class="popt-hd">
+          <div class="popt-radio"></div>
+          <span class="popt-lbl">PayPal</span>
+          <div class="popt-icons">
+            <span class="ci-pp-lbl"><em>Pay</em>Pal</span>
+          </div>
+        </div>
+        <div class="popt-body">
+          <button class="btn-pp" onclick="event.stopPropagation();goTo('s-confirm')"><em style="color:#009cde;font-style:normal">Pay</em>Pal</button>
+          <p class="terms">By placing your order, you are accepting our <a>Terms of Sale.</a></p>
+        </div>
+      </div>
+
+      <!-- Billing Address (card only) -->
+      <div class="bill-section" id="bill-sect">
+        <div class="bill-title">Billing Address</div>
+        <div class="cb-row" onclick="toggleBilling()">
+          <div class="cb checked" id="cb-same"></div>
+          <span class="cb-lbl">Use my shipping address</span>
+        </div>
+        <div class="bill-form" id="bill-form">
+          <div class="flds">
+            <div class="fl"><input type="text" placeholder="First Name*" id="ba-fn"></div>
+            <div class="fl"><input type="text" placeholder="Last Name*" id="ba-ln"></div>
+            <div class="fl"><input type="text" placeholder="Company Name" id="ba-co"></div>
+            <div class="fl"><input type="text" placeholder="Address Line 1*" id="ba-a1"></div>
+            <div class="fl"><input type="text" placeholder="Address Line 2" id="ba-a2"></div>
+            <div class="fl"><input type="text" placeholder="EIR Code*" id="ba-eir"></div>
+            <div class="fl"><input type="text" placeholder="City/Town*" id="ba-city"></div>
+            <div class="fl">
+              <select id="ba-ct"><option value="" disabled selected>County*</option><option>Ireland</option></select>
+              <span class="arr">▼</span>
+            </div>
+            <div class="fl">
+              <select id="ba-cy"><option value="" disabled selected>Country*</option><option>Ireland</option></select>
+              <span class="arr">▼</span>
+            </div>
+            <div class="fl"><input type="text" placeholder="VAT Number" id="ba-vat" style="padding-right:40px"><button class="tip-btn" style="pointer-events:none">?</button></div>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-place" onclick="goTo('s-confirm')">🔒 Place Order</button>
+      <p class="terms">By placing your order, you are accepting our <a>Terms of Sale.</a></p>
+    </div>
+
+    <!-- PAY LATER -->
+    <div id="panel-later" style="display:none">
+      <div class="pl-opt">
+        <div class="pl-radio"></div>
+        <div><div class="pl-lbl">Buy Now, Pay Later</div></div>
+      </div>
+      <p class="pl-note">Your invoice will be emailed when your order ships. If you'd like your order to be processed faster, select the <a>pay now option.</a></p>
+      <button class="btn-place" onclick="goTo('s-confirm')">🔒 Place Order</button>
+      <p class="terms">By placing your order, you are accepting our <a>Terms of Sale.</a></p>
+    </div>
+
+    <div class="sat">Satisfaction Guarantee</div>
+
+    <div class="os-section">
+      <div class="os-hd">Order Summary</div>
+      <div class="os-row"><span class="os-lbl">Subtotal</span><span class="os-val">€219.00</span></div>
+      <div class="os-row"><span class="os-lbl">Shipping</span><span class="os-val">€27.98</span></div>
+      <div class="os-row"><span class="os-lbl">VAT</span><span class="os-val">€51.88</span></div>
+      <div class="os-div"></div>
+      <div class="os-total"><span>Total</span><span>€298.86</span></div>
+      <div class="os-saved">You saved €30.00!</div>
+      <div class="promo-row">
+        <input class="promo-in" type="text" placeholder="Promo Code">
+        <button class="promo-btn">Apply</button>
+      </div>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+
+  <footer class="foot">
+    <div class="foot-help">
+      <strong>Need Help?</strong>
+      <p class="foot-ph">📞 1800 99 51 86</p>
+      <div class="foot-links"><a>Contact Us</a><a>Frequently Asked Questions</a></div>
+    </div>
+    <div class="foot-pay">
+      <strong>Accepted Forms of Payment</strong>
+      <p class="foot-pay-opts">Bill Me Later</p>
+      <div class="pay-chips">
+        <span class="pchip pchip-visa">VISA</span>
+        <span class="pchip pchip-mc"><span class="mc1"></span><span class="mc2"></span></span>
+        <span class="pchip pchip-jcb">JCB</span>
+        <span class="pchip pchip-pp">P</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ██████ SCREEN 6: CONFIRMATION ██████ -->
+<div class="screen" id="s-confirm">
+  <!-- Full nav header -->
+  <div class="hdr-full">
+    <div class="hdr-icon-group" style="position:relative;z-index:1">
+      <span class="hdr-ico">☰</span>
+      <span class="hdr-ico" style="font-size:16px">🔍</span>
+    </div>
+    <div class="hdr-full-center">
+      <div class="hdr-words">NATIONAL PEN<span class="hdr-sub">at pens.com</span></div>
+      <svg width="18" height="18" viewBox="0 0 20 20"><rect x="6.5" y="0" width="7" height="10" fill="#00B5C8"/><rect x="6.5" y="10" width="7" height="10" fill="#FFC200"/><rect x="0" y="6.5" width="10" height="7" fill="#1B5BAD"/><rect x="10" y="6.5" width="10" height="7" fill="#D81F26"/></svg>
+    </div>
+    <div class="hdr-icon-group" style="position:relative;z-index:1">
+      <span class="hdr-ico" style="font-size:16px">📞</span>
+      <span class="hdr-ico">🛒</span>
+    </div>
+  </div>
+
+  <div class="conf-body">
+    <!-- Big logo -->
+    <div class="conf-logo">
+      <svg width="52" height="52" viewBox="0 0 52 52">
+        <rect x="17" y="0" width="18" height="26" fill="#00B5C8"/>
+        <rect x="17" y="26" width="18" height="26" fill="#FFC200"/>
+        <rect x="0" y="17" width="26" height="18" fill="#1B5BAD"/>
+        <rect x="26" y="17" width="26" height="18" fill="#D81F26"/>
+      </svg>
+    </div>
+
+    <h1 class="conf-thanks">Thank you for your order!</h1>
+    <p class="conf-ordnum">Order #123244543</p>
+    <p class="conf-note">You'll receive a confirmation email at</p>
+    <p class="conf-email">annie.park@pens.com</p>
+
+    <hr class="conf-div">
+
+    <!-- Create Account -->
+    <div class="conf-acct-hd">Want to create an account?</div>
+    <div class="benefits">
+      <div class="benefit">
+        <div class="benefit-ico">✔</div>
+        <div class="benefit-lbl">Checkout Faster</div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-ico">🕐</div>
+        <div class="benefit-lbl">Access Order History</div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-ico">🛍</div>
+        <div class="benefit-lbl">Get Savings &amp; Samples</div>
+      </div>
+    </div>
+
+    <div class="flds" style="text-align:left;margin-bottom:12px">
+      <div class="fl"><input type="email" placeholder="Email Address" value="annie.park@pens.com" id="ca-em"></div>
+      <div class="fl"><input type="password" placeholder="Password" id="ca-pw"></div>
+    </div>
+
+    <p class="mkt-lbl" style="text-align:left">Would you like to receive National Pen offers by email and benefit from great savings and free samples?</p>
+    <div class="rg" id="rg-ca">
+      <div class="ro" onclick="pickRadio(this,'rg-ca')"><div class="rc"></div><span class="ro-txt">Yes, please send me these offers</span></div>
+      <div class="ro on" onclick="pickRadio(this,'rg-ca')"><div class="rc"></div><span class="ro-txt">No, please do not send me these offers</span></div>
+    </div>
+
+    <button class="btn-create">Create Account</button>
+
+    <hr class="conf-div">
+
+    <!-- Order Summary -->
+    <div class="conf-os os-section">
+      <div class="os-hd">Order Summary</div>
+      <div class="os-row"><span class="os-lbl">Subtotal</span><span class="os-val">€219.00</span></div>
+      <div class="os-row"><span class="os-lbl">Shipping</span><span class="os-val">€27.98</span></div>
+      <div class="os-row"><span class="os-lbl">VAT</span><span class="os-val">€51.88</span></div>
+      <div class="os-div"></div>
+      <div class="os-total"><span>Total</span><span>€298.86</span></div>
+      <div class="os-saved">You saved €30.00!</div>
+    </div>
+    <div style="height:36px"></div>
+  </div>
+</div>
+
+</div><!-- /phone-frame -->
+
+<div class="restart-wrap">
+  <button class="restart-btn" onclick="restart()">↺ Restart Prototype</button>
+</div>
+
+<script>
+// ─── NAVIGATION ───
+function goTo(id){
+  const cur = document.querySelector('.screen.active');
+  const nxt = document.getElementById(id);
+  if(!nxt||cur===nxt) return;
+  document.querySelectorAll('.screen.exit').forEach(s=>s.classList.remove('exit'));
+  cur.classList.remove('active');
+  cur.classList.add('exit');
+  nxt.classList.add('active');
+  nxt.scrollTop = 0;
+  setTimeout(()=>cur.classList.remove('exit'), 280);
+}
+
+function editShFrom(returnTo){
+  document.getElementById('es-continue').onclick = ()=>goTo(returnTo);
+  goTo('s-edit-sh');
+}
+
+function restart(){
+  document.querySelectorAll('.screen').forEach(s=>{
+    s.classList.remove('active','exit');
+    s.scrollTop=0;
+  });
+  document.getElementById('s-signin').classList.add('active');
+}
+
+// ─── PRODUCT SUMMARY ───
+function togglePS(bar){
+  const body = bar.nextElementSibling;
+  const chev = bar.querySelector('.ps-chevron');
+  const open = body.classList.toggle('open');
+  chev.classList.toggle('up', open);
+}
+
+// ─── VAT TOOLTIP ───
+function toggleVAT(e, id){
+  e.stopPropagation();
+  const tip = document.getElementById(id);
+  tip.classList.toggle('show');
+}
+document.addEventListener('click', ()=>{
+  document.querySelectorAll('.vat-tip.show').forEach(t=>t.classList.remove('show'));
+});
+
+// ─── DELIVERY DATE ───
+function pickDel(el){
+  el.closest('.del-section').querySelectorAll('.del-opt').forEach(o=>o.classList.remove('on'));
+  el.classList.add('on');
+}
+
+// ─── RADIO GROUPS ───
+function pickRadio(el, groupId){
+  document.querySelectorAll('#'+groupId+' .ro').forEach(o=>o.classList.remove('on'));
+  el.classList.add('on');
+}
+
+// ─── PAYMENT TABS ───
+function switchTab(tab){
+  document.getElementById('ptab-now').classList.toggle('on', tab==='now');
+  document.getElementById('ptab-later').classList.toggle('on', tab==='later');
+  document.getElementById('panel-now').style.display  = tab==='now'   ? 'block' : 'none';
+  document.getElementById('panel-later').style.display = tab==='later' ? 'block' : 'none';
+}
+
+// ─── PAYMENT OPTION ───
+function pickPayOpt(opt){
+  const card = document.getElementById('po-card');
+  const pp   = document.getElementById('po-pp');
+  const bill = document.getElementById('bill-sect');
+  if(opt==='card'){
+    card.classList.add('on'); pp.classList.remove('on');
+    bill.style.display='block';
+  } else {
+    pp.classList.add('on'); card.classList.remove('on');
+    bill.style.display='none';
+  }
+}
+
+// ─── BILLING TOGGLE ───
+function toggleBilling(){
+  const cb   = document.getElementById('cb-same');
+  const form = document.getElementById('bill-form');
+  const was  = cb.classList.contains('checked');
+  cb.classList.toggle('checked',!was);
+  form.classList.toggle('open', was);
+}
+</script>
+</body>
+</html>
