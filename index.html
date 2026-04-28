@@ -441,6 +441,16 @@
     overflow: hidden;
   }
   .about .eyebrow{ color: rgba(239,236,224,.55); }
+  .about h2{
+    font-family: var(--serif);
+    font-weight: var(--display-weight);
+    font-size: clamp(52px, 6.2vw, 88px);
+    line-height: 1;
+    letter-spacing: var(--display-tracking);
+    color: var(--cream);
+    margin: 16px 0 0;
+  }
+  .about h2 .ital{ font-style: var(--display-italic-style); color: rgba(239,236,224,.55); }
   .about .wrap{
     display: grid;
     grid-template-columns: minmax(0, 720px) 1fr;
@@ -783,7 +793,7 @@
   /* ============== ALL WORK ============== */
   .allwork{
     background: var(--cream-2);
-    padding: 40px 40px 0;
+    padding: 40px 40px 80px;
   }
   .allwork .wrap{ max-width: 1200px; margin: 0 auto; }
   .allwork .label{
@@ -804,7 +814,6 @@
     transition: padding .2s, background .2s;
   }
   .role:last-child{ border-bottom: 1px solid var(--line-soft); }
-  .role:hover{ padding-left: 10px; background: rgba(255,255,255,.18); }
   .role .yr{
     font-family: var(--mono);
     font-size: 11px;
@@ -880,7 +889,7 @@
     text-align: right;
   }
 
-  /* ============== PORTFOLIO VALUE ============== */
+  /* ============== ANNIE UNABRIDGED ============== */
   .values{
     background: var(--cream);
     padding: var(--section-pad) 40px var(--section-pad);
@@ -897,35 +906,45 @@
     font-size: clamp(54px, 6.6vw, 92px);
     line-height: 1.02;
     letter-spacing: var(--display-tracking);
-    margin: 18px 0 60px;
+    margin: 18px 0 16px;
   }
   .values h2 .ital{ font-style: var(--display-italic-style); color: var(--forest); }
-  .value-block{
-    padding: 22px 0 22px 22px;
-    border-left: 2px solid var(--forest);
-    margin-bottom: 10px;
-  }
-  .value-block h4{
+  .values .opening-line{
     font-family: var(--mono);
     font-size: 11px;
     letter-spacing: .22em;
     text-transform: uppercase;
-    color: var(--forest);
-    margin: 0 0 10px;
-  }
-  .value-block p{
-    font-size: 14.5px;
-    line-height: 1.7;
-    color: var(--ink-2);
-    margin: 0;
-    max-width: 520px;
-  }
-  .values .footline{
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 15px;
     color: var(--ink-mute);
-    margin-top: 38px;
+    margin: 0 0 56px;
+  }
+  .personal-stats{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .personal-stat{
+    padding: 28px 24px 28px 0;
+    border-top: 1px solid var(--line-soft);
+  }
+  .personal-stat:nth-child(even){
+    padding-left: 24px;
+    padding-right: 0;
+    border-left: 1px solid var(--line-soft);
+  }
+  .personal-stat .stat-value{
+    font-family: var(--serif);
+    font-weight: var(--display-weight);
+    font-size: clamp(28px, 3.2vw, 44px);
+    color: var(--rust);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .personal-stat .stat-label{
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .16em;
+    color: var(--ink-mute);
+    line-height: 1.5;
   }
 
   /* ============== SKILLS ============== */
@@ -1296,7 +1315,7 @@
       <h1><span class="ital">Annie S. Koo</span></h1>
       <div class="name-line">Complexity into clarity. <span class="ital">Clarity into growth.</span></div>
       <p class="lede">
-        Architecting simplicity within complex systems for 8+ years. Proven impact—from 17.47% growth at Pens.com to 185% reach increases via AI-native strategy. One year in Taipei sharpened a lens no single market can teach.
+        Architecting simplicity within complex systems for 8+ years. Proven impact — from 17.47% growth at Pens.com to 185% reach increases via AI-native strategy. One year in Taipei sharpened a lens no single market can teach.
       </p>
       <div class="cta-row">
         <a href="#work" class="btn primary">View Work</a>
@@ -1325,6 +1344,7 @@
   <div class="wrap">
     <div>
       <div class="eyebrow">About Me</div>
+      <h2>This is how<br><span class="ital">I work.</span></h2>
       <div class="principles">
         <div class="principle">
           <div class="num">01</div>
@@ -1483,19 +1503,20 @@
       <div class="eyebrow">Selected Work</div>
       <h2>The proof is in <span class="ital">the numbers.</span></h2>
 
-      <article class="case" onclick="window.location='pens-com.html'" style="cursor:pointer;">
+      <article class="case" onclick="window.location='acts2-journey.html'" style="cursor:pointer;">
         <div class="case-num">01</div>
         <div class="head">
-          <div class="tags"><span class="chip">eCommerce</span><span class="chip">Global Advertising Service</span></div>
+          <div class="tags"><span class="chip">Growth Strategy</span><span class="chip">AI Tools</span></div>
+          <div class="date">2025–26</div>
         </div>
-        <div class="company">Pens.com</div>
-        <h3>Senior Product Designer</h3>
-        <p class="blurb">A neglected microsite, real traffic, and a mobile checkout bleeding conversions at every step. I scoped the first test to the fastest-provable win, earned stakeholder buy-in from the results, then expanded into a full research-backed redesign.</p>
+        <div class="company">Acts2 Network — Journey, Taipei</div>
+        <h3>Design &amp; Growth Strategist</h3>
+        <p class="blurb">A digital presence with no strategy behind it — reactive posts, reach without intent. I diagnosed the funnel, built a bilingual content system, and embedded AI tooling to give a 10-person volunteer team agency-level output capacity.</p>
         <div class="hr"></div>
         <div class="metric-row">
           <div>
-            <div class="metric">+17.47%</div>
-            <div class="metric-label">Increase in transaction rate growth</div>
+            <div class="metric">+185%</div>
+            <div class="metric-label">Increase in reach</div>
           </div>
           <div class="arrow">↗</div>
         </div>
@@ -1505,6 +1526,7 @@
         <div class="case-num">02</div>
         <div class="head">
           <div class="tags"><span class="chip">Growth Design</span><span class="chip">SaaS</span></div>
+          <div class="date">2025</div>
         </div>
         <div class="company">LawnStarter</div>
         <h3>Senior Product Designer, Growth Squad</h3>
@@ -1519,19 +1541,20 @@
         </div>
       </article>
 
-      <article class="case" onclick="window.location='acts2-journey.html'" style="cursor:pointer;">
+      <article class="case" onclick="window.location='pens-com.html'" style="cursor:pointer;">
         <div class="case-num">03</div>
         <div class="head">
-          <div class="tags"><span class="chip">Growth Strategy</span><span class="chip">AI Tools</span></div>
+          <div class="tags"><span class="chip">eCommerce</span><span class="chip">Global Advertising Service</span></div>
+          <div class="date">2020–25</div>
         </div>
-        <div class="company">Acts2 Network — Journey, Taipei</div>
-        <h3>Design &amp; Growth Strategist</h3>
-        <p class="blurb">A digital presence with no strategy behind it — reactive posts, reach without intent. I diagnosed the funnel, built a bilingual content system, and embedded AI tooling to give a 10-person volunteer team agency-level output capacity.</p>
+        <div class="company">Pens.com</div>
+        <h3>Senior Product Designer</h3>
+        <p class="blurb">I flagged the checkout problems on day one. No one was asking for a fix. Instead of waiting for permission, I found the fastest path to proof — a microsite experiment, run lean, validated in 12 days. The results earned the stakeholder buy-in the main site redesign needed.</p>
         <div class="hr"></div>
         <div class="metric-row">
           <div>
-            <div class="metric">+185%</div>
-            <div class="metric-label">Increase in reach</div>
+            <div class="metric">+17.47%</div>
+            <div class="metric-label">Transaction rate lift — 12 days, no prior stakeholder buy-in</div>
           </div>
           <div class="arrow">↗</div>
         </div>
@@ -1549,27 +1572,13 @@
 <!-- ============ EXPERIENCE ============ -->
 <section class="allwork">
   <div class="wrap">
-    <div class="label">Experience</div>
+    <div class="label">Additional Experience</div>
     <div class="role">
-      <div class="yr">2025–26</div>
-      <div class="title">Acts2 Network — Journey, Taipei <span class="ital">— Design &amp; Growth Strategist</span></div>
-      <div class="tags2">Growth Strategy · AI Tools</div>
-      <div class="metric2">+185%</div>
-      <div class="arrow2">↗</div>
-    </div>
-    <div class="role">
-      <div class="yr">2025</div>
-      <div class="title">LawnStarter <span class="ital">— Senior Product Designer, Growth Squad</span></div>
-      <div class="tags2">Growth Design · SaaS</div>
-      <div class="metric2">44+</div>
-      <div class="arrow2">↗</div>
-    </div>
-    <div class="role">
-      <div class="yr">2020–25</div>
-      <div class="title">Pens.com <span class="ital">— Senior Product Designer</span></div>
-      <div class="tags2">eCommerce · SaaS</div>
-      <div class="metric2">+17.47%</div>
-      <div class="arrow2">↗</div>
+      <div class="yr">2018–21</div>
+      <div class="title">Acts2 Network San Diego <span class="ital">— Visual Design Lead</span></div>
+      <div class="tags2">Visual Design · Brand Identity</div>
+      <div class="metric2"></div>
+      <div class="arrow2"></div>
     </div>
     <div class="role">
       <div class="yr">2017–18</div>
@@ -1578,74 +1587,26 @@
       <div class="metric2"></div>
       <div class="arrow2"></div>
     </div>
-  </div>
-</section>
-
-<!-- ============ EARLIER WORK ============ -->
-<section class="archive">
-  <div class="wrap">
-    <div class="label">Earlier Work</div>
-    <div class="row">
-      <div class="yr">2018–21</div>
-      <div class="name">Acts2 Network San Diego — Visual Design Lead</div>
-      <div class="domain">Visual Design · Brand Identity</div>
-    </div>
-     <div class="row">
+    <div class="role">
       <div class="yr">2017</div>
-      <div class="name">Galilee Pool Service — Freelance Web Designer</div>
-      <div class="domain">Freelance · Web Design</div>
+      <div class="title">Galilee Pool Service <span class="ital">— Freelance Web Designer</span></div>
+      <div class="tags2">Freelance · Web Design</div>
+      <div class="metric2"></div>
+      <div class="arrow2"></div>
     </div>
-    <div class="row">
-      <div class="yr">2015–16</div>
-      <div class="name">UCSD Academic Integrity Office — Web Designer</div>
-      <div class="domain">UX Research · Web Design</div>
-    </div>
-    <div class="row">
+    <div class="role">
       <div class="yr">2016</div>
-      <div class="name">Lytx, Inc. — UI/UX Design Intern</div>
-      <div class="domain">SaaS · Fleet Safety</div>
+      <div class="title">Lytx, Inc. <span class="ital">— UI/UX Design Intern</span></div>
+      <div class="tags2">SaaS · Fleet Safety</div>
+      <div class="metric2"></div>
+      <div class="arrow2"></div>
     </div>
-  </div>
-</section>
-
-<!-- ============ VALUES ============ -->
-<section class="values">
-  <div class="wrap">
-    <div>
-      <div class="eyebrow">Why Work With Me</div>
-      <h2>I bring more than a <span class="ital">portfolio.</span></h2>
-
-      <div class="value-block">
-        <h4>Empathy as a Practice</h4>
-        <p>Being a mom changed how I design. Patience, seeing things from a completely different perspective, building for people whose context is nothing like yours — that's not a soft skill. It's the whole job.</p>
-      </div>
-      <div class="value-block">
-        <h4>I Invest in People</h4>
-        <p>I've mentored 7-person design teams and 10+ students 1:1. I care about the people I work with growing. That's not separate from the work — it's part of what makes good work happen.</p>
-      </div>
-      <div class="value-block">
-        <h4>Curiosity Over Comfort</h4>
-        <p>New domain? I'll ramp fast. New tool? I'm already testing it. I went from zero to full strategic handoff at LawnStarter in 90 days. Currently building with Claude Code.</p>
-      </div>
-      <div class="value-block">
-        <h4>I Show Up Off the Clock</h4>
-        <p>Good coffee, long strolls, exploring new neighborhoods — I notice how spaces make people feel, how things are organized, what draws attention. That observational habit doesn't turn off at 5pm.</p>
-      </div>
-
-      <div class="value-block">
-        <h4>Design That Works</h4>
-        <p>Pretty is easy. Effective is the job. Every decision I make traces back to a behavior, a metric, or a user need — not just a feeling.</p>
-      </div>
-
-      <div class="footline">Outside the work: good coffee, long walks, and college mentoring.</div>
-    </div>
-
-    <div>
-      <div style="display:flex; align-items:center; justify-content:center; height:100%;">
-        <div class="values-portrait-wrap">
-          <img src="assets/annie-front.png" alt="Annie smiling with latte" class="portrait-img values-portrait-img" style="width: 401px">
-        </div>
-      </div>
+    <div class="role">
+      <div class="yr">2015–16</div>
+      <div class="title">UCSD Academic Integrity Office <span class="ital">— Web Designer</span></div>
+      <div class="tags2">UX Research · Web Design</div>
+      <div class="metric2"></div>
+      <div class="arrow2"></div>
     </div>
   </div>
 </section>
@@ -1681,7 +1642,6 @@
         <h5>AI &amp; Tools</h5>
         <div class="chip-row">
           <span class="chip">Figma</span>
-          <span class="chip">Canva</span>
           <span class="chip">Claude Code</span>
           <span class="chip">Perplexity AI</span>
           <span class="chip">Jira</span>
@@ -1709,6 +1669,52 @@
   </div>
 </section>
 
+<!-- ============ ANNIE UNABRIDGED ============ -->
+<section class="values">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">More About Me</div>
+      <h2>Annie,<br><span class="ital">Unabridged.</span></h2>
+      <div class="opening-line">The data points that don't fit a resume</div>
+
+      <div class="personal-stats">
+        <div class="personal-stat">
+          <div class="stat-value">3 → 50</div>
+          <div class="stat-label">people fed on any given weekend — hosting is just UX with food</div>
+        </div>
+        <div class="personal-stat">
+          <div class="stat-value">∞</div>
+          <div class="stat-label">Harry Potter relists on Audible — every time, from the beginning</div>
+        </div>
+        <div class="personal-stat">
+          <div class="stat-value">~0</div>
+          <div class="stat-label">quiet nights alone — church family runs too deep for that</div>
+        </div>
+        <div class="personal-stat">
+          <div class="stat-value">8am Mon</div>
+          <div class="stat-label">coffee in hand, asking everyone about their weekend before anything else</div>
+        </div>
+        <div class="personal-stat">
+          <div class="stat-value">10+</div>
+          <div class="stat-label">students mentored 1:1 — a mom and a coach, in and out of work</div>
+        </div>
+        <div class="personal-stat">
+          <div class="stat-value">Pickleball</div>
+          <div class="stat-label">current obsession — results vary</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div style="display:flex; align-items:center; justify-content:center; height:100%;">
+        <div class="values-portrait-wrap">
+          <img src="assets/annie-front.png" alt="Annie smiling with latte" class="portrait-img values-portrait-img" style="width: 401px">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ CTA ============ -->
 <section class="cta" id="contact">
   <div class="wrap">
@@ -1716,7 +1722,7 @@
       <span class="eyebrow">Relocating to Irvine, CA — July 2026</span>
       <h2>Open to senior<br>product design roles.<br><span class="ital">Let's work together.</span></h2>
     </div>
-    <a href="mailto:hello@annieskoo.com" class="big-btn">Get in Touch</a>
+    <a href="mailto:annie.sh.park@gmail.com" class="big-btn">Get in Touch</a>
   </div>
 </section>
 
