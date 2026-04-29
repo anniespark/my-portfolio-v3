@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pens.com — Checkout Optimization — Annie S. Koo</title>
+<title>Pens.com · Checkout Optimization · Annie S. Koo</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -307,6 +307,7 @@
     text-align:center; margin-top:2px;
   }
   .roadmap-row .tag.quick{ color:var(--forest); border-color:var(--forest); }
+  .roadmap-row .tag.mvp{ color:var(--ink-mute); border-color:var(--ink-mute); }
   .roadmap-row .tag.rock{ color:var(--rust); border-color:var(--rust); }
   .roadmap-row .item{ font-size:14px; line-height:1.6; color:var(--ink-2); }
 
@@ -492,6 +493,10 @@
   .ph-wrap{
     margin-top:40px;
   }
+  a.img-link{ display:block; }
+  a.img-link img{ transition:opacity .18s; }
+  a.img-link:hover img{ opacity:.82; }
+
   .ph-caption{
     font-family:var(--mono); font-size:10px; letter-spacing:.18em;
     text-transform:uppercase; color:var(--ink-faint); margin-top:12px;
@@ -534,6 +539,22 @@
     border:1px dashed var(--line);
     overflow:hidden;
   }
+
+  /* ── FOREST BLOCK ── */
+  .block.forest{
+    background: var(--forest);
+    --ink: #efece0;
+    --ink-2: rgba(239,236,224,.85);
+    --ink-mute: rgba(239,236,224,.55);
+    --ink-faint: rgba(239,236,224,.4);
+    --line-soft: rgba(255,255,255,.12);
+    --line: rgba(255,255,255,.18);
+    --cream-2: rgba(255,255,255,.06);
+    --cream-3: rgba(255,255,255,.04);
+  }
+  .block.forest h2 em{ color: rgba(239,236,224,.6); }
+  .block.forest .ph-caption{ color: rgba(239,236,224,.4); }
+  .block.forest .ph-caption::before{ border-color: rgba(239,236,224,.3); }
 
   /* ── NEXT PROJECT ── */
   .next-project{
@@ -608,7 +629,7 @@
       <span class="chip">Conversion &amp; Growth</span>
     </div>
     <h1>Earned the room.<br>Then <em>redesigned the system.</em></h1>
-    <div class="role-line">Senior Product Designer — Microsite Checkout · Main Site Checkout</div>
+    <div class="role-line">Senior Product Designer · Microsite Checkout · Main Site Checkout</div>
 
     <p style="font-size:16px; line-height:1.75; color:var(--ink-2); margin:28px 0 0; max-width:680px;">Two connected projects at National Pen. The microsite was the fastest path to proof. The main checkout was the system that needed rethinking.</p>
 
@@ -638,28 +659,13 @@
 ════════════════════ -->
 <div class="block">
   <div class="container">
-    <div class="section-label">02 — The Challenge</div>
-    <h2>Design without a <em>seat at the table.</em></h2>
+    <div class="section-label">02 · The Challenge</div>
+    <h2>Two checkout systems. <em>One had no owner.</em></h2>
 
-    <p>Pens.com has two ways to get customers through checkout:</p>
-    <ul style="margin:0 0 32px; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px;">
-      <li style="font-size:16px; line-height:1.78; color:var(--ink-2); display:flex; gap:12px;"><span style="color:var(--rust); flex-shrink:0;">—</span><span><strong style="color:var(--ink);">Main site</strong> — a full multi-step flow across their whole product catalog</span></li>
-      <li style="font-size:16px; line-height:1.78; color:var(--ink-2); display:flex; gap:12px;"><span style="color:var(--rust); flex-shrink:0;">—</span><span><strong style="color:var(--ink);">Microsite</strong> — a stripped-down single-product experience built for email and direct mail campaigns</span></li>
-    </ul>
+    <p>Pens.com runs two separate checkout experiences: the <strong style="color:var(--ink);">main site</strong>, a full multi-step flow across their entire product catalog, and the <strong style="color:var(--ink);">microsite</strong>, a stripped-down single-product experience built for email and direct mail campaigns.</p>
 
-    <p style="margin-bottom:12px;">Same needs across both:</p>
-    <ul style="margin:0 0 40px; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px;">
-      <li style="font-size:16px; line-height:1.78; color:var(--ink-2); display:flex; gap:12px;"><span style="color:var(--rust); flex-shrink:0;">—</span><span><strong style="color:var(--ink);">User need:</strong> an easy way to buy the product(s) they want</span></li>
-      <li style="font-size:16px; line-height:1.78; color:var(--ink-2); display:flex; gap:12px;"><span style="color:var(--rust); flex-shrink:0;">—</span><span><strong style="color:var(--ink);">Business need:</strong> reduce the abandonment that's costing the business</span></li>
-    </ul>
-
-    <p>The main site checkout was the original project. But a Braintree infrastructure migration and a company-wide brand update pushed it out. While that resolved itself, I took initiative to shift focus to the microsite — for these reasons:</p>
-    <ul style="margin:0 0 40px; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px;">
-      <li style="font-size:16px; line-height:1.78; color:var(--ink-2); display:flex; gap:12px;"><span style="color:var(--rust); flex-shrink:0;">—</span><span>It was pulling in solid revenue, yet there was no dedicated designer or dev team</span></li>
-      <li style="font-size:16px; line-height:1.78; color:var(--ink-2); display:flex; gap:12px;"><span style="color:var(--rust); flex-shrink:0;">—</span><span>The lessons from this checkout could most likely be applied to the main site</span></li>
-      <li style="font-size:16px; line-height:1.78; color:var(--ink-2); display:flex; gap:12px;"><span style="color:var(--rust); flex-shrink:0;">—</span><span>Eventually, it would make sense for both checkouts to share the same technology</span></li>
-      <li style="font-size:16px; line-height:1.78; color:var(--ink-2); display:flex; gap:12px;"><span style="color:var(--rust); flex-shrink:0;">—</span><span>With a simpler platform and a real audience, we could experiment and get actual data points</span></li>
-    </ul>
+    <p>The main site checkout was the original project. A Braintree infrastructure migration and a company-wide brand update put it on hold.</p>
+    <p>Rather than wait, I made a strategic call. The microsite was generating real revenue with no designer in the room — and it was a live experiment platform with a real audience. Anything I learned there could be applied directly to the main site. I proposed owning it.</p>
 
   </div>
 </div>
@@ -669,15 +675,35 @@
 ════════════════════ -->
 <div class="block">
   <div class="container">
-    <div class="section-label">03 — Discovery</div>
+    <div class="section-label">03 · Discovery</div>
     <h2>Research first. <em>Then the fix.</em></h2>
 
-    <p>Before proposing anything, I needed to understand the full picture. I ran a structured audit across three methods — heuristic evaluation, Hotjar behavioral data, and unmoderated user testing — then brought the findings back to the Experimentation Team and stakeholders across two workshops. Everything pointed the same direction: mobile was clearly the bigger problem.</p>
+    <p style="margin-bottom:8px;">Before proposing anything, I needed to understand the full picture. I ran a structured audit across three methods:</p>
+
+    <div style="display:flex; gap:0; align-items:stretch; margin:20px 0 24px; border:1px solid var(--line-soft);">
+      <div style="flex:1; padding:14px 20px; text-align:center;">
+        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--rust); margin-bottom:4px;">01</div>
+        <div style="font-size:14px; color:var(--ink-2); line-height:1.4;">Heuristic Evaluation</div>
+      </div>
+      <div style="width:1px; background:var(--line-soft);"></div>
+      <div style="flex:1; padding:14px 20px; text-align:center;">
+        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--rust); margin-bottom:4px;">02</div>
+        <div style="font-size:14px; color:var(--ink-2); line-height:1.4;">Hotjar Behavioral Data</div>
+      </div>
+      <div style="width:1px; background:var(--line-soft);"></div>
+      <div style="flex:1; padding:14px 20px; text-align:center;">
+        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--rust); margin-bottom:4px;">03</div>
+        <div style="font-size:14px; color:var(--ink-2); line-height:1.4;">Unmoderated User Testing</div>
+      </div>
+    </div>
+
+    <p style="margin-bottom:6px;">Then I brought the findings back across two working sessions — with the Experimentation Team, a web developer, and key stakeholders — to align on what was technically feasible and what would move the business needle first.</p>
+    <p>The picture that emerged: mobile had compounding, systemic friction across 8 steps. Desktop had one structural flaw that was costing conversions every day.</p>
 
     <!-- Desktop row -->
     <div style="margin-top:48px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;">
       <div style="min-width:0;">
-        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:16px;">Desktop — One structural flaw</div>
+        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:16px;">Desktop · One structural flaw</div>
         <div style="position:relative; border:1px solid var(--line-soft); overflow:hidden;">
           <img src="assets/Pens_Microsite_Before_Full_Page.png" alt="Full page scroll — CTA buried far below fold" style="width:100%; display:block; filter:grayscale(10%) sepia(8%) saturate(90%);">
           <div style="position:absolute; top:32%; left:0; right:0; z-index:2;">
@@ -688,17 +714,18 @@
         </div>
       </div>
       <div style="min-width:0; padding-top:36px;">
-        <p style="margin-bottom:20px;">Less friction than mobile overall — one fixable problem: the CTA was buried below the fold. Users who'd finished customization had to scroll past pre-filled information to find the action they came for.</p>
-        <div style="background:var(--cream-2); border-left:3px solid var(--ink-faint); padding:16px 20px;">
-          <p style="margin:0; font-size:14px; line-height:1.65; color:var(--ink-mute); font-style:italic;">Go ahead — scroll the screenshot on the left. The "Add to Cart" button is down there somewhere. That's exactly what users had to do too.</p>
-        </div>
+        <p style="margin-bottom:16px;">The CTA was buried below the fold. Users who'd finished customization had to scroll past pre-filled information to find the action they came for.</p>
+        <p style="font-size:14px; color:var(--ink-mute); font-style:italic; display:flex; align-items:flex-start; gap:8px; margin:0;">
+          <span style="font-style:normal; font-size:18px; line-height:1.2; flex-shrink:0;">↓</span>
+          <span>Scroll down the screenshot and eventually you'll see the CTA. That's exactly what users had to do too.</span>
+        </p>
       </div>
     </div>
 
     <!-- Mobile row -->
     <div style="margin-top:56px;">
-      <div style="font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:16px;">Mobile — Compounding friction</div>
-      <p style="margin-bottom:20px;">A multi-step flow that was never adapted for mobile. 10 screens to buy a single product — including two unexpected modal interruptions mid-flow. Hotjar showed high abandonment throughout, and user testing surfaced exactly where and why.</p>
+      <div style="font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:16px;">Mobile · Compounding friction</div>
+      <p style="margin-bottom:20px;"><span style="color:var(--rust); font-weight:600;">8 steps to purchase.</span> Hotjar showed high abandonment throughout, and user testing gave clues to where and why.</p>
       <div style="overflow-x:auto; -webkit-overflow-scrolling:touch; scroll-snap-type:x mandatory;">
         <div style="display:flex; gap:8px; padding-bottom:10px; width:max-content;">
           <div style="flex-shrink:0; scroll-snap-align:start; text-align:center; width:90px;">
@@ -752,29 +779,70 @@
     </div>
 
     <!-- Heuristic violations -->
-    <p style="margin-top:48px;">Five heuristic violations confirmed across the checkout — by Hotjar, unmoderated user testing, and direct observation:</p>
+    <p style="margin-top:48px;">Applying NNg's 10 usability heuristics, here were the most critical violations, the ones quietly leaking revenue:</p>
 
-    <div class="heuristic-list">
-      <div class="heuristic-item">
-        <div class="h-label">Visibility of System Status</div>
-        <div class="h-finding">No progress indicator across 8 checkout pages. Users couldn't tell how far they were or how much was left — <strong>process fatigue set in fast.</strong> Abandonment wasn't random; it was a predictable response to being lost in a flow with no end in sight.</div>
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line-soft); margin-top:32px;">
+
+      <div style="background:var(--cream); padding:28px;">
+        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--rust); margin-bottom:6px;">Visibility of System Status</div>
+        <div style="font-family:var(--serif); font-size:18px; font-weight:500; font-style:italic; color:var(--ink); margin-bottom:16px;">The "Blind" Funnel</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div>
+            <div style="font-family:var(--mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:4px;">Violation</div>
+            <div style="font-size:13.5px; line-height:1.6; color:var(--ink-2);">Users were forced through a grueling 8-step checkout with no indication of how many steps remained.</div>
+          </div>
+          <div>
+            <div style="font-family:var(--mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:4px;">Impact</div>
+            <div style="font-size:13.5px; line-height:1.6; color:var(--ink-2);">Process fatigue drove abandonment. Not frustration with the product, but with an invisible finish line.</div>
+          </div>
+        </div>
       </div>
-      <div class="heuristic-item">
-        <div class="h-label">Error Prevention</div>
-        <div class="h-finding">On mobile, "Place Order" was positioned where users accidentally triggered it mid-scroll. Poor tap-target placement combined with <strong>no confirmation state on upsell actions</strong> meant users were making unintended purchases — or abandoning out of frustration when they realized it.</div>
+
+      <div style="background:var(--cream); padding:28px;">
+        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--rust); margin-bottom:6px;">Error Prevention</div>
+        <div style="font-family:var(--serif); font-size:18px; font-weight:500; font-style:italic; color:var(--ink); margin-bottom:16px;">The "Accidental" Order</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div>
+            <div style="font-family:var(--mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:4px;">Violation</div>
+            <div style="font-size:13.5px; line-height:1.6; color:var(--ink-2);">On mobile, "Place Order" tap-targets were positioned where users accidentally triggered them while scrolling.</div>
+          </div>
+          <div>
+            <div style="font-family:var(--mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:4px;">Impact</div>
+            <div style="font-size:13.5px; line-height:1.6; color:var(--ink-2);">Users unintentionally selected "Pay Later" and submitted orders without a final confirmation state, causing accidental conversions and frustrated exits.</div>
+          </div>
+        </div>
       </div>
-      <div class="heuristic-item">
-        <div class="h-label">Flexibility &amp; Efficiency of Use</div>
-        <div class="h-finding">The CTA was buried below the fold — especially on desktop. Worse, <strong>the flow forced users through every single step even when fields were already filled.</strong> No shortcuts, no quick wins. Users who'd done this before were penalized just as much as first-timers.</div>
+
+      <div style="background:var(--cream-2); padding:28px;">
+        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--rust); margin-bottom:6px;">Flexibility &amp; Efficiency of Use</div>
+        <div style="font-family:var(--serif); font-size:18px; font-weight:500; font-style:italic; color:var(--ink); margin-bottom:16px;">The "Buried" CTA</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div>
+            <div style="font-family:var(--mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:4px;">Violation</div>
+            <div style="font-size:13.5px; line-height:1.6; color:var(--ink-2);">The primary CTA was buried far below the fold on desktop, invisible until users scrolled past all pre-filled content.</div>
+          </div>
+          <div>
+            <div style="font-family:var(--mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:4px;">Impact</div>
+            <div style="font-size:13.5px; line-height:1.6; color:var(--ink-2);">No quick wins for returning users. Even with imprint and shipping pre-populated, the flow forced redundant interactions before reaching purchase.</div>
+          </div>
+        </div>
       </div>
-      <div class="heuristic-item">
-        <div class="h-label">Aesthetic &amp; Minimalist Design</div>
-        <div class="h-finding">Pages were long and cluttered with redundant information — high cognitive load at every step. One qualitative finding stood out: <strong>product names like "Big Sur" actively confused users.</strong> They ignored names entirely and relied on photos to judge quality instead.</div>
+
+      <div style="background:var(--cream-2); padding:28px;">
+        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--rust); margin-bottom:6px;">Aesthetic &amp; Minimalist Design</div>
+        <div style="font-family:var(--serif); font-size:18px; font-weight:500; font-style:italic; color:var(--ink); margin-bottom:16px;">Systemic Friction</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div>
+            <div style="font-family:var(--mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:4px;">Violation</div>
+            <div style="font-size:13.5px; line-height:1.6; color:var(--ink-2);">Every step was crowded with navigation, promotional banners, and repeated product details that had no role in completing the purchase.</div>
+          </div>
+          <div>
+            <div style="font-family:var(--mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:4px;">Impact</div>
+            <div style="font-size:13.5px; line-height:1.6; color:var(--ink-2);">Each extra element forced a micro-decision: is this relevant to me right now? Users already under friction load abandoned rather than parse content that shouldn't have been there.</div>
+          </div>
+        </div>
       </div>
-      <div class="heuristic-item">
-        <div class="h-label">Recognition Rather Than Recall</div>
-        <div class="h-finding">Users had to mentally carry selections from previous steps because the system never surfaced them. No persistent summary, no collapsed state. <strong>Users were recalling, not recognizing</strong> — and that cognitive cost compounded across 8 pages.</div>
-      </div>
+
     </div>
 
     <!-- Research artifacts — documentation -->
@@ -784,19 +852,19 @@
       </div>
       <div style="display:flex; gap:2px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; background:var(--line-soft);">
         <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
-          <img src="assets/Pens_Microsite_Mobile_Audit_web.jpg" alt="Heuristic audit annotations" style="height:320px; width:auto; display:block;">
-          <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint); padding:8px 12px;">Heuristic audit — annotated</div>
+          <img src="assets/Pens_Microsite_Mobile_Audit_web.jpg" alt="Heuristic audit annotations" style="height:600px; width:auto; display:block;">
+          <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint); padding:8px 12px;">Heuristic audit · annotated</div>
         </div>
         <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
-          <img src="assets/Pens_Microsite_mobile_findings_2.png" alt="User testing findings — sheet 2" style="height:320px; width:auto; display:block;">
-          <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint); padding:8px 12px;">User testing findings — sheet 1</div>
+          <img src="assets/Pens_Microsite_mobile_findings_2.png" alt="User testing findings — sheet 2" style="height:600px; width:auto; display:block;">
+          <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint); padding:8px 12px;">User testing findings · sheet 1</div>
         </div>
         <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
-          <img src="assets/Pens_Microsite_mobile_findings_1.png" alt="User testing findings — sheet 1" style="height:320px; width:auto; display:block;">
-          <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint); padding:8px 12px;">User testing findings — sheet 2</div>
+          <img src="assets/Pens_Microsite_mobile_findings_1.png" alt="User testing findings — sheet 1" style="height:600px; width:auto; display:block;">
+          <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint); padding:8px 12px;">User testing findings · sheet 2</div>
         </div>
         <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
-          <img src="assets/Pens_Microsite_Mobile_Testing_Results.jpg" alt="Testing results summary" style="height:320px; width:auto; display:block;">
+          <img src="assets/Pens_Microsite_Mobile_Testing_Results.jpg" alt="Testing results summary" style="height:600px; width:auto; display:block;">
           <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint); padding:8px 12px;">Testing results summary</div>
         </div>
       </div>
@@ -810,25 +878,40 @@
 ════════════════════ -->
 <div class="block">
   <div class="container">
-    <div class="section-label">04 — Project 1: Microsite</div>
+    <div class="section-label">04 · Project 1: Microsite</div>
     <h2>Desktop first. <em>Prove it. Then go mobile.</em></h2>
 
-    <p>
-      Desktop had one fixable problem — the CTA was buried. Mobile had several, layered on top of each other. I scoped the first test to what I could prove the fastest — a sticky CTA bar on the desktop product landing page, deployable entirely through AB Tasty with zero engineering involvement. Tech and PM signed off in one meeting.
-    </p>
-    <p>
-      The hypothesis was tight — if the primary conversion action is always visible, late-funnel abandonment drops. Twelve days later, it was confirmed.
-    </p>
+    <p>Desktop had a glaring issue: the CTA was buried. I scoped the fastest fix: a sticky CTA bar via an A/B testing tool. No engineering required. Just me and two colleagues from the Experimentation Team.</p>
+    <p>Hypothesis: keep the CTA always visible, conversion goes up. Twelve days later, confirmed. Strong enough that we rolled it out globally as a permanent change.</p>
+
+    <div style="display:flex; justify-content:center; margin-top:28px; margin-bottom:32px;">
+      <div style="width:min(660px, 100%);">
+        <!-- Laptop lid -->
+        <div style="background:#1e1c18; border-radius:10px 10px 0 0; padding:12px 12px 8px; box-shadow:0 0 0 1px #2e2b26, 0 24px 56px -8px rgba(0,0,0,.5);">
+          <div style="text-align:center; margin-bottom:8px; line-height:0;">
+            <span style="display:inline-block; width:5px; height:5px; background:#2e2b26; border-radius:50%;"></span>
+          </div>
+          <div style="border-radius:3px; overflow:hidden; line-height:0;">
+            <img src="assets/Microsite_Sticky_ABTest.png" alt="Sticky CTA bar on microsite" style="width:100%; display:block;">
+          </div>
+        </div>
+        <!-- Hinge -->
+        <div style="background:#232120; height:14px; border-radius:0 0 2px 2px; margin:0 -1px; border:1px solid #2e2b26; border-top:0;"></div>
+        <!-- Base -->
+        <div style="background:#1c1a16; height:6px; border-radius:0 0 6px 6px; margin:0 -28px; box-shadow:0 6px 18px rgba(0,0,0,.35);"></div>
+        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-faint); margin-top:20px; text-align:center;">Sticky CTA bar · persistent across scroll · AB Tasty · zero engineering</div>
+      </div>
+    </div>
 
     <div class="stat-callout" style="margin-top:32px;">
       <div class="stat-val">+$15k</div>
-      <div class="stat-desc">Revenue recovered in the first 12 days — zero engineering involvement, no prior stakeholder buy-in</div>
+      <div class="stat-desc">Revenue recovered in the first 12 days · zero engineering involvement, no prior stakeholder buy-in</div>
     </div>
 
     <figure style="margin:40px 0 0; display:flex; gap:40px; align-items:flex-start;">
       <div style="flex:0 0 auto; width:min(520px, 100%);">
         <img src="assets/Pens_Microsite_AB_Analytics.png" alt="AB Tasty dashboard — +13.24% conversion rate lift at 94% confidence" style="width:100%; display:block; border:1px solid var(--line-soft);">
-        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-faint); margin-top:10px;">AB Tasty Dashboard — test results snapshot</div>
+        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-faint); margin-top:10px;">AB Tasty Dashboard · test results snapshot</div>
       </div>
       <div style="flex:1; min-width:0; padding-top:4px;">
         <div style="font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:16px;">Key Results</div>
@@ -849,154 +932,84 @@
       </div>
     </figure>
 
-    <p style="margin-top:40px;">
-      The desktop result did the political work. But more than unlocking the next test — it shifted how the team thought about design on the microsite entirely. I synthesized all research into a prioritized backlog: a set of A/B tests and critical fixes organized by impact and effort, with mobile at the top.
-    </p>
+    <div style="background:var(--cream-2); border-left:3px solid var(--rust); padding:16px 20px; margin:40px 0 0;">
+      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--rust); margin-bottom:8px;">Key insight · audience segmentation</div>
+      <p style="margin:0; font-size:14px; line-height:1.65; color:var(--ink-2);">Returning customers and new prospects receive fundamentally different experiences via unique URL parameters, with prospect conversion in North America tracking lower. This shaped how every test was scoped: variant impact measured against the right audience segment, not aggregate traffic.</p>
+    </div>
 
-    <!-- 4-step arc — process summary -->
-    <div class="arc" style="grid-template-columns:repeat(4,1fr); margin-top:40px;">
-      <div class="arc-step" style="position:relative;">
-        <div class="arc-num">Step 01</div>
-        <h4>Research &amp; Audit</h4>
-        <p>Heuristic evaluation, Hotjar data, unmoderated mobile testing. Full picture before any proposal.</p>
-        <div class="arc-connector"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 5h6M5 2l3 3-3 3"/></svg></div>
-      </div>
-      <div class="arc-step" style="position:relative;">
-        <div class="arc-num">Step 02</div>
-        <h4>Stakeholder Buy-in</h4>
-        <p>Workshops with Experimentation Team and Stakeholders. Findings translated into revenue language.</p>
-        <div class="arc-connector"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 5h6M5 2l3 3-3 3"/></svg></div>
-      </div>
-      <div class="arc-step" style="position:relative;">
-        <div class="arc-num">Step 03</div>
-        <h4>Desktop CTA Win</h4>
-        <p>Sticky CTA bar — AB Tasty only, zero engineering. +13.24% CR lift in 12 days. Pipeline unlocked.</p>
-        <div class="arc-connector"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 5h6M5 2l3 3-3 3"/></svg></div>
-      </div>
-      <div class="arc-step highlight">
-        <div class="arc-num">Step 04</div>
-        <h4>Mobile Pipeline Built</h4>
-        <p>User testing findings + growing mobile traffic — ideation of A/B tests organized by impact/effort. Backlog scoped, prioritized, and handed off.</p>
+    <p style="margin-top:40px;">The desktop result did more than bring in numbers. It bought credibility. The Experimentation Team and stakeholders were now actively pulling me in — not the other way around.</p>
+    <p>I used that to drive a second round of ideation with the Experimentation Team and a web developer: mapping the next wave of A/B tests and critical mobile fixes, then aligning on priority in a working session. The output was a structured backlog, organized by impact and effort, handed off and ready to run.</p>
+    <!-- Structured backlog -->
+    <div style="margin-top:36px;">
+      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.26em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:0;"> Experimentation Team Handoff (5 Examples)</div>
+      <div class="roadmap">
+        <div class="roadmap-row">
+          <div class="tag quick">Quick Win</div>
+          <div class="item">Change Default QTY · pre-set 250 units · removes a decision step with near-zero engineering cost</div>
+        </div>
+        <div class="roadmap-row">
+          <div class="tag mvp">Big Bet</div>
+          <div class="item">Price transparency at review · surface total cost before the final step · copy + layout only · high trust signal for first-time buyers</div>
+        </div>
+        <div class="roadmap-row">
+          <div class="tag mvp">Big Bet</div>
+          <div class="item">Inline Upsell · replace unexpected modal with inline placement · eliminates the biggest drop-off point in the mobile flow</div>
+        </div>
+        <div class="roadmap-row">
+          <div class="tag mvp">Big Bet</div>
+          <div class="item">Combine to 3 pages · collapse 8-step flow into 3 · reduce fatigue before users reach payment · mobile only</div>
+        </div>
+        <div class="roadmap-row">
+          <div class="tag rock">Ideal</div>
+          <div class="item">One Page Experience · full checkout re-architecture → single continuous scroll · requires dev sprint · mobile only</div>
+        </div>
       </div>
     </div>
 
     <!-- Backlog section -->
     <div style="margin-top:40px; margin-bottom:48px;">
-      <div class="ph-badge">What the win unlocked — ideation backlog &amp; prioritization</div>
-
-      <!-- Impact/Effort Matrix — real artifact -->
-      <div style="margin-top:16px;">
-        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:8px;">Impact / Effort Matrix</div>
-        <img src="assets/Pens_Microsite_Impact_Effort_Matrix.jpg" alt="Impact/effort matrix — prioritized A/B test backlog for microsite" style="width:100%; display:block; border:1px solid var(--line-soft);">
-        <div class="ph-caption">Impact/effort matrix — prioritized A/B test backlog for microsite · Annie Park</div>
+      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px; display:flex; justify-content:space-between;">
+        <span>Ideation backlog · impact/effort matrix + lo-fi concepts</span><span>scroll to explore →</span>
       </div>
+      <div style="display:flex; gap:2px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; background:var(--line-soft);">
 
-      <!-- Recommendation screens grid -->
-      <div style="margin-top:32px;">
-        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px;">Lo-fi concepts — the pipeline handed off</div>
-        <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; background:var(--line-soft); border:1px solid var(--line-soft);">
-          <div style="background:var(--cream-2); overflow:hidden;">
-            <img src="assets/Pens_Microsite_OnePage.jpg" alt="One page experience concept" style="width:100%; display:block;">
-            <div style="font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); padding:8px 10px;">One Page Experience</div>
-          </div>
-          <div style="background:var(--cream-2); overflow:hidden;">
-            <img src="assets/Pens_Microsite_Decrease_Pages.jpg" alt="Decrease pages concept" style="width:100%; display:block;">
-            <div style="font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); padding:8px 10px;">Decrease Pages</div>
-          </div>
-          <div style="background:var(--cream-2); overflow:hidden;">
-            <img src="assets/Pens_Microsite_Inline_Upsell.jpg" alt="Inline upsell concept" style="width:100%; display:block;">
-            <div style="font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); padding:8px 10px;">Inline Upsell</div>
-          </div>
-          <div style="background:var(--cream-2); overflow:hidden;">
-            <img src="assets/Pens_Microsite_Price_Transparency.jpg" alt="Price transparency concept" style="width:100%; display:block;">
-            <div style="font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); padding:8px 10px;">Price Transparency</div>
-          </div>
-          <div style="background:var(--cream-2); overflow:hidden;">
-            <img src="assets/Pens_Microsite_Reduce_Vertical_Space.jpg" alt="Reduce vertical space concept" style="width:100%; display:block;">
-            <div style="font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); padding:8px 10px;">Reduce Vertical Space</div>
-          </div>
-          <div style="background:var(--cream-2); overflow:hidden;">
-            <img src="assets/Pens_Microsite_Default_QTY_Change.jpg" alt="Default quantity change concept" style="width:100%; display:block;">
-            <div style="font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); padding:8px 10px;">Default QTY Change</div>
-          </div>
-          <div style="background:var(--cream-2); overflow:hidden;">
-            <img src="assets/Pens_Microsite_Edit_Placement.jpg" alt="Edit placement concept" style="width:100%; display:block;">
-            <div style="font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); padding:8px 10px;">Edit Placement</div>
-          </div>
-          <div style="background:var(--cream-2); overflow:hidden;">
-            <img src="assets/Pens_Microsite_Progress.jpg" alt="Progress indicator concept" style="width:100%; display:block;">
-            <div style="font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); padding:8px 10px;">Progress Indicator</div>
-          </div>
+        <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
+          <a href="assets/Pens_Microsite_Impact_Effort_Matrix.jpg" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Impact_Effort_Matrix.jpg" alt="Impact/effort matrix" style="height:600px; width:auto; display:block;"></a>
+          <div style="font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); padding:8px 12px;">Impact / Effort Matrix</div>
         </div>
-        <div class="ph-caption">Lo-fi concepts — prioritized backlog handed off before departure · microsite pipeline</div>
-      </div>
+        <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
+          <a href="assets/Pens_Microsite_OnePage.jpg" target="_blank" class="img-link"><img src="assets/Pens_Microsite_OnePage.jpg" alt="One page experience" style="height:600px; width:auto; display:block;"></a>
+          <div style="font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); padding:8px 12px;">One Page Experience</div>
+        </div>
+        <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
+          <a href="assets/Pens_Microsite_Decrease_Pages.jpg" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Decrease_Pages.jpg" alt="Decrease pages" style="height:600px; width:auto; display:block;"></a>
+          <div style="font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); padding:8px 12px;">Decrease Pages</div>
+        </div>
+        <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
+          <a href="assets/Pens_Microsite_Inline_Upsell.jpg" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Inline_Upsell.jpg" alt="Inline upsell" style="height:600px; width:auto; display:block;"></a>
+          <div style="font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); padding:8px 12px;">Inline Upsell</div>
+        </div>
+        <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
+          <a href="assets/Pens_Microsite_Price_Transparency.jpg" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Price_Transparency.jpg" alt="Price transparency" style="height:600px; width:auto; display:block;"></a>
+          <div style="font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); padding:8px 12px;">Price Transparency</div>
+        </div>
+        <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
+          <a href="assets/Pens_Microsite_Reduce_Vertical_Space.jpg" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Reduce_Vertical_Space.jpg" alt="Reduce vertical space" style="height:600px; width:auto; display:block;"></a>
+          <div style="font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); padding:8px 12px;">Reduce Vertical Space</div>
+        </div>
+        <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
+          <a href="assets/Pens_Microsite_Default_QTY_Change.jpg" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Default_QTY_Change.jpg" alt="Default quantity change" style="height:600px; width:auto; display:block;"></a>
+          <div style="font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); padding:8px 12px;">Default QTY Change</div>
+        </div>
+        <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
+          <a href="assets/Pens_Microsite_Edit_Placement.jpg" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Edit_Placement.jpg" alt="Edit placement" style="height:600px; width:auto; display:block;"></a>
+          <div style="font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); padding:8px 12px;">Edit Placement</div>
+        </div>
+        <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
+          <a href="assets/Pens_Microsite_Progress.jpg" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Progress.jpg" alt="Progress indicator" style="height:600px; width:auto; display:block;"></a>
+          <div style="font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); padding:8px 12px;">Progress Indicator</div>
+        </div>
 
-      <!-- Post-its + Lo-fi row -->
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); margin-top:24px;">
-        <div style="background:var(--cream-2); padding:0; position:relative; min-height:200px; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:10px;">
-          <!-- Faux post-it cluster -->
-          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; padding:24px; width:100%;">
-            <div style="background:#f5e97a; padding:10px 10px 20px; font-family:var(--mono); font-size:9px; line-height:1.5; color:#3a2a10; transform:rotate(-1.5deg); box-shadow:2px 3px 8px rgba(0,0,0,.12);">Fix "Edit" sends back 5 steps</div>
-            <div style="background:#f5e97a; padding:10px 10px 20px; font-family:var(--mono); font-size:9px; line-height:1.5; color:#3a2a10; transform:rotate(1.2deg); box-shadow:2px 3px 8px rgba(0,0,0,.12);">Surface fees before order review</div>
-            <div style="background:#a8d8a8; padding:10px 10px 20px; font-family:var(--mono); font-size:9px; line-height:1.5; color:#1a3a1a; transform:rotate(-0.8deg); box-shadow:2px 3px 8px rgba(0,0,0,.12);">Imprint preview above fold</div>
-            <div style="background:#a8d8a8; padding:10px 10px 20px; font-family:var(--mono); font-size:9px; line-height:1.5; color:#1a3a1a; transform:rotate(0.6deg); box-shadow:2px 3px 8px rgba(0,0,0,.12);">Color flexibility in step 2</div>
-            <div style="background:#f5e97a; padding:10px 10px 20px; font-family:var(--mono); font-size:9px; line-height:1.5; color:#3a2a10; transform:rotate(-1deg); box-shadow:2px 3px 8px rgba(0,0,0,.12);">Upsell modal confirmation</div>
-            <div style="background:#aad4f5; padding:10px 10px 20px; font-family:var(--mono); font-size:9px; line-height:1.5; color:#1a2a3a; transform:rotate(1.5deg); box-shadow:2px 3px 8px rgba(0,0,0,.12);">Reduce steps on mobile flow</div>
-          </div>
-          <div style="position:absolute; bottom:10px; right:10px; font-family:var(--mono); font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--rust); border:1px dashed var(--rust); padding:4px 8px;">Drop ideation board screenshot here</div>
-        </div>
-        <div style="background:var(--cream-3); min-height:200px; display:flex; align-items:center; justify-content:center; position:relative; padding:24px;">
-          <!-- Faux lo-fi wireframe sketches -->
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; width:100%;">
-            <div style="background:white; border:1px solid var(--line-soft); padding:8px; aspect-ratio:9/16;">
-              <svg width="100%" height="100%" viewBox="0 0 80 140" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2" y="2" width="76" height="10" rx="1" fill="#e7e3d4"/>
-                <rect x="2" y="16" width="76" height="40" rx="1" fill="#f4f1e4"/>
-                <rect x="2" y="60" width="50" height="6" rx="1" fill="#dcd7c4"/>
-                <rect x="2" y="70" width="60" height="6" rx="1" fill="#dcd7c4"/>
-                <rect x="2" y="80" width="45" height="6" rx="1" fill="#dcd7c4"/>
-                <rect x="2" y="120" width="76" height="16" rx="2" fill="#3a4a21" opacity="0.4"/>
-                <text x="40" y="131" font-family="monospace" font-size="6" fill="#3a4a21" text-anchor="middle">CTA</text>
-              </svg>
-            </div>
-            <div style="background:white; border:1px solid var(--line-soft); padding:8px; aspect-ratio:9/16;">
-              <svg width="100%" height="100%" viewBox="0 0 80 140" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2" y="2" width="76" height="10" rx="1" fill="#e7e3d4"/>
-                <rect x="2" y="16" width="76" height="24" rx="1" fill="#f4f1e4"/>
-                <rect x="2" y="44" width="76" height="6" rx="1" fill="#dcd7c4"/>
-                <rect x="2" y="54" width="76" height="14" rx="1" fill="#e7e3d4"/>
-                <rect x="2" y="72" width="76" height="14" rx="1" fill="#e7e3d4"/>
-                <rect x="2" y="90" width="76" height="14" rx="1" fill="#e7e3d4"/>
-                <rect x="2" y="120" width="76" height="16" rx="2" fill="#c0643a" opacity="0.5"/>
-                <text x="40" y="131" font-family="monospace" font-size="6" fill="white" text-anchor="middle">CHECKOUT</text>
-              </svg>
-            </div>
-          </div>
-          <div style="position:absolute; bottom:10px; right:10px; font-family:var(--mono); font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--rust); border:1px dashed var(--rust); padding:4px 8px;">Drop lo-fi mockups here</div>
-        </div>
-      </div>
-      <div class="ph-caption">Ideation artifacts — post-its, sketches, lo-fi mockups · organized into prioritized test candidates</div>
-    </div>
-
-    <!-- Before/after sticky CTA test -->
-    <div class="ph-wrap">
-      <div class="ph-badge">Actual microsite — before vs. after sticky CTA test</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); margin-top:12px;">
-        <div style="background:var(--cream-3); overflow:hidden;">
-          <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); padding:10px 14px; border-bottom:1px solid var(--line-soft);">Before — CTA buried below fold</div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line-soft);">
-            <div style="overflow:hidden;"><img src="assets/Pens_Microsite_Before_Above_Fold.png" alt="Microsite before — above fold" style="width:100%; display:block; filter:grayscale(10%) sepia(8%) saturate(90%);"></div>
-            <div style="overflow:hidden;"><img src="assets/Pens_Microsite_Before_Full_Page.png" alt="Microsite before — full page length" style="width:100%; display:block; filter:grayscale(10%) sepia(8%) saturate(90%);"></div>
-          </div>
-          <div style="font-family:var(--mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); padding:8px 14px;">Above fold (left) · Full page scroll length (right) — CTA only reachable at bottom</div>
-        </div>
-        <div style="background:var(--cream-3); overflow:hidden;">
-          <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--forest); padding:10px 14px; border-bottom:1px solid var(--line-soft);">After — Sticky CTA always visible</div>
-          <div style="aspect-ratio:16/7; background:var(--cream-3); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; padding:24px;">
-            <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--rust); border:1px dashed var(--rust); padding:6px 12px;">Drop file: Pens_Microsite_Sticky_ABTest.png</div>
-            <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint);">Sticky CTA bar — persistent across scroll · AB Tasty · zero engineering</div>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -1006,62 +1019,60 @@
 <!-- ═══════════════════
      05 · MAIN CHECKOUT
 ════════════════════ -->
-<div class="block">
+<div class="block forest">
   <div class="container">
-    <div class="section-label">05 — Project 2: Main Site Checkout</div>
+    <div class="section-label">05 · Project 2: Main Site Checkout</div>
     <h2>Set the vision. <em>Ship smart.</em></h2>
 
-    <p style="color:var(--ink-mute); font-size:14px; font-family:var(--mono); letter-spacing:.04em; margin-bottom:32px;">The mobile backlog was scoped, prioritized, and handed off — the work was ready. What shifted was focus: the microsite win had opened the door I'd been waiting for.</p>
-
     <p>
-      Before any concepts, I mapped the checkout system as it actually existed. What I found wasn't one checkout — it was four distinct payment portals, each with its own decision tree, UI, and abandonment risk. It wasn't a UX problem sitting on top of a working system. The system itself had fractured into four separate things.
+      Before any concepts, I mapped the checkout system as it actually existed. What I found wasn't one checkout. It was four distinct payment portals, each with its own decision tree, UI, and abandonment risk. It wasn't a UX problem sitting on top of a working system. The system itself had fractured into four separate things.
     </p>
 
     <!-- Checkout flow complexity -->
     <div style="margin-top:32px; margin-bottom:32px;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px;">Current state — mobile guest checkout flow</div>
+      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px;">Current state · mobile guest checkout flow</div>
       <img src="assets/Pens_Checkout_Flow_Mobile.jpg" alt="Mobile guest checkout flow — current state" style="width:100%; display:block; border:1px solid var(--line-soft);">
-      <div class="ph-caption">Mobile guest checkout — 4 pages, multiple branching paths · mapped before any redesign work began</div>
+      <div class="ph-caption">Mobile guest checkout · 4 pages, multiple branching paths · mapped before any redesign work began</div>
     </div>
 
     <div style="margin-bottom:32px;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px;">Additional payment portals — 3 separate systems</div>
+      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px;">Additional payment portals · 3 separate systems</div>
       <img src="assets/Pens_Checkout_Flow_Other_Portals.jpg" alt="Order Payment Portal, Invoice Payment Portal, One Flow Payment Portal flows" style="width:100%; display:block; border:1px solid var(--line-soft);">
-      <div class="ph-caption">Order Payment · Invoice Payment · One Flow Payment — each with its own decision tree and abandonment risk</div>
+      <div class="ph-caption">Order Payment · Invoice Payment · One Flow Payment · each with its own decision tree and abandonment risk</div>
     </div>
 
     <!-- Baymard research placeholder -->
     <div style="margin-bottom:32px;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px;">Research foundation — Baymard Institute audit</div>
+      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px;">Research foundation · Baymard Institute audit</div>
       <div style="aspect-ratio:16/7; background:var(--cream-3); border:1px solid var(--line-soft); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;">
         <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--rust); border:1px dashed var(--rust); padding:6px 12px;">Drop file: Pens_Checkout_Research.png</div>
-        <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint);">Baymard checkout principles — annotated against current Pens.com checkout state</div>
+        <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint);">Baymard checkout principles · annotated against current Pens.com checkout state</div>
       </div>
-      <div class="ph-caption">Baymard Institute benchmark — industry best practice mapped against current checkout · Annie Park annotation</div>
+      <div class="ph-caption">Baymard Institute benchmark · industry best practice mapped against current checkout · Annie Park annotation</div>
     </div>
 
     <p>
-      I started with the full vision: a one-page experience that compressed the multi-step checkout into a single continuous scroll. The concepts cleared design and PM review.
+      I started with the full vision: a one-page experience that compressed the multi-step checkout into a single continuous scroll. I presented it to the design team and PMs to cast a shared picture of what "better" could look like — before constraining it to what was currently buildable.
     </p>
 
     <!-- Vision — one-page prototype -->
     <div style="margin-top:32px;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:16px;">The vision — one-page experience · click to interact</div>
+      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:16px;">The vision · one-page experience · click to interact</div>
       <div style="display:grid; grid-template-columns:260px 1fr; gap:24px; align-items:start;">
         <div>
-          <iframe src="https://embed.figma.com/proto/PxozSg0SfJSI8cS7QUtBpC/Annie-s-Design-Portfolio?node-id=35-5320&viewport=-212%2C126%2C0.1&scaling=scale-down&page-id=35%3A20&embed-host=share&hide-ui=1" style="width:100%; aspect-ratio:9/19; border:0; display:block; background:var(--cream);" allowfullscreen></iframe>
+          <div style="position:relative; overflow:hidden; aspect-ratio:9/19;">
+            <iframe src="https://embed.figma.com/proto/PxozSg0SfJSI8cS7QUtBpC/Annie-s-Design-Portfolio?node-id=35-5320&p=f&viewport=-158%2C283%2C0.13&scaling=scale-down&content-scaling=fixed&starting-point-node-id=35%3A5320&page-id=35%3A20&embed-host=share&hide-ui=1" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) scale(1.5); width:100%; height:100%; border:0;" allowfullscreen></iframe>
+          </div>
           <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; text-align:center;">Mobile</div>
         </div>
         <div>
-          <iframe src="https://embed.figma.com/proto/PxozSg0SfJSI8cS7QUtBpC/Annie-s-Design-Portfolio?node-id=35-8389&p=f&viewport=40%2C193%2C0.08&scaling=scale-down&page-id=35%3A7763&embed-host=share&hide-ui=1" style="width:100%; aspect-ratio:16/9; height:auto; display:block; border:0; background:var(--cream);" allowfullscreen></iframe>
+          <div style="position:relative; overflow:hidden; aspect-ratio:16/9;">
+            <iframe src="https://embed.figma.com/proto/PxozSg0SfJSI8cS7QUtBpC/Annie-s-Design-Portfolio?node-id=35-8377&p=f&viewport=471%2C-263%2C0.19&scaling=scale-down&content-scaling=fixed&starting-point-node-id=35%3A8377&page-id=35%3A7763&embed-host=share&hide-ui=1" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) scale(1.45); width:100%; height:100%; border:0;" allowfullscreen></iframe>
+          </div>
           <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; text-align:center;">Desktop</div>
         </div>
       </div>
-      <div class="ph-caption">North star concept — 8 pages → single continuous scroll · price surfaced upfront · persistent order summary · alignment tool for PM + engineering</div>
-    </div>
-
-    <div class="pull-quote">
-      <p>"Starting with the ideal is how you align a team on what 'better' actually means."</p>
+      <div class="ph-caption">North star concept · 8 pages → single continuous scroll · price surfaced upfront · persistent order summary · alignment tool for PM + engineering</div>
     </div>
 
     <p>
@@ -1070,123 +1081,28 @@
 
     <!-- PM scoping doc -->
     <div style="margin-top:32px; margin-bottom:8px;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px;">PM scoping document — what's changeable given constraints</div>
+      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px;">PM scoping document · what's changeable given constraints</div>
       <img src="assets/Pens_Checkout_MVP.jpg" alt="PM scoping document — annotated checkout screens showing feasible changes" style="width:100%; display:block; border:1px solid var(--line-soft);">
-      <div class="ph-caption">Annotated for PM — translating design decisions into engineering feasibility within Braintree migration + marketing priority shift</div>
+      <div class="ph-caption">Annotated for PM · translating design decisions into engineering feasibility within Braintree migration + marketing priority shift</div>
     </div>
 
     <p style="margin-top:32px;">
-      The MVP applied the same core principles as the vision — price transparency, reduced friction, clearer progress — without restructuring the page architecture. The handoff covered both mobile and desktop.
+      The MVP applied the same core principles as the vision (price transparency, reduced friction, clearer progress) without restructuring the page architecture. The handoff covered both mobile and desktop.
     </p>
 
     <!-- MVP handoff screens -->
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); margin-top:24px;">
       <div style="background:var(--cream-2); overflow:hidden;">
-        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); padding:10px 14px; border-bottom:1px solid var(--line-soft);">MVP — Mobile handoff</div>
+        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); padding:10px 14px; border-bottom:1px solid var(--line-soft);">MVP · Mobile handoff</div>
         <img src="assets/Pens_MVP_Mobile_Handoff.jpg" alt="MVP mobile handoff — Review & Payment screen" style="width:100%; display:block;">
       </div>
       <div style="background:var(--cream-2); overflow:hidden;">
-        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); padding:10px 14px; border-bottom:1px solid var(--line-soft);">MVP — Desktop handoff</div>
+        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); padding:10px 14px; border-bottom:1px solid var(--line-soft);">MVP · Desktop handoff</div>
         <img src="assets/Pens_MVP_Desktop_Handoff.jpg" alt="MVP desktop handoff — Review & Payment screen" style="width:100%; display:block;">
       </div>
     </div>
-    <div class="ph-caption">MVP handoff — 3-step progress, price transparency surfaced, payment options clarified · same principles as vision, scoped to reality</div>
+    <div class="ph-caption">MVP handoff · 3-step progress, price transparency surfaced, payment options clarified · same principles as vision, scoped to reality</div>
 
-  </div>
-</div>
-
-<!-- ═══════════════════
-     06 · LEADERSHIP
-════════════════════ -->
-<div class="block">
-  <div class="container">
-    <div class="section-label">06 — Leadership</div>
-    <h2>Proving design value <em>without permission.</em></h2>
-
-    <div class="split">
-      <div class="col">
-        <h3>Strategic Approach</h3>
-        <p>
-          On the microsite, I was the only designer in the room — partnering with PMs and SEM teams who'd been shipping without design input for years. I made sure every proposal had evidence behind it and every result pointed to what was next. That's how I stayed in the room.
-        </p>
-
-        <div style="background:var(--cream-2); border-left:3px solid var(--rust); padding:16px 20px; margin:24px 0;">
-          <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--rust); margin-bottom:8px;">Key insight — audience segmentation</div>
-          <p style="margin:0; font-size:14px; line-height:1.65; color:var(--ink-2);">Returning customers and new prospects receive fundamentally different experiences via unique URL parameters — with prospect conversion in North America tracking lower. This shaped how every test was scoped: variant impact measured against the right audience segment, not aggregate traffic.</p>
-        </div>
-
-        <p>
-          Throughout both projects, I was thinking about checkout as a system — not two isolated experiences. The microsite is a simplified single-product checkout; the main site is the full commerce flow. Different constraints, but the same user trying to get through the same process. That's the through-line that mattered.
-        </p>
-      </div>
-      <div class="col">
-        <h3>Sequenced Roadmap</h3>
-        <div class="roadmap">
-          <div class="roadmap-row">
-            <div class="tag quick">P1 — Quick</div>
-            <div class="item">Sticky CTA bar — microsite, no-dev deployment via AB Tasty</div>
-          </div>
-          <div class="roadmap-row">
-            <div class="tag quick">P1 — Quick</div>
-            <div class="item">Price transparency at review — copy + layout, rapid A/B validation</div>
-          </div>
-          <div class="roadmap-row">
-            <div class="tag quick">P2 — MVP</div>
-            <div class="item">Sticky CTA + scroll reduction on main site checkout — AB Tasty deployable</div>
-          </div>
-          <div class="roadmap-row">
-            <div class="tag quick">P2 — MVP</div>
-            <div class="item">Default quantity + imprint preview surfaced earlier</div>
-          </div>
-          <div class="roadmap-row">
-            <div class="tag rock">P2 — Ideal</div>
-            <div class="item">Full checkout re-architecture → one-page experience (requires full dev sprint)</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ═══════════════════
-     OUTCOME BANNER
-════════════════════ -->
-<div class="outcome-banner">
-  <div class="container">
-    <div class="eyebrow-light">Results — Project 1: Microsite</div>
-    <h2>Numbers that trace back<br>to <em>design decisions.</em></h2>
-    <div class="outcome-grid">
-      <div class="outcome-cell">
-        <div class="val">+13.24%</div>
-        <div class="label">Conversion rate lift</div>
-        <div class="project-tag">Microsite · 94% confidence</div>
-      </div>
-      <div class="outcome-cell">
-        <div class="val">+$15k</div>
-        <div class="label">Revenue recovered</div>
-        <div class="project-tag">Microsite · first 12 days</div>
-      </div>
-      <div class="outcome-cell">
-        <div class="val">+15.21%</div>
-        <div class="label">CTR on order review</div>
-        <div class="project-tag">Microsite · 96% confidence</div>
-      </div>
-      <div class="outcome-cell">
-        <div class="val">+8.96%</div>
-        <div class="label">CTR on POC landing page</div>
-        <div class="project-tag">Microsite · 98.55% confidence</div>
-      </div>
-      <div class="outcome-cell">
-        <div class="val">+17.47%</div>
-        <div class="label">Mobile transaction lift</div>
-        <div class="project-tag">Microsite · sticky CTA test</div>
-      </div>
-    </div>
-    <div style="border-top:1px solid rgba(255,255,255,.12); margin-top:32px; padding-top:24px; display:flex; gap:16px; align-items:baseline; flex-wrap:wrap;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:rgba(239,236,224,.4); flex-shrink:0;">Project 2 — Main Site</div>
-      <div style="font-family:var(--sans); font-size:14px; color:rgba(239,236,224,.6); line-height:1.5;">Vision complete · MVP handoff delivered to engineering · Scoped around Braintree migration + marketing priority shift</div>
-    </div>
   </div>
 </div>
 
@@ -1200,16 +1116,16 @@
 
       <!-- Tile 1: Sustainability -->
       <div class="more-tile">
-        <div class="tile-tag">Brand &amp; Trust — Jul–Sep 2024</div>
+        <div class="tile-tag">Brand &amp; Trust · Jul–Sep 2024</div>
         <h4>Sustainability Landing Page</h4>
         <div class="tile-mockup" style="aspect-ratio:unset; height:320px; background:var(--ink);">
           <iframe src="https://embed.figma.com/proto/PxozSg0SfJSI8cS7QUtBpC/Annie-s-Design-Portfolio?node-id=217-14338&viewport=403%2C40%2C0.13&scaling=scale-down&content-scaling=fixed&page-id=212%3A14049&embed-host=share&hide-ui=1" style="width:100%; height:100%; border:0; display:block;" allowfullscreen></iframe>
         </div>
         <p>
-          Led full design from kickoff through launch — UX, Content, and Creative aligned across a multi-team process. Core challenge: Hotjar showed users skim and scroll back fast. The page had to communicate brand values in a single scan, then convert.
+          Led full design from kickoff through launch, with UX, Content, and Creative aligned across a multi-team process. Core challenge: Hotjar showed users skim and scroll back fast. The page had to communicate brand values in a single scan, then convert.
         </p>
         <p>
-          Principles applied: minimal copy with strong visual anchors, accessibility-compliant color contrast, and a CTA that drove to "products made with purpose" — not just information, but a conversion surface.
+          Principles applied: minimal copy with strong visual anchors, accessibility-compliant color contrast, and a CTA that drove to "products made with purpose." Not just information, but a conversion surface.
         </p>
         <div class="ptags">
           <span class="ptag">Hotjar Research</span>
@@ -1221,7 +1137,7 @@
 
       <!-- Tile 2: Naming Study -->
       <div class="more-tile">
-        <div class="tile-tag">Research &amp; Strategy — Oct 2024</div>
+        <div class="tile-tag">Research &amp; Strategy · Oct 2024</div>
         <h4>Product Naming User Study</h4>
 
         <div class="stat-callout">
@@ -1236,7 +1152,7 @@
 
         <div class="finding-block">
           <div class="finding-label">Recommendation</div>
-          <p>Rename SKUs using material language — Soft-Touch, Stainless Steel, Recycled — that maps directly to how users already search and decide.</p>
+          <p>Rename SKUs using material language: Soft-Touch, Stainless Steel, Recycled. Terms that map directly to how users already search and decide.</p>
         </div>
 
         <div class="ptags">
@@ -1257,7 +1173,7 @@
 <div class="next-project">
   <div>
     <div class="label">Next Project</div>
-    <h3>LawnStarter — Simplifying SaaS Complexity</h3>
+    <h3>LawnStarter · Simplifying SaaS Complexity</h3>
   </div>
   <a href="lawnstarter.html" class="arrow-btn">
     View Case Study
