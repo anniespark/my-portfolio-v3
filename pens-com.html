@@ -453,6 +453,8 @@
     height: auto;
     border:0;
   }
+  .phone-bezel .screen::-webkit-scrollbar{ display:none; }
+  .laptop-screen::-webkit-scrollbar{ display:none; }
   .phone-bezel .home-bar{
     width:80px; height:4px;
     background:rgba(255,255,255,.25);
@@ -553,6 +555,12 @@
     --cream-3: rgba(255,255,255,.04);
   }
   .block.forest h2 em{ color: rgba(239,236,224,.6); }
+  .block.forest .scroll-btn{
+    background: #efece0;
+    color: var(--forest);
+  }
+  .block.forest .scroll-btn:hover{ background: #fff; }
+  .block.forest .scroll-btn:disabled{ opacity:.2; }
   .block.forest .ph-caption{ color: rgba(239,236,224,.4); }
   .block.forest .ph-caption::before{ border-color: rgba(239,236,224,.3); }
 
@@ -576,6 +584,19 @@
     gap:10px; transition:background .2s, color .2s;
   }
   .arrow-btn:hover{ background:var(--forest); color:var(--cream); }
+
+  /* ── SCROLL STRIP NAV ── */
+  .scroll-strip{ position:relative; }
+  .scroll-nav{ display:flex; gap:3px; align-items:center; }
+  .scroll-btn{
+    background:var(--ink); color:var(--cream);
+    border:none; width:26px; height:26px;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; padding:0; flex-shrink:0;
+    opacity:.7; transition:opacity .18s, background .18s;
+  }
+  .scroll-btn:hover{ opacity:1; }
+  .scroll-btn:disabled{ opacity:.2; cursor:default; }
 
   /* ── RESPONSIVE ── */
   @media(max-width:900px){
@@ -846,25 +867,29 @@
     </div>
 
     <!-- Research artifacts — documentation -->
-    <div style="margin-top:48px;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px; display:flex; justify-content:space-between;">
-        <span>Research artifacts</span><span>scroll to explore →</span>
+    <div class="scroll-strip" style="margin-top:48px;">
+      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
+        <span>Research artifacts</span>
+        <div class="scroll-nav">
+          <button class="scroll-btn scroll-prev" aria-label="Previous"><svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 2L4 7l5 5"/></svg></button>
+          <button class="scroll-btn scroll-next" aria-label="Next"><svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 2l5 5-5 5"/></svg></button>
+        </div>
       </div>
-      <div style="display:flex; gap:2px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; background:var(--line-soft);">
+      <div class="scroll-inner" style="display:flex; gap:2px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; background:var(--line-soft);">
         <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
-          <img src="assets/Pens_Microsite_Mobile_Audit_web.jpg" alt="Heuristic audit annotations" style="height:600px; width:auto; display:block;">
+          <a href="assets/Pens_Microsite_Mobile_Audit_web.jpg" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Mobile_Audit_web.jpg" alt="Heuristic audit annotations" style="height:600px; width:auto; display:block;"></a>
           <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint); padding:8px 12px;">Heuristic audit · annotated</div>
         </div>
         <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
-          <img src="assets/Pens_Microsite_mobile_findings_2.png" alt="User testing findings — sheet 2" style="height:600px; width:auto; display:block;">
+          <a href="assets/Pens_Microsite_mobile_findings_2.png" target="_blank" class="img-link"><img src="assets/Pens_Microsite_mobile_findings_2.png" alt="User testing findings — sheet 2" style="height:600px; width:auto; display:block;"></a>
           <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint); padding:8px 12px;">User testing findings · sheet 1</div>
         </div>
         <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
-          <img src="assets/Pens_Microsite_mobile_findings_1.png" alt="User testing findings — sheet 1" style="height:600px; width:auto; display:block;">
+          <a href="assets/Pens_Microsite_mobile_findings_1.png" target="_blank" class="img-link"><img src="assets/Pens_Microsite_mobile_findings_1.png" alt="User testing findings — sheet 1" style="height:600px; width:auto; display:block;"></a>
           <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint); padding:8px 12px;">User testing findings · sheet 2</div>
         </div>
         <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
-          <img src="assets/Pens_Microsite_Mobile_Testing_Results.jpg" alt="Testing results summary" style="height:600px; width:auto; display:block;">
+          <a href="assets/Pens_Microsite_Mobile_Testing_Results.jpg" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Mobile_Testing_Results.jpg" alt="Testing results summary" style="height:600px; width:auto; display:block;"></a>
           <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint); padding:8px 12px;">Testing results summary</div>
         </div>
       </div>
@@ -967,11 +992,15 @@
     </div>
 
     <!-- Backlog section -->
-    <div style="margin-top:40px; margin-bottom:48px;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px; display:flex; justify-content:space-between;">
-        <span>Ideation backlog · impact/effort matrix + lo-fi concepts</span><span>scroll to explore →</span>
+    <div class="scroll-strip" style="margin-top:40px; margin-bottom:48px;">
+      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
+        <span>Ideation backlog · impact/effort matrix + lo-fi concepts</span>
+        <div class="scroll-nav">
+          <button class="scroll-btn scroll-prev" aria-label="Previous"><svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 2L4 7l5 5"/></svg></button>
+          <button class="scroll-btn scroll-next" aria-label="Next"><svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 2l5 5-5 5"/></svg></button>
+        </div>
       </div>
-      <div style="display:flex; gap:2px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; background:var(--line-soft);">
+      <div class="scroll-inner" style="display:flex; gap:2px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; background:var(--line-soft);">
 
         <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
           <a href="assets/Pens_Microsite_Impact_Effort_Matrix.jpg" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Impact_Effort_Matrix.jpg" alt="Impact/effort matrix" style="height:600px; width:auto; display:block;"></a>
@@ -1025,38 +1054,54 @@
     <h2>Set the vision. <em>Ship smart.</em></h2>
 
     <p>
-      Before any concepts, I mapped the checkout system as it actually existed. What I found wasn't one checkout. It was four distinct payment portals, each with its own decision tree, UI, and abandonment risk. It wasn't a UX problem sitting on top of a working system. The system itself had fractured into four separate things.
+      Before any concepts, I mapped the checkout system as it actually existed. What I found wasn't one checkout. It was one main website checkout with three other payment portals, each with its own decision tree, UI, and abandonment risk. It was both a UX problem and a business problem. We were supporting in total 3 different types of checkouts: (1) main website (2) payment portals (3) microsite. 
     </p>
 
     <!-- Checkout flow complexity -->
-    <div style="margin-top:32px; margin-bottom:32px;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px;">Current state · mobile guest checkout flow</div>
-      <img src="assets/Pens_Checkout_Flow_Mobile.jpg" alt="Mobile guest checkout flow — current state" style="width:100%; display:block; border:1px solid var(--line-soft);">
-      <div class="ph-caption">Mobile guest checkout · 4 pages, multiple branching paths · mapped before any redesign work began</div>
-    </div>
-
-    <div style="margin-bottom:32px;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px;">Additional payment portals · 3 separate systems</div>
-      <img src="assets/Pens_Checkout_Flow_Other_Portals.jpg" alt="Order Payment Portal, Invoice Payment Portal, One Flow Payment Portal flows" style="width:100%; display:block; border:1px solid var(--line-soft);">
-      <div class="ph-caption">Order Payment · Invoice Payment · One Flow Payment · each with its own decision tree and abandonment risk</div>
-    </div>
-
-    <!-- Baymard research placeholder -->
-    <div style="margin-bottom:32px;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px;">Research foundation · Baymard Institute audit</div>
-      <div style="aspect-ratio:16/7; background:var(--cream-3); border:1px solid var(--line-soft); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;">
-        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--rust); border:1px dashed var(--rust); padding:6px 12px;">Drop file: Pens_Checkout_Research.png</div>
-        <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint);">Baymard checkout principles · annotated against current Pens.com checkout state</div>
+    <div class="scroll-strip" style="margin-top:32px; margin-bottom:32px;">
+      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
+        <span>Current state · checkout system mapping</span>
+        <div class="scroll-nav">
+          <button class="scroll-btn scroll-prev" aria-label="Previous"><svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 2L4 7l5 5"/></svg></button>
+          <button class="scroll-btn scroll-next" aria-label="Next"><svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 2l5 5-5 5"/></svg></button>
+        </div>
       </div>
-      <div class="ph-caption">Baymard Institute benchmark · industry best practice mapped against current checkout · Annie Park annotation</div>
+      <div class="scroll-inner" style="display:flex; gap:2px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; background:var(--line-soft);">
+        <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
+          <a href="assets/Pens_Checkout_Flow_Mobile.jpg" target="_blank" class="img-link"><img src="assets/Pens_Checkout_Flow_Mobile.jpg" alt="Mobile guest checkout flow — current state" style="height:600px; width:auto; display:block;"></a>
+          <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint); padding:8px 12px;">Current state · mobile guest checkout flow · 4 pages, multiple branching paths</div>
+        </div>
+        <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
+          <a href="assets/Pens_Checkout_Flow_Other_Portals.jpg" target="_blank" class="img-link"><img src="assets/Pens_Checkout_Flow_Other_Portals.jpg" alt="Order Payment Portal, Invoice Payment Portal, One Flow Payment Portal flows" style="height:600px; width:auto; display:block;"></a>
+          <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint); padding:8px 12px;">Additional payment portals · 3 separate systems · each with its own decision tree and abandonment risk</div>
+        </div>
+        <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
+          <a href="assets/Pens_Checkout_Research_web.jpg" target="_blank" class="img-link"><img src="assets/Pens_Checkout_Research_web.jpg" alt="Baymard checkout principles annotated against current Pens.com checkout state" style="height:600px; width:auto; display:block;"></a>
+          <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint); padding:8px 12px;">Research foundation · Baymard Institute benchmark · industry best practice mapped against current checkout</div>
+        </div>
+      </div>
     </div>
 
     <p>
-      I started with the full vision: a one-page experience that compressed the multi-step checkout into a single continuous scroll. I presented it to the design team and PMs to cast a shared picture of what "better" could look like — before constraining it to what was currently buildable.
+      Though we were still in the middle of the Braintree Migration and brand changes, neither stopped the work. They just changed what was realistic. I worked with the PM to figure out exactly what we could actually ship and built a scoping document to make those tradeoffs explicit. What I presented to the PM:
     </p>
 
-    <!-- Vision — one-page prototype -->
-    <div style="margin-top:32px;">
+    <!-- Vision + MVP two-card row -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); margin-top:28px;">
+      <div style="background:var(--cream-2); padding:32px 28px;">
+        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:14px;">01 · The Full Vision</div>
+        <div style="font-family:var(--serif); font-size:22px; font-weight:500; font-style:italic; color:var(--ink); margin-bottom:14px; line-height:1.2;">One-page experience</div>
+        <p style="font-size:14px; line-height:1.72; color:var(--ink-2); margin:0;">A single continuous scroll that compressed the entire multi-step checkout. Goal: to show what "better" could look like before constraining to what was currently buildable.</p>
+      </div>
+      <div style="background:var(--cream-2); padding:32px 28px;">
+        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:14px;">02 · The MVP</div>
+        <div style="font-family:var(--serif); font-size:22px; font-weight:500; font-style:italic; color:var(--ink); margin-bottom:14px; line-height:1.2;">Same principles. Scoped to reality.</div>
+        <p style="font-size:14px; line-height:1.72; color:var(--ink-2); margin:0;">Price transparency, reduced friction, clearer progress — without restructuring the page architecture. Built with the PM to reflect exactly what was shippable within the Braintree migration and marketing constraints.</p>
+      </div>
+    </div>
+
+    <!-- Interactive prototype -->
+    <div style="margin-top:40px;">
       <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:16px;">The vision · one-page experience · click to interact</div>
       <div style="display:grid; grid-template-columns:260px 1fr; gap:24px; align-items:start;">
         <div>
@@ -1075,41 +1120,85 @@
       <div class="ph-caption">North star concept · 8 pages → single continuous scroll · price surfaced upfront · persistent order summary · alignment tool for PM + engineering</div>
     </div>
 
-    <p>
-      Though we were still in the middle of the Braintree Migration and brand changes, neither stopped the work. They just changed what was realistic. I worked with the PM to figure out exactly what we could actually ship and built a scoping document to make those tradeoffs explicit.
-    </p>
-
-    <!-- PM scoping doc -->
-    <div style="margin-top:32px; margin-bottom:8px;">
+    <!-- MVP handoff screens -->
+    <div style="margin-top:40px;">
       <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px;">PM scoping document · what's changeable given constraints</div>
       <img src="assets/Pens_Checkout_MVP.jpg" alt="PM scoping document — annotated checkout screens showing feasible changes" style="width:100%; display:block; border:1px solid var(--line-soft);">
       <div class="ph-caption">Annotated for PM · translating design decisions into engineering feasibility within Braintree migration + marketing priority shift</div>
     </div>
 
     <p style="margin-top:32px;">
-      The MVP applied the same core principles as the vision (price transparency, reduced friction, clearer progress) without restructuring the page architecture. The handoff covered both mobile and desktop.
+      With scope aligned, I produced the final handoff, which included the website checkout and the three payment portals with all the same experience, ready for engineering.
     </p>
 
-    <!-- MVP handoff screens -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); margin-top:24px;">
-      <div style="background:var(--cream-2); overflow:hidden;">
-        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); padding:10px 14px; border-bottom:1px solid var(--line-soft);">MVP · Mobile handoff</div>
-        <img src="assets/Pens_MVP_Mobile_Handoff.jpg" alt="MVP mobile handoff — Review & Payment screen" style="width:100%; display:block;">
+    <div style="display:flex; gap:40px; align-items:flex-start; margin-top:24px; flex-wrap:wrap;">
+
+      <!-- Phone -->
+      <div style="display:flex; flex-direction:column; align-items:center; gap:12px; flex-shrink:0;">
+        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint);">Mobile</div>
+        <div class="phone-bezel">
+          <div class="notch"></div>
+          <div class="screen" style="height:520px; overflow-y:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;">
+            <img src="assets/Pens_MVP_Mobile_Handoff.jpg" alt="MVP mobile handoff — Review & Payment screen" style="width:100%; display:block;">
+          </div>
+          <div class="home-bar"></div>
+        </div>
+        <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint); text-align:center;">scroll to explore ↑↓</div>
       </div>
-      <div style="background:var(--cream-2); overflow:hidden;">
-        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); padding:10px 14px; border-bottom:1px solid var(--line-soft);">MVP · Desktop handoff</div>
-        <img src="assets/Pens_MVP_Desktop_Handoff.jpg" alt="MVP desktop handoff — Review & Payment screen" style="width:100%; display:block;">
+
+      <!-- Laptop -->
+      <div style="flex:1; min-width:280px; display:flex; flex-direction:column; gap:12px;">
+        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint);">Desktop</div>
+        <div>
+          <div style="background:#1e1c18; border-radius:10px 10px 0 0; padding:12px 12px 8px; box-shadow:0 0 0 1px #2e2b26, 0 24px 56px -8px rgba(0,0,0,.5);">
+            <div style="text-align:center; margin-bottom:8px; line-height:0;">
+              <span style="display:inline-block; width:5px; height:5px; background:#2e2b26; border-radius:50%;"></span>
+            </div>
+            <div class="laptop-screen" style="border-radius:3px; overflow-y:auto; overflow-x:hidden; line-height:0; max-height:420px; scrollbar-width:none; -webkit-overflow-scrolling:touch;">
+              <img src="assets/Pens_MVP_Desktop_Handoff.jpg" alt="MVP desktop handoff — Review & Payment screen" style="width:100%; display:block;">
+            </div>
+          </div>
+          <div style="background:#232120; height:14px; border-radius:0 0 2px 2px; margin:0 -1px; border:1px solid #2e2b26; border-top:0;"></div>
+          <div style="background:#1c1a16; height:6px; border-radius:0 0 6px 6px; margin:0 -28px; box-shadow:0 6px 18px rgba(0,0,0,.35);"></div>
+        </div>
+        <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint); margin-top:20px;">scroll to explore ↑↓</div>
+      </div>
+      </div>
+
+    </div>
+    <div class="ph-caption" style="margin-top:32px;">MVP handoff · 3-step progress, price transparency surfaced, payment options clarified · same principles as vision, scoped to reality</div>
+
+    <!-- Handoff evidence -->
+    <div style="margin-top:48px;">
+      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:14px;">Final deliverable · handoff documentation</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.08);">
+        <div style="position:relative; overflow:hidden; background:#111;">
+          <img src="assets/Pens_Checkout_Website_Handoff.png" alt="Figma handoff — website checkout screens, desktop components, mobile components, breakpoints" style="width:100%; display:block; opacity:0.78; filter:brightness(1.05);">
+          <div style="position:absolute; bottom:0; left:0; right:0; padding:10px 14px; background:linear-gradient(transparent, rgba(0,0,0,.65));">
+            <div style="font-family:var(--mono); font-size:9px; color:rgba(239,236,224,.55); letter-spacing:.16em; text-transform:uppercase;">Website checkout · desktop + mobile + breakpoints + components</div>
+          </div>
+        </div>
+        <div style="position:relative; overflow:hidden; background:#111;">
+          <img src="assets/Pens_Checkout_Payment_Portals_Handoff.png" alt="Figma handoff — payment portals OPP, IPP, OFP screens" style="width:100%; display:block; opacity:0.78; filter:brightness(1.05);">
+          <div style="position:absolute; bottom:0; left:0; right:0; padding:10px 14px; background:linear-gradient(transparent, rgba(0,0,0,.65));">
+            <div style="font-family:var(--mono); font-size:9px; color:rgba(239,236,224,.55); letter-spacing:.16em; text-transform:uppercase;">Payment portals · OPP · IPP · OFP</div>
+          </div>
+        </div>
+      </div>
+      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-top:10px; display:flex; align-items:center; gap:8px;">
+        <span style="display:inline-block; width:5px; height:5px; border:1px solid var(--rust); border-radius:50%; flex-shrink:0;"></span>
+        Figma handoff · website checkout + 3 payment portals · screens, states, and components ready for engineering
       </div>
     </div>
-    <div class="ph-caption">MVP handoff · 3-step progress, price transparency surfaced, payment options clarified · same principles as vision, scoped to reality</div>
 
   </div>
 </div>
 
 <!-- ═══════════════════
      MORE AT PENS
+     (hidden — uncomment when ready)
 ════════════════════ -->
-<div class="more-section">
+<!-- <div class="more-section" style="display:none;">
   <div class="container">
     <div class="more-label">More at Pens.com</div>
     <div class="more-tiles">
@@ -1165,7 +1254,7 @@
 
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- ═══════════════════
      NEXT PROJECT
@@ -1181,5 +1270,28 @@
   </a>
 </div>
 
+<script>
+  document.querySelectorAll('.scroll-strip').forEach(strip => {
+    const inner = strip.querySelector('.scroll-inner');
+    const prev  = strip.querySelector('.scroll-prev');
+    const next  = strip.querySelector('.scroll-next');
+    if (!inner || !prev || !next) return;
+
+    function update() {
+      prev.disabled = inner.scrollLeft <= 1;
+      next.disabled = inner.scrollLeft >= inner.scrollWidth - inner.clientWidth - 1;
+    }
+
+    prev.addEventListener('click', () => {
+      inner.scrollBy({ left: -inner.clientWidth * 0.85, behavior: 'smooth' });
+    });
+    next.addEventListener('click', () => {
+      inner.scrollBy({ left:  inner.clientWidth * 0.85, behavior: 'smooth' });
+    });
+
+    inner.addEventListener('scroll', update, { passive: true });
+    update();
+  });
+</script>
 </body>
 </html>
