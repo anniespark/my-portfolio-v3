@@ -344,6 +344,21 @@
     font-family:var(--sans); font-size:13px; color:var(--ink-faint);
   }
 
+  /* ── EVIDENCE TABLE ── */
+  .evidence-table{ margin-top:32px; border-top:1px solid var(--line-soft); }
+  .evidence-row{
+    display:grid; grid-template-columns:220px 1fr; gap:32px;
+    padding:20px 0; border-bottom:1px solid var(--line-soft); align-items:baseline;
+  }
+  .evidence-row .ev-source{
+    font-family:var(--mono); font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--ink-mute);
+  }
+  .evidence-row .ev-finding{ font-size:15px; line-height:1.6; color:var(--ink-2); }
+
+  /* ── DISCIPLINE CHIPS ── */
+  .discipline-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:28px; }
+
   /* ── RESPONSIVE ── */
   @media(max-width:1100px){
     .bets-grid{ grid-template-columns:1fr 1fr; }
@@ -396,15 +411,15 @@
       <span class="chip">Multi-Brand Audit</span>
     </div>
 
-    <div class="kicker">Simplifying SaaS Complexity</div>
-    <h1>From zero design presence<br>to a <em>full growth roadmap</em><br>in 90 days.</h1>
-    <div class="role-line">Senior Product Designer — Growth Squad</div>
+    <div class="kicker">Acquisition Integrity · Multi-Brand Growth Audit</div>
+    <h1>From zero design presence<br>to a <em>44-point acquisition</em><br>roadmap in 90 days.</h1>
+    <div class="role-line">Senior Product Designer — Growth Squad · LawnStarter, Lawn Love, Home Gnome</div>
 
     <div class="hero-single-stat">
       <div class="val">44+</div>
       <div class="context">
-        <p>Prioritized UX opportunities identified across three brands — LawnStarter, Lawn Love, and Home Gnome — new domain, zero prior context, full strategic handoff.</p>
-        <div class="sub">90-day diagnostic sprint · 3 brands · 3 strategic initiatives</div>
+        <p>Prioritized UX opportunities identified across three brands. The core finding: the funnel was breaking promises the marketing team didn't know it was making.</p>
+        <div class="sub">90-day diagnostic sprint · 3 brands · SEM + SEO acquisition protection</div>
       </div>
     </div>
 
@@ -424,40 +439,40 @@
     </p>
 
     <div class="pull-quote">
-      <p>"There was no dedicated product designer on growth. The funnel had been optimized for traffic — not for the people arriving in it."</p>
+      <p>"Every paid click carried a $19 offer. Clicking the company logo silently stripped it. Marketing had no idea."</p>
     </div>
 
     <div class="friction-list">
       <div class="friction-item">
         <div class="fi-num">01</div>
         <div class="fi-body">
-          <div class="fi-label">Trustworthiness Initiative</div>
-          <h4>Trust signals buried, skepticism high</h4>
-          <p>Critical guarantees, insurance, and bonded-provider information were hidden — especially on mobile. Hotjar scroll depth data confirmed users were abandoning before reaching the sections that would have converted their skepticism. The signals existed; they just weren't where decisions were being made.</p>
+          <div class="fi-label">Systemic Logic Failure — SEM Funnel</div>
+          <h4>The $19 offer that disappeared at the logo</h4>
+          <p>Clicking the company logo on an SEM page navigated users out of their promotional context, silently removing the $19 offer they'd arrived to claim. Marketing was spending on clicks the product's own navigation was converting to zero-dollar sessions.</p>
         </div>
       </div>
       <div class="friction-item">
         <div class="fi-num">02</div>
         <div class="fi-body">
-          <div class="fi-label">Information Initiative — Hotjar Validated</div>
-          <h4>Phone number required before showing price</h4>
-          <p>Users clicked "See My Price" expecting a price. Instead, they were asked for their name and phone number with no explanation of why. Session recordings showed visible hesitation at the phone number field — a trust breakdown at the exact moment of conversion intent. A classic bait-and-switch violation of user expectations.</p>
+          <div class="fi-label">Psychological Friction — Hotjar Validated</div>
+          <h4>Users asked for trust before they'd received any value</h4>
+          <p>Hotjar recordings showed consistent hesitation at the phone number field: pause, re-read, abandon. Users clicked "See My Price" expecting a price — they got an identity form with no explanation of why.</p>
         </div>
       </div>
       <div class="friction-item">
         <div class="fi-num">03</div>
         <div class="fi-body">
-          <div class="fi-label">Information Initiative</div>
-          <h4>No ability to edit address — control removed</h4>
-          <p>After submitting an address, users had no way to go back and change it. Reloading the page showed the same locked state. This violated User Control & Freedom and Error Recovery — two core heuristics — and blocked the "test before trust" behavior common among hesitant first-time users.</p>
+          <div class="fi-label">Heuristic Violation — User Control &amp; Freedom</div>
+          <h4>The address dead-end: no back, no edit, no recovery</h4>
+          <p>After entering an address, there was no way to go back or correct a typo. Skeptical first-time users commonly want to test a service before committing personal data — the system gave them no path to do that.</p>
         </div>
       </div>
       <div class="friction-item">
         <div class="fi-num">04</div>
         <div class="fi-body">
-          <div class="fi-label">Conversion Epic</div>
-          <h4>High-intent users, no persistent CTA on mobile</h4>
-          <p>City Pages were dense with content but had no sticky CTA on mobile scroll. Users with genuine purchase intent had to scroll back to the top to act — a friction point that didn't exist on competitor surfaces. The fix was low effort and cross-applicable to all three brands.</p>
+          <div class="fi-label">Edge-Case Architecture — High-Intent Drop-Off</div>
+          <h4>New builds, new developments: invisible to the database</h4>
+          <p>Users with new builds couldn't proceed — the database couldn't match their address and there was no fallback. High-intent users the system had no way to recognize, and nowhere to send.</p>
         </div>
       </div>
     </div>
@@ -473,87 +488,27 @@
     <div class="section-label">02 — The Process</div>
     <h2>90 days of <em>diagnostic rigor.</em></h2>
 
-    <p>
-      I bypassed the typical "getting to know you" ramp by treating the first three months as a structured diagnostic sprint across all three brands simultaneously. The goal wasn't to redesign anything yet — it was to build an evidence-based map of every place the system was failing users, organized into three named initiatives — <strong>Information</strong>, <strong>Trustworthiness</strong>, and a <strong>Conversion Epic</strong> — and stack-ranked by impact and effort.
-    </p>
+    <p>The approach was evidence-first: heuristic analysis structured the audit, behavioral data validated it, and SEM funnel data revealed the systemic failures no single-surface review would have caught.</p>
 
-    <div class="timeline">
-      <div class="tl-row">
-        <div class="tl-week">Weeks 1–3</div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <h4>Heuristic audit — three brands, full funnel</h4>
-          <p>Applied NNg's 10 Usability Heuristics across every acquisition surface on LawnStarter, Lawn Love, and Home Gnome: SEM landing pages, City Pages, and core conversion flows. Each violation was documented, categorized by heuristic, and rated by severity and effort — building the raw material for the final roadmap.</p>
-        </div>
+    <div class="evidence-table">
+      <div class="evidence-row">
+        <div class="ev-source">Heuristic Audit — NNg</div>
+        <div class="ev-finding">44 violations documented across all three brands, categorized by heuristic and scored by severity and effort.</div>
       </div>
-      <div class="tl-row">
-        <div class="tl-week">Weeks 4–6</div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <h4>Behavioral data grounding</h4>
-          <p>Evaluated Hotjar heatmaps and session recordings to validate and pressure-test the heuristic findings. Rage-click patterns confirmed the logo navigation issue. Scroll depth data quantified where mobile users stopped engaging before trust signals appeared.</p>
-        </div>
+      <div class="evidence-row">
+        <div class="ev-source">Hotjar Recordings</div>
+        <div class="ev-finding">Phone gate hesitation and rage-clicks on the logo confirmed the two highest-priority findings with behavioral proof.</div>
       </div>
-      <div class="tl-row">
-        <div class="tl-week">Weeks 7–10</div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <h4>Synthesis and prioritization</h4>
-          <p>Mapped 44+ identified opportunities across an effort/impact matrix. Separated Quick Wins (implementable without engineering dependency) from Larger Rocks (requiring cross-functional resourcing). Aligned the roadmap with SEM team priorities to ensure design work directly supported paid acquisition goals.</p>
-        </div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-week">Week 12</div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <h4>Strategic handoff</h4>
-          <p>Delivered a complete, implementation-ready roadmap to Product and Engineering: prioritized backlog, annotated designs for Quick Wins, and a phased architecture plan for the larger conversion surface redesigns.</p>
-        </div>
+      <div class="evidence-row">
+        <div class="ev-source">SEM Funnel Analysis</div>
+        <div class="ev-finding">Offer Persistence failure identified — $19 pricing stripped when users navigated away from the landing page context.</div>
       </div>
     </div>
 
-    <!-- FigJam audit board -->
-    <div class="img-placeholder" style="margin-top:40px; aspect-ratio:16/8;">
-      <div class="img-label">Artifact — FigJam Prioritization Board</div>
-      <div class="img-caption">44+ opportunities mapped by impact/effort across all three brands · Quick Wins vs. Larger Rocks</div>
-    </div>
 
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     03b · HEURISTIC VIOLATIONS
-════════════════════════════════════════ -->
-<div class="block">
-  <div class="container">
-    <div class="section-label">02b — Key Findings</div>
-    <h2>What the audit <em>surfaced.</em></h2>
-
-    <p>
-      Of the 44+ opportunities identified, two heuristic violations were the most structurally damaging — both traceable to specific user behaviors in Hotjar recordings, both fixable without full rebuilds.
-    </p>
-
-    <!-- Hotjar data screenshot -->
-    <div class="img-placeholder" style="margin-bottom:40px; aspect-ratio:16/7;">
-      <div class="img-label">Research Artifact — Hotjar Behavioral Data</div>
-      <div class="img-caption">Scroll depth & heatmap showing mobile drop-off before trust signals — LawnStarter City Page</div>
-    </div>
-
-    <div class="heuristic-grid">
-      <div class="heuristic-cell">
-        <div class="violation">Heuristic Violation — User Control &amp; Freedom + Error Recovery</div>
-        <h4>Users couldn't go back or correct mistakes</h4>
-        <p>After submitting an address, there was no back button and no way to edit the input — even on page reload. Users who made a typo, or who wanted to check a different address before committing personal information, hit a dead end. The heuristic violation was explicit: the system removed user agency at exactly the moment it was needed most.</p>
-      </div>
-      <div class="heuristic-cell">
-        <div class="violation">Heuristic Violation — Aesthetic &amp; Minimalist Design + Visibility of System Status</div>
-        <h4>Pages were dense; users couldn't orient themselves</h4>
-        <p>City Pages violated Aesthetic & Minimalist Design — sections like "World-Class Customer Support" and vague high-tech copy added noise without value. On mobile, the lack of a persistent CTA meant users who had scrolled past the fold lost their sense of "what to do next." Both violations compounded to increase abandonment from high-intent visitors.</p>
-      </div>
-    </div>
-
-  </div>
-</div>
 
 <!-- ═══════════════════════════════════════
      04 · THE WORK
@@ -563,40 +518,40 @@
     <div class="section-label">03 — The Work</div>
     <h2>High-leverage bets,<br><em>not surface polish.</em></h2>
 
-    <p>
-      Given the absence of a dedicated design resource before my arrival, the strategy wasn't to redesign everything — it was to find the smallest interventions with the largest measurable impact and use them to prove design's value to a team that hadn't had reason to expect it.
-    </p>
+    <p>No dedicated designer on growth before this. The strategy was to find the smallest interventions with the largest acquisition impact — and make each one self-evidently actionable.</p>
 
-    <!-- SEM page before screenshot -->
-    <div class="img-placeholder" style="margin-bottom:40px; aspect-ratio:16/8;">
-      <div class="img-label">Screenshot — SEM Landing Page (Before)</div>
-      <div class="img-caption">Legacy page showing clickable logo, buried trust signals, and dense mobile layout pre-intervention</div>
-    </div>
-
-    <div class="bets-grid">
+    <div class="bets-grid" style="grid-template-columns:1fr 1fr;">
       <div class="bet-card">
-        <div class="bet-tag">Conversion Epic — High / Low Effort</div>
-        <h4>Sticky CTA on mobile scroll</h4>
+        <div class="bet-tag">Systemic Logic — Quick Win</div>
+        <h4>Lock SEM navigation — protect the offer</h4>
         <p>
-          Implemented a persistent CTA bar for all three brands on mobile — ensuring the primary conversion action was always accessible regardless of scroll position. Cross-applicable across LawnStarter, Lawn Love, and Home Gnome without requiring separate engineering efforts for each.
+          Clicking the logo stripped the $19 offer context users had arrived on. Locking SEM page navigation was a low-lift product fix with direct Marketing ROI — not a campaign problem, a product problem.
         </p>
-        <div class="impact">Impact: Conversion action always in reach — zero scroll-back required</div>
+        <div class="impact">Impact: Protected SEM offer integrity — design fix, not a campaign fix</div>
       </div>
       <div class="bet-card">
-        <div class="bet-tag">Trustworthiness Initiative — High / Low Effort</div>
-        <h4>Trust badging at the decision point</h4>
+        <div class="bet-tag">Trustworthiness Initiative — Quick Win</div>
+        <h4>Surface what earns trust; remove what doesn't</h4>
         <p>
-          Applied Lawn Love's trust badge system to LawnStarter — surfacing guarantees, bonded-provider status, and insurance signals at the moment users were deciding whether to give personal information. Moved these from footer copy to prominent positions within the conversion flow.
+          Moved guarantees and bonded &amp; insured status to directly below social proof on mobile. Flagged "As Seen In..." sections without source links — removing low-legitimacy signals proved as important as surfacing high-legitimacy ones.
         </p>
-        <div class="impact">Impact: Reduced skepticism at peak drop-off — no product changes required</div>
+        <div class="impact">Impact: Trust architecture rebuilt at the decision point — signal elevated, noise cut</div>
       </div>
       <div class="bet-card">
-        <div class="bet-tag">Information Initiative — High / Low Effort</div>
-        <h4>Phone number field — justify or restructure</h4>
+        <div class="bet-tag">Information Initiative — Architectural Redesign</div>
+        <h4>Price first, then ask for trust</h4>
         <p>
-          Hotjar recordings showed users visibly hesitating before entering their phone number to see a price — with no explanation of why it was needed. Recommended either removing the requirement or providing explicit context inline. Longer-term: restructure the flow so users see a price before being asked for personal details.
+          Near-term: add inline context to the phone number field explaining why it's needed. Long-term: re-sequence the funnel so users see a price before giving anything — converting the form from a gate into a natural next step.
         </p>
-        <div class="impact">Impact: Addressed bait-and-switch anxiety at highest-intent moment</div>
+        <div class="impact">Impact: Reframed the entry flow around transparency, not data extraction</div>
+      </div>
+      <div class="bet-card">
+        <div class="bet-tag">Edge-Case Engineering — Larger Rock</div>
+        <h4>An alternative path for unrecognized homes</h4>
+        <p>
+          A modal triggered when address lookup fails, letting users enter property details freeform. Built for high-intent users with new builds who were hitting a dead end — customers the automated system had no way to recognize.
+        </p>
+        <div class="impact">Impact: Recovered high-intent users the database couldn't recognize</div>
       </div>
     </div>
 
@@ -608,29 +563,18 @@
 ════════════════════════════════════════ -->
 <div class="block">
   <div class="container">
-    <div class="section-label">04 — Cross-Functional Leadership</div>
-    <h2>Operating inside the <em>Iron Triangle.</em></h2>
+    <div class="section-label">04 — The Team</div>
+    <h2>One designer embedded in<br><em>a full-stack growth function.</em></h2>
 
-    <p>
-      Growth design at LawnStarter meant sitting at the intersection of three teams with different success metrics and different timelines. I operated as the connective tissue — translating between technical feasibility, marketing performance, and product strategy.
-    </p>
+    <p>I was the first dedicated designer on the Growth team — a multi-discipline squad that already had everyone else in the room. The role was to be the design voice in a team that had been making acquisition decisions without one, which meant every finding needed to be framed in the language of whoever would act on it.</p>
 
-    <div class="triangle-layout">
-      <div class="triangle-cell">
-        <div class="tc-role">Product</div>
-        <h4>Backlog architecture</h4>
-        <p>Translated 44+ audit findings into a structured, effort-ranked backlog that Product could absorb into sprint planning — not a wish list, but an implementation-ready prioritization framework.</p>
-      </div>
-      <div class="triangle-cell">
-        <div class="tc-role">Engineering</div>
-        <h4>Feasibility-first scoping</h4>
-        <p>With no dedicated dev resource available for growth work, I scoped Quick Wins specifically for low-engineering-lift execution — changes deployable via CSS or content updates — to keep velocity high while Larger Rocks were resourced.</p>
-      </div>
-      <div class="triangle-cell">
-        <div class="tc-role">Marketing / SEM</div>
-        <h4>Protecting paid acquisition ROI</h4>
-        <p>Partnered directly with the SEM team to audit landing pages against their campaign targeting. Identified where design decisions (broken navigation, hidden offers) were silently eroding the performance of every paid click.</p>
-      </div>
+    <div class="discipline-row">
+      <span class="chip">PM</span>
+      <span class="chip">Engineering</span>
+      <span class="chip">SEO</span>
+      <span class="chip">SEM</span>
+      <span class="chip">Content</span>
+      <span class="chip">Marketing</span>
     </div>
 
     <div style="margin-top:40px;">
@@ -638,33 +582,53 @@
       <div class="roadmap">
         <div class="roadmap-row">
           <div class="tag quick">Quick Win</div>
-          <div class="item">Sticky CTA bar on mobile — applied across LawnStarter, Lawn Love, Home Gnome (Conversion Epic)</div>
+          <div class="item">Offer Persistence — lock SEM page navigation; prevent logo click from stripping promotional pricing context (SEM Funnel)</div>
         </div>
         <div class="roadmap-row">
           <div class="tag quick">Quick Win</div>
-          <div class="item">Trust badge placement — surface guarantees and bonded-provider info at conversion points (Trustworthiness Initiative)</div>
+          <div class="item">Trust signal architecture — surface guarantees and bonded-provider info at conversion; remove "As Seen In" claims without source links (Trustworthiness Initiative)</div>
         </div>
         <div class="roadmap-row">
           <div class="tag quick">Quick Win</div>
-          <div class="item">Phone number field — add inline justification or remove requirement to reduce hesitation (Information Initiative)</div>
+          <div class="item">Phone number field — add inline justification explaining why the data is needed; reduce bait-and-switch anxiety (Information Initiative)</div>
         </div>
         <div class="roadmap-row">
           <div class="tag quick">Quick Win</div>
-          <div class="item">Lock SEM page navigation — remove clickable logo, keep users anchored to offer context</div>
+          <div class="item">Sticky CTA bar on mobile — applied across LawnStarter, Lawn Love, Home Gnome; conversion action always in reach (Conversion Epic)</div>
         </div>
         <div class="roadmap-row">
           <div class="tag rock">Larger Rock</div>
-          <div class="item">Flow restructure — show price before collecting personal information; add address edit path</div>
+          <div class="item">Flow restructure — show price estimate before requesting personal information; add back button and address edit path (User Control &amp; Freedom)</div>
         </div>
         <div class="roadmap-row">
           <div class="tag rock">Larger Rock</div>
-          <div class="item">"How It Works" redesign — rebuild across all three brands with stronger storytelling and clearer value proposition</div>
+          <div class="item">Alternative address path — mobile modal for users with new builds or unrecognized properties; recover high-intent users the database can't match (Edge-Case Architecture)</div>
         </div>
         <div class="roadmap-row">
           <div class="tag rock">Larger Rock</div>
-          <div class="item">City Page overhaul — full IA restructure, visual hierarchy, competitive differentiation section</div>
+          <div class="item">City Page overhaul — full IA restructure, visual hierarchy, trust signal integration, competitive differentiation section</div>
         </div>
       </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     05 · THE HANDOFF
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">05 — The Handoff</div>
+    <h2>The last month was spent<br><em>making sure it outlasted me.</em></h2>
+
+    <p>By the final month I was transitioning off. Rather than treating that as a wind-down, I made the handoff the deliverable — 44 prioritized findings plus low-fidelity prototypes for the highest-priority flows, structured so the team could execute without a designer in the room.</p>
+
+    <img src="assets/LS_44_Opportunities.png" alt="Prioritized UX Opportunity Roadmap — 44 opportunities across LawnStarter, Lawn Love, and Home Gnome" style="width:100%; display:block; margin-top:40px; border:1px solid var(--line-soft);">
+
+    <div class="img-placeholder" style="margin-top:20px; aspect-ratio:16/6;">
+      <div class="img-label">Design Artifact — Phone Gate Redesign</div>
+      <div class="img-caption">Before: Name + Phone required, no context · After: Phone optional, value exchange explained</div>
     </div>
 
   </div>
@@ -677,20 +641,20 @@
   <div class="container">
     <div>
       <div class="ob-eyebrow">The Deliverable</div>
-      <h2>A growth design function<br>built <em>from nothing.</em></h2>
+      <h2>A growth design function<br>built — and <em>handed off.</em></h2>
     </div>
     <div class="deliverable-list">
       <div class="d">
         <div class="d-val">44+</div>
-        <div class="d-label">UX opportunities identified, categorized, and prioritized — across full acquisition funnel</div>
+        <div class="d-label">UX opportunities identified, categorized, and prioritized — from systemic logic failures to heuristic violations</div>
       </div>
       <div class="d">
         <div class="d-val">90 days</div>
-        <div class="d-label">From zero context to full strategic handoff — new domain, no prior design infrastructure</div>
+        <div class="d-label">Zero prior context to implementation-ready handoff — diagnostic sprint, not a ramp</div>
       </div>
       <div class="d">
         <div class="d-val">3 brands</div>
-        <div class="d-label">LawnStarter, Lawn Love, Home Gnome — single audit framework applied across all acquisition surfaces</div>
+        <div class="d-label">LawnStarter, Lawn Love, Home Gnome — one framework across all acquisition surfaces</div>
       </div>
     </div>
   </div>
