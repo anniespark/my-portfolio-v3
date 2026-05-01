@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/magnifier.png">
 <title>LawnStarter — Annie S. Koo</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -101,7 +102,7 @@
     text-transform:uppercase; color:var(--ink-mute); margin-bottom:56px;
   }
 
-  /* Hero stat — single big number for this one */
+  /* Hero stat */
   .hero-single-stat{
     border-top:1px solid var(--line-soft);
     padding-top:36px;
@@ -151,134 +152,129 @@
     color:var(--ink); font-style:italic; margin:0;
   }
 
-  /* ── FRICTION LIST (System Problem) ── */
-  .friction-list{
-    margin-top:40px; border:1px solid var(--line-soft);
+  /* ── EVIDENCE TABLE ── */
+  .evidence-table{ margin-top:32px; border-top:1px solid var(--line-soft); }
+  .evidence-row{
+    display:grid; grid-template-columns:220px 1fr; gap:32px;
+    padding:20px 0; border-bottom:1px solid var(--line-soft); align-items:baseline;
   }
-  .friction-item{
-    display:grid; grid-template-columns:48px 1fr;
-    gap:0; border-bottom:1px solid var(--line-soft);
-  }
-  .friction-item:last-child{ border-bottom:0; }
-  .friction-item .fi-num{
+  .evidence-row .ev-source{
     font-family:var(--mono); font-size:10px; letter-spacing:.18em;
-    color:var(--ink-faint); padding:24px 0 24px 20px; border-right:1px solid var(--line-soft);
-    display:flex; align-items:flex-start; padding-top:26px;
+    text-transform:uppercase; color:var(--ink-mute);
   }
-  .friction-item .fi-body{ padding:22px 28px; }
-  .friction-item .fi-label{
-    font-family:var(--mono); font-size:10px; letter-spacing:.2em;
-    text-transform:uppercase; color:var(--rust); margin-bottom:8px;
-  }
-  .friction-item h4{
-    font-family:var(--serif); font-size:20px; font-weight:var(--display-weight);
-    margin:0 0 8px; color:var(--ink); line-height:1.2;
-  }
-  .friction-item p{ font-size:14px; line-height:1.68; color:var(--ink-mute); margin:0; }
+  .evidence-row .ev-finding{ font-size:15px; line-height:1.6; color:var(--ink-2); }
 
-  /* ── 90-DAY TIMELINE ── */
-  .timeline{
-    margin-top:40px; display:flex; flex-direction:column; gap:0;
+  /* ── FINDING CARDS ── */
+  .findings-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:40px;
   }
-  .tl-row{
-    display:grid; grid-template-columns:100px 32px 1fr;
-    gap:0 24px; padding:32px 0; position:relative;
+  .finding-card{
+    border:1px solid var(--line-soft);
+    display:flex; flex-direction:column;
   }
-  .tl-row + .tl-row::before{
-    content:''; position:absolute; left:100px; top:0;
-    width:1px; height:32px; background:var(--line-soft);
-    transform:translateX(15px);
-  }
-  .tl-week{
+  .fc-problem{ padding:32px 32px 28px; border-bottom:1px solid var(--line-soft); flex:1; }
+  .fc-rec{ padding:28px 32px 32px; }
+  .fc-tag{
     font-family:var(--mono); font-size:10px; letter-spacing:.2em;
-    text-transform:uppercase; color:var(--ink-faint); padding-top:3px; text-align:right;
+    text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px;
   }
-  .tl-dot{
-    width:10px; height:10px; border-radius:50%;
-    background:var(--forest); border:2px solid var(--forest);
-    margin:4px auto 0; flex-shrink:0;
-  }
-  .tl-content h4{
-    font-family:var(--serif); font-size:22px; font-weight:var(--display-weight);
-    margin:0 0 10px; color:var(--ink); line-height:1.2;
-  }
-  .tl-content p{ font-size:14px; line-height:1.7; color:var(--ink-2); margin:0; }
-
-  /* ── HEURISTIC GRID ── */
-  .heuristic-grid{
-    display:grid; grid-template-columns:1fr 1fr; gap:1px;
-    background:var(--line-soft); border:1px solid var(--line-soft); margin-top:40px;
-  }
-  .heuristic-cell{ background:var(--cream); padding:36px 32px; }
-  .heuristic-cell .violation{
-    font-family:var(--mono); font-size:10px; letter-spacing:.2em;
-    text-transform:uppercase; color:var(--rust); margin-bottom:14px;
-    display:flex; align-items:center; gap:8px;
-  }
-  .heuristic-cell .violation::before{
-    content:''; display:inline-block; width:6px; height:6px;
-    background:var(--rust); border-radius:50%;
-  }
-  .heuristic-cell h4{
+  .finding-card h4{
     font-family:var(--serif); font-size:22px; font-weight:var(--display-weight);
     margin:0 0 12px; color:var(--ink); line-height:1.2;
   }
-  .heuristic-cell p{ font-size:14px; line-height:1.7; color:var(--ink-mute); margin:0; }
-
-  /* ── WORK BETS ── */
-  .bets-grid{
-    display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; margin-top:40px;
-  }
-  .bet-card{
-    border:1px solid var(--line-soft); padding:36px 32px;
-    display:flex; flex-direction:column; gap:16px;
-  }
-  .bet-card .bet-tag{
+  .fc-problem p{ font-size:14px; line-height:1.7; color:var(--ink-mute); margin:0; }
+  .fc-rec-label{
     font-family:var(--mono); font-size:10px; letter-spacing:.2em;
-    text-transform:uppercase; color:var(--ink-faint);
+    text-transform:uppercase; color:var(--forest); margin-bottom:10px;
   }
-  .bet-card h4{
-    font-family:var(--serif); font-size:24px; font-weight:var(--display-weight);
-    margin:0; color:var(--ink); line-height:1.2;
-  }
-  .bet-card p{ font-size:14px; line-height:1.72; color:var(--ink-mute); margin:0; }
-  .bet-card .impact{
-    margin-top:auto; padding-top:20px; border-top:1px solid var(--line-soft);
+  .fc-rec p{ font-size:14px; line-height:1.7; color:var(--ink-2); margin:0 0 16px; }
+  .fc-rec p:last-child{ margin:0; }
+  .fc-impact{
+    margin-top:16px; padding-top:16px; border-top:1px solid var(--line-soft);
     font-family:var(--mono); font-size:10px; letter-spacing:.18em;
     text-transform:uppercase; color:var(--forest);
   }
 
-  /* ── IRON TRIANGLE ── */
-  .triangle-layout{
-    display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px;
-    background:var(--line-soft); border:1px solid var(--line-soft); margin-top:40px;
-  }
-  .triangle-cell{ background:var(--cream); padding:32px 28px; }
-  .triangle-cell .tc-role{
+  /* ── DISCIPLINE CHIPS ── */
+  .discipline-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:28px; }
+
+  /* ── PHONE GATE ARTIFACT ── */
+  .phone-gate-artifact{ margin-top:40px; }
+  .pga-tag{
     font-family:var(--mono); font-size:10px; letter-spacing:.2em;
-    text-transform:uppercase; color:var(--ink-faint); margin-bottom:14px;
+    text-transform:uppercase; padding:4px 12px; border:1px solid;
+    display:inline-block; margin-bottom:20px;
   }
-  .triangle-cell h4{
-    font-family:var(--serif); font-size:20px; font-weight:var(--display-weight);
-    margin:0 0 12px; color:var(--ink); line-height:1.2;
-  }
-  .triangle-cell p{ font-size:13px; line-height:1.7; color:var(--ink-mute); margin:0; }
+  .pga-tag.pga-before{ color:var(--rust); border-color:var(--rust); }
+  .pga-tag.pga-after{ color:var(--forest); border-color:var(--forest); }
 
-  /* ── ROADMAP TABLE ── */
-  .roadmap{ margin-top:16px; border-top:1px solid var(--line-soft); }
-  .roadmap-row{
-    display:grid; grid-template-columns:110px 1fr; gap:20px;
-    padding:16px 0; border-bottom:1px solid var(--line-soft); align-items:start;
+  /* phone mockup frame */
+  .phone-wrap{
+    position:relative;
+    background:#1a1814;
+    border-radius:44px;
+    padding:14px 10px;
+    box-shadow:
+      0 0 0 1.5px #2a2724,
+      0 0 0 3px #3a3530,
+      0 32px 64px -16px rgba(0,0,0,.5);
   }
-  .roadmap-row .tag{
-    font-family:var(--mono); font-size:9px; letter-spacing:.18em;
-    text-transform:uppercase; padding:5px 8px; border:1px solid; text-align:center; margin-top:2px;
+  .phone-wrap .notch{
+    position:absolute;
+    top:14px; left:50%; transform:translateX(-50%);
+    width:80px; height:18px;
+    background:#1a1814;
+    border-radius:0 0 14px 14px;
+    z-index:2;
   }
-  .roadmap-row .tag.quick{ color:var(--forest); border-color:var(--forest); }
-  .roadmap-row .tag.rock{ color:var(--rust); border-color:var(--rust); }
-  .roadmap-row .item{ font-size:14px; line-height:1.6; color:var(--ink-2); }
+  .phone-wrap .screen{
+    border-radius:32px;
+    overflow:hidden;
+    background:#000;
+    position:relative;
+  }
+  .phone-wrap .screen img{ width:100%; display:block; border:none; }
+  .phone-wrap .home-bar{
+    width:80px; height:4px;
+    background:rgba(255,255,255,.25);
+    border-radius:2px;
+    margin:10px auto 0;
+  }
 
-  /* ── CLOSING STATEMENT (no hard outcome data — frame the deliverable) ── */
+  /* before: 3 screens + arrows */
+  .pga-screens{
+    display:grid;
+    grid-template-columns:1fr 40px 1fr 40px 1fr;
+    align-items:center; gap:0;
+  }
+  .pga-screen{ display:flex; flex-direction:column; align-items:center; }
+  .pga-flow-arrow{
+    display:flex; align-items:center; justify-content:center;
+    color:var(--ink-mute); padding-bottom:60px; flex-shrink:0;
+  }
+  .pga-step{
+    font-family:var(--mono); font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px;
+    text-align:center;
+  }
+  .pga-caption{ font-size:13px; line-height:1.6; color:var(--ink-mute); margin-top:24px; text-align:center; max-width:220px; }
+
+  /* divider */
+  .pga-divider{ display:flex; align-items:center; gap:16px; margin:40px 0; }
+  .pga-divider-line{ flex:1; height:1px; background:var(--line-soft); }
+  .pga-divider-label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--ink-faint);
+  }
+
+  /* after */
+  .pga-after-content{
+    display:grid; grid-template-columns:260px 1fr; gap:56px; align-items:center;
+  }
+  .pga-after-text p{ font-size:15px; line-height:1.78; color:var(--ink-2); margin:0 0 16px; }
+  .pga-after-text p:last-child{ margin:0; }
+
+  /* ── CLOSING STATEMENT ── */
   .outcome-banner{
     background:var(--forest); color:var(--cream); padding:64px 40px;
   }
@@ -292,9 +288,12 @@
   .outcome-banner h2{
     font-family:var(--serif); font-weight:var(--display-weight);
     font-size:clamp(30px,3.6vw,48px); line-height:1.08;
-    letter-spacing:var(--display-tracking); margin:0; color:var(--cream);
+    letter-spacing:var(--display-tracking); margin:0 0 20px; color:var(--cream);
   }
   .outcome-banner h2 em{ font-style:var(--display-italic-style); color:rgba(239,236,224,.65); }
+  .outcome-banner .ob-note{
+    font-size:14px; line-height:1.7; color:rgba(239,236,224,.55); margin:0;
+  }
   .deliverable-list{
     display:flex; flex-direction:column; gap:20px;
   }
@@ -329,47 +328,16 @@
   }
   .arrow-btn:hover{ background:var(--forest); color:var(--cream); }
 
-  /* ── IMAGE PLACEHOLDER ── */
-  .img-placeholder{
-    width:100%; aspect-ratio:16/7;
-    background:var(--cream-3); border:1px solid var(--line-soft);
-    display:flex; flex-direction:column;
-    align-items:center; justify-content:center; gap:8px;
-  }
-  .img-placeholder .img-label{
-    font-family:var(--mono); font-size:10px; letter-spacing:.2em;
-    text-transform:uppercase; color:var(--ink-faint);
-  }
-  .img-placeholder .img-caption{
-    font-family:var(--sans); font-size:13px; color:var(--ink-faint);
-  }
-
-  /* ── EVIDENCE TABLE ── */
-  .evidence-table{ margin-top:32px; border-top:1px solid var(--line-soft); }
-  .evidence-row{
-    display:grid; grid-template-columns:220px 1fr; gap:32px;
-    padding:20px 0; border-bottom:1px solid var(--line-soft); align-items:baseline;
-  }
-  .evidence-row .ev-source{
-    font-family:var(--mono); font-size:10px; letter-spacing:.18em;
-    text-transform:uppercase; color:var(--ink-mute);
-  }
-  .evidence-row .ev-finding{ font-size:15px; line-height:1.6; color:var(--ink-2); }
-
-  /* ── DISCIPLINE CHIPS ── */
-  .discipline-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:28px; }
-
   /* ── RESPONSIVE ── */
-  @media(max-width:1100px){
-    .bets-grid{ grid-template-columns:1fr 1fr; }
-  }
   @media(max-width:900px){
-    .heuristic-grid{ grid-template-columns:1fr; }
-    .bets-grid{ grid-template-columns:1fr; }
-    .triangle-layout{ grid-template-columns:1fr; }
+    .findings-grid{ grid-template-columns:1fr; }
     .outcome-banner .container{ grid-template-columns:1fr; gap:48px; }
     .hero-single-stat{ grid-template-columns:1fr; gap:12px; }
-    .tl-row{ grid-template-columns:80px 24px 1fr; }
+  }
+  @media(max-width:800px){
+    .pga-screens{ grid-template-columns:1fr; gap:24px; }
+    .pga-flow-arrow{ transform:rotate(90deg); padding-bottom:0; }
+    .pga-after-content{ grid-template-columns:1fr; }
   }
   @media(max-width:600px){
     .nav{ padding:16px 20px; }
@@ -377,7 +345,7 @@
     .outcome-banner{ padding:48px 20px; }
     .next-project{ flex-direction:column; align-items:flex-start; padding:60px 20px; }
     .container{ padding:0 20px; }
-    .friction-item .fi-body{ padding:20px 20px; }
+    .evidence-row{ grid-template-columns:1fr; gap:8px; }
   }
 </style>
 </head>
@@ -394,7 +362,7 @@
 </header>
 
 <!-- ═══════════════════════════════════════
-     01 · HERO
+     HERO
 ════════════════════════════════════════ -->
 <div class="case-hero">
   <div class="container">
@@ -412,14 +380,14 @@
     </div>
 
     <div class="kicker">Acquisition Integrity · Multi-Brand Growth Audit</div>
-    <h1>From zero design presence<br>to a <em>44-point acquisition</em><br>roadmap in 90 days.</h1>
+    <h1>From zero growth design presence<br>to a <em>44-point acquisition</em><br>roadmap.</h1>
     <div class="role-line">Senior Product Designer — Growth Squad · LawnStarter, Lawn Love, Home Gnome</div>
 
     <div class="hero-single-stat">
       <div class="val">44+</div>
       <div class="context">
-        <p>Prioritized UX opportunities identified across three brands. The core finding: the funnel was breaking promises the marketing team didn't know it was making.</p>
-        <div class="sub">90-day diagnostic sprint · 3 brands · SEM + SEO acquisition protection</div>
+        <p>Prioritized UX opportunities identified across three brands. The core finding: the funnel was breaking promises the growth team didn't know it was making.</p>
+        <div class="sub">diagnostic sprint · 3 brands · SEM + SEO acquisition protection</div>
       </div>
     </div>
 
@@ -427,208 +395,179 @@
 </div>
 
 <!-- ═══════════════════════════════════════
-     02 · SYSTEM PROBLEM
+     01 · HOW I WORKED
 ════════════════════════════════════════ -->
 <div class="block">
   <div class="container">
-    <div class="section-label">01 — The System Problem</div>
-    <h2>Friction at the <em>front door.</em></h2>
+    <div class="section-label">01 — How I Worked</div>
+    <h2>Evidence-first, from <em>day one.</em></h2>
 
-    <p>
-      The audit covered three sister brands — LawnStarter, Lawn Love, and Home Gnome — across SEM landing pages, geo-targeted City Pages, and core conversion flows. All three shared the same root problem: the acquisition surfaces had been built for traffic volume, not for the psychology of a user deciding whether to trust a new service with their home.
-    </p>
+    <p>I joined as the first designer embedded in LawnStarter's Growth team — a function that included PMs, engineers, SEO, SEM, and content, but had never had a designer in the room. With no inherited design context, the first job was building the diagnostic methodology from scratch: walk the products as a real user, map every friction point, and validate the highest-priority findings with behavioral data before deciding what to act on.</p>
+
+    <div class="evidence-table">
+      <div class="evidence-row">
+        <div class="ev-source">Self-Conducted UX Teardown</div>
+        <div class="ev-finding">Walked through all three brands as a first-time user — mapping friction points against NNg heuristics and growth design intuition. Source of the majority of the 44 UX opportunities.</div>
+      </div>
+      <div class="evidence-row">
+        <div class="ev-source">Hotjar Recordings</div>
+        <div class="ev-finding">Session recordings confirmed the highest-priority findings behaviorally — hesitation at the phone gate, rage-clicks on the logo navigation.</div>
+      </div>
+      <div class="evidence-row">
+        <div class="ev-source">Effort / Impact Scoring</div>
+        <div class="ev-finding">All 44 UX opportunities scored across a high / medium / low effort and impact matrix, then ranked and separated into Quick Wins and Larger Rocks.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     02 · SELECTED FINDINGS
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">02 — Selected Findings</div>
+    <h2>Four examples from <em>forty-four.</em></h2>
+
+    <p>The full audit surfaced 44 UX opportunities across three brands, scored and prioritized by effort and impact. These four illustrate the range — from quick systemic logic fixes to longer-term architectural changes — and the level of specificity each finding carried.</p>
 
     <div class="pull-quote">
       <p>"Every paid click carried a $19 offer. Clicking the company logo silently stripped it. Marketing had no idea."</p>
     </div>
 
-    <div class="friction-list">
-      <div class="friction-item">
-        <div class="fi-num">01</div>
-        <div class="fi-body">
-          <div class="fi-label">Systemic Logic Failure — SEM Funnel</div>
+    <div class="findings-grid">
+
+      <div class="finding-card">
+        <div class="fc-problem">
+          <div class="fc-tag">Systemic Logic — Quick Win</div>
           <h4>The $19 offer that disappeared at the logo</h4>
           <p>Clicking the company logo on an SEM page navigated users out of their promotional context, silently removing the $19 offer they'd arrived to claim. Marketing was spending on clicks the product's own navigation was converting to zero-dollar sessions.</p>
         </div>
+        <div class="fc-rec">
+          <div class="fc-rec-label">→ Recommendation</div>
+          <p>Lock navigation on SEM landing pages. A product-layer fix — not a campaign adjustment — that directly protected every dollar Marketing was spending on paid acquisition.</p>
+          <div class="fc-impact">Anticipated impact: Stopped paid acquisition spend from being silently devalued at the navigation level</div>
+        </div>
       </div>
-      <div class="friction-item">
-        <div class="fi-num">02</div>
-        <div class="fi-body">
-          <div class="fi-label">Psychological Friction — Hotjar Validated</div>
+
+      <div class="finding-card">
+        <div class="fc-problem">
+          <div class="fc-tag">Credibility — Quick Win</div>
+          <h4>Surface what earns trust; remove what doesn't</h4>
+          <p>Guarantees and bonded &amp; insured status — the signals that matter to a first-time user — weren't visible at the point of decision on mobile. Meanwhile, "As Seen In..." sections with no verifiable source links were actively undermining credibility.</p>
+        </div>
+        <div class="fc-rec">
+          <div class="fc-rec-label">→ Recommendation</div>
+          <p>Move guarantees and bonded &amp; insured status to the point of decision. Remove unverifiable "As Seen In" claims. Credibility is as much about what you're willing to cut as what you add.</p>
+          <div class="fc-impact">Anticipated impact: Trust rebuilt at the decision point — as much by what was removed as by what was added</div>
+        </div>
+      </div>
+
+      <div class="finding-card">
+        <div class="fc-problem">
+          <div class="fc-tag">Psychological Friction — Near + Long Term</div>
           <h4>Users asked for trust before they'd received any value</h4>
           <p>Hotjar recordings showed consistent hesitation at the phone number field: pause, re-read, abandon. Users clicked "See My Price" expecting a price — they got an identity form with no explanation of why.</p>
         </div>
-      </div>
-      <div class="friction-item">
-        <div class="fi-num">03</div>
-        <div class="fi-body">
-          <div class="fi-label">Heuristic Violation — User Control &amp; Freedom</div>
-          <h4>The address dead-end: no back, no edit, no recovery</h4>
-          <p>After entering an address, there was no way to go back or correct a typo. Skeptical first-time users commonly want to test a service before committing personal data — the system gave them no path to do that.</p>
+        <div class="fc-rec">
+          <div class="fc-rec-label">→ Recommendation</div>
+          <p>Two-speed fix: immediately, add inline context explaining why the phone number is needed. Over time, re-sequence the funnel so users receive a price estimate before being asked to give personal information.</p>
+          <div class="fc-impact">Anticipated impact: Converted the form from a demand into a value exchange</div>
         </div>
       </div>
-      <div class="friction-item">
-        <div class="fi-num">04</div>
-        <div class="fi-body">
-          <div class="fi-label">Edge-Case Architecture — High-Intent Drop-Off</div>
-          <h4>New builds, new developments: invisible to the database</h4>
-          <p>Users with new builds couldn't proceed — the database couldn't match their address and there was no fallback. High-intent users the system had no way to recognize, and nowhere to send.</p>
+
+      <div class="finding-card">
+        <div class="fc-problem">
+          <div class="fc-tag">User Control — Larger Rock</div>
+          <h4>Two paths to the same dead end</h4>
+          <p>After entering an address, there was no way to go back or correct a typo. Users with new builds couldn't proceed at all — the database couldn't match their address, and there was no fallback. Two different users, same outcome: no way forward.</p>
+        </div>
+        <div class="fc-rec">
+          <div class="fc-rec-label">→ Recommendation</div>
+          <p>Add a back button and address edit path for all users. For unrecognized addresses, design a freeform fallback modal — a recovery path for high-intent users the system couldn't recognize.</p>
+          <div class="fc-impact">Anticipated impact: Closed the gap between who the system could recognize and who was actually ready to convert</div>
         </div>
       </div>
+
     </div>
 
   </div>
 </div>
 
 <!-- ═══════════════════════════════════════
-     03 · 90-DAY DIAGNOSTIC
+     03 · THE HANDOFF
 ════════════════════════════════════════ -->
 <div class="block">
   <div class="container">
-    <div class="section-label">02 — The Process</div>
-    <h2>90 days of <em>diagnostic rigor.</em></h2>
-
-    <p>The approach was evidence-first: heuristic analysis structured the audit, behavioral data validated it, and SEM funnel data revealed the systemic failures no single-surface review would have caught.</p>
-
-    <div class="evidence-table">
-      <div class="evidence-row">
-        <div class="ev-source">Heuristic Audit — NNg</div>
-        <div class="ev-finding">44 violations documented across all three brands, categorized by heuristic and scored by severity and effort.</div>
-      </div>
-      <div class="evidence-row">
-        <div class="ev-source">Hotjar Recordings</div>
-        <div class="ev-finding">Phone gate hesitation and rage-clicks on the logo confirmed the two highest-priority findings with behavioral proof.</div>
-      </div>
-      <div class="evidence-row">
-        <div class="ev-source">SEM Funnel Analysis</div>
-        <div class="ev-finding">Offer Persistence failure identified — $19 pricing stripped when users navigated away from the landing page context.</div>
-      </div>
-    </div>
-
-
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     04 · THE WORK
-════════════════════════════════════════ -->
-<div class="block">
-  <div class="container">
-    <div class="section-label">03 — The Work</div>
-    <h2>High-leverage bets,<br><em>not surface polish.</em></h2>
-
-    <p>No dedicated designer on growth before this. The strategy was to find the smallest interventions with the largest acquisition impact — and make each one self-evidently actionable.</p>
-
-    <div class="bets-grid" style="grid-template-columns:1fr 1fr;">
-      <div class="bet-card">
-        <div class="bet-tag">Systemic Logic — Quick Win</div>
-        <h4>Lock SEM navigation — protect the offer</h4>
-        <p>
-          Clicking the logo stripped the $19 offer context users had arrived on. Locking SEM page navigation was a low-lift product fix with direct Marketing ROI — not a campaign problem, a product problem.
-        </p>
-        <div class="impact">Impact: Protected SEM offer integrity — design fix, not a campaign fix</div>
-      </div>
-      <div class="bet-card">
-        <div class="bet-tag">Trustworthiness Initiative — Quick Win</div>
-        <h4>Surface what earns trust; remove what doesn't</h4>
-        <p>
-          Moved guarantees and bonded &amp; insured status to directly below social proof on mobile. Flagged "As Seen In..." sections without source links — removing low-legitimacy signals proved as important as surfacing high-legitimacy ones.
-        </p>
-        <div class="impact">Impact: Trust architecture rebuilt at the decision point — signal elevated, noise cut</div>
-      </div>
-      <div class="bet-card">
-        <div class="bet-tag">Information Initiative — Architectural Redesign</div>
-        <h4>Price first, then ask for trust</h4>
-        <p>
-          Near-term: add inline context to the phone number field explaining why it's needed. Long-term: re-sequence the funnel so users see a price before giving anything — converting the form from a gate into a natural next step.
-        </p>
-        <div class="impact">Impact: Reframed the entry flow around transparency, not data extraction</div>
-      </div>
-      <div class="bet-card">
-        <div class="bet-tag">Edge-Case Engineering — Larger Rock</div>
-        <h4>An alternative path for unrecognized homes</h4>
-        <p>
-          A modal triggered when address lookup fails, letting users enter property details freeform. Built for high-intent users with new builds who were hitting a dead end — customers the automated system had no way to recognize.
-        </p>
-        <div class="impact">Impact: Recovered high-intent users the database couldn't recognize</div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════
-     05 · IRON TRIANGLE
-════════════════════════════════════════ -->
-<div class="block">
-  <div class="container">
-    <div class="section-label">04 — The Team</div>
-    <h2>One designer embedded in<br><em>a full-stack growth function.</em></h2>
-
-    <p>I was the first dedicated designer on the Growth team — a multi-discipline squad that already had everyone else in the room. The role was to be the design voice in a team that had been making acquisition decisions without one, which meant every finding needed to be framed in the language of whoever would act on it.</p>
-
-    <div class="discipline-row">
-      <span class="chip">PM</span>
-      <span class="chip">Engineering</span>
-      <span class="chip">SEO</span>
-      <span class="chip">SEM</span>
-      <span class="chip">Content</span>
-      <span class="chip">Marketing</span>
-    </div>
-
-    <div style="margin-top:40px;">
-      <div class="section-label" style="margin-bottom:16px;">Strategic Roadmap — Quick Wins vs. Larger Rocks</div>
-      <div class="roadmap">
-        <div class="roadmap-row">
-          <div class="tag quick">Quick Win</div>
-          <div class="item">Offer Persistence — lock SEM page navigation; prevent logo click from stripping promotional pricing context (SEM Funnel)</div>
-        </div>
-        <div class="roadmap-row">
-          <div class="tag quick">Quick Win</div>
-          <div class="item">Trust signal architecture — surface guarantees and bonded-provider info at conversion; remove "As Seen In" claims without source links (Trustworthiness Initiative)</div>
-        </div>
-        <div class="roadmap-row">
-          <div class="tag quick">Quick Win</div>
-          <div class="item">Phone number field — add inline justification explaining why the data is needed; reduce bait-and-switch anxiety (Information Initiative)</div>
-        </div>
-        <div class="roadmap-row">
-          <div class="tag quick">Quick Win</div>
-          <div class="item">Sticky CTA bar on mobile — applied across LawnStarter, Lawn Love, Home Gnome; conversion action always in reach (Conversion Epic)</div>
-        </div>
-        <div class="roadmap-row">
-          <div class="tag rock">Larger Rock</div>
-          <div class="item">Flow restructure — show price estimate before requesting personal information; add back button and address edit path (User Control &amp; Freedom)</div>
-        </div>
-        <div class="roadmap-row">
-          <div class="tag rock">Larger Rock</div>
-          <div class="item">Alternative address path — mobile modal for users with new builds or unrecognized properties; recover high-intent users the database can't match (Edge-Case Architecture)</div>
-        </div>
-        <div class="roadmap-row">
-          <div class="tag rock">Larger Rock</div>
-          <div class="item">City Page overhaul — full IA restructure, visual hierarchy, trust signal integration, competitive differentiation section</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════
-     05 · THE HANDOFF
-════════════════════════════════════════ -->
-<div class="block">
-  <div class="container">
-    <div class="section-label">05 — The Handoff</div>
+    <div class="section-label">03 — The Handoff</div>
     <h2>The last month was spent<br><em>making sure it outlasted me.</em></h2>
 
-    <p>By the final month I was transitioning off. Rather than treating that as a wind-down, I made the handoff the deliverable — 44 prioritized findings plus low-fidelity prototypes for the highest-priority flows, structured so the team could execute without a designer in the room.</p>
+    <p>By the final month I was transitioning off. I made the handoff the deliverable — 44 UX opportunities structured into a prioritized roadmap, plus directional design for the highest-priority flows to give the team a starting point. Two types of artifacts: strategic direction and design execution.</p>
 
     <img src="assets/LS_44_Opportunities.png" alt="Prioritized UX Opportunity Roadmap — 44 opportunities across LawnStarter, Lawn Love, and Home Gnome" style="width:100%; display:block; margin-top:40px; border:1px solid var(--line-soft);">
 
-    <div class="img-placeholder" style="margin-top:20px; aspect-ratio:16/6;">
-      <div class="img-label">Design Artifact — Phone Gate Redesign</div>
-      <div class="img-caption">Before: Name + Phone required, no context · After: Phone optional, value exchange explained</div>
+    <div class="phone-gate-artifact">
+
+      <!-- 3-step before flow -->
+      <div class="pga-tag pga-before">Before</div>
+      <div class="pga-screens">
+        <div class="pga-screen">
+          <div class="pga-step">Step 01</div>
+          <div class="phone-wrap">
+            <div class="notch"></div>
+            <div class="screen"><img src="assets/LS_Before_Screen_1.png" alt="LawnStarter landing page — address field and See My Price CTA"></div>
+            <div class="home-bar"></div>
+          </div>
+          <p class="pga-caption">Landing page promises a quick price — just enter your address and click.</p>
+        </div>
+        <div class="pga-flow-arrow">
+          <svg width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+        </div>
+        <div class="pga-screen">
+          <div class="pga-step">Step 02</div>
+          <div class="phone-wrap">
+            <div class="notch"></div>
+            <div class="screen"><img src="assets/LS_Before_Screen_2.png" alt="Address autocomplete dropdown — no friction yet"></div>
+            <div class="home-bar"></div>
+          </div>
+          <p class="pga-caption">Address autocomplete appears. Still no indication of what comes next.</p>
+        </div>
+        <div class="pga-flow-arrow">
+          <svg width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+        </div>
+        <div class="pga-screen">
+          <div class="pga-step">Step 03</div>
+          <div class="phone-wrap">
+            <div class="notch"></div>
+            <div class="screen"><img src="assets/LS_Before_Screen_3.png" alt="Name and phone number fields appear after address — no explanation"></div>
+            <div class="home-bar"></div>
+          </div>
+          <p class="pga-caption">Address selected — name and phone required. No explanation. No opt-out.</p>
+        </div>
+      </div>
+
+      <!-- divider -->
+      <div class="pga-divider">
+        <div class="pga-divider-line"></div>
+        <div class="pga-divider-label">The fix</div>
+        <div class="pga-divider-line"></div>
+      </div>
+
+      <!-- after -->
+      <div class="pga-tag pga-after">After</div>
+      <div class="pga-after-content">
+        <div class="phone-wrap">
+          <div class="notch"></div>
+          <div class="screen"><img src="assets/LS_After_Screen.png" alt="Redesigned phone gate — tooltip explains value exchange, incentive copy added"></div>
+          <div class="home-bar"></div>
+        </div>
+        <div class="pga-after-text">
+          <p>One example of the design direction included in the handoff. A tooltip explains the ask: "Help us reach you fast for lawn service problems or deals." Incentive copy below gives users a reason to comply rather than a reason to leave.</p>
+          <p>The gate doesn't disappear. The demand becomes a value exchange.</p>
+        </div>
+      </div>
+
     </div>
 
   </div>
@@ -642,19 +581,20 @@
     <div>
       <div class="ob-eyebrow">The Deliverable</div>
       <h2>A growth design function<br>built — and <em>handed off.</em></h2>
+      <p class="ob-note">I transitioned off before the roadmap was implemented. The handoff was built to function without me in the room.</p>
     </div>
     <div class="deliverable-list">
       <div class="d">
         <div class="d-val">44+</div>
-        <div class="d-label">UX opportunities identified, categorized, and prioritized — from systemic logic failures to heuristic violations</div>
-      </div>
-      <div class="d">
-        <div class="d-val">90 days</div>
-        <div class="d-label">Zero prior context to implementation-ready handoff — diagnostic sprint, not a ramp</div>
+        <div class="d-label">UX opportunities identified across three brands — self-conducted teardown, heuristic analysis, and behavioral data</div>
       </div>
       <div class="d">
         <div class="d-val">3 brands</div>
-        <div class="d-label">LawnStarter, Lawn Love, Home Gnome — one framework across all acquisition surfaces</div>
+        <div class="d-label">LawnStarter, Lawn Love, Home Gnome — one audit framework across all acquisition surfaces</div>
+      </div>
+      <div class="d">
+        <div class="d-val">1st</div>
+        <div class="d-label">Designer embedded in the Growth team — built the design function, then handed it off ready to execute</div>
       </div>
     </div>
   </div>
