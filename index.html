@@ -280,7 +280,7 @@
   /* ============== HERO ============== */
   .hero{
     position: relative;
-    padding: var(--hero-pad-top) 40px 0;
+    padding: var(--hero-pad-top) 40px 48px;
     overflow: hidden;
     z-index: 1;
   }
@@ -319,6 +319,7 @@
     color: var(--ink);
     margin-bottom: 28px;
   }
+  .accent{ color: var(--rust); }
   .hero .lede{
     max-width: 440px;
     font-size: 15.5px;
@@ -385,7 +386,7 @@
   .scroll-cue{
     position: absolute;
     left: max(40px, calc(50% - 640px));
-    bottom: 32px;
+    bottom: 24px;
     z-index: 10;
     font-family: var(--mono);
     font-size: 10px;
@@ -1304,6 +1305,7 @@
   <div class="links">
     <a href="#work">Work</a>
     <a href="#about">About</a>
+    <a href="assets/Annie_Koo_Senior_Product_Designer_2026.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
     <a href="#contact" class="contact-btn">Contact</a>
   </div>
 </header>
@@ -1312,16 +1314,16 @@
 <section class="hero" id="top">
   <div class="hero-inner">
     <div>
-      <div class="meta eyebrow">8+ Years · Senior Product Designer · B2B SaaS &amp; Complex Systems</div>
+      <div class="meta eyebrow">8+ Years · Senior Product Designer · B2B/B2C SaaS, eCommerce</div>
       <h1><span class="ital">Annie S. Koo</span></h1>
       <div class="name-line">Complexity into clarity. <span class="ital">Clarity into growth.</span></div>
       <p class="lede">
-        Architecting simplicity within complex systems for 8+ years. Proven impact from 17.47% growth at Pens.com to 185% reach increases via AI-native strategy. One year in Taipei sharpened a lens no single market can teach.
-        <br> *Relocating to Irvine, CA July 2026
+        Architecting simplicity within complex systems for 8+ years. Proven impact from 17.47% growth at Pens.com to 187% reach increases via AI-native strategy. One year in Taipei sharpened a lens no single market can teach.
+        <br><span class="accent">*Relocating to Irvine, CA July 2026</span>
       </p>
       <div class="cta-row">
         <a href="#work" class="btn primary">View Work</a>
-        <a href="#" class="btn ghost">Resume</a>
+        <a href="assets/Annie_Koo_Senior_Product_Designer_2026.pdf" target="_blank" rel="noopener noreferrer" class="btn ghost">Resume</a>
       </div>
     </div>
     <div class="portrait">
@@ -1352,42 +1354,42 @@
           <div class="num">01</div>
           <div>
             <h3>Research-Grounded</h3>
-            <p>I start with questions, not solutions. Heuristic evaluations, usability testing, A/B testing, etc. The method matches the problem. My Cognitive Science HCI background from UCSD gave me the foundation; curiosity does the rest.</p>
+            <p>I start with questions, not solutions: heuristic evaluations (NNg), usability testing, A/B testing, etc. My UCSD Cognitive Science HCI background gives me the foundation; curiosity does the rest.</p>
           </div>
         </div>
         <div class="principle">
           <div class="num">02</div>
           <div>
             <h3>Outcome-Focused</h3>
-            <p>+17.47% in transaction rate at Pens.com. 44+ prioritized UX opportunities at LawnStarter in 90 days. +185% reach growth at Acts2 Network (Taipei chapter) in 8 months. Every number traces back to a deliberate design decision.</p>
+            <p>+17.47% in transaction rate at Pens.com. 44+ prioritized opportunities at LawnStarter. +187% reach and a community grown at Acts2 Network in Taipei. I deliver both quantitative & qualtiative: the numbers tell you a decision worked, and the user tells you why it was effective.</p>
           </div>
         </div>
         <div class="principle">
           <div class="num">03</div>
           <div>
             <h3>Cross-Domain Adaptable</h3>
-            <p>Seven product contexts across eCommerce, SaaS, marketplaces, fleet safety, and campus communities — including a year leading design in Taipei. The research process, the systems thinking, the cross-functional collaboration — those travel. The domain doesn't need to be familiar.</p>
+            <p>Seven product contexts across eCommerce, web app, fleet safety SaaS, and growth landing pages - including a year leading design and a campus in Taipei. The research process, the systems thinking, the cross-functional collaboration - those travel. The domain doesn't need to be familiar. I'll find the patterns, adapt fast, and deliver.</p>
           </div>
         </div>
         <div class="principle">
           <div class="num">04</div>
           <div>
             <h3>Mentor &amp; Collaborator</h3>
-            <p>Led a 7-person design team and mentored 10+ students 1:1. I stay close to engineering and treat collaboration as part of the design process — not something that happens after the thinking is done.</p>
+            <p>Collaboration isn't something that happens after the thinking is done. It's woven into it. Led a 7-person design team, mentored 6 junior designers 1:1, and stay embedded with engineering, PMs, and stakeholders from day one</p>
           </div>
         </div>
         <div class="principle">
           <div class="num">05</div>
           <div>
             <h3>Always Learning</h3>
-            <p>This past year added large-scale event planning, public presentations, and cross-cultural operations to my toolkit — none of which were in a job description. I learn fast in any context because staying curious about people is the same muscle as staying curious about craft.</p>
+            <p>I never assume I know it all. For example, this past year in Taipei (a new country, a new language, two roles, no inherited playbook) added event planning, operations, and cross-cultural mentorship to my practice. I learn fast in any context because staying curious about people is the same muscle as staying curious about craft.</p>
           </div>
         </div>
         <div class="principle">
           <div class="num">06</div>
           <div>
             <h3>AI-Native</h3>
-            <p>I use Claude, Cursor, and Figma AI daily — not as shortcuts, but as tools for thinking faster and exploring more broadly. I build working prototypes with AI-assisted code, and I'm actively helping teams develop that muscle too.</p>
+            <p>I use Claude, Perplexity, and Gemini daily. They provide not only as shortcuts, but also as tools for thinking faster and exploring more broadly.</p>
           </div>
         </div>
       </div>
@@ -1508,16 +1510,16 @@
       <article class="case" onclick="window.location='acts2-journey.html'" style="cursor:pointer;">
         <div class="case-num">01</div>
         <div class="head">
-          <div class="tags"><span class="chip">Growth Strategy</span><span class="chip">AI Tools</span></div>
+          <div class="tags"><span class="chip">Growth Strategy</span><span class="chip">Cross-Cultural</span><span class="chip">AI Tools</span></div>
           <div class="date">2025–26</div>
         </div>
         <div class="company">Acts2 Network — Journey, Taipei</div>
         <h3>Design &amp; Growth Strategist</h3>
-        <p class="blurb">A digital presence with no strategy behind it — reactive posts, reach without intent. I diagnosed the funnel, built a bilingual content system, and embedded AI tooling to give a 10-person volunteer team agency-level output capacity.</p>
+        <p class="blurb">No playbook, new country, two roles at once. I owned both the digital presence and the in-person community growth:  bilingual content system, AI workflow, flyering, tabling, and campus co-leadership at Fu Jen University. One year, measurable growth.</p>
         <div class="hr"></div>
         <div class="metric-row">
           <div>
-            <div class="metric">+185%</div>
+            <div class="metric">+187%</div>
             <div class="metric-label">Increase in reach</div>
           </div>
           <div class="arrow">↗</div>
@@ -1532,7 +1534,7 @@
         </div>
         <div class="company">LawnStarter</div>
         <h3>Senior Product Designer, Growth Squad</h3>
-        <p class="blurb">Three brands, no design baseline, acquisition flows built for traffic volume — not user trust. I bypassed the ramp-up and ran a structured diagnostic across all three simultaneously, producing 44+ impact-ranked opportunities in 90 days.</p>
+        <p class="blurb">Three brands, no design baseline, and acquisition flows built for traffic volume, not user trust. I bypassed the ramp-up and ran a structured diagnostic across all three simultaneously, producing 44+ impact-ranked opportunities in 90 days.</p>
         <div class="hr"></div>
         <div class="metric-row">
           <div>
@@ -1551,7 +1553,7 @@
         </div>
         <div class="company">Pens.com</div>
         <h3>Senior Product Designer</h3>
-        <p class="blurb">I flagged the checkout problems on day one. No one was asking for a fix. Instead of waiting for permission, I found the fastest path to proof — a microsite experiment, run lean, validated in 12 days. The results earned the stakeholder buy-in the main site redesign needed.</p>
+        <p class="blurb">Two checkout systems. One had no designer. Rather than wait for the main site to unblock, I proposed owning the microsite. I ran the research, scoped the fastest fix, and validated in 12 days: +$15k revenue, +13.24% conversion lift, no engineering required.</p>
         <div class="hr"></div>
         <div class="metric-row">
           <div>
@@ -1665,7 +1667,7 @@
       <h4>University of California, San Diego</h4>
       <p>B.S. Cognitive Science — Human-Computer Interaction</p>
       <div class="latte-wrap">
-        <img src="assets/magnifier.png" alt="Latte" class="skills-portrait">
+        <img src="assets/latte.png" alt="Latte" class="skills-portrait">
       </div>
     </div>
   </div>
@@ -1697,7 +1699,7 @@
           <div class="stat-label">coffee in hand, asking everyone about their weekend before anything else</div>
         </div>
         <div class="personal-stat">
-          <div class="stat-value">10+</div>
+          <div class="stat-value">40+</div>
           <div class="stat-label">students mentored 1:1 — a mom and a coach, in and out of work</div>
         </div>
         <div class="personal-stat">
@@ -1731,7 +1733,7 @@
     <nav>
       <a href="#work">Work</a>
       <a href="https://www.linkedin.com/in/anniespark/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="#">Resume</a>
+      <a href="assets/Annie_Koo_Senior_Product_Designer_2026.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
     </nav>
     <div class="copy">© 2026 Annie S. Koo</div>
   </div>

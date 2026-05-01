@@ -267,6 +267,37 @@
   }
   .outcome-metric .label{ font-size:12px; color:rgba(239,236,224,.6); line-height:1.5; }
 
+  /* ── CAROUSEL ── */
+  .carousel-wrap{
+    position:relative; margin-top:20px; overflow:hidden;
+  }
+  .carousel-slide{
+    display:none; width:100%; height:auto;
+  }
+  .carousel-slide.active{ display:block; }
+  .carousel-controls{
+    position:absolute; bottom:0; left:0; right:0;
+    display:flex; justify-content:space-between;
+    padding:10px; pointer-events:none;
+  }
+  .carousel-btn{
+    pointer-events:all;
+    background:rgba(30,28,24,.55); border:none; color:#efece0;
+    width:32px; height:32px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .2s;
+  }
+  .carousel-btn:hover{ background:rgba(30,28,24,.88); }
+  .carousel-dots{
+    position:absolute; bottom:12px; left:50%; transform:translateX(-50%);
+    display:flex; gap:6px; pointer-events:none;
+  }
+  .carousel-dot{
+    width:5px; height:5px; border-radius:50%;
+    background:rgba(239,236,224,.4); transition:background .2s;
+  }
+  .carousel-dot.active{ background:rgba(239,236,224,.9); }
+
   /* ── NEXT PROJECT ── */
   .next-project{
     padding:72px 40px; display:flex; justify-content:space-between;
@@ -316,6 +347,7 @@
   <div class="links">
     <a href="index.html#work">Work</a>
     <a href="index.html#about">About</a>
+    <a href="assets/Annie_Koo_Senior_Product_Designer_2026.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
     <a href="index.html#contact" class="contact-btn">Contact</a>
   </div>
 </header>
@@ -338,28 +370,25 @@
       <span class="chip">Cross-Cultural</span>
     </div>
 
-    <div class="kicker">Design & Growth · Campus Co-Leadership · Acts2 Network · Journey Taipei</div>
+    <div class="kicker">Design & Growth · Campus Co-Leadership · Acts2 Network · Taipei, Taiwan</div>
     <h1>New country. New language.<br>Two roles. <em>No manual.</em></h1>
-    <div class="role-line">Design & Growth Strategist · Campus Co-Leader · Fu Jen University · Taipei, Taiwan</div>
+    <div class="role-line">10 Months · Acts2 Network · Taipei, Taiwan</div>
 
-    <p style="font-size:16px; line-height:1.75; color:var(--ink-2); margin:0 0 40px; max-width:680px;">A paid missionary with Acts2 Network in Taipei — with two specific jobs: grow Journey Taipei's Instagram presence as the design and growth lead, and co-lead the Fu Jen University campus community. No prior playbook. Figuring it out was the whole point.</p>
 
     <div style="font-family:var(--mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:16px;">Journey Taipei Instagram · 10 Months</div>
     <div class="metric-grid">
       <div class="mg">
-        <div class="val">+185%</div>
+        <div class="val">+187%</div>
         <div class="desc">Increase in reach</div>
         <div class="sub">8.3K total</div>
       </div>
       <div class="mg">
-        <div class="val">+923</div>
+        <div class="val">923</div>
         <div class="desc">New followers</div>
-        <div class="sub">+3,700% over baseline</div>
       </div>
       <div class="mg">
-        <div class="val">+327%</div>
-        <div class="desc">Link clicks to sign-up pages</div>
-        <div class="sub">high-intent traffic</div>
+        <div class="val">221.2K</div>
+        <div class="desc">Total views</div>
       </div>
     </div>
 
@@ -372,20 +401,24 @@
 <div class="block">
   <div class="container">
     <div class="section-label">01 — The Role</div>
-    <h2>Missionary. Designer.<br><em>Both at once.</em></h2>
+    <h2>Wore every hat.<br><em>Then wrote the manual.</em></h2>
 
-    <p>Acts2 Network is a Christian nonprofit with missionary teams across Asia. Journey Taipei is its Taipei chapter — community, events, and Bible study for university students. I joined as a paid missionary. My specific job was design and growth.</p>
+    <p>Acts2 Network is a ministry network with 125+ teams across the US and Asia, focused on reaching college students, youth, and local communities. In Taipei, I held two roles at once: design and growth lead for the whole team, and campus co-leader at Fu Jen University. My job was to build the visual presence and grow the community both digitally and in person.</p>
 
     <div class="context-split">
       <div class="col">
         <h3>The Reality</h3>
-        <p>A 10-person cross-functional team, all with full-time roles, running events, mentoring students, and producing content simultaneously. No design department. No content team. No inherited playbook from whoever had this role before.</p>
-        <p>It felt like a startup — everyone wore many hats, nothing was defined in advance, and the work didn't stop at 5pm. What it required was figuring out what the community needed, building the system to deliver it, and doing it fast enough to matter.</p>
+        <p>A 10-person cross-functional team, all with full-time roles, running events, mentoring students, and producing content simultaneously. No design department. No content team. No inherited playbook.</p>
+        <p>It felt like a startup as everyone wore many hats, nothing was defined in advance, and the work didn't stop at 5pm. What it required was figuring out what the community needed, building the system to deliver it, and doing it fast enough to matter.</p>
+        <div style="margin-top:20px; padding-top:16px; border-top:1px solid var(--line-soft);">
+          <div style="font-family:var(--mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:8px;">Other hats worn</div>
+          <p style="font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--ink-faint); margin:0; line-height:2;">✦ Chef for 30 &nbsp;·&nbsp; ✦ Trip planner &nbsp;·&nbsp; ✦ Ambience director &nbsp;·&nbsp; ✦ Part-time childcare for 8</p>
+        </div>
       </div>
       <div class="col">
         <h3>The Two Jobs</h3>
-        <p><strong style="color:var(--ink);">Design & Growth Lead</strong> — owned the Journey Taipei Instagram: strategy, visual identity, content creation (posts, posters, reels, t-shirts), and analytics. Responsible for growing the account and driving sign-ups to events.</p>
-        <p><strong style="color:var(--ink);">Campus Co-Leader, Fu Jen University</strong> — co-led the FJU campus community with my husband. Event planning, student mentorship, talks, and whatever else needed doing.</p>
+        <p><strong style="color:var(--ink);">Design & Growth Strategist</strong> — owned the visual output: Instagram strategy, posters, event assets, and guiding teammates to design better. And on the ground: flyering, tabling, and meeting people to build community presence beyond the screen.</p>
+        <p><strong style="color:var(--ink);">Campus Co-Leader, Journey at Fu Jen</strong> — co-led the campus chapter. Event planning and logistics, student mentorship, weekly small group facilitation, outreach trip coordination within Taiwan, and 5 talks across campus and community events.</p>
       </div>
     </div>
 
@@ -393,197 +426,170 @@
 </div>
 
 <!-- ═══════════════════════════════════════
-     02 · DESIGN & GROWTH
+     02 · CAMPUS LEADERSHIP
 ════════════════════════════════════════ -->
 <div class="block">
   <div class="container">
-    <div class="section-label">02 — Design & Growth</div>
-    <h2>Growing an Instagram with<br><em>AI as a coworker.</em></h2>
+    <div class="section-label">02 — Campus Leadership</div>
+    <h2>Co-leading a campus —<br><em>knowing your audience changes everything.</em></h2>
 
-    <p>The account needed consistent, bilingual content that resonated with Taiwanese university students — a specific audience with specific cultural context. I didn't have a team of writers or a content strategist. I had Perplexity.</p>
+    <p>I moved from California to Taipei without speaking Mandarin, while raising a child. Fast adaptation wasn't optional — it came from treating every interaction as something worth paying attention to.</p>
 
-    <div class="pull-quote">
-      <p>"Perplexity wasn't a search tool. It was the coworker I didn't have — one I could pitch ideas to, go back and forth with, and get to a final proposal before I ever opened Figma."</p>
+    <div class="context-split" style="margin-top:32px;">
+      <div class="col">
+        <h3>The Audience</h3>
+        <p>Fu Jen students lean toward fun and connection — not lectures, not heavy programming. That distinction shapes everything: what you design, how you run outreach, what goes on a flyer. Getting it right meant adjusting, not just executing a playbook built for someone else.</p>
+      </div>
+      <div class="col">
+        <h3>The Work</h3>
+        <p>I owned event planning and logistics — the structure that made everything possible. Co-leading in a second language, across a cultural gap, meant the work started before any event did. I also mentored 10 students directly, in English, across a language and cultural gap.</p>
+      </div>
+    </div>
+
+    <img src="assets/Acts2_FJU_Event.jpg" alt="Fu Jen University campus event" style="width:100%; display:block; margin-top:24px;">
+
+    <p style="margin-top:48px;">What I took away: how to read a room you didn't grow up in, navigate conflict across cultural norms, and make calls when there's no playbook.</p>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     03 · DESIGN & GROWTH
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">03 — Design & Growth</div>
+    <h2>Growing a community —<br><em>design, AI, and presence.</em></h2>
+
+    <p>Design was one hat out of many. Most of my time went to campus leadership, events, mentorship, and outreach — design got what was left. That constraint changed how I worked.</p>
+
+    <div style="border-left:3px solid var(--rust); padding:14px 20px; margin:28px 0; background:var(--cream);">
+      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--rust); margin-bottom:8px;">How it worked</div>
+      <div style="font-size:14px; color:var(--ink); line-height:1.65;">Perplexity became the creative collaborator I didn't have time to find. I wasn't outsourcing the thinking — I was accelerating it. AI got me to a clear creative direction in minutes, so my time in Canva was execution, not wandering.</div>
     </div>
 
     <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); margin:32px 0;">
       <div style="background:var(--cream); padding:20px 24px;">
         <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:8px;">01</div>
-        <div style="font-size:14px; font-weight:600; color:var(--ink); margin-bottom:6px;">Brief Perplexity</div>
-        <div style="font-size:13px; color:var(--ink-mute); line-height:1.6;">Full event context — theme, audience, what's worked before</div>
+        <div style="font-size:14px; font-weight:600; color:var(--ink); margin-bottom:6px;">Set the brief</div>
+        <div style="font-size:13px; color:var(--ink-mute); line-height:1.6;">Event context, audience, goals, and constraints</div>
       </div>
       <div style="background:var(--cream); padding:20px 24px;">
         <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:8px;">02</div>
-        <div style="font-size:14px; font-weight:600; color:var(--ink); margin-bottom:6px;">Iterate together</div>
-        <div style="font-size:13px; color:var(--ink-mute); line-height:1.6;">Content angles, visual direction, bilingual caption drafts</div>
+        <div style="font-size:14px; font-weight:600; color:var(--ink); margin-bottom:6px;">Ideate together</div>
+        <div style="font-size:13px; color:var(--ink-mute); line-height:1.6;">Reel concepts, visual angles, creative directions, bilingual captions</div>
       </div>
       <div style="background:var(--cream); padding:20px 24px;">
         <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:8px;">03</div>
-        <div style="font-size:14px; font-weight:600; color:var(--ink); margin-bottom:6px;">Build in Figma</div>
-        <div style="font-size:13px; color:var(--ink-mute); line-height:1.6;">Asset built, brought back for caption and hashtag refinement</div>
+        <div style="font-size:14px; font-weight:600; color:var(--ink); margin-bottom:6px;">Execute in Canva</div>
+        <div style="font-size:13px; color:var(--ink-mute); line-height:1.6;">Build assets with clear direction, return for refinement</div>
       </div>
     </div>
 
-    <p>Not every creative decision followed expectations. For Halloween, I leaned into the holiday energy — it became the best-performing post. For Easter, I put an easter bunny on the poster when the expected direction was something more traditional. It caught more eyes. That's the kind of call you make when you understand your audience well enough to know when to break the pattern.</p>
+    <p>Understanding the audience — built in Section 02 — directly shaped what got made. For Halloween, I leaned into the holiday energy instead of softening it. Highest-performing post. For Easter, I put a large bunny on the poster when the expected direction was something more traditional. It caught more eyes. That's the call you make when you actually know who you're designing for.</p>
 
     <div class="work-split" style="margin-top:40px;">
       <div class="work-col">
         <div class="wc-label">Best Performer</div>
-        <h4>Halloween post</h4>
-        <p>Leaned into the holiday. Highest engagement of any post — proof that cultural relevance beats safe content.</p>
-        <img src="assets/Acts2_Halloween_IG_1.png" alt="Halloween post cover — group photo with cutout styling and hand-lettered type" style="width:100%; display:block; margin-top:20px; aspect-ratio:1/1; object-fit:cover;">
-        <img src="assets/Acts2_Halloween_IG_13.png" alt="Final slide — 這就是 Journey, chaotic, cozy, real" style="width:100%; display:block; margin-top:2px; aspect-ratio:4/3; object-fit:cover;">
+        <h4>Halloween Post</h4>
+        <p>3,948 views</p>
+        <div class="carousel-wrap" data-carousel="halloween">
+          <img src="assets/Acts2_Halloween_IG_1.png" alt="Halloween slide 1" class="carousel-slide active">
+          <img src="assets/Acts2_Halloween_IG_2.png" alt="Halloween slide 2" class="carousel-slide">
+          <img src="assets/Acts2_Halloween_IG_3.png" alt="Halloween slide 3" class="carousel-slide">
+          <img src="assets/Acts2_Halloween_IG_4.png" alt="Halloween slide 4" class="carousel-slide">
+          <img src="assets/Acts2_Halloween_IG_5.png" alt="Halloween slide 5" class="carousel-slide">
+          <img src="assets/Acts2_Halloween_IG_6.png" alt="Halloween slide 6" class="carousel-slide">
+          <img src="assets/Acts2_Halloween_IG_7.png" alt="Halloween slide 7" class="carousel-slide">
+          <img src="assets/Acts2_Halloween_IG_8.png" alt="Halloween slide 8" class="carousel-slide">
+          <img src="assets/Acts2_Halloween_IG_9.png" alt="Halloween slide 9" class="carousel-slide">
+          <img src="assets/Acts2_Halloween_IG_10.png" alt="Halloween slide 10" class="carousel-slide">
+          <img src="assets/Acts2_Halloween_IG_11.png" alt="Halloween slide 11" class="carousel-slide">
+          <img src="assets/Acts2_Halloween_IG_12.png" alt="Halloween slide 12" class="carousel-slide">
+          <img src="assets/Acts2_Halloween_IG_13.png" alt="Halloween slide 13 — 這就是 Journey, chaotic, cozy, real" class="carousel-slide">
+          <div class="carousel-controls">
+            <button class="carousel-btn" onclick="carouselMove('halloween',-1)" aria-label="Previous">
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>
+            </button>
+            <button class="carousel-btn" onclick="carouselMove('halloween',1)" aria-label="Next">
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 2l5 5-5 5"/></svg>
+            </button>
+          </div>
+          <div class="carousel-counter" style="font-family:var(--mono); font-size:10px; letter-spacing:.12em; color:var(--ink-faint); text-align:center; margin-top:10px;">1 / 13</div>
+        </div>
       </div>
       <div class="work-col">
         <div class="wc-label">Unconventional Call</div>
-        <h4>Easter bunny poster</h4>
-        <p>Unexpected for a ministry event. Caught more attention than the conventional direction would have.</p>
-        <img src="assets/Acts2_Easter_Poster_Digital.png" alt="Easter bunny poster — WHAT IS THE MEANING OF EASTER?" style="width:100%; display:block; margin-top:20px; aspect-ratio:3/4; object-fit:cover;">
-        <img src="assets/Acts2_Easter_Poster_Campus.png" alt="Easter posters on campus bulletin boards at Fu Jen University" style="width:100%; display:block; margin-top:2px; aspect-ratio:4/3; object-fit:cover;">
-      </div>
-    </div>
-
-    <div class="img-placeholder" style="margin-top:2px; aspect-ratio:16/6;">
-      <div class="img-label">Instagram Grid — Journey Taipei</div>
-      <div class="img-caption">Feed showing the content system — bilingual, consistent visual identity</div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════
-     03 · CAMPUS LEADERSHIP
-════════════════════════════════════════ -->
-<div class="block">
-  <div class="container">
-    <div class="section-label">03 — Campus Leadership</div>
-    <h2>Co-leading a campus<br><em>without a handbook.</em></h2>
-
-    <p>At Fu Jen University, my husband and I co-led the campus community together. We split to our strengths: I owned event planning and logistics — the scaffolding that made things possible. He handled day-of execution and weekly small group content. We both mentored students.</p>
-
-    <p>There was always more beyond the plan. The job description is a starting point, not a ceiling.</p>
-
-    <div class="context-split" style="margin-top:40px;">
-      <div class="col">
-        <h3>Talks Given</h3>
-        <div class="talks-list">
-          <div class="talk-row">
-            <div class="t-num">01</div>
-            <div class="t-body">Movie discussion and talk — youth camp</div>
+        <h4>Easter Event Poster</h4>
+        <div class="carousel-wrap" data-carousel="easter">
+          <img src="assets/Acts2_Easter_Poster_Digital.png" alt="Easter bunny poster — WHAT IS THE MEANING OF EASTER?" class="carousel-slide active">
+          <img src="assets/Acts2_Easter_Poster_Campus.png" alt="Easter posters on campus bulletin boards at Fu Jen University" class="carousel-slide">
+          <div class="carousel-controls">
+            <button class="carousel-btn" onclick="carouselMove('easter',-1)" aria-label="Previous">
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>
+            </button>
+            <button class="carousel-btn" onclick="carouselMove('easter',1)" aria-label="Next">
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 2l5 5-5 5"/></svg>
+            </button>
           </div>
-          <div class="talk-row">
-            <div class="t-num">02</div>
-            <div class="t-body">Bible study and personal story — Fu Jen</div>
-          </div>
-          <div class="talk-row">
-            <div class="t-num">03</div>
-            <div class="t-body">
-              <strong>Leveling Up in Design</strong> — Fu Jen
-              <span class="t-note">2-hour workshop · designed for whoever takes this role next</span>
-            </div>
-          </div>
-          <div class="talk-row">
-            <div class="t-num">04</div>
-            <div class="t-body">Discussion Bible study — Fu Jen</div>
-          </div>
-          <div class="talk-row">
-            <div class="t-num">05</div>
-            <div class="t-body">Sharing on receiving wisdom — community event</div>
+          <div class="carousel-dots">
+            <div class="carousel-dot active"></div>
+            <div class="carousel-dot"></div>
           </div>
         </div>
       </div>
-      <div class="col">
-        <h3>Also On The List</h3>
-        <p>Student mentorship — [X]+ students, in English, across a cultural and language gap.</p>
-        <p>Mission trip coordination — planning and logistics for outreach in Vietnam and across Asia.</p>
-        <p>Weekly small group facilitation, event ambience, childcare, gym night. The list is long because the role required it.</p>
-        <img src="assets/Acts2_Halloween_IG_12.png" alt="Students sitting down with Coco, talking about life after the Halloween event" style="width:100%; display:block; margin-top:24px; aspect-ratio:4/3; object-fit:cover; object-position:top;">
-      </div>
     </div>
 
-  </div>
-</div>
+    <div style="margin-top:32px;">
+      <img src="assets/Acts2_IG_Grid.png" alt="Instagram grid — Journey Taipei feed showing bilingual, consistent visual identity" style="width:100%; display:block;">
+      <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-top:10px;">Instagram Grid — Journey Taipei · bilingual, consistent visual identity</div>
+    </div>
 
-<!-- ═══════════════════════════════════════
-     04 · WHAT IT BUILT
-════════════════════════════════════════ -->
-<div class="global-block">
-  <div class="container">
-    <div>
-      <div class="gb-eyebrow">California → Taipei</div>
-      <h2>New environment.<br><em>Fast adaptation.</em></h2>
-      <div class="gb-body">
-        <p>I moved from California to Taipei without speaking Mandarin. I navigated a new culture, a new team, and a new community — while raising a child. The speed of that adaptation wasn't accidental. It came from treating every interaction as something worth paying attention to.</p>
-        <p>What I learned: how to read a room you didn't grow up in, navigate conflict across cultural norms, and make calls when there's no playbook.</p>
-        <p>The design workshop — two hours, built for whoever takes this role after me — is probably the thing I'm most proud of. Not the metrics. The fact that I thought about what happens when I leave.</p>
-      </div>
-    </div>
-    <div class="global-stats">
-      <div class="global-stat">
-        <div class="gs-val">2</div>
-        <div class="gs-label">Languages — all content and communications in English and Mandarin</div>
-      </div>
-      <div class="global-stat">
-        <div class="gs-val">10mo</div>
-        <div class="gs-label">In current Acts2 role — 2 years total in Taipei</div>
-      </div>
-      <div class="global-stat">
-        <div class="gs-val">[X]+</div>
-        <div class="gs-label">Students mentored — across language and cultural barriers</div>
-      </div>
-      <div class="global-stat">
-        <div class="gs-val">5</div>
-        <div class="gs-label">Talks given — including a 2-hour design succession workshop</div>
-      </div>
-    </div>
-  </div>
-</div>
+    <div style="margin-top:64px; padding-top:48px; border-top:1px solid var(--line-soft);">
+      <div style="font-family:var(--mono); font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px;">Results — 10 Months · Journey Taipei Instagram</div>
+      <h2 style="font-family:var(--serif); font-weight:var(--display-weight); font-size:clamp(28px,3.2vw,44px); line-height:1.06; letter-spacing:var(--display-tracking); margin:0 0 36px; color:var(--ink);">Numbers that reflect<br><em style="font-style:var(--display-italic-style); color:var(--forest);">real growth decisions.</em></h2>
 
-<!-- ═══════════════════════════════════════
-     OUTCOME BANNER
-════════════════════════════════════════ -->
-<div class="outcome-banner">
-  <div class="container">
-    <div>
-      <div class="ob-eyebrow">Results — 10 Months · Journey Taipei Instagram</div>
-      <h2>Numbers that reflect<br>real <em>growth decisions.</em></h2>
-      <figure style="margin:32px 0 0;">
-        <img src="assets/Acts2_IG_Analytics_2.png" alt="Instagram Insights overview — 221.2K views, 8.3K reach +187%, 1.7K interactions over 10 months" style="width:100%; display:block; border:1px solid rgba(239,236,224,.15);">
-        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(239,236,224,.4); margin-top:10px;">Instagram Insights — Overview</div>
-      </figure>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line-soft);">
+        <div style="padding:24px 24px 24px 0; border-right:1px solid var(--line-soft);">
+          <div style="font-family:var(--mono); font-size:clamp(22px,2.4vw,32px); color:var(--forest); letter-spacing:-.02em; line-height:1.1; margin-bottom:6px;">+187%</div>
+          <div style="font-size:13px; color:var(--ink-2); line-height:1.5;">Reach — 8.3K total</div>
+        </div>
+        <div style="padding:24px; border-right:1px solid var(--line-soft);">
+          <div style="font-family:var(--mono); font-size:clamp(22px,2.4vw,32px); color:var(--forest); letter-spacing:-.02em; line-height:1.1; margin-bottom:6px;">221.2K</div>
+          <div style="font-size:13px; color:var(--ink-2); line-height:1.5;">Total views</div>
+        </div>
+        <div style="padding:24px 0 24px 24px;">
+          <div style="font-family:var(--mono); font-size:clamp(22px,2.4vw,32px); color:var(--forest); letter-spacing:-.02em; line-height:1.1; margin-bottom:6px;">923</div>
+          <div style="font-size:13px; color:var(--ink-2); line-height:1.5;">New followers</div>
+        </div>
+        <div style="padding:24px 24px 0 0; border-right:1px solid var(--line-soft); border-top:1px solid var(--line-soft);">
+          <div style="font-family:var(--mono); font-size:clamp(22px,2.4vw,32px); color:var(--forest); letter-spacing:-.02em; line-height:1.1; margin-bottom:6px;">6.8K</div>
+          <div style="font-size:13px; color:var(--ink-2); line-height:1.5;">Profile visits</div>
+        </div>
+        <div style="padding:24px; border-right:1px solid var(--line-soft); border-top:1px solid var(--line-soft);">
+          <div style="font-family:var(--mono); font-size:clamp(22px,2.4vw,32px); color:var(--forest); letter-spacing:-.02em; line-height:1.1; margin-bottom:6px;">1.7K</div>
+          <div style="font-size:13px; color:var(--ink-2); line-height:1.5;">Content interactions</div>
+        </div>
+        <div style="padding:24px 0 0 24px; border-top:1px solid var(--line-soft);">
+          <div style="font-family:var(--mono); font-size:clamp(22px,2.4vw,32px); color:var(--forest); letter-spacing:-.02em; line-height:1.1; margin-bottom:6px;">47</div>
+          <div style="font-size:13px; color:var(--ink-2); line-height:1.5;">Link clicks to event sign-ups</div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:32px;">
+        <figure style="margin:0;">
+          <img src="assets/Acts2_IG_Analytics_2.png" alt="Instagram Insights overview — 221.2K views, 8.3K reach +187%, 1.7K interactions" style="width:100%; display:block; border:1px solid var(--line-soft);">
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-top:8px;">Instagram Insights — Overview</div>
+        </figure>
+        <figure style="margin:0;">
+          <img src="assets/Acts2_IG_Analytics_1.png" alt="Instagram Insights full dashboard" style="width:100%; display:block; border:1px solid var(--line-soft);">
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-top:8px;">Full metrics dashboard</div>
+        </figure>
+      </div>
+
+      <p style="margin-top:48px;">The metrics capture one kind of growth. The other kind is harder to screenshot. I built a 2-hour workshop — <em>Leveling Up in Design</em> — for whoever takes this role next: visual design principles, project management, how to give and receive feedback, AI workflow, Canva, quick fixes. I'm still in the process of training them. <span style="color:var(--rust);">Because growth that stops when you leave isn't really growth.</span></p>
     </div>
-    <div class="outcome-metrics">
-      <div class="outcome-metric">
-        <div class="val">+185%</div>
-        <div class="label">Reach — 8.3K total</div>
-      </div>
-      <div class="outcome-metric">
-        <div class="val">+242%</div>
-        <div class="label">Profile visits — 6.8K total</div>
-      </div>
-      <div class="outcome-metric">
-        <div class="val">+923</div>
-        <div class="label">New followers — +3,700% over baseline</div>
-      </div>
-      <div class="outcome-metric">
-        <div class="val">221.2K</div>
-        <div class="label">Total views</div>
-      </div>
-      <div class="outcome-metric">
-        <div class="val">+327%</div>
-        <div class="label">Link clicks to event sign-ups</div>
-      </div>
-      <div class="outcome-metric">
-        <div class="val">1.7K</div>
-        <div class="label">Content interactions</div>
-      </div>
-    </div>
-  </div>
-  <div class="container" style="padding-top:32px; padding-bottom:48px;">
-    <figure style="margin:0;">
-      <img src="assets/Acts2_IG_Analytics_1.png" alt="Instagram Insights full dashboard — Views 221.2K, Reach 8.3K, Interactions 1.7K, Link Clicks, Profile Visits, Follower Growth" style="width:100%; display:block; border:1px solid rgba(239,236,224,.15);">
-      <div style="font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(239,236,224,.4); margin-top:8px;">Full metrics dashboard · Views · Reach · Interactions · Link Clicks · Profile Visits · Follower Growth</div>
-    </figure>
+
   </div>
 </div>
 
@@ -601,5 +607,20 @@
   </a>
 </div>
 
+<script>
+function carouselMove(id, dir) {
+  const wrap = document.querySelector('[data-carousel="' + id + '"]');
+  const slides = wrap.querySelectorAll('.carousel-slide');
+  const dots = wrap.querySelectorAll('.carousel-dot');
+  const counter = wrap.querySelector('.carousel-counter');
+  let i = Array.from(slides).findIndex(s => s.classList.contains('active'));
+  slides[i].classList.remove('active');
+  if (dots[i]) dots[i].classList.remove('active');
+  i = (i + dir + slides.length) % slides.length;
+  slides[i].classList.add('active');
+  if (dots[i]) dots[i].classList.add('active');
+  if (counter) counter.textContent = (i + 1) + ' / ' + slides.length;
+}
+</script>
 </body>
 </html>
