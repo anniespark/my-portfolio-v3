@@ -63,6 +63,24 @@
     transition:background .2s, color .2s;
   }
   .nav .contact-btn:hover{ background:var(--ink); color:var(--cream); opacity:1; }
+  .nav-toggle{
+    display:none; flex-direction:column; justify-content:center; gap:5px;
+    background:none; border:none; padding:6px 4px; cursor:pointer; color:inherit; flex-shrink:0;
+  }
+  .nav-toggle span{ display:block; width:22px; height:2px; background:currentColor; border-radius:1px; transition:transform .22s ease, opacity .22s ease; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){ opacity:0; transform:scaleX(0); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  @media(max-width:640px){
+    .nav{ padding:16px 20px; flex-wrap:wrap; }
+    .nav-toggle{ display:flex; }
+    .nav .links{ display:none; flex-direction:column; width:100%; gap:0; padding:8px 0 4px; order:3; border-top:1px solid var(--line-soft); }
+    .nav .links.open{ display:flex; }
+    .nav .links a{ padding:13px 0; font-size:12px; opacity:1; border-bottom:1px solid var(--line-soft); }
+    .nav .links a:last-child{ border-bottom:none; }
+    .nav .contact-btn{ margin-top:6px; padding:12px 0; text-align:center; border:none; border-top:1px solid var(--line-soft) !important; }
+    .container{ padding:0 20px; }
+  }
 
   /* ── SHARED ── */
   .container{ max-width:1080px; margin:0 auto; padding:0 40px; }
@@ -344,6 +362,9 @@
 <!-- NAV -->
 <header class="nav">
   <a href="index.html" class="brand">Annie S. Koo</a>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   <div class="links">
     <a href="index.html#work">Work</a>
     <a href="index.html#about">About</a>
@@ -608,6 +629,23 @@
 </div>
 
 <script>
+(function(){
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinksEl = document.querySelector('.nav .links');
+  if (navToggle && navLinksEl) {
+    navToggle.addEventListener('click', () => {
+      const open = navLinksEl.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+    navLinksEl.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinksEl.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+})();
+
 function carouselMove(id, dir) {
   const wrap = document.querySelector('[data-carousel="' + id + '"]');
   const slides = wrap.querySelectorAll('.carousel-slide');

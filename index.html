@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/png" href="assets/magnifier.png">
+<link rel="icon" type="image/png" href="assets/latte-favicon.png">
 <title>Annie S. Koo — Senior Product Designer</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -530,6 +530,10 @@
   /* ============== PROCESS ============== */
   .process-work-group{
     position: relative;
+    background: var(--cream-2);
+    margin-top: -140px;
+    padding-top: 140px;
+    z-index: 1;
   }
   .shared-portrait-rail{
     position: absolute;
@@ -1264,7 +1268,32 @@
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
   }
 
-  /* ============== RESPONSIVE BASICS ============== */
+  /* ============== HAMBURGER BUTTON (always defined, hidden on wide) ============== */
+  .nav-toggle{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 6px 4px;
+    cursor: pointer;
+    color: inherit;
+    flex-shrink: 0;
+  }
+  .nav-toggle span{
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 1px;
+    transition: transform .22s ease, opacity .22s ease;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){ opacity: 0; transform: scaleX(0); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+  /* ============== RESPONSIVE: TABLET (≤960px) ============== */
   @media (max-width: 960px){
     .hero-inner,
     .about .wrap,
@@ -1281,6 +1310,114 @@
     .role .tags2, .role .metric2, .role .arrow2{ display:none; }
     .archive .row{ grid-template-columns: 80px 1fr; }
     .archive .row .domain{ display:none; }
+    .shared-portrait-rail{ display: none; }
+    .case .case-num{ display: none; }
+    .skills-right{
+      border-left: none;
+      padding-left: 0;
+      border-top: 1px solid var(--line-soft);
+      padding-top: 40px;
+    }
+  }
+
+  /* ============== RESPONSIVE: MOBILE (≤640px) ============== */
+  @media (max-width: 640px){
+    :root{ --section-pad: 64px; }
+
+    /* Nav */
+    .nav{ padding: 16px 20px; flex-wrap: wrap; }
+    .nav-toggle{ display: flex; }
+    .nav .links{
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      gap: 0;
+      padding: 8px 0 4px;
+      order: 3;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .nav.scrolled .links{ border-top-color: var(--line-soft); }
+    .nav .links.open{ display: flex; }
+    .nav .links a{
+      padding: 13px 0;
+      font-size: 12px;
+      opacity: 1;
+      letter-spacing: .18em;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav.scrolled .links a{ border-bottom-color: var(--line-soft); }
+    .nav .links a:last-child{ border-bottom: none; }
+    .nav .contact-btn{
+      margin-top: 6px;
+      padding: 12px 0;
+      text-align: center;
+      border: none;
+      border-top: 1px solid rgba(255,255,255,.12) !important;
+    }
+    .nav.scrolled .contact-btn{ border-top-color: var(--line-soft) !important; }
+
+    /* Hero */
+    .hero{ padding: var(--hero-pad-top) 20px 40px; }
+    .hero-inner{ gap: 0; min-height: auto; padding-bottom: 24px; }
+    .hero .portrait{ min-height: 240px; margin-top: 16px; order: -1; }
+    .portrait-holder{ max-width: 180px; margin: 0 auto; }
+    .scroll-cue{ left: 20px; }
+
+    /* About / Green panel */
+    .green-panel{ margin-top: 0; }
+    .about{ padding: 40px 20px 64px; }
+    .principle{ padding: 22px 0; gap: 14px; }
+    .principle h3{ font-size: 28px; margin-bottom: 8px; }
+
+    /* Process-work group: parallax disabled on mobile so reset the offset */
+    .process-work-group{ margin-top: 0; padding-top: 0; }
+
+    /* Process */
+    .process{ padding: var(--section-pad) 20px; }
+    .process h2{ margin-bottom: 40px; }
+    .step{ padding: 22px 0; gap: 14px; }
+    .step h3{ font-size: 28px; }
+
+    /* Work */
+    .work{ padding: var(--section-pad) 20px 48px; }
+    .work h2{ margin-bottom: 36px; }
+    .case{ padding: 22px 18px; }
+    .case h3{ font-size: 26px; }
+    .case .metric{ font-size: 34px; }
+
+    /* All work / archive */
+    .allwork{ padding: 24px 20px 48px; }
+    .archive{ padding: 40px 20px 28px; }
+
+    /* Values */
+    .values{ padding: var(--section-pad) 20px; }
+    .personal-stats{ grid-template-columns: 1fr; }
+    .personal-stat:nth-child(even){ border-left: none; padding-left: 0; }
+
+    /* Skills */
+    .skills{ padding: 60px 20px; }
+
+    /* CTA */
+    .cta{ padding: var(--section-pad) 20px; }
+    .cta .wrap{ gap: 28px; }
+    .cta .big-btn{ display: block; text-align: center; }
+
+    /* Footer */
+    footer{ padding: 28px 20px; }
+    footer .wrap{ gap: 16px; }
+
+    /* Generic section */
+    .section{ padding: var(--section-pad) 20px; }
+
+    /* Wave — shorter on mobile */
+    .wave svg{ height: 80px; }
+  }
+
+  /* ============== RESPONSIVE: SMALL PHONE (≤400px) ============== */
+  @media (max-width: 400px){
+    .hero h1{ font-size: 52px; }
+    .about h2{ font-size: 44px; }
+    .process h2{ font-size: 44px; }
   }
 </style>
 
@@ -1302,6 +1439,9 @@
 
 <header class="nav scrolled on-dark" id="nav">
   <a href="#top" class="brand">Annie S. Koo</a>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   <div class="links">
     <a href="#work">Work</a>
     <a href="#about">About</a>
@@ -1842,17 +1982,33 @@
   const heroSection = document.querySelector('.hero');
   function updateParallax(){
     if (!greenPanel || !heroSection) return;
-    // How far has the user scrolled into the hero?
-    const heroH = heroSection.offsetHeight;
+    if (window.innerWidth <= 640) {
+      greenPanel.style.transform = 'translate3d(0, 0, 0)';
+      return;
+    }
     const y = window.scrollY;
-    // Lift the green panel up by a fraction of scroll progress, capped.
-    // Start with 0 lift at top, max ~120px lift by the time hero has scrolled.
     const lift = Math.min(y * 0.22, 140);
     greenPanel.style.transform = `translate3d(0, ${-lift}px, 0)`;
   }
   updateParallax();
   window.addEventListener('scroll', updateParallax, { passive:true });
   window.addEventListener('resize', updateParallax);
+
+  // ----- mobile nav toggle -----
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinksEl = document.querySelector('.nav .links');
+  if (navToggle && navLinksEl) {
+    navToggle.addEventListener('click', () => {
+      const open = navLinksEl.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+    navLinksEl.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinksEl.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
   // ----- light the bulb when Annie's head is level with the work heading -----
   const lightbulb = document.querySelector('.shared-lightbulb');
