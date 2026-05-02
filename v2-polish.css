@@ -1,0 +1,382 @@
+/* ===================================================================
+   V2 POLISH LAYER
+   Loaded AFTER each page's own <style>. Sweats the details:
+   - Fixes brand-wrap nav bug
+   - Tightens type rhythm & color saturation
+   - Adds reveal-on-scroll for premium feel
+   - Cleans up case-study chrome
+   ================================================================ */
+
+/* ---------- 1. NAV: stop "Annie S. Koo" from wrapping ---------- */
+.nav .brand{
+  white-space: nowrap;
+}
+.nav{
+  gap: 24px;
+}
+
+/* tighten the nav links to feel less crowded */
+.nav .links{
+  gap: 24px;
+}
+
+/* ---------- 2. TYPE: tighter, more confident ---------- */
+body{ font-size: 15.5px; line-height: 1.6; }
+.hero .lede{ font-size: 16px; line-height: 1.65; }
+
+/* Hero h1 — pull display tighter */
+.hero h1{ letter-spacing: -0.025em; }
+
+/* ---------- 3. CASE STUDY (h1) — fix small viewports ---------- */
+.case-hero h1, .case-hero h2{ text-wrap: pretty; }
+
+/* ---------- 4. SCROLL-REVEAL ---------- */
+.reveal{
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+  will-change: opacity, transform;
+}
+.reveal.in{ opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------- 5. CASE CARDS — quieter hover ---------- */
+.case{
+  border: 1px solid var(--line-soft);
+  background: transparent;
+  transition: transform .35s cubic-bezier(.2,.7,.2,1),
+              border-color .35s,
+              box-shadow .35s;
+}
+.case:hover{
+  transform: translateY(-3px);
+  border-color: var(--ink);
+  box-shadow: 0 24px 50px -28px rgba(0,0,0,.22);
+}
+.case .arrow{ font-size: 22px; }
+
+/* ---------- 6. PRINCIPLES — let breathe ---------- */
+.principle h3{ text-wrap: balance; }
+.principle p{ text-wrap: pretty; max-width: 560px; }
+
+/* ---------- 7. BIG-BTN polish ---------- */
+.cta .big-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.cta .big-btn::after{
+  content: "→";
+  transition: transform .3s;
+}
+.cta .big-btn:hover::after{ transform: translateX(4px); }
+
+/* ---------- 8. PERSONAL STATS — quieter on light bg, bronze on dark ---------- */
+.personal-stat .stat-value{
+  font-weight: 500;
+}
+.personal-stat .stat-value em{
+  font-style: italic;
+  color: var(--rust);
+}
+
+/* ---------- 9. SKILL CHIPS — not interactive ---------- */
+.chip{
+  cursor: default;
+}
+
+/* ---------- 10. FOOTER nav — wider tap targets ---------- */
+footer nav a{ padding: 6px 0; }
+
+/* ---------- 11. CASE-STUDY: editorial section labels ----------
+   Markup transform happens at runtime (see section-labels.js):
+     <div class="section-label">01 — The Role</div>
+   becomes
+     <div class="section-label">
+       <span class="sl-num">01</span>
+       <span class="sl-text">The Role</span>
+     </div>
+*/
+.section-label{
+  display: inline-flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 28px !important;
+  padding-bottom: 8px;
+  padding-right: 4px;
+  position: relative;
+  border-bottom: 1px solid var(--line-soft);
+}
+.section-label .sl-num{
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -.01em;
+  color: var(--rust);
+  text-transform: none;
+  flex-shrink: 0;
+}
+.section-label .sl-num::after{
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 22px;
+  background: currentColor;
+  opacity: .35;
+  margin-left: 14px;
+  vertical-align: -3px;
+}
+.section-label .sl-text{
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--rust);
+  flex-shrink: 0;
+  position: relative;
+  top: -4px;
+}
+.block.forest .section-label{
+  border-bottom-color: rgba(239,236,224,.16);
+}
+@media (max-width: 640px){
+  .section-label{
+    gap: 11px;
+    margin-bottom: 22px !important;
+    padding-bottom: 7px;
+  }
+  .section-label .sl-num{ font-size: 28px; }
+  .section-label .sl-num::after{ height: 17px; margin-left: 11px; }
+  .section-label .sl-text{ font-size: 12px; letter-spacing: .2em; top: -3px; }
+}
+
+/* ---------- 12. FOCUS STATES ---------- */
+a:focus-visible,
+button:focus-visible{
+  outline: 2px solid var(--rust);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* ---------- 13. SUBTLE LINK underline animation in body copy ---------- */
+.case-hero p a,
+.block p a{
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  text-decoration: none;
+  transition: background-size .3s, color .2s;
+}
+
+/* ---------- 14. PAPER GRAIN: dial down ---------- */
+.paper-grain rect{ opacity: .035 !important; }
+
+/* ---------- 15. SHARED PORTRAIT RAIL ---------- */
+.shared-portrait-sticky{ top: 18vh; }
+
+/* ---------- 16. STATUS BADGE ---------- */
+.hero .lede:has(+ .status-badge){
+  margin-bottom: 0;
+}
+.status-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 10px 16px 10px 14px;
+  background: rgba(122, 90, 46, 0.06);
+  border: 1px solid rgba(122, 90, 46, 0.22);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rust);
+  white-space: nowrap;
+  transition: background .25s, border-color .25s;
+}
+.status-badge:hover{
+  background: rgba(122, 90, 46, 0.10);
+  border-color: rgba(122, 90, 46, 0.34);
+}
+.status-dot{
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--rust);
+  display: inline-block;
+  flex-shrink: 0;
+}
+.status-sep{
+  color: var(--ink-faint);
+  margin: 0 -2px;
+}
+.status-when{
+  color: var(--ink-mute);
+  letter-spacing: 0.18em;
+}
+.status-badge + .cta-row{
+  margin-top: 32px;
+}
+
+/* ---------- 17. BRONZE ACCENT ON FOREST BACKGROUNDS ---------- */
+.about,
+.block.forest,
+.outcome-banner,
+.ba-panel.after,
+.arc-step.highlight{
+  --rust: var(--rust-2);
+}
+.about .ital,
+.block.forest em,
+.block.forest .ital,
+.outcome-banner em,
+.outcome-banner .ital{
+  color: var(--rust-2);
+}
+
+/* ---------- 18. CASE NUMBER on landing — hide on narrow ---------- */
+@media (max-width: 1180px){
+  .case .case-num{ display: none; }
+}
+
+/* ---------- 19. HERO portrait mobile fix ---------- */
+@media (max-width: 760px){
+  .hero .portrait{ min-height: auto; }
+  .portrait-holder{ position: relative; right: auto; top: auto; }
+}
+
+/* ---------- 20. Hero h1 small screen ---------- */
+@media (max-width: 480px){
+  .hero h1{ font-size: clamp(44px, 11vw, 64px) !important; line-height: 1.04; }
+  .case-hero h1{ font-size: clamp(38px, 10vw, 56px) !important; }
+}
+
+/* ---------- 21. HERO — lighter cream background ---------- */
+.hero{
+  background: #f8f5eb;
+}
+.nav:not(.scrolled):not(.on-dark){
+  background: #f8f5eb;
+}
+
+/* ---------- 22. WAVE → ABOUT seam fix ---------- */
+.about{
+  background-image: none !important;
+}
+.wave{
+  margin-bottom: -1px;
+}
+.wave svg{
+  display: block;
+  margin-bottom: -1px;
+}
+
+/* ---------- 23. CAROUSEL — vertically centered side controls ---------- */
+.carousel-wrap{
+  position: relative;
+}
+.carousel-wrap .carousel-controls{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 14px;
+  pointer-events: none;
+  background: none;
+}
+.carousel-wrap .carousel-btn{
+  pointer-events: all;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(30, 28, 24, 0.42);
+  border: 1px solid rgba(239, 236, 224, 0.0);
+  color: #efece0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity .25s ease, transform .25s ease, background .2s ease, border-color .2s ease;
+  backdrop-filter: blur(4px);
+}
+.carousel-wrap:hover .carousel-btn,
+.carousel-wrap:focus-within .carousel-btn{
+  opacity: 1;
+  transform: scale(1);
+}
+.carousel-wrap .carousel-btn:hover{
+  background: rgba(30, 28, 24, 0.78);
+  border-color: rgba(239, 236, 224, 0.18);
+}
+.carousel-wrap .carousel-btn:focus-visible{
+  opacity: 1;
+  transform: scale(1);
+  outline: 2px solid var(--rust);
+  outline-offset: 2px;
+}
+.carousel-wrap .carousel-btn svg{
+  width: 14px;
+  height: 14px;
+}
+.carousel-wrap.single .carousel-controls,
+.carousel-wrap.single .carousel-counter{
+  display: none;
+}
+.carousel-wrap + .carousel-counter,
+.carousel-wrap .carousel-counter{
+  text-align: center;
+  margin-top: 12px !important;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em !important;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+@media (hover: none){
+  .carousel-wrap .carousel-btn{
+    opacity: 0.85;
+    transform: scale(1);
+    background: rgba(30, 28, 24, 0.55);
+  }
+}
+
+/* ---------- 24. ALL-WORK rows: not interactive ---------- */
+.role{
+  cursor: default;
+}
+
+/* ---------- 25. METRICS: tabular numbers ---------- */
+.case .metric{ font-feature-settings: "tnum" 1; }
+.metric-trio .val,
+.case .metric{ font-weight: 500; }
+
+/* ---------- 26. CASE-STUDY HEROES: eyebrow pill ---------- */
+.case-hero .eyebrow,
+.case-hero .kicker{
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  margin-bottom: 24px;
+}
+
+/* ---------- 27. METRIC TRIO ---------- */
+.metric-trio .val{ letter-spacing: -.02em; }
+.metric-trio .lbl{ text-wrap: pretty; }
+
+/* ---------- 28. Green panel mobile ---------- */
+@media (max-width: 760px){
+  .green-panel{ transform: none !important; }
+}

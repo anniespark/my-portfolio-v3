@@ -14,18 +14,18 @@
 
 <style>
   :root{
-    --cream: #efece0;
-    --cream-2: #e7e3d4;
+    --cream: #f5f2e8;
+    --cream-2: #ece9db;
     --cream-3: #dcd7c4;
     --ink: #1e1c18;
     --ink-2: #2a2824;
     --ink-mute: #6d675a;
-    --ink-faint: #a29a87;
-    --forest: #3a4a21;
-    --forest-2: #2f3d1a;
-    --forest-3: #253112;
-    --rust: #c0643a;
-    --rust-2: #a85329;
+    --ink-faint: #8a7f6e;
+    --forest: #1f3826;
+    --forest-2: #142a1c;
+    --forest-3: #0d1e13;
+    --rust: #7a5a2e;
+    --rust-2: #c9a368;
     --line: #bfb9a4;
     --line-soft: #d3cdb8;
 
@@ -186,7 +186,7 @@
     border-bottom: 1px solid var(--line-soft);
   }
   .nav.on-dark{
-    background: rgba(58,74,33,.92);
+    background: rgba(31, 56, 38, .92);
     backdrop-filter: blur(10px);
     color: var(--cream);
     border-bottom-color: rgba(255,255,255,.08);
@@ -214,28 +214,24 @@
   .nav .links a:hover{ opacity: 1; }
   .nav .contact-btn{
     background: transparent;
-    color: var(--ink);
-    border: 1px solid var(--ink);
+    color: var(--rust);
+    border: none;
     padding: 14px 22px;
     font-family: var(--mono);
     font-size: 11px;
     letter-spacing: .22em;
     text-transform: uppercase;
     opacity: .95;
-    transition: background .2s, color .2s;
+    transition: opacity .2s;
   }
   .nav .contact-btn:hover{
-    background: var(--ink);
-    color: var(--cream);
     opacity: 1;
   }
   .nav.on-dark .contact-btn{
-    color: var(--cream);
-    border-color: var(--cream);
+    color: var(--rust);
   }
   .nav.on-dark .contact-btn:hover{
-    background: var(--cream);
-    color: var(--forest);
+    opacity: 1;
   }
 
   /* ============== SHARED ============== */
@@ -635,7 +631,7 @@
   .step.active .badge{
     border-color: var(--rust);
     color: var(--rust);
-    background: rgba(192,100,58,.06);
+    background: rgba(122,90,46,.06);
   }
   .step h3{
     font-family: var(--serif);
@@ -796,64 +792,84 @@
     color: var(--rust);
   }
 
-  /* ============== ALL WORK ============== */
-  .allwork{
+  /* ============== BACKGROUND ============== */
+  .background{
     background: var(--cream-2);
-    padding: 40px 40px 80px;
+    padding: 80px 40px;
   }
-  .allwork .wrap{ max-width: 1200px; margin: 0 auto; }
-  .allwork .label{
+  .bg-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    border-top: 1px solid var(--line-soft);
+    padding-top: 40px;
+  }
+  .bg-edu{
+    margin-top: 40px;
+  }
+  .bg-sublabel{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 20px 0 10px;
+    font-weight: 400;
+  }
+  .bg-sublabel:first-of-type{ margin-top: 16px; }
+  .bg-col + .bg-col{
+    border-left: 1px solid var(--line-soft);
+    padding-left: 60px;
+  }
+  .bg-label{
     font-family: var(--mono);
     font-size: 11px;
     letter-spacing: .22em;
     text-transform: uppercase;
     color: var(--ink-mute);
-    margin-bottom: 28px;
+    margin: 0 0 16px;
   }
-  .role{
-    display: grid;
-    grid-template-columns: 110px 1fr 300px 80px 30px;
-    gap: 24px;
+  .bg-role{
+    display: flex;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line-soft);
     align-items: baseline;
-    padding: 28px 0;
-    border-top: 1px solid var(--line-soft);
-    transition: padding .2s, background .2s;
   }
-  .role:last-child{ border-bottom: 1px solid var(--line-soft); }
-  .role .yr{
+  .bg-role:first-of-type{ border-top: none; }
+  .bg-yr{
     font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .16em;
-    color: var(--ink-mute);
+    font-size: 10.5px;
+    letter-spacing: .1em;
+    color: var(--ink-faint);
+    flex-shrink: 0;
+    width: 52px;
   }
-  .role .title{
-    font-family: var(--serif);
-    font-size: clamp(22px, 2.2vw, 30px);
-    line-height: 1.15;
+  .bg-title{
+    font-family: var(--sans);
+    font-size: 13px;
     color: var(--ink);
+    line-height: 1.4;
   }
-  .role .title .ital{
-    font-style: var(--display-italic-style);
+  .bg-title em{
+    font-style: normal;
     color: var(--ink-mute);
   }
-  .role .tags2{
+  .bg-school{
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 8px;
+    line-height: 1.3;
+  }
+  .bg-degree{
     font-family: var(--mono);
     font-size: 11px;
-    letter-spacing: .16em;
-    text-transform: uppercase;
+    letter-spacing: .1em;
     color: var(--ink-mute);
-    text-align: right;
-  }
-  .role .metric2{
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 18px;
-    color: var(--rust);
-    text-align: right;
-  }
-  .role .arrow2{
-    color: var(--ink-mute);
-    text-align: right;
+    line-height: 1.6;
+    margin: 0;
   }
 
   /* Archive table */
@@ -897,8 +913,12 @@
 
   /* ============== ANNIE UNABRIDGED ============== */
   .values{
-    background: var(--cream);
+    background: #2c1e10;
     padding: var(--section-pad) 40px var(--section-pad);
+    color: #e8dfc8;
+  }
+  .values .eyebrow{
+    color: rgba(232,223,200,.5);
   }
   .values .wrap{
     display: grid;
@@ -913,14 +933,15 @@
     line-height: 1.02;
     letter-spacing: var(--display-tracking);
     margin: 18px 0 16px;
+    color: #e8dfc8;
   }
-  .values h2 .ital{ font-style: var(--display-italic-style); color: var(--forest); }
+  .values h2 .ital{ font-style: var(--display-italic-style); color: var(--rust-2); }
   .values .opening-line{
     font-family: var(--mono);
     font-size: 11px;
     letter-spacing: .22em;
     text-transform: uppercase;
-    color: var(--ink-mute);
+    color: rgba(232,223,200,.5);
     margin: 0 0 56px;
   }
   .personal-stats{
@@ -930,18 +951,18 @@
   }
   .personal-stat{
     padding: 28px 24px 28px 0;
-    border-top: 1px solid var(--line-soft);
+    border-top: 1px solid rgba(232,223,200,.12);
   }
   .personal-stat:nth-child(even){
     padding-left: 24px;
     padding-right: 0;
-    border-left: 1px solid var(--line-soft);
+    border-left: 1px solid rgba(232,223,200,.12);
   }
   .personal-stat .stat-value{
     font-family: var(--serif);
     font-weight: var(--display-weight);
     font-size: clamp(28px, 3.2vw, 44px);
-    color: var(--rust);
+    color: var(--rust-2);
     line-height: 1;
     margin-bottom: 8px;
   }
@@ -949,64 +970,21 @@
     font-family: var(--mono);
     font-size: 10.5px;
     letter-spacing: .16em;
-    color: var(--ink-mute);
+    color: rgba(232,223,200,.55);
     line-height: 1.5;
   }
 
-  /* ============== SKILLS ============== */
-  .skills{
-    background: var(--cream-2);
-    padding: 100px 40px;
-  }
-  .skills .wrap{
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 60px;
-  }
-  .skills-left{ max-width: 620px; }
-  .skill-group{ margin-bottom: 40px; }
-  .skill-group h5{
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: var(--ink-mute);
-    margin: 0 0 16px;
-  }
-  .skill-group .chip-row{ gap: 8px; }
-  .skill-group .chip{
-    padding: 8px 12px;
+  /* chip sizing inside background section */
+  .bg-col .chip-row{ gap: 8px; }
+  .bg-col .chip{
+    padding: 7px 11px;
     border-radius: 3px;
-    transition: border-color .2s, color .2s, background .2s;
+    cursor: default;
   }
-  .skill-group .chip:hover{
-    border-color: var(--forest);
-    color: var(--forest);
-    background: rgba(58,74,33,.04);
-  }
-  .skills-right{
-    border-left: 1px solid var(--line-soft);
-    padding-left: 60px;
-    min-height: 300px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-  }
-  .edu{ flex: 1; }
-  .latte-wrap{
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    margin-top: auto;
-    padding-top: 32px;
-    position: relative;
-  }
-  .skills-portrait{
-    display: block;
-    width: 110px;
-    height: auto;
-    position: relative;
-    z-index: 1;
+  .bg-col .chip:hover{
+    border-color: var(--line);
+    color: var(--ink-mute);
+    background: transparent;
   }
   .steam-svg{
     position: absolute;
@@ -1152,12 +1130,10 @@
   }
   .skills-portrait{
     display: block;
-    width: 60%;
-    max-width: 220px;
+    width: 88px;
     height: auto;
     margin-top: 40px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
   }
 
   /* ============== PORTRAIT PLACEHOLDER ============== */
@@ -1306,18 +1282,12 @@
       grid-template-columns: 1fr !important;
     }
     .portrait-holder{ position: relative; right: 0; top: 0; max-width: 320px; }
-    .role{ grid-template-columns: 80px 1fr; }
-    .role .tags2, .role .metric2, .role .arrow2{ display:none; }
     .archive .row{ grid-template-columns: 80px 1fr; }
     .archive .row .domain{ display:none; }
     .shared-portrait-rail{ display: none; }
     .case .case-num{ display: none; }
-    .skills-right{
-      border-left: none;
-      padding-left: 0;
-      border-top: 1px solid var(--line-soft);
-      padding-top: 40px;
-    }
+    .bg-grid{ grid-template-columns: 1fr; }
+    .bg-col + .bg-col{ border-left: none; padding-left: 0; border-top: 1px solid var(--line-soft); padding-top: 32px; }
   }
 
   /* ============== RESPONSIVE: MOBILE (≤640px) ============== */
@@ -1385,8 +1355,10 @@
     .case h3{ font-size: 26px; }
     .case .metric{ font-size: 34px; }
 
-    /* All work / archive */
-    .allwork{ padding: 24px 20px 48px; }
+    /* Background / archive */
+    .background{ padding: 48px 20px; }
+    .bg-grid{ grid-template-columns: 1fr; gap: 32px; }
+    .bg-col + .bg-col{ border-left: none; padding-left: 0; border-top: 1px solid var(--line-soft); padding-top: 32px; }
     .archive{ padding: 40px 20px 28px; }
 
     /* Values */
@@ -1420,6 +1392,8 @@
     .process h2{ font-size: 44px; }
   }
 </style>
+<link rel="stylesheet" href="v2-polish.css">
+
 
 </head><body>
 
@@ -1459,8 +1433,13 @@
       <div class="name-line">Complexity into clarity. <span class="ital">Clarity into growth.</span></div>
       <p class="lede">
         Architecting simplicity within complex systems for 8+ years. Proven impact from 17.47% growth at Pens.com to 187% reach increases via AI-native strategy. One year in Taipei sharpened a lens no single market can teach.
-        <br><span class="accent">*Relocating to Irvine, CA July 2026</span>
       </p>
+      <div class="status-badge" aria-label="Currently relocating">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="status-label">Relocating to Irvine, CA</span>
+        <span class="status-sep" aria-hidden="true">·</span>
+        <span class="status-when">July 2026</span>
+      </div>
       <div class="cta-row">
         <a href="#work" class="btn primary">View Work</a>
         <a href="assets/Annie_Koo_Senior_Product_Designer_2026.pdf" target="_blank" rel="noopener noreferrer" class="btn ghost">Resume</a>
@@ -1539,7 +1518,7 @@
       <div class="magnifier-wrap">
         <div class="dashed-trail" aria-hidden="true">
           <svg id="trail-svg" viewBox="0 0 300 1200" preserveAspectRatio="none">
-            <path id="trail-path" d="M 240 40 C 220 180, 80 260, 180 440 C 260 600, 120 740, 200 920 C 250 1040, 140 1120, 120 1200" fill="none" stroke="#c0643a" stroke-width="3" stroke-dasharray="7 11" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+            <path id="trail-path" d="M 240 40 C 220 180, 80 260, 180 440 C 260 600, 120 740, 200 920 C 250 1040, 140 1120, 120 1200" fill="none" stroke="#c9a368" stroke-width="3" stroke-dasharray="7 11" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
           </svg>
         </div>
         <img src="assets/magnifier.png" alt="" class="magnifier-img" id="magnifier-img" aria-hidden="true" style="transform: translate(63.611px, 958.642px) rotate(-37.8221deg);">
@@ -1647,20 +1626,20 @@
       <div class="eyebrow">Selected Work</div>
       <h2>The proof is in <span class="ital">the numbers.</span></h2>
 
-      <article class="case" onclick="window.location='acts2-journey.html'" style="cursor:pointer;">
+      <article class="case" onclick="window.location='pens-com.html'" style="cursor:pointer;">
         <div class="case-num">01</div>
         <div class="head">
-          <div class="tags"><span class="chip">Growth Strategy</span><span class="chip">Cross-Cultural</span><span class="chip">AI Tools</span></div>
-          <div class="date">2025–26</div>
+          <div class="tags"><span class="chip">eCommerce</span><span class="chip">Global Advertising Service</span></div>
+          <div class="date">2020–25</div>
         </div>
-        <div class="company">Acts2 Network — Journey, Taipei</div>
-        <h3>Design &amp; Growth Strategist</h3>
-        <p class="blurb">No playbook, new country, two roles at once. I owned both the digital presence and the in-person community growth:  bilingual content system, AI workflow, flyering, tabling, and campus co-leadership at Fu Jen University. One year, measurable growth.</p>
+        <div class="company">Pens.com</div>
+        <h3>Senior Product Designer</h3>
+        <p class="blurb">Two checkout systems. One had no designer. Rather than wait for the main site to unblock, I proposed owning the microsite. I ran the research, scoped the fastest fix, and validated in 12 days: +$15k revenue, +13.24% conversion lift, no engineering required.</p>
         <div class="hr"></div>
         <div class="metric-row">
           <div>
-            <div class="metric">+187%</div>
-            <div class="metric-label">Increase in reach</div>
+            <div class="metric">+17.47%</div>
+            <div class="metric-label">Transaction rate lift — 12 days, no prior stakeholder buy-in</div>
           </div>
           <div class="arrow">↗</div>
         </div>
@@ -1685,20 +1664,20 @@
         </div>
       </article>
 
-      <article class="case" onclick="window.location='pens-com.html'" style="cursor:pointer;">
+      <article class="case" onclick="window.location='acts2-journey.html'" style="cursor:pointer;">
         <div class="case-num">03</div>
         <div class="head">
-          <div class="tags"><span class="chip">eCommerce</span><span class="chip">Global Advertising Service</span></div>
-          <div class="date">2020–25</div>
+          <div class="tags"><span class="chip">Growth Strategy</span><span class="chip">Cross-Cultural</span><span class="chip">AI Tools</span></div>
+          <div class="date">2025–26</div>
         </div>
-        <div class="company">Pens.com</div>
-        <h3>Senior Product Designer</h3>
-        <p class="blurb">Two checkout systems. One had no designer. Rather than wait for the main site to unblock, I proposed owning the microsite. I ran the research, scoped the fastest fix, and validated in 12 days: +$15k revenue, +13.24% conversion lift, no engineering required.</p>
+        <div class="company">Acts2 Network — Journey, Taipei</div>
+        <h3>Design &amp; Growth Strategist</h3>
+        <p class="blurb">No playbook, new country, two roles at once. I owned both the digital presence and the in-person community growth:  bilingual content system, AI workflow, flyering, tabling, and campus co-leadership at Fu Jen University. One year, measurable growth.</p>
         <div class="hr"></div>
         <div class="metric-row">
           <div>
-            <div class="metric">+17.47%</div>
-            <div class="metric-label">Transaction rate lift — 12 days, no prior stakeholder buy-in</div>
+            <div class="metric">+187%</div>
+            <div class="metric-label">Increase in reach</div>
           </div>
           <div class="arrow">↗</div>
         </div>
@@ -1713,54 +1692,43 @@
 
 </div><!-- /.process-work-group -->
 
-<!-- ============ EXPERIENCE ============ -->
-<section class="allwork">
+<!-- ============ BACKGROUND ============ -->
+<section class="background">
   <div class="wrap">
-    <div class="label">Additional Experience</div>
-    <div class="role">
-      <div class="yr">2018–21</div>
-      <div class="title">Acts2 Network San Diego <span class="ital">— Visual Design Lead</span></div>
-      <div class="tags2">Visual Design · Brand Identity</div>
-      <div class="metric2"></div>
-      <div class="arrow2"></div>
-    </div>
-    <div class="role">
-      <div class="yr">2017–18</div>
-      <div class="title">Events.com <span class="ital">— Product Designer</span></div>
-      <div class="tags2">SaaS · Product Design</div>
-      <div class="metric2"></div>
-      <div class="arrow2"></div>
-    </div>
-    <div class="role">
-      <div class="yr">2017</div>
-      <div class="title">Galilee Pool Service <span class="ital">— Freelance Web Designer</span></div>
-      <div class="tags2">Freelance · Web Design</div>
-      <div class="metric2"></div>
-      <div class="arrow2"></div>
-    </div>
-    <div class="role">
-      <div class="yr">2016</div>
-      <div class="title">Lytx, Inc. <span class="ital">— UI/UX Design Intern</span></div>
-      <div class="tags2">SaaS · Fleet Safety</div>
-      <div class="metric2"></div>
-      <div class="arrow2"></div>
-    </div>
-    <div class="role">
-      <div class="yr">2015–16</div>
-      <div class="title">UCSD Academic Integrity Office <span class="ital">— Web Designer</span></div>
-      <div class="tags2">UX Research · Web Design</div>
-      <div class="metric2"></div>
-      <div class="arrow2"></div>
-    </div>
-  </div>
-</section>
+    <div class="bg-grid">
 
-<!-- ============ SKILLS ============ -->
-<section class="skills">
-  <div class="wrap">
-    <div class="skills-left">
-      <div class="skill-group">
-        <h5>Design</h5>
+      <div class="bg-col">
+        <h5 class="bg-label">Additional Experience</h5>
+        <div class="bg-role">
+          <span class="bg-yr">2018–20</span>
+          <span class="bg-title">Events.com <em>— Product Designer</em></span>
+        </div>
+        <div class="bg-role">
+          <span class="bg-yr">2018–21</span>
+          <span class="bg-title">Acts2 Network SD <em>— Visual Design Lead</em></span>
+        </div>
+        <div class="bg-role">
+          <span class="bg-yr">2017</span>
+          <span class="bg-title">Galilee Pool Service <em>— Freelance Web</em></span>
+        </div>
+        <div class="bg-role">
+          <span class="bg-yr">2016</span>
+          <span class="bg-title">Lytx, Inc. <em>— UI/UX Design Intern</em></span>
+        </div>
+        <div class="bg-role">
+          <span class="bg-yr">2015–16</span>
+          <span class="bg-title">UCSD Academic Integrity <em>— Web Designer</em></span>
+        </div>
+        <div class="bg-edu">
+          <h5 class="bg-label">Education</h5>
+          <p class="bg-school">University of California, San Diego</p>
+          <p class="bg-degree">B.S. Cognitive Science — Human-Computer Interaction</p>
+        </div>
+      </div>
+
+      <div class="bg-col">
+        <h5 class="bg-label">Skills</h5>
+        <h6 class="bg-sublabel">Design</h6>
         <div class="chip-row">
           <span class="chip">UI/UX Design</span>
           <span class="chip">Product Strategy</span>
@@ -1770,9 +1738,7 @@
           <span class="chip">Wireframing</span>
           <span class="chip">High-Fidelity Prototyping</span>
         </div>
-      </div>
-      <div class="skill-group">
-        <h5>Research</h5>
+        <h6 class="bg-sublabel">Research</h6>
         <div class="chip-row">
           <span class="chip">Moderated User Testing</span>
           <span class="chip">A/B Testing</span>
@@ -1781,9 +1747,7 @@
           <span class="chip">Conversion Rate Optimization</span>
           <span class="chip">Competitive Auditing</span>
         </div>
-      </div>
-      <div class="skill-group">
-        <h5>AI &amp; Tools</h5>
+        <h6 class="bg-sublabel">AI &amp; Tools</h6>
         <div class="chip-row">
           <span class="chip">Figma</span>
           <span class="chip">Claude Code</span>
@@ -1792,23 +1756,14 @@
           <span class="chip">Asana</span>
           <span class="chip">Agile / Scrum</span>
         </div>
-      </div>
-      <div class="skill-group">
-        <h5>Standards</h5>
+        <h6 class="bg-sublabel">Standards</h6>
         <div class="chip-row">
           <span class="chip">WCAG Accessibility Compliance</span>
           <span class="chip">Stakeholder Management</span>
           <span class="chip">Cross-functional Collaboration</span>
         </div>
       </div>
-    </div>
-    <div class="skills-right edu">
-      <div class="eyebrow" style="margin-bottom:14px;">Education</div>
-      <h4>University of California, San Diego</h4>
-      <p>B.S. Cognitive Science — Human-Computer Interaction</p>
-      <div class="latte-wrap">
-        <img src="assets/latte.png" alt="Latte" class="skills-portrait">
-      </div>
+
     </div>
   </div>
 </section>
@@ -2140,4 +2095,26 @@
 
 
 
+
+<script>
+  // V2 reveal-on-scroll — adds .in to .reveal elements as they enter
+  (function(){
+    const revealSelectors = ['.principle','.step','.case','.role','.archive .row','.personal-stat','.skill-group','.metric-trio .m','.context-split .col','.finding-block','.case-hero h1','.case-hero p','.section-label + h2','figure'];
+    const els = [];
+    revealSelectors.forEach(sel => document.querySelectorAll(sel).forEach(el => { if(!el.classList.contains('reveal')){ el.classList.add('reveal'); els.push(el); } }));
+    if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('in')); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting){
+          // small stagger by viewport position
+          const idx = els.indexOf(e.target);
+          setTimeout(() => e.target.classList.add('in'), Math.min(idx % 6, 5) * 60);
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    els.forEach(el => io.observe(el));
+  })();
+</script>
+<script src="section-labels.js"></script>
 </body></html>

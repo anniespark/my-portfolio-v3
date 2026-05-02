@@ -12,16 +12,16 @@
 
 <style>
   :root{
-    --cream: #efece0;
+    --cream: #f5f2e8;
     --cream-2: #e7e3d4;
     --cream-3: #dcd7c4;
     --ink: #1e1c18;
     --ink-2: #2a2824;
     --ink-mute: #6d675a;
-    --ink-faint: #a29a87;
-    --forest: #3a4a21;
-    --forest-2: #2f3d1a;
-    --rust: #c0643a;
+    --ink-faint: #8a7f6e;
+    --forest: #1f3826;
+    --forest-2: #142a1c;
+    --rust: #7a5a2e;
     --line: #bfb9a4;
     --line-soft: #d3cdb8;
     --serif: "Cormorant Garamond", Georgia, serif;
@@ -57,12 +57,12 @@
   }
   .nav .links a:hover{ opacity:1; }
   .nav .contact-btn{
-    background:transparent; color:var(--ink); border:1px solid var(--ink);
+    background:transparent; color:var(--rust); border:none;
     padding:14px 22px; font-family:var(--mono); font-size:11px;
     letter-spacing:.22em; text-transform:uppercase; opacity:.95;
-    transition:background .2s, color .2s;
+    transition:opacity .2s;
   }
-  .nav .contact-btn:hover{ background:var(--ink); color:var(--cream); opacity:1; }
+  .nav .contact-btn:hover{ opacity:1; }
   .nav-toggle{
     display:none; flex-direction:column; justify-content:center; gap:5px;
     background:none; border:none; padding:6px 4px; cursor:pointer; color:inherit; flex-shrink:0;
@@ -332,7 +332,7 @@
     font-family:var(--mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase;
     color:var(--forest); border:1px solid var(--forest); padding:14px 22px;
     white-space:nowrap; display:inline-flex; align-items:center; gap:10px;
-    transition:background .2s, color .2s;
+    transition:opacity .2s;
   }
   .arrow-btn:hover{ background:var(--forest); color:var(--cream); }
 
@@ -356,6 +356,8 @@
     .work-col{ padding:32px 24px; }
   }
 </style>
+<link rel="stylesheet" href="v2-polish.css">
+
 </head>
 <body>
 
@@ -542,21 +544,8 @@
       <div class="work-col">
         <div class="wc-label">Unconventional Call</div>
         <h4>Easter Event Poster</h4>
-        <div class="carousel-wrap" data-carousel="easter">
+        <div class="carousel-wrap single" data-carousel="easter">
           <img src="assets/Acts2_Easter_Poster_Digital.png" alt="Easter bunny poster — WHAT IS THE MEANING OF EASTER?" class="carousel-slide active">
-          <img src="assets/Acts2_Easter_Poster_Campus.png" alt="Easter posters on campus bulletin boards at Fu Jen University" class="carousel-slide">
-          <div class="carousel-controls">
-            <button class="carousel-btn" onclick="carouselMove('easter',-1)" aria-label="Previous">
-              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>
-            </button>
-            <button class="carousel-btn" onclick="carouselMove('easter',1)" aria-label="Next">
-              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 2l5 5-5 5"/></svg>
-            </button>
-          </div>
-          <div class="carousel-dots">
-            <div class="carousel-dot active"></div>
-            <div class="carousel-dot"></div>
-          </div>
         </div>
       </div>
     </div>
@@ -660,5 +649,27 @@ function carouselMove(id, dir) {
   if (counter) counter.textContent = (i + 1) + ' / ' + slides.length;
 }
 </script>
+
+<script>
+  // V2 reveal-on-scroll — adds .in to .reveal elements as they enter
+  (function(){
+    const revealSelectors = ['.principle','.step','.case','.role','.archive .row','.personal-stat','.skill-group','.metric-trio .m','.context-split .col','.finding-block','.case-hero h1','.case-hero p','.section-label + h2','figure'];
+    const els = [];
+    revealSelectors.forEach(sel => document.querySelectorAll(sel).forEach(el => { if(!el.classList.contains('reveal')){ el.classList.add('reveal'); els.push(el); } }));
+    if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('in')); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting){
+          // small stagger by viewport position
+          const idx = els.indexOf(e.target);
+          setTimeout(() => e.target.classList.add('in'), Math.min(idx % 6, 5) * 60);
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    els.forEach(el => io.observe(el));
+  })();
+</script>
+<script src="section-labels.js"></script>
 </body>
 </html>
