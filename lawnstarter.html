@@ -12,13 +12,13 @@
 
 <style>
   :root{
-    --cream: #f5f2e8;
+    --cream: #efece0;
     --cream-2: #e7e3d4;
     --cream-3: #dcd7c4;
     --ink: #1e1c18;
     --ink-2: #2a2824;
     --ink-mute: #6d675a;
-    --ink-faint: #8a7f6e;
+    --ink-faint: #a29a87;
     --forest: #1f3826;
     --forest-2: #142a1c;
     --rust: #7a5a2e;
@@ -57,12 +57,12 @@
   }
   .nav .links a:hover{ opacity:1; }
   .nav .contact-btn{
-    background:transparent; color:var(--rust); border:none;
+    background:transparent; color:var(--ink); border:1px solid var(--ink);
     padding:14px 22px; font-family:var(--mono); font-size:11px;
     letter-spacing:.22em; text-transform:uppercase; opacity:.95;
-    transition:opacity .2s;
+    transition:background .2s, color .2s;
   }
-  .nav .contact-btn:hover{ opacity:1; }
+  .nav .contact-btn:hover{ background:var(--ink); color:var(--cream); opacity:1; }
   .nav-toggle{
     display:none; flex-direction:column; justify-content:center; gap:5px;
     background:none; border:none; padding:6px 4px; cursor:pointer; color:inherit; flex-shrink:0;
@@ -114,7 +114,7 @@
     font-size:clamp(46px,5.6vw,84px); line-height:1.02;
     letter-spacing:var(--display-tracking); margin:0 0 20px; color:var(--ink);
   }
-  .case-hero h1 em{ font-style:var(--display-italic-style); color:var(--forest); }
+  .case-hero h1 em{ font-style:var(--display-italic-style); color:var(--rust); }
   .case-hero .role-line{
     font-family:var(--mono); font-size:11px; letter-spacing:.2em;
     text-transform:uppercase; color:var(--ink-mute); margin-bottom:56px;
@@ -129,7 +129,7 @@
   }
   .hero-single-stat .val{
     font-family:var(--mono); font-size:clamp(52px,6vw,80px);
-    font-weight:400; letter-spacing:-.02em; color:var(--forest); line-height:1;
+    font-weight:400; letter-spacing:-.02em; color:var(--rust); line-height:1;
   }
   .hero-single-stat .context p{
     font-size:17px; line-height:1.6; color:var(--ink-2); margin:0 0 8px;
@@ -153,7 +153,7 @@
     font-size:clamp(30px,3.6vw,52px); line-height:1.06;
     letter-spacing:var(--display-tracking); margin:0 0 32px; color:var(--ink);
   }
-  .block h2 em{ font-style:var(--display-italic-style); color:var(--forest); }
+  .block h2 em{ font-style:var(--display-italic-style); color:var(--rust); }
   .block p{
     font-size:16px; line-height:1.78; color:var(--ink-2); margin:0 0 20px;
   }
@@ -342,7 +342,7 @@
     font-family:var(--mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase;
     color:var(--forest); border:1px solid var(--forest); padding:14px 22px;
     white-space:nowrap; display:inline-flex; align-items:center; gap:10px;
-    transition:opacity .2s;
+    transition:background .2s, color .2s;
   }
   .arrow-btn:hover{ background:var(--forest); color:var(--cream); }
 

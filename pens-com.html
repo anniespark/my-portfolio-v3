@@ -19,7 +19,7 @@
     --ink-2: #2a2824;
     --ink-mute: #6d675a;
     --ink-faint: #8a7f6e;
-    --forest: #1f3826;
+    --forest: #1f3a2c;
     --forest-2: #142a1c;
     --rust: #7a5a2e;
     --line: #bfb9a4;
@@ -120,7 +120,7 @@
     font-size:clamp(46px,5.6vw,84px); line-height:1.02;
     letter-spacing:var(--display-tracking); margin:0 0 20px; color:var(--ink);
   }
-  .case-hero h1 em{ font-style:var(--display-italic-style); color:var(--forest); }
+  .case-hero h1 em{ font-style:var(--display-italic-style); color:var(--rust); }
   .case-hero .role-line{
     font-family:var(--mono); font-size:11px; letter-spacing:.2em;
     text-transform:uppercase; color:var(--ink-mute); margin-bottom:56px;
@@ -139,7 +139,7 @@
   .metric-trio .m:nth-child(2){ padding-left:32px; }
   .metric-trio .m .val{
     font-family:var(--mono); font-size:clamp(28px,3.2vw,44px);
-    font-weight:400; letter-spacing:-.02em; color:var(--forest);
+    font-weight:400; letter-spacing:-.02em; color:var(--rust);
     line-height:1.1; margin-bottom:8px;
   }
   .metric-trio .m .desc{
@@ -165,7 +165,7 @@
     font-size:clamp(30px,3.6vw,52px); line-height:1.06;
     letter-spacing:var(--display-tracking); margin:0 0 32px; color:var(--ink);
   }
-  .block h2 em{ font-style:var(--display-italic-style); color:var(--forest); }
+  .block h2 em{ font-style:var(--display-italic-style); color:var(--rust); }
   .block p{
     font-size:16px; line-height:1.78; color:var(--ink-2); margin:0 0 20px;
   }
@@ -418,7 +418,7 @@
   }
   .stat-callout .stat-val{
     font-family:var(--serif); font-size:44px; font-weight:var(--display-weight);
-    color:var(--forest); line-height:1; flex-shrink:0;
+    color:var(--rust); line-height:1; flex-shrink:0;
   }
   .stat-callout .stat-desc{
     font-size:13.5px; line-height:1.6; color:var(--ink-mute);
@@ -677,7 +677,6 @@
     <h1>Pens.com: Rethinking<br>the <em>Checkout Experience.</em></h1>
     <div class="role-line">Senior Product Designer · Microsite Checkout · Main Site Checkout</div>
 
-    <p style="font-size:16px; line-height:1.75; color:var(--ink-2); margin:28px 0 0; max-width:680px;">Two checkout systems at National Pen — a microsite running live campaigns with no design ownership, and a main site checkout blocked by a migration. Both needed a designer. Both got one.</p>
 
     <div style="margin-top:40px;">
       <div style="font-family:var(--mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:16px;">Microsite · A/B Test · 94% confidence · First 12 days</div>
@@ -701,27 +700,27 @@
 </div>
 
 <!-- ═══════════════════
-     02 · CHALLENGE
+     01 · CHALLENGE
 ════════════════════ -->
 <div class="block">
   <div class="container">
-    <div class="section-label">02 · The Challenge</div>
+    <div class="section-label">01 · The Challenge</div>
     <h2>Two checkout systems. <em>One had no owner.</em></h2>
 
     <p>Pens.com runs two separate checkout experiences: the <strong style="color:var(--ink);">main site</strong>, a full multi-step flow across their entire product catalog, and the <strong style="color:var(--ink);">microsite</strong>, a stripped-down single-product experience built for email and direct mail campaigns.</p>
 
     <p>The main site checkout was the original project. A Braintree infrastructure migration and a company-wide brand update put it on hold.</p>
-    <p>Rather than wait, I made a strategic call. The microsite was generating real revenue with no designer in the room — and it was a live experiment platform with a real audience. Anything I learned there could be applied directly to the main site. I proposed owning it.</p>
+    <p>Rather than wait, I made a strategic call. The microsite was generating significant revenue with no designer in the room. Also, anything I learned there could potentially be applied directly to the main site. I proposed owning it.</p>
 
   </div>
 </div>
 
 <!-- ═══════════════════
-     03 · DISCOVERY
+     02 · DISCOVERY
 ════════════════════ -->
 <div class="block">
   <div class="container">
-    <div class="section-label">03 · Discovery</div>
+    <div class="section-label">02 · Discovery</div>
     <h2>Research first. <em>Then the fix.</em></h2>
 
     <p style="margin-bottom:8px;">Before proposing anything, I needed to understand the full picture. I ran a structured audit across three methods:</p>
@@ -743,13 +742,13 @@
       </div>
     </div>
 
-    <p style="margin-bottom:6px;">Then I brought the findings back across two working sessions — with the Experimentation Team, a web developer, and key stakeholders — to align on what was technically feasible and what would move the business needle first.</p>
-    <p>The picture that emerged: mobile had compounding, systemic friction across 8 steps. Desktop had one structural flaw that was costing conversions every day.</p>
+    <p style="margin-bottom:6px;">Then I brought the findings back across two working sessions with the experimentation manager, web developer, design team, and key stakeholders to align on what was technically feasible and what would meet our business needs.</p>
+    <p>The picture that emerged: mobile had compounding, systemic friction across 8 steps. Desktop had an obvious structural flaw that was costing conversions every day.</p>
 
     <!-- Desktop row -->
     <div style="margin-top:48px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;">
       <div style="min-width:0;">
-        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:16px;">Desktop · One structural flaw</div>
+        <div class="lbl" style="margin-bottom:16px;"><span style="color:var(--rust);">Desktop</span><span style="color:var(--ink-faint);"> · </span><span style="color:var(--ink-mute);">The Structural Flaw</span></div>
         <div style="position:relative; border:1px solid var(--line-soft); overflow:hidden;">
           <img src="assets/Pens_Microsite_Before_Full_Page.png" alt="Full page scroll — CTA buried far below fold" style="width:100%; display:block; filter:grayscale(10%) sepia(8%) saturate(90%);">
           <div style="position:absolute; top:32%; left:0; right:0; z-index:2;">
@@ -770,54 +769,54 @@
 
     <!-- Mobile row -->
     <div style="margin-top:56px;">
-      <div style="font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:16px;">Mobile · Compounding friction</div>
+      <div class="lbl" style="margin-bottom:16px;"><span style="color:var(--rust);">Mobile</span><span style="color:var(--ink-faint);"> · </span><span style="color:var(--ink-mute);">Compounding Friction</span></div>
       <p style="margin-bottom:20px;"><span style="color:var(--rust); font-weight:600;">8 steps to purchase.</span> Hotjar showed high abandonment throughout, and user testing gave clues to where and why.</p>
-      <div style="overflow-x:auto; -webkit-overflow-scrolling:touch; scroll-snap-type:x mandatory;">
-        <div style="display:flex; gap:8px; padding-bottom:10px; width:max-content;">
-          <div style="flex-shrink:0; scroll-snap-align:start; text-align:center; width:90px;">
-            <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px;">Entry</div>
-            <img src="assets/Pens_Microsite_Step_01.png" alt="Entry — Promo code" style="width:90px; display:block; border:1px solid var(--line-soft);">
-            <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4;">Promo Code</div>
+      <div>
+        <div style="display:grid; grid-template-columns:repeat(9,1fr);">
+          <div style="text-align:center;">
+            <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px; padding-top:12px;">Entry</div>
+            <img src="assets/Pens_Microsite_Step_01.png" alt="Entry — Promo code" style="width:100%; display:block; border-right:1px solid var(--line-soft);">
+            <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4; padding-bottom:12px;">Promo Code</div>
           </div>
-          <div style="flex-shrink:0; scroll-snap-align:start; text-align:center; width:90px;">
-            <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px;">01</div>
-            <img src="assets/Pens_Microsite_Step_03.png" alt="Step 1 — Product options" style="width:90px; display:block; border:1px solid var(--line-soft);">
-            <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4;">Product Options</div>
+          <div style="text-align:center;">
+            <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px; padding-top:12px;">01</div>
+            <img src="assets/Pens_Microsite_Step_03.png" alt="Step 1 — Product options" style="width:100%; display:block; border-right:1px solid var(--line-soft);">
+            <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4; padding-bottom:12px;">Product Options</div>
           </div>
-          <div style="flex-shrink:0; scroll-snap-align:start; text-align:center; width:90px;">
-            <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px;">02</div>
-            <img src="assets/Pens_Microsite_Step_04.png" alt="Step 2 — My imprint" style="width:90px; display:block; border:1px solid var(--line-soft);">
-            <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4;">My Imprint</div>
+          <div style="text-align:center;">
+            <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px; padding-top:12px;">02</div>
+            <img src="assets/Pens_Microsite_Step_04.png" alt="Step 2 — My imprint" style="width:100%; display:block; border-right:1px solid var(--line-soft);">
+            <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4; padding-bottom:12px;">My Imprint</div>
           </div>
-          <div style="flex-shrink:0; scroll-snap-align:start; text-align:center; width:90px;">
-            <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px;">03</div>
-            <img src="assets/Pens_Microsite_Step_05.png" alt="Step 3 — Quantity" style="width:90px; display:block; border:1px solid var(--line-soft);">
-            <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4;">Quantity</div>
+          <div style="text-align:center;">
+            <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px; padding-top:12px;">03</div>
+            <img src="assets/Pens_Microsite_Step_05.png" alt="Step 3 — Quantity" style="width:100%; display:block; border-right:1px solid var(--line-soft);">
+            <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4; padding-bottom:12px;">Quantity</div>
           </div>
-          <div style="flex-shrink:0; scroll-snap-align:start; text-align:center; width:90px;">
-            <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--rust); margin-bottom:6px;">! Modal</div>
-            <img src="assets/Pens_Microsite_Step_06.png" alt="Unexpected — Upsell modal" style="width:90px; display:block; border:1px solid var(--rust);">
-            <div style="font-family:var(--mono); font-size:8px; color:var(--rust); margin-top:5px; line-height:1.4;">Upsell</div>
+          <div style="text-align:center; background:rgba(122,90,46,.04);">
+            <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--rust); margin-bottom:6px; padding-top:12px;">! Modal</div>
+            <img src="assets/Pens_Microsite_Step_06.png" alt="Unexpected — Upsell modal" style="width:100%; display:block; border:1px solid var(--rust);">
+            <div style="font-family:var(--mono); font-size:8px; color:var(--rust); margin-top:5px; line-height:1.4; padding-bottom:12px;">Upsell</div>
           </div>
-          <div style="flex-shrink:0; scroll-snap-align:start; text-align:center; width:90px;">
-            <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px;">04</div>
-            <img src="assets/Pens_Microsite_Step_07.png" alt="Step 4 — Shipping" style="width:90px; display:block; border:1px solid var(--line-soft);">
-            <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4;">Shipping</div>
+          <div style="text-align:center;">
+            <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px; padding-top:12px;">04</div>
+            <img src="assets/Pens_Microsite_Step_07.png" alt="Step 4 — Shipping" style="width:100%; display:block; border-right:1px solid var(--line-soft); border-left:1px solid var(--line-soft);">
+            <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4; padding-bottom:12px;">Shipping</div>
           </div>
-          <div style="flex-shrink:0; scroll-snap-align:start; text-align:center; width:90px;">
-            <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--rust); margin-bottom:6px;">! Modal</div>
-            <img src="assets/Pens_Microsite_Step_08.png" alt="Unexpected — Address verify" style="width:90px; display:block; border:1px solid var(--rust);">
-            <div style="font-family:var(--mono); font-size:8px; color:var(--rust); margin-top:5px; line-height:1.4;">Address verify</div>
+          <div style="text-align:center; background:rgba(122,90,46,.04);">
+            <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--rust); margin-bottom:6px; padding-top:12px;">! Modal</div>
+            <img src="assets/Pens_Microsite_Step_08.png" alt="Unexpected — Address verify" style="width:100%; display:block; border:1px solid var(--rust);">
+            <div style="font-family:var(--mono); font-size:8px; color:var(--rust); margin-top:5px; line-height:1.4; padding-bottom:12px;">Address verify</div>
           </div>
-          <div style="flex-shrink:0; scroll-snap-align:start; text-align:center; width:90px;">
-            <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px;">05</div>
-            <img src="assets/Pens_Microsite_Step_09.png" alt="Step 5 — Order review" style="width:90px; display:block; border:1px solid var(--line-soft);">
-            <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4;">Order Review</div>
+          <div style="text-align:center;">
+            <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px; padding-top:12px;">05</div>
+            <img src="assets/Pens_Microsite_Step_09.png" alt="Step 5 — Order review" style="width:100%; display:block; border-right:1px solid var(--line-soft); border-left:1px solid var(--line-soft);">
+            <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4; padding-bottom:12px;">Order Review</div>
           </div>
-          <div style="flex-shrink:0; scroll-snap-align:start; text-align:center; width:90px;">
-            <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px;">Done</div>
-            <img src="assets/Pens_Microsite_Step_10.png" alt="Confirmation" style="width:90px; display:block; border:1px solid var(--line-soft);">
-            <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4;">Confirmation</div>
+          <div style="text-align:center;">
+            <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px; padding-top:12px;">Done</div>
+            <img src="assets/Pens_Microsite_Step_10.png" alt="Confirmation" style="width:100%; display:block;">
+            <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4; padding-bottom:12px;">Confirmation</div>
           </div>
         </div>
       </div>
@@ -826,7 +825,7 @@
 
     <!-- Research artifacts — documentation -->
     <div class="scroll-strip" style="margin-top:48px;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
+      <div class="lbl" style="margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
         <span>Research artifacts</span>
         <div class="scroll-nav">
           <button class="scroll-btn scroll-prev" aria-label="Previous"><svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 2L4 7l5 5"/></svg></button>
@@ -900,15 +899,15 @@
         <div style="font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:16px;">Key Results</div>
         <div style="display:flex; flex-direction:column; gap:14px;">
           <div style="display:flex; gap:16px; align-items:baseline;">
-            <div style="font-family:var(--mono); font-size:28px; color:var(--forest); letter-spacing:-.02em; flex-shrink:0;">+13.24%</div>
+            <div style="font-family:var(--mono); font-size:28px; color:var(--rust); letter-spacing:-.02em; flex-shrink:0;">+13.24%</div>
             <div style="font-size:13.5px; line-height:1.55; color:var(--ink-mute);">Conversion rate lift · 94% confidence</div>
           </div>
           <div style="display:flex; gap:16px; align-items:baseline;">
-            <div style="font-family:var(--mono); font-size:28px; color:var(--forest); letter-spacing:-.02em; flex-shrink:0;">+15.21%</div>
+            <div style="font-family:var(--mono); font-size:28px; color:var(--rust); letter-spacing:-.02em; flex-shrink:0;">+15.21%</div>
             <div style="font-size:13.5px; line-height:1.55; color:var(--ink-mute);">CTR on order review · 96% confidence</div>
           </div>
           <div style="display:flex; gap:16px; align-items:baseline;">
-            <div style="font-family:var(--mono); font-size:28px; color:var(--forest); letter-spacing:-.02em; flex-shrink:0;">+$15k</div>
+            <div style="font-family:var(--mono); font-size:28px; color:var(--rust); letter-spacing:-.02em; flex-shrink:0;">+$15k</div>
             <div style="font-size:13.5px; line-height:1.55; color:var(--ink-mute);">Revenue recovered in first 12 days</div>
           </div>
         </div>
@@ -951,7 +950,7 @@
 
     <!-- Backlog section -->
     <div class="scroll-strip" style="margin-top:40px; margin-bottom:48px;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
+      <div class="lbl" style="margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
         <span>Ideation backlog · impact/effort matrix + lo-fi concepts</span>
         <div class="scroll-nav">
           <button class="scroll-btn scroll-prev" aria-label="Previous"><svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 2L4 7l5 5"/></svg></button>
@@ -1017,7 +1016,7 @@
 
     <!-- Checkout flow complexity -->
     <div class="scroll-strip" style="margin-top:32px; margin-bottom:32px;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
+      <div class="lbl" style="margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
         <span>Current state · checkout system mapping</span>
         <div class="scroll-nav">
           <button class="scroll-btn scroll-prev" aria-label="Previous"><svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 2L4 7l5 5"/></svg></button>

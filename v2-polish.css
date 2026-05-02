@@ -155,7 +155,17 @@ footer nav a{ padding: 6px 0; }
   .section-label .sl-text{ font-size: 12px; letter-spacing: .2em; top: -3px; }
 }
 
-/* ---------- 12. FOCUS STATES ---------- */
+/* ---------- 12. CONSISTENT LABEL STYLE ---------- */
+/* Used for scroll-strip headers, sub-section titles, image group labels */
+.lbl{
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+/* ---------- 13. FOCUS STATES ---------- */
 a:focus-visible,
 button:focus-visible{
   outline: 2px solid var(--rust);
