@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/png" href="assets/magnifier.png">
+<link rel="icon" type="image/png" href="assets/latte-favicon.png">
 <title>Pens.com · Checkout Optimization · Annie S. Koo</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -514,9 +514,7 @@
   .ph-wrap{
     margin-top:40px;
   }
-  a.img-link{ display:block; }
-  a.img-link img{ transition:opacity .18s; }
-  a.img-link:hover img{ opacity:.82; }
+
 
   .ph-caption{
     font-family:var(--mono); font-size:10px; letter-spacing:.18em;
@@ -606,16 +604,26 @@
 
   /* ── SCROLL STRIP NAV ── */
   .scroll-strip{ position:relative; }
-  .scroll-nav{ display:flex; gap:3px; align-items:center; }
+  .scroll-nav{ display:flex; gap:4px; align-items:center; }
+  .scroll-counter{
+    font-family:var(--mono); font-size:10px; letter-spacing:.08em;
+    color:var(--ink-mute); padding:0 6px; min-width:40px; text-align:center;
+  }
   .scroll-btn{
-    background:var(--ink); color:var(--cream);
-    border:none; width:26px; height:26px;
+    background:var(--rust); color:var(--cream);
+    border:none; width:28px; height:28px;
     display:flex; align-items:center; justify-content:center;
     cursor:pointer; padding:0; flex-shrink:0;
-    opacity:.7; transition:opacity .18s, background .18s;
+    transition:background .18s;
   }
-  .scroll-btn:hover{ opacity:1; }
-  .scroll-btn:disabled{ opacity:.2; cursor:default; }
+  .scroll-btn:hover{ background:#3d2010; }
+  .scroll-btn:disabled{ background:var(--line); color:var(--ink-mute); cursor:default; }
+  .scroll-track{
+    height:3px; background:var(--line-soft); margin-bottom:6px; overflow:hidden;
+  }
+  .scroll-fill{
+    height:100%; background:var(--rust); width:0%; transition:width .1s linear;
+  }
 
   /* ── RESPONSIVE ── */
   @media(max-width:900px){
@@ -750,7 +758,7 @@
       <div style="min-width:0;">
         <div class="lbl" style="margin-bottom:16px;"><span style="color:var(--rust);">Desktop</span><span style="color:var(--ink-faint);"> · </span><span style="color:var(--ink-mute);">The Structural Flaw</span></div>
         <div style="position:relative; border:1px solid var(--line-soft); overflow:hidden;">
-          <img src="assets/Pens_Microsite_Before_Full_Page.png" alt="Full page scroll — CTA buried far below fold" style="width:100%; display:block; filter:grayscale(10%) sepia(8%) saturate(90%);">
+          <a href="assets/Pens_Microsite_Before_Full_Page.png" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Before_Full_Page.png" alt="Full page scroll — CTA buried far below fold" style="width:100%; display:block; filter:grayscale(10%) sepia(8%) saturate(90%);"></a>
           <div style="position:absolute; top:32%; left:0; right:0; z-index:2;">
             <div style="border-top:2px dashed var(--rust); position:relative;">
               <span style="position:absolute; right:10px; top:-11px; font-family:var(--mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--rust); background:var(--cream); padding:2px 8px; line-height:1;">↑ fold</span>
@@ -775,47 +783,47 @@
         <div style="display:grid; grid-template-columns:repeat(9,1fr);">
           <div style="text-align:center;">
             <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px; padding-top:12px;">Entry</div>
-            <img src="assets/Pens_Microsite_Step_01.png" alt="Entry — Promo code" style="width:100%; display:block; border-right:1px solid var(--line-soft);">
+            <a href="assets/Pens_Microsite_Step_01.png" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Step_01.png" alt="Entry — Promo code" style="width:100%; display:block; border-right:1px solid var(--line-soft);"></a>
             <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4; padding-bottom:12px;">Promo Code</div>
           </div>
           <div style="text-align:center;">
             <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px; padding-top:12px;">01</div>
-            <img src="assets/Pens_Microsite_Step_03.png" alt="Step 1 — Product options" style="width:100%; display:block; border-right:1px solid var(--line-soft);">
+            <a href="assets/Pens_Microsite_Step_03.png" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Step_03.png" alt="Step 1 — Product options" style="width:100%; display:block; border-right:1px solid var(--line-soft);"></a>
             <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4; padding-bottom:12px;">Product Options</div>
           </div>
           <div style="text-align:center;">
             <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px; padding-top:12px;">02</div>
-            <img src="assets/Pens_Microsite_Step_04.png" alt="Step 2 — My imprint" style="width:100%; display:block; border-right:1px solid var(--line-soft);">
+            <a href="assets/Pens_Microsite_Step_04.png" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Step_04.png" alt="Step 2 — My imprint" style="width:100%; display:block; border-right:1px solid var(--line-soft);"></a>
             <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4; padding-bottom:12px;">My Imprint</div>
           </div>
           <div style="text-align:center;">
             <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px; padding-top:12px;">03</div>
-            <img src="assets/Pens_Microsite_Step_05.png" alt="Step 3 — Quantity" style="width:100%; display:block; border-right:1px solid var(--line-soft);">
+            <a href="assets/Pens_Microsite_Step_05.png" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Step_05.png" alt="Step 3 — Quantity" style="width:100%; display:block; border-right:1px solid var(--line-soft);"></a>
             <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4; padding-bottom:12px;">Quantity</div>
           </div>
           <div style="text-align:center; background:rgba(122,90,46,.04);">
             <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--rust); margin-bottom:6px; padding-top:12px;">! Modal</div>
-            <img src="assets/Pens_Microsite_Step_06.png" alt="Unexpected — Upsell modal" style="width:100%; display:block; border:1px solid var(--rust);">
+            <a href="assets/Pens_Microsite_Step_06.png" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Step_06.png" alt="Unexpected — Upsell modal" style="width:100%; display:block; border:1px solid var(--rust);"></a>
             <div style="font-family:var(--mono); font-size:8px; color:var(--rust); margin-top:5px; line-height:1.4; padding-bottom:12px;">Upsell</div>
           </div>
           <div style="text-align:center;">
             <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px; padding-top:12px;">04</div>
-            <img src="assets/Pens_Microsite_Step_07.png" alt="Step 4 — Shipping" style="width:100%; display:block; border-right:1px solid var(--line-soft); border-left:1px solid var(--line-soft);">
+            <a href="assets/Pens_Microsite_Step_07.png" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Step_07.png" alt="Step 4 — Shipping" style="width:100%; display:block; border-right:1px solid var(--line-soft); border-left:1px solid var(--line-soft);"></a>
             <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4; padding-bottom:12px;">Shipping</div>
           </div>
           <div style="text-align:center; background:rgba(122,90,46,.04);">
             <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--rust); margin-bottom:6px; padding-top:12px;">! Modal</div>
-            <img src="assets/Pens_Microsite_Step_08.png" alt="Unexpected — Address verify" style="width:100%; display:block; border:1px solid var(--rust);">
+            <a href="assets/Pens_Microsite_Step_08.png" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Step_08.png" alt="Unexpected — Address verify" style="width:100%; display:block; border:1px solid var(--rust);"></a>
             <div style="font-family:var(--mono); font-size:8px; color:var(--rust); margin-top:5px; line-height:1.4; padding-bottom:12px;">Address verify</div>
           </div>
           <div style="text-align:center;">
             <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px; padding-top:12px;">05</div>
-            <img src="assets/Pens_Microsite_Step_09.png" alt="Step 5 — Order review" style="width:100%; display:block; border-right:1px solid var(--line-soft); border-left:1px solid var(--line-soft);">
+            <a href="assets/Pens_Microsite_Step_09.png" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Step_09.png" alt="Step 5 — Order review" style="width:100%; display:block; border-right:1px solid var(--line-soft); border-left:1px solid var(--line-soft);"></a>
             <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4; padding-bottom:12px;">Order Review</div>
           </div>
           <div style="text-align:center;">
             <div style="font-family:var(--mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px; padding-top:12px;">Done</div>
-            <img src="assets/Pens_Microsite_Step_10.png" alt="Confirmation" style="width:100%; display:block;">
+            <a href="assets/Pens_Microsite_Step_10.png" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Step_10.png" alt="Confirmation" style="width:100%; display:block;"></a>
             <div style="font-family:var(--mono); font-size:8px; color:var(--ink-faint); margin-top:5px; line-height:1.4; padding-bottom:12px;">Confirmation</div>
           </div>
         </div>
@@ -828,10 +836,12 @@
       <div class="lbl" style="margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
         <span>Research artifacts</span>
         <div class="scroll-nav">
+          <span class="scroll-counter"></span>
           <button class="scroll-btn scroll-prev" aria-label="Previous"><svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 2L4 7l5 5"/></svg></button>
           <button class="scroll-btn scroll-next" aria-label="Next"><svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 2l5 5-5 5"/></svg></button>
         </div>
       </div>
+      <div class="scroll-track"><div class="scroll-fill"></div></div>
       <div class="scroll-inner" style="display:flex; gap:2px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; background:var(--line-soft);">
         <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
           <a href="assets/Pens_Microsite_Mobile_Audit_web.jpg" target="_blank" class="img-link"><img src="assets/Pens_Microsite_Mobile_Audit_web.jpg" alt="Heuristic audit annotations" style="height:600px; width:auto; display:block;"></a>
@@ -856,11 +866,11 @@
 </div>
 
 <!-- ═══════════════════
-     04 · MICROSITE
+     03 · MICROSITE
 ════════════════════ -->
 <div class="block">
   <div class="container">
-    <div class="section-label">04 · Project 1: Microsite</div>
+    <div class="section-label">03 · Project 1: Microsite</div>
     <h2>Desktop first. <em>Prove it. Then go mobile.</em></h2>
 
     <p>Desktop had a glaring issue: the CTA was buried. I scoped the fastest fix: a sticky CTA bar via an A/B testing tool. No engineering required. Just me and two colleagues from the Experimentation Team.</p>
@@ -874,14 +884,14 @@
             <span style="display:inline-block; width:5px; height:5px; background:#2e2b26; border-radius:50%;"></span>
           </div>
           <div style="border-radius:3px; overflow:hidden; line-height:0;">
-            <img src="assets/Microsite_Sticky_ABTest.png" alt="Sticky CTA bar on microsite" style="width:100%; display:block;">
+            <a href="assets/Microsite_Sticky_ABTest.png" target="_blank" class="img-link"><img src="assets/Microsite_Sticky_ABTest.png" alt="Sticky CTA bar on microsite" style="width:100%; display:block;"></a>
           </div>
         </div>
         <!-- Hinge -->
         <div style="background:#232120; height:14px; border-radius:0 0 2px 2px; margin:0 -1px; border:1px solid #2e2b26; border-top:0;"></div>
         <!-- Base -->
         <div style="background:#1c1a16; height:6px; border-radius:0 0 6px 6px; margin:0 -28px; box-shadow:0 6px 18px rgba(0,0,0,.35);"></div>
-        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-faint); margin-top:20px; text-align:center;">Sticky CTA bar · persistent across scroll · AB Tasty · zero engineering</div>
+        <div class="lbl" style="margin-top:20px; text-align:center;">Sticky CTA bar · persistent across scroll · zero engineering</div>
       </div>
     </div>
 
@@ -892,11 +902,11 @@
 
     <figure style="margin:40px 0 0; display:flex; gap:40px; align-items:flex-start;">
       <div style="flex:0 0 auto; width:min(520px, 100%);">
-        <img src="assets/Pens_Microsite_AB_Analytics.png" alt="AB Tasty dashboard — +13.24% conversion rate lift at 94% confidence" style="width:100%; display:block; border:1px solid var(--line-soft);">
-        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-faint); margin-top:10px;">AB Tasty Dashboard · test results snapshot</div>
+        <a href="assets/Pens_Microsite_AB_Analytics.png" target="_blank" class="img-link"><img src="assets/Pens_Microsite_AB_Analytics.png" alt="AB Tasty dashboard — +13.24% conversion rate lift at 94% confidence" style="width:100%; display:block; border:1px solid var(--line-soft);"></a>
+        <div class="cap" style="margin-top:10px;">AB Tasty Dashboard (A/B testing tool) · test results snapshot</div>
       </div>
       <div style="flex:1; min-width:0; padding-top:4px;">
-        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:16px;">Key Results</div>
+        <div class="lbl" style="margin-bottom:16px;">Key Results</div>
         <div style="display:flex; flex-direction:column; gap:14px;">
           <div style="display:flex; gap:16px; align-items:baseline;">
             <div style="font-family:var(--mono); font-size:28px; color:var(--rust); letter-spacing:-.02em; flex-shrink:0;">+13.24%</div>
@@ -915,15 +925,15 @@
     </figure>
 
     <div style="background:var(--cream-2); border-left:3px solid var(--rust); padding:16px 20px; margin:40px 0 0;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--rust); margin-bottom:8px;">Key insight · audience segmentation</div>
+      <div class="lbl" style="color:var(--rust); margin-bottom:8px;">Key insight · audience segmentation</div>
       <p style="margin:0; font-size:14px; line-height:1.65; color:var(--ink-2);">Returning customers and new prospects receive fundamentally different experiences via unique URL parameters, with prospect conversion in North America tracking lower. This shaped how every test was scoped: variant impact measured against the right audience segment, not aggregate traffic.</p>
     </div>
 
-    <p style="margin-top:40px;">The desktop result did more than bring in numbers. It bought credibility. The Experimentation Team and stakeholders were now actively pulling me in — not the other way around.</p>
+    <p style="margin-top:40px;">The desktop result did more than bring in numbers. It bought credibility. The Experimentation Team and stakeholders were now eager to make further changes in the microsite.</p>
     <p>I used that to drive a second round of ideation with the Experimentation Team and a web developer: mapping the next wave of A/B tests and critical mobile fixes, then aligning on priority in a working session. The output was a structured backlog, organized by impact and effort, handed off and ready to run.</p>
     <!-- Structured backlog -->
     <div style="margin-top:36px;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.26em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:0;"> Experimentation Team Handoff (5 Examples)</div>
+      <div class="lbl" style="margin-bottom:0;">Experimentation Team Handoff (5 Examples)</div>
       <div class="roadmap">
         <div class="roadmap-row">
           <div class="tag quick">Quick Win</div>
@@ -953,10 +963,12 @@
       <div class="lbl" style="margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
         <span>Ideation backlog · impact/effort matrix + lo-fi concepts</span>
         <div class="scroll-nav">
+          <span class="scroll-counter"></span>
           <button class="scroll-btn scroll-prev" aria-label="Previous"><svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 2L4 7l5 5"/></svg></button>
           <button class="scroll-btn scroll-next" aria-label="Next"><svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 2l5 5-5 5"/></svg></button>
         </div>
       </div>
+      <div class="scroll-track"><div class="scroll-fill"></div></div>
       <div class="scroll-inner" style="display:flex; gap:2px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; background:var(--line-soft);">
 
         <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
@@ -1003,11 +1015,11 @@
 </div>
 
 <!-- ═══════════════════
-     05 · MAIN CHECKOUT
+     04 · MAIN CHECKOUT
 ════════════════════ -->
 <div class="block forest">
   <div class="container">
-    <div class="section-label">05 · Project 2: Main Site Checkout</div>
+    <div class="section-label">04 · Project 2: Main Site Checkout</div>
     <h2>Set the vision. <em>Ship smart.</em></h2>
 
     <p>
@@ -1019,10 +1031,12 @@
       <div class="lbl" style="margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
         <span>Current state · checkout system mapping</span>
         <div class="scroll-nav">
+          <span class="scroll-counter"></span>
           <button class="scroll-btn scroll-prev" aria-label="Previous"><svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 2L4 7l5 5"/></svg></button>
           <button class="scroll-btn scroll-next" aria-label="Next"><svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 2l5 5-5 5"/></svg></button>
         </div>
       </div>
+      <div class="scroll-track"><div class="scroll-fill"></div></div>
       <div class="scroll-inner" style="display:flex; gap:2px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; background:var(--line-soft);">
         <div style="flex-shrink:0; scroll-snap-align:start; background:var(--cream-2); overflow:hidden;">
           <a href="assets/Pens_Checkout_Flow_Mobile.jpg" target="_blank" class="img-link"><img src="assets/Pens_Checkout_Flow_Mobile.jpg" alt="Mobile guest checkout flow — current state" style="height:600px; width:auto; display:block;"></a>
@@ -1046,12 +1060,12 @@
     <!-- Vision + MVP two-card row -->
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); margin-top:28px;">
       <div style="background:var(--cream-2); padding:32px 28px;">
-        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:14px;">01 · The Full Vision</div>
+        <div class="lbl" style="margin-bottom:14px;">01 · The Full Vision</div>
         <div style="font-family:var(--serif); font-size:22px; font-weight:500; font-style:italic; color:var(--ink); margin-bottom:14px; line-height:1.2;">One-page experience</div>
         <p style="font-size:14px; line-height:1.72; color:var(--ink-2); margin:0;">A single continuous scroll that compressed the entire multi-step checkout. Goal: to show what "better" could look like before constraining to what was currently buildable.</p>
       </div>
       <div style="background:var(--cream-2); padding:32px 28px;">
-        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:14px;">02 · The MVP</div>
+        <div class="lbl" style="margin-bottom:14px;">02 · The MVP</div>
         <div style="font-family:var(--serif); font-size:22px; font-weight:500; font-style:italic; color:var(--ink); margin-bottom:14px; line-height:1.2;">Same principles. Scoped to reality.</div>
         <p style="font-size:14px; line-height:1.72; color:var(--ink-2); margin:0;">Price transparency, reduced friction, clearer progress — without restructuring the page architecture. Built with the PM to reflect exactly what was shippable within the Braintree migration and marketing constraints.</p>
       </div>
@@ -1059,28 +1073,28 @@
 
     <!-- Interactive prototype -->
     <div style="margin-top:40px;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:16px;">The vision · one-page experience · click to interact</div>
+      <div class="lbl" style="margin-bottom:16px;">The vision · one-page experience · click to interact</div>
       <div style="display:grid; grid-template-columns:260px 1fr; gap:24px; align-items:start;">
         <div>
           <div style="position:relative; overflow:hidden; aspect-ratio:9/19;">
             <iframe src="https://embed.figma.com/proto/PxozSg0SfJSI8cS7QUtBpC/Annie-s-Design-Portfolio?node-id=35-5320&p=f&viewport=-158%2C283%2C0.13&scaling=scale-down&content-scaling=fixed&starting-point-node-id=35%3A5320&page-id=35%3A20&embed-host=share&hide-ui=1" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) scale(1.5); width:100%; height:100%; border:0;" allowfullscreen></iframe>
           </div>
-          <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; text-align:center;">Mobile</div>
+          <div class="lbl" style="margin-top:8px; text-align:center;">Mobile</div>
         </div>
         <div>
           <div style="position:relative; overflow:hidden; aspect-ratio:16/9;">
             <iframe src="https://embed.figma.com/proto/PxozSg0SfJSI8cS7QUtBpC/Annie-s-Design-Portfolio?node-id=35-8377&p=f&viewport=471%2C-263%2C0.19&scaling=scale-down&content-scaling=fixed&starting-point-node-id=35%3A8377&page-id=35%3A7763&embed-host=share&hide-ui=1" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) scale(1.45); width:100%; height:100%; border:0;" allowfullscreen></iframe>
           </div>
-          <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; text-align:center;">Desktop</div>
+          <div class="lbl" style="margin-top:8px; text-align:center;">Desktop</div>
         </div>
       </div>
-      <div class="ph-caption">North star concept · 8 pages → single continuous scroll · price surfaced upfront · persistent order summary · alignment tool for PM + engineering</div>
+    
     </div>
 
     <!-- MVP handoff screens -->
     <div style="margin-top:40px;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px;">PM scoping document · what's changeable given constraints</div>
-      <img src="assets/Pens_Checkout_MVP.jpg" alt="PM scoping document — annotated checkout screens showing feasible changes" style="width:100%; display:block; border:1px solid var(--line-soft);">
+      <div class="lbl" style="margin-bottom:12px;">PM scoping document · what's changeable given constraints</div>
+      <a href="assets/Pens_Checkout_MVP.jpg" target="_blank" class="img-link"><img src="assets/Pens_Checkout_MVP.jpg" alt="PM scoping document — annotated checkout screens showing feasible changes" style="width:100%; display:block; border:1px solid var(--line-soft);"></a>
       <div class="ph-caption">Annotated for PM · translating design decisions into engineering feasibility within Braintree migration + marketing priority shift</div>
     </div>
 
@@ -1088,11 +1102,12 @@
       With scope aligned, I produced the final handoff, which included the website checkout and the three payment portals with all the same experience, ready for engineering.
     </p>
 
-    <div style="display:flex; gap:40px; align-items:flex-start; margin-top:24px; flex-wrap:wrap;">
+    <div class="lbl" style="margin-top:24px; margin-bottom:16px;">MVP Handoff · Review &amp; Payment · scroll to explore</div>
+    <div style="display:flex; gap:40px; align-items:flex-start; flex-wrap:wrap;">
 
       <!-- Phone -->
       <div style="display:flex; flex-direction:column; align-items:center; gap:12px; flex-shrink:0;">
-        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint);">Mobile</div>
+        <div class="lbl">Mobile</div>
         <div class="phone-bezel">
           <div class="notch"></div>
           <div class="screen" style="height:520px; overflow-y:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;">
@@ -1105,7 +1120,7 @@
 
       <!-- Laptop -->
       <div style="flex:1; min-width:280px; display:flex; flex-direction:column; gap:12px;">
-        <div style="font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint);">Desktop</div>
+        <div class="lbl">Desktop</div>
         <div>
           <div style="background:#1e1c18; border-radius:10px 10px 0 0; padding:12px 12px 8px; box-shadow:0 0 0 1px #2e2b26, 0 24px 56px -8px rgba(0,0,0,.5);">
             <div style="text-align:center; margin-bottom:8px; line-height:0;">
@@ -1118,37 +1133,36 @@
           <div style="background:#232120; height:14px; border-radius:0 0 2px 2px; margin:0 -1px; border:1px solid #2e2b26; border-top:0;"></div>
           <div style="background:#1c1a16; height:6px; border-radius:0 0 6px 6px; margin:0 -28px; box-shadow:0 6px 18px rgba(0,0,0,.35);"></div>
         </div>
-        <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint); margin-top:20px;">scroll to explore ↑↓</div>
-      </div>
+        <div style="font-family:var(--mono); font-size:9px; color:var(--ink-faint); margin-top:20px; text-align:center;">scroll to explore ↑↓</div>
       </div>
 
     </div>
-    <div class="ph-caption" style="margin-top:32px;">MVP handoff · 3-step progress, price transparency surfaced, payment options clarified · same principles as vision, scoped to reality</div>
+    <div class="ph-caption" style="margin-top:32px;">3-step progress, price transparency surfaced, payment options clarified · same principles as vision, scoped to reality</div>
 
     <!-- Handoff evidence -->
     <div style="margin-top:48px;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:14px;">Final deliverable · handoff documentation</div>
+      <div class="lbl" style="margin-bottom:14px;">Final deliverable · handoff documentation</div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.08);">
-        <div style="position:relative; overflow:hidden; background:#111;">
-          <img src="assets/Pens_Checkout_Website_Handoff.png" alt="Figma handoff — website checkout screens, desktop components, mobile components, breakpoints" style="width:100%; display:block; opacity:0.78; filter:brightness(1.05);">
+        <div style="position:relative; overflow:hidden;">
+          <a href="assets/Pens_Checkout_Website_Handoff.png" target="_blank" class="img-link"><img src="assets/Pens_Checkout_Website_Handoff.png" alt="Figma handoff — website checkout screens, desktop components, mobile components, breakpoints" style="width:100%; display:block;"></a>
           <div style="position:absolute; bottom:0; left:0; right:0; padding:10px 14px; background:linear-gradient(transparent, rgba(0,0,0,.65));">
             <div style="font-family:var(--mono); font-size:9px; color:rgba(239,236,224,.55); letter-spacing:.16em; text-transform:uppercase;">Website checkout · desktop + mobile + breakpoints + components</div>
           </div>
         </div>
-        <div style="position:relative; overflow:hidden; background:#111;">
-          <img src="assets/Pens_Checkout_Payment_Portals_Handoff.png" alt="Figma handoff — payment portals OPP, IPP, OFP screens" style="width:100%; display:block; opacity:0.78; filter:brightness(1.05);">
+        <div style="position:relative; overflow:hidden;">
+          <a href="assets/Pens_Checkout_Payment_Portals_Handoff.png" target="_blank" class="img-link"><img src="assets/Pens_Checkout_Payment_Portals_Handoff.png" alt="Figma handoff — payment portals OPP, IPP, OFP screens" style="width:100%; display:block;"></a>
           <div style="position:absolute; bottom:0; left:0; right:0; padding:10px 14px; background:linear-gradient(transparent, rgba(0,0,0,.65));">
             <div style="font-family:var(--mono); font-size:9px; color:rgba(239,236,224,.55); letter-spacing:.16em; text-transform:uppercase;">Payment portals · OPP · IPP · OFP</div>
           </div>
         </div>
       </div>
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-top:10px; display:flex; align-items:center; gap:8px;">
+      <div class="cap" style="margin-top:10px; display:flex; align-items:center; gap:8px;">
         <span style="display:inline-block; width:5px; height:5px; border:1px solid var(--rust); border-radius:50%; flex-shrink:0;"></span>
         Figma handoff · website checkout + 3 payment portals · screens, states, and components ready for engineering
       </div>
     </div>
 
-    <p style="margin-top:48px; font-size:16px; line-height:1.78; color:var(--ink-2);">No one handed me the microsite. I saw a live product with no design ownership and proposed taking it on. That's what design experience looks like in practice — the pattern recognition to find the problem before it's on anyone's roadmap.</p>
+    <p style="margin-top:48px; font-size:16px; line-height:1.78; color:var(--ink-2);">No one handed me the microsite. I saw a live product with no design ownership and proposed taking it on. And when the main site got blocked by a migration and a brand update. I didn't wait, but rather, I mapped the system, aligned with the PM on what was actually shippable, and delivered a handoff ready for engineering the moment the constraints lifted. The pattern recognition to find the work before it's on anyone's roadmap, and the follow-through to move it forward anyway.</p>
 
   </div>
 </div>
@@ -1248,27 +1262,53 @@
     }
   })();
 
-  document.querySelectorAll('.scroll-strip').forEach(strip => {
-    const inner = strip.querySelector('.scroll-inner');
-    const prev  = strip.querySelector('.scroll-prev');
-    const next  = strip.querySelector('.scroll-next');
-    if (!inner || !prev || !next) return;
+  (function(){
+    const strips = document.querySelectorAll('.scroll-strip');
 
-    function update() {
-      prev.disabled = inner.scrollLeft <= 1;
-      next.disabled = inner.scrollLeft >= inner.scrollWidth - inner.clientWidth - 1;
-    }
+    strips.forEach(strip => {
+      const inner   = strip.querySelector('.scroll-inner');
+      const prev    = strip.querySelector('.scroll-prev');
+      const next    = strip.querySelector('.scroll-next');
+      const counter = strip.querySelector('.scroll-counter');
+      const fill    = strip.querySelector('.scroll-fill');
+      if (!inner || !prev || !next) return;
 
-    prev.addEventListener('click', () => {
-      inner.scrollBy({ left: -inner.clientWidth * 0.85, behavior: 'smooth' });
+      const slides = Array.from(inner.children);
+      const total  = slides.length;
+
+      function currentIndex() {
+        let closest = 0, minDist = Infinity;
+        slides.forEach((s, i) => {
+          const d = Math.abs(s.offsetLeft - inner.scrollLeft);
+          if (d < minDist) { minDist = d; closest = i; }
+        });
+        return closest;
+      }
+
+      function update() {
+        const scrollable = inner.scrollWidth - inner.clientWidth;
+        const pct = scrollable > 0 ? (inner.scrollLeft / scrollable) * 100 : 100;
+        const atEnd = inner.scrollLeft >= scrollable - 1;
+        prev.disabled = inner.scrollLeft <= 1;
+        next.disabled = atEnd;
+        if (fill) fill.style.width = pct + '%';
+        if (counter) counter.textContent = (currentIndex() + 1) + ' / ' + total;
+      }
+
+      prev.addEventListener('click', () => inner.scrollBy({ left: -inner.clientWidth * 0.85, behavior: 'smooth' }));
+      next.addEventListener('click', () => inner.scrollBy({ left:  inner.clientWidth * 0.85, behavior: 'smooth' }));
+      inner.addEventListener('scroll', update, { passive: true });
+      update();
     });
-    next.addEventListener('click', () => {
-      inner.scrollBy({ left:  inner.clientWidth * 0.85, behavior: 'smooth' });
-    });
 
-    inner.addEventListener('scroll', update, { passive: true });
-    update();
-  });
+    // Re-run after all images load — fixes initial disabled-button state
+    window.addEventListener('load', () => {
+      strips.forEach(strip => {
+        const inner = strip.querySelector('.scroll-inner');
+        if (inner) inner.dispatchEvent(new Event('scroll'));
+      });
+    });
+  })();
 </script>
 
 <script>

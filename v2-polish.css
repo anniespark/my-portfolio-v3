@@ -155,8 +155,9 @@ footer nav a{ padding: 6px 0; }
   .section-label .sl-text{ font-size: 12px; letter-spacing: .2em; top: -3px; }
 }
 
-/* ---------- 12. CONSISTENT LABEL STYLE ---------- */
-/* Used for scroll-strip headers, sub-section titles, image group labels */
+/* ---------- 12. CONSISTENT LABEL STYLES ---------- */
+/* .lbl  — section identifiers, scroll-strip headers, block titles */
+/* .cap  — image captions, artifact descriptions, sub-labels        */
 .lbl{
   font-family: var(--mono);
   font-size: 12px;
@@ -164,8 +165,20 @@ footer nav a{ padding: 6px 0; }
   text-transform: uppercase;
   color: var(--ink-mute);
 }
+.cap{
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
 
-/* ---------- 13. FOCUS STATES ---------- */
+/* ---------- 13. CLICKABLE IMAGES ---------- */
+a.img-link{ display:block; cursor:zoom-in; }
+a.img-link img{ transition:opacity .18s; }
+a.img-link:hover img{ opacity:.82; }
+
+/* ---------- 14. FOCUS STATES ---------- */
 a:focus-visible,
 button:focus-visible{
   outline: 2px solid var(--rust);
