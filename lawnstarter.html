@@ -191,7 +191,7 @@
     display:flex; flex-direction:column;
   }
   .fc-problem{ padding:32px 32px 28px; border-bottom:1px solid var(--line-soft); flex:1; }
-  .fc-rec{ padding:28px 32px 32px; }
+  .fc-rec{ padding:28px 32px 32px; background:var(--cream-2); }
   .fc-tag{
     font-family:var(--mono); font-size:10px; letter-spacing:.2em;
     text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px;
@@ -203,14 +203,14 @@
   .fc-problem p{ font-size:14px; line-height:1.7; color:var(--ink-mute); margin:0; }
   .fc-rec-label{
     font-family:var(--mono); font-size:10px; letter-spacing:.2em;
-    text-transform:uppercase; color:var(--forest); margin-bottom:10px;
+    text-transform:uppercase; color:var(--forest); margin-bottom:12px;
   }
   .fc-rec p{ font-size:14px; line-height:1.7; color:var(--ink-2); margin:0 0 16px; }
   .fc-rec p:last-child{ margin:0; }
   .fc-impact{
-    margin-top:16px; padding-top:16px; border-top:1px solid var(--line-soft);
-    font-family:var(--mono); font-size:10px; letter-spacing:.18em;
-    text-transform:uppercase; color:var(--forest);
+    margin-top:18px; padding-top:14px; border-top:1px solid var(--line-soft);
+    font-family:var(--mono); font-size:11px; letter-spacing:.04em;
+    color:var(--forest);
   }
 
   /* ── DISCIPLINE CHIPS ── */
@@ -226,38 +226,18 @@
   .pga-tag.pga-before{ color:var(--rust); border-color:var(--rust); }
   .pga-tag.pga-after{ color:var(--forest); border-color:var(--forest); }
 
-  /* phone mockup frame */
+  /* screen frame — simple border, no fake phone */
   .phone-wrap{
     position:relative;
-    background:#1a1814;
-    border-radius:44px;
-    padding:14px 10px;
-    box-shadow:
-      0 0 0 1.5px #2a2724,
-      0 0 0 3px #3a3530,
-      0 32px 64px -16px rgba(0,0,0,.5);
-  }
-  .phone-wrap .notch{
-    position:absolute;
-    top:14px; left:50%; transform:translateX(-50%);
-    width:80px; height:18px;
-    background:#1a1814;
-    border-radius:0 0 14px 14px;
-    z-index:2;
-  }
-  .phone-wrap .screen{
-    border-radius:32px;
+    border:1px solid var(--line);
+    border-radius:8px;
     overflow:hidden;
-    background:#000;
-    position:relative;
+    box-shadow:0 8px 28px -8px rgba(0,0,0,.12);
   }
+  .phone-wrap .notch{ display:none; }
+  .phone-wrap .screen{ border-radius:0; overflow:hidden; background:#000; }
   .phone-wrap .screen img{ width:100%; display:block; border:none; }
-  .phone-wrap .home-bar{
-    width:80px; height:4px;
-    background:rgba(255,255,255,.25);
-    border-radius:2px;
-    margin:10px auto 0;
-  }
+  .phone-wrap .home-bar{ display:none; }
 
   /* before: 3 screens + arrows */
   .pga-screens{
@@ -275,7 +255,7 @@
     text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px;
     text-align:center;
   }
-  .pga-caption{ font-size:13px; line-height:1.6; color:var(--ink-mute); margin-top:24px; text-align:center; max-width:220px; }
+  .pga-screen .pga-caption{ font-size:13px; line-height:1.6; color:var(--ink-mute); margin-top:32px; text-align:center; max-width:220px; }
 
   /* divider */
   .pga-divider{ display:flex; align-items:center; gap:16px; margin:40px 0; }
@@ -403,7 +383,6 @@
       <span class="chip">Multi-Brand Audit</span>
     </div>
 
-    <div class="kicker">Acquisition Integrity · Multi-Brand Growth Audit</div>
     <h1>From no growth design presence<br>to <em>44 UX opportunities.</em><br></h1>
     <div class="role-line">Senior Product Designer — Growth Squad · LawnStarter, Lawn Love, Home Gnome</div>
 
@@ -426,12 +405,12 @@
     <div class="section-label">01 — How I Worked</div>
     <h2>Evidence-first, from <em>day one.</em></h2>
 
-    <p>I joined as the first designer embedded in LawnStarter's Growth team — a function that included PMs, engineers, SEO, SEM, and content, but had never had a designer in the room. With no inherited design context, the first job was building the diagnostic methodology from scratch: walk the products as a real user, map every friction point, and validate the highest-priority findings with behavioral data before deciding what to act on.</p>
+    <p>I joined as the first designer embedded in LawnStarter's Growth team. This team included a PM, engineers, SEO, SEM, and content, but had never had a designer in the room. With no inherited design context, the first job was building the diagnostic methodology from scratch: walk the products as a real user, map every friction point, and validate the highest-priority findings with behavioral data before deciding what to act on.</p>
 
     <div class="evidence-table">
       <div class="evidence-row">
         <div class="ev-source">Self-Conducted UX Teardown</div>
-        <div class="ev-finding">Walked through all three brands as a first-time user, mapping friction points against NNg heuristics and growth design intuition. Source of the majority of the 44 UX opportunities.</div>
+        <div class="ev-finding">Walked through all three brands as a first-time user, mapping friction points against NNg heuristics and growth design intuition. </div>
       </div>
       <div class="evidence-row">
         <div class="ev-source">Hotjar Recordings</div>
@@ -439,7 +418,7 @@
       </div>
       <div class="evidence-row">
         <div class="ev-source">Effort / Impact Scoring</div>
-        <div class="ev-finding">All 44 UX opportunities scored across a high / medium / low effort and impact matrix, then ranked and separated into Quick Wins and Larger Rocks.</div>
+        <div class="ev-finding">All 44 UX opportunities scored across a high / medium / low effort and impact matrix.</div>
       </div>
     </div>
 
@@ -454,11 +433,9 @@
     <div class="section-label">02 — Selected Findings</div>
     <h2>Four examples from <em>forty-four.</em></h2>
 
-    <p>The full audit surfaced 44 UX opportunities across three brands, scored and prioritized by effort and impact. These four illustrate the range — from quick systemic logic fixes to longer-term architectural changes — and the level of specificity each finding carried.</p>
+    <p> These four illustrate the range from quick systemic logic fixes to longer-term architectural changes and the level of specificity each finding carried.</p>
 
-    <div class="pull-quote">
-      <p>"Every paid click carried a $19 offer. Clicking the company logo silently stripped it. Marketing had no idea."</p>
-    </div>
+
 
     <div class="findings-grid">
 
@@ -466,11 +443,11 @@
         <div class="fc-problem">
           <div class="fc-tag">Systemic Logic — Quick Win</div>
           <h4>The $19 offer that disappeared at the logo</h4>
-          <p>Clicking the company logo on an SEM page navigated users out of their promotional context, silently removing the $19 offer they'd arrived to claim. Marketing was spending on clicks the product's own navigation was converting to zero-dollar sessions.</p>
+          <p>Clicking the company logo on an SEM page navigated users out of their promotional context, silently removing the $19 offer they'd arrived to claim. Marketing was potentially spending on clicks the product's own navigation was converting to zero-dollar sessions.</p>
         </div>
         <div class="fc-rec">
           <div class="fc-rec-label">→ Recommendation</div>
-          <p>Lock navigation on SEM landing pages. A product-layer fix — not a campaign adjustment — that directly protected every dollar Marketing was spending on paid acquisition.</p>
+          <p>Lock navigation on SEM landing pages. </p>
           <div class="fc-impact">Anticipated impact: Stopped paid acquisition spend from being silently devalued at the navigation level</div>
         </div>
       </div>
@@ -478,13 +455,13 @@
       <div class="finding-card">
         <div class="fc-problem">
           <div class="fc-tag">Credibility — Quick Win</div>
-          <h4>Surface what earns trust; remove what doesn't</h4>
-          <p>Guarantees and bonded &amp; insured status — the signals that matter to a first-time user — weren't visible at the point of decision on mobile. Meanwhile, "As Seen In..." sections with no verifiable source links were actively undermining credibility.</p>
+          <h4>Surface what earns trust</h4>
+          <p>Guarantees and bonded &amp; insured status (the signals that matter to a first-time user) weren't visible at the point of decision on mobile.</p>
         </div>
         <div class="fc-rec">
           <div class="fc-rec-label">→ Recommendation</div>
-          <p>Move guarantees and bonded &amp; insured status to the point of decision. Remove unverifiable "As Seen In" claims. Credibility is as much about what you're willing to cut as what you add.</p>
-          <div class="fc-impact">Anticipated impact: Trust rebuilt at the decision point — as much by what was removed as by what was added</div>
+          <p>Move guarantees and bonded &amp; insured status to the point of decision.</p>
+          <div class="fc-impact">Anticipated impact: Trust rebuilt at the decision point.</div>
         </div>
       </div>
 
@@ -492,7 +469,7 @@
         <div class="fc-problem">
           <div class="fc-tag">Psychological Friction — Near + Long Term</div>
           <h4>Users asked for trust before they'd received any value</h4>
-          <p>Hotjar recordings showed consistent hesitation at the phone number field: pause, re-read, abandon. Users clicked "See My Price" expecting a price — they got an identity form with no explanation of why.</p>
+          <p>Hotjar recordings showed consistent hesitation at the phone number field: pause, re-read, abandon. Users clicked "See My Price" expecting a price, but instead, they are asked for required phone number with no explanation of why.</p>
         </div>
         <div class="fc-rec">
           <div class="fc-rec-label">→ Recommendation</div>
@@ -504,8 +481,8 @@
       <div class="finding-card">
         <div class="fc-problem">
           <div class="fc-tag">User Control — Larger Rock</div>
-          <h4>Two paths to the same dead end</h4>
-          <p>After entering an address, there was no way to go back or correct a typo. Users with new builds couldn't proceed at all — the database couldn't match their address, and there was no fallback. Two different users, same outcome: no way forward.</p>
+          <h4>Address Dead End</h4>
+          <p>After entering an address, there was no way to go back or correct a typo. Skeptical users who may try a fake address first have no way to edit their address. Users with new home couldn't proceed at all. If the database couldn't match their address, there was no fallback.</p>
         </div>
         <div class="fc-rec">
           <div class="fc-rec-label">→ Recommendation</div>
@@ -543,7 +520,7 @@
             <div class="screen"><img src="assets/LS_Before_Screen_1.png" alt="LawnStarter landing page — address field and See My Price CTA"></div>
             <div class="home-bar"></div>
           </div>
-          <p class="pga-caption">Landing page promises a quick price — just enter your address and click.</p>
+          <p class="pga-caption">Landing page promises a quick price. The user's expectation is to get a price from clicking the CTA.</p>
         </div>
         <div class="pga-flow-arrow">
           <svg width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
@@ -555,7 +532,7 @@
             <div class="screen"><img src="assets/LS_Before_Screen_2.png" alt="Address autocomplete dropdown — no friction yet"></div>
             <div class="home-bar"></div>
           </div>
-          <p class="pga-caption">Address autocomplete appears. Still no indication of what comes next.</p>
+          <p class="pga-caption">Address autocomplete appears. Normal experience.</p>
         </div>
         <div class="pga-flow-arrow">
           <svg width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
@@ -567,7 +544,7 @@
             <div class="screen"><img src="assets/LS_Before_Screen_3.png" alt="Name and phone number fields appear after address — no explanation"></div>
             <div class="home-bar"></div>
           </div>
-          <p class="pga-caption">Address selected — name and phone required. No explanation. No opt-out.</p>
+          <p class="pga-caption">"Oh no. Now I have to provide a phone number..." is what a user might be thinking.</p>
         </div>
       </div>
 
@@ -587,7 +564,7 @@
           <div class="home-bar"></div>
         </div>
         <div class="pga-after-text">
-          <p>One example of the design direction included in the handoff. A tooltip explains the ask: "Help us reach you fast for lawn service problems or deals." Incentive copy below gives users a reason to comply rather than a reason to leave.</p>
+          <p>This is just one example of the design direction included in the handoff. </p><p>Phone number ideally is optional (for now). A tooltip explains the ask: "Help us reach you fast for lawn service problems or deals." Incentive copy below gives users a reason to comply rather than a reason to leave.</p>
           <p>The gate doesn't disappear. The demand becomes a value exchange.</p>
         </div>
       </div>
