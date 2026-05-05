@@ -277,7 +277,7 @@ button:focus-visible{
 
 /* ---------- 20. Hero h1 small screen ---------- */
 @media (max-width: 480px){
-  .hero h1{ font-size: clamp(44px, 11vw, 64px) !important; line-height: 1.04; }
+  /* .hero h1 size is handled by fitHeroName() JS on mobile */
   .case-hero h1{ font-size: clamp(38px, 10vw, 56px) !important; }
 }
 

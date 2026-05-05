@@ -1281,6 +1281,9 @@
     footer .wrap{
       grid-template-columns: 1fr !important;
     }
+    .process .wrap,
+    .work .wrap,
+    .values .wrap{ gap: 0; }
     .portrait-holder{ position: relative; right: 0; top: 0; max-width: 320px; }
     .archive .row{ grid-template-columns: 80px 1fr; }
     .archive .row .domain{ display:none; }
@@ -1292,10 +1295,10 @@
 
   /* ============== RESPONSIVE: MOBILE (≤640px) ============== */
   @media (max-width: 640px){
-    :root{ --section-pad: 64px; }
+    html[data-rhythm="balanced"]{ --section-pad: 16px; }
 
     /* Nav */
-    .nav{ padding: 16px 20px; flex-wrap: wrap; }
+    .nav{ padding: 16px 28px; flex-wrap: wrap; }
     .nav-toggle{ display: flex; }
     .nav .links{
       display: none;
@@ -1327,15 +1330,24 @@
     .nav.scrolled .contact-btn{ border-top-color: var(--line-soft) !important; }
 
     /* Hero */
-    .hero{ padding: var(--hero-pad-top) 20px 40px; }
-    .hero-inner{ gap: 0; min-height: auto; padding-bottom: 24px; }
-    .hero .portrait{ min-height: 240px; margin-top: 16px; order: -1; }
-    .portrait-holder{ max-width: 180px; margin: 0 auto; }
-    .scroll-cue{ left: 20px; }
+    .hero{ padding: 28px 32px 0; }
+    .hero-inner{ gap: 0; min-height: auto; padding-bottom: 24px; text-align: center; }
+    .hero .portrait{ display: none; }
+    /* Reorder: name first, eyebrow as subtitle below */
+    .hero-inner > div{ display: flex; flex-direction: column; }
+    .hero .meta{ order: 1; margin-top: 0; margin-bottom: 16px; }
+    .hero h1{ order: 2; font-size: clamp(80px, 22vw, 120px); line-height: .92; margin-bottom: 16px; }
+    .hero .name-line{ order: 3; font-size: clamp(24px, 6.5vw, 34px); margin-bottom: 24px; }
+    .hero .name-line .ital{ display: block; color: var(--ink); }
+    .hero .lede{ order: 4; max-width: 100%; }
+    .hero .status-badge{ order: 5; margin-left: auto; margin-right: auto; }
+    .hero .cta-row{ order: 6; justify-content: center; }
+    .hide-mobile{ display: none; }
+    .scroll-cue{ position: relative; left: auto; bottom: auto; transform: none; flex-direction: column; align-items: center; gap: 8px; margin: 16px auto 0; width: fit-content; }
 
     /* About / Green panel */
     .green-panel{ margin-top: 0; }
-    .about{ padding: 40px 20px 64px; }
+    .about{ padding: 16px 32px; }
     .principle{ padding: 22px 0; gap: 14px; }
     .principle h3{ font-size: 28px; margin-bottom: 8px; }
 
@@ -1343,43 +1355,48 @@
     .process-work-group{ margin-top: 0; padding-top: 0; }
 
     /* Process */
-    .process{ padding: var(--section-pad) 20px; }
-    .process h2{ margin-bottom: 40px; }
-    .step{ padding: 22px 0; gap: 14px; }
+    .process{ padding: 36px 32px 16px; }
+    .process h2{ margin-bottom: 24px; }
+    .step{ padding: 10px 0; gap: 14px; }
     .step h3{ font-size: 28px; }
 
     /* Work */
-    .work{ padding: var(--section-pad) 20px 48px; }
-    .work h2{ margin-bottom: 36px; }
-    .case{ padding: 22px 18px; }
+    .work{ padding: 16px 32px 16px; }
+    .work h2{ margin: 4px 0 20px; }
+    .case{ padding: 22px 24px; margin-bottom: 16px; }
+    .case:last-child{ margin-bottom: 0; }
     .case h3{ font-size: 26px; }
     .case .metric{ font-size: 34px; }
+    .case .head{ flex-wrap: wrap; gap: 6px; }
+    .case .tags{ flex-wrap: wrap; }
+    .case .date{ width: 100%; }
 
     /* Background / archive */
-    .background{ padding: 48px 20px; }
-    .bg-grid{ grid-template-columns: 1fr; gap: 32px; }
-    .bg-col + .bg-col{ border-left: none; padding-left: 0; border-top: 1px solid var(--line-soft); padding-top: 32px; }
-    .archive{ padding: 40px 20px 28px; }
+    .background{ padding: 16px 32px !important; }
+    .bg-grid{ grid-template-columns: 1fr; gap: 0; padding-top: 0 !important; border-top: none !important; }
+    .bg-col + .bg-col{ border-left: none; padding-left: 0; border-top: 1px solid var(--line-soft); padding-top: 20px; margin-top: 20px; }
+    .bg-edu{ margin-top: 20px; }
+    .archive{ padding: 16px 32px; }
 
     /* Values */
-    .values{ padding: var(--section-pad) 20px; }
+    .values{ padding: 36px 32px 16px !important; }
     .personal-stats{ grid-template-columns: 1fr; }
     .personal-stat:nth-child(even){ border-left: none; padding-left: 0; }
 
     /* Skills */
-    .skills{ padding: 60px 20px; }
+    .skills{ padding: 16px 32px; }
 
     /* CTA */
-    .cta{ padding: var(--section-pad) 20px; }
+    .cta{ padding: 16px 32px; }
     .cta .wrap{ gap: 28px; }
     .cta .big-btn{ display: block; text-align: center; }
 
     /* Footer */
-    footer{ padding: 28px 20px; }
+    footer{ padding: 28px 32px; }
     footer .wrap{ gap: 16px; }
 
     /* Generic section */
-    .section{ padding: var(--section-pad) 20px; }
+    .section{ padding: 16px 32px; }
 
     /* Wave — shorter on mobile */
     .wave svg{ height: 80px; }
@@ -1390,6 +1407,23 @@
     .hero h1{ font-size: 52px; }
     .about h2{ font-size: 44px; }
     .process h2{ font-size: 44px; }
+  }
+
+  /* ============== MOBILE HERO ENTRANCE ANIMATION ============== */
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-letter {
+    display: inline-block;
+    opacity: 0;
+    animation: heroFadeUp 0.45s cubic-bezier(.2,.7,.2,1) forwards;
+    animation-delay: var(--delay, 0s);
+  }
+  .hero-anim {
+    opacity: 0;
+    animation: heroFadeUp 0.6s cubic-bezier(.2,.7,.2,1) forwards;
+    animation-delay: var(--delay, 0s);
   }
 </style>
 <link rel="stylesheet" href="v2-polish.css">
@@ -1432,7 +1466,7 @@
       <h1><span class="ital">Annie S. Koo</span></h1>
       <div class="name-line">Complexity into clarity. <span class="ital">Clarity into growth.</span></div>
       <p class="lede">
-        Architecting simplicity within complex systems for 8+ years. Proven impact from 17.47% growth at Pens.com to 187% reach increases via AI-native strategy. One year in Taipei sharpened a lens no single market can teach.
+        Architecting simplicity within complex systems for 8+ years. Proven impact from 17.47% growth at Pens.com to 187% reach increases via AI-native strategy. <span class="hide-mobile">One year in Taipei sharpened a lens no single market can teach.</span>
       </p>
       <div class="status-badge" aria-label="Currently relocating">
         <span class="status-dot" aria-hidden="true"></span>
@@ -1480,7 +1514,7 @@
           <div class="num">02</div>
           <div>
             <h3>Outcome-Focused</h3>
-            <p>+17.47% in transaction rate at Pens.com. 44+ prioritized opportunities at LawnStarter. +187% reach and a community grown at Acts2 Network in Taipei. I deliver both quantitative & qualtiative: the numbers tell you a decision worked, and the user tells you why it was effective.</p>
+            <p>+17.47% in transaction rate at Pens.com. 44+ prioritized opportunities at LawnStarter. +187% reach and a community grown at Acts2 Network in Taipei. I deliver both quantitative & qualitative: the numbers tell you a decision worked, and the user tells you why it was effective.</p>
           </div>
         </div>
         <div class="principle">
@@ -2117,6 +2151,75 @@
   })();
 </script>
 <script src="section-labels.js"></script>
+<script>
+  // Mobile hero: fit name to full width + staggered entrance animation
+  (function(){
+    var animated = false;
+
+    function fitHeroName(){
+      if(window.innerWidth > 640) return;
+      var h1 = document.querySelector('.hero h1');
+      if(!h1) return;
+      h1.setAttribute('style', 'white-space:nowrap');
+      var maxW = h1.parentElement.clientWidth;
+      var lo = 10, hi = 300, mid;
+      for(var i = 0; i < 20; i++){
+        mid = (lo + hi) / 2;
+        h1.setAttribute('style', 'white-space:nowrap;font-size:' + mid + 'px!important');
+        if(h1.scrollWidth <= maxW) lo = mid; else hi = mid;
+      }
+      h1.setAttribute('style', 'white-space:nowrap;font-size:' + Math.floor(lo) + 'px!important;line-height:.92');
+    }
+
+    function animateHero(){
+      if(window.innerWidth > 640) return;
+      if(animated) return;
+      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      animated = true;
+
+      var hero = document.querySelector('.hero');
+      if(!hero) return;
+
+      // Split "Annie S. Koo" into per-letter spans
+      var ital = hero.querySelector('h1 .ital');
+      if(ital){
+        var chars = ital.textContent.split('');
+        ital.textContent = '';
+        chars.forEach(function(ch, i){
+          var s = document.createElement('span');
+          s.className = 'hero-letter';
+          s.textContent = ch === ' ' ? '\u00a0' : ch;
+          s.style.setProperty('--delay', (0.1 + i * 0.045) + 's');
+          ital.appendChild(s);
+        });
+      }
+
+      // Stagger fade-up for surrounding elements
+      var nameLen = ital ? ital.querySelectorAll('.hero-letter').length : 0;
+      var nameEnd = 0.1 + nameLen * 0.045 + 0.15; // after last letter lands
+
+      var els = [
+        { el: hero.querySelector('.meta'),         delay: 0 },
+        { el: hero.querySelector('.name-line'),    delay: nameEnd },
+        { el: hero.querySelector('.lede'),         delay: nameEnd + 0.12 },
+        { el: hero.querySelector('.status-badge'), delay: nameEnd + 0.22 },
+        { el: hero.querySelector('.cta-row'),      delay: nameEnd + 0.32 },
+        { el: document.querySelector('.scroll-cue'), delay: nameEnd + 0.42 },
+      ];
+      els.forEach(function(item){
+        if(!item.el) return;
+        item.el.classList.add('hero-anim');
+        item.el.style.setProperty('--delay', item.delay + 's');
+      });
+    }
+
+    document.fonts.ready.then(function(){
+      fitHeroName();
+      animateHero();
+    });
+    window.addEventListener('resize', fitHeroName);
+  })();
+</script>
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
