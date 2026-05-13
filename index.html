@@ -488,9 +488,7 @@
   }
   .about-art{
     position: relative;
-  }
-  .about-art{
-    position: relative;
+    z-index: 1;
   }
   .magnifier-wrap{
     position: absolute;
@@ -499,6 +497,7 @@
     right: 0;
     bottom: 0;
     pointer-events: none;
+    z-index: 2;
   }
   .magnifier-img{
     position: absolute;
@@ -1658,7 +1657,7 @@
   <div class="wrap">
     <div class="left">
       <div class="eyebrow">Selected Work</div>
-      <h2>The proof is in <span class="ital">the numbers.</span></h2>
+      <h2>Conversion. Diagnosis. <span class="ital">Research. Growth.</span></h2>
 
       <article class="case" onclick="window.location='pens-com.html'" style="cursor:pointer;">
         <div class="case-num">01</div>
@@ -1698,8 +1697,22 @@
         </div>
       </article>
 
-      <article class="case" onclick="window.location='acts2-journey.html'" style="cursor:pointer;">
+      <article class="case" onclick="window.location='events-com.html'" style="cursor:pointer;">
         <div class="case-num">03</div>
+        <div class="head">
+          <div class="tags"><span class="chip">Usability Research</span><span class="chip">B2B SaaS</span><span class="chip">Research-to-Roadmap</span></div>
+          <div class="date">2018–20</div>
+        </div>
+        <div class="company">Events.com</div>
+        <h3>Product Designer</h3>
+        <p class="blurb">All-in-one SaaS platform, no research team. I owned the full usability research lifecycle — recruited participants, wrote scripts, ran remote and in-person sessions, and translated 55 findings directly into the engineering backlog. The first time the platform had structured research.</p>
+        <div style="display:flex; justify-content:flex-end; margin-top:20px;">
+          <div class="arrow">↗</div>
+        </div>
+      </article>
+
+      <article class="case" onclick="window.location='acts2-journey.html'" style="cursor:pointer;">
+        <div class="case-num">04</div>
         <div class="head">
           <div class="tags"><span class="chip">Growth Strategy</span><span class="chip">Cross-Cultural</span><span class="chip">AI Tools</span></div>
           <div class="date">2025–26</div>
@@ -1733,10 +1746,6 @@
 
       <div class="bg-col">
         <h5 class="bg-label">Additional Experience</h5>
-        <div class="bg-role">
-          <span class="bg-yr">2018–20</span>
-          <span class="bg-title">Events.com <em>— Product Designer</em></span>
-        </div>
         <div class="bg-role">
           <span class="bg-yr">2018–21</span>
           <span class="bg-title">Acts2 Network SD <em>— Visual Design Lead</em></span>
