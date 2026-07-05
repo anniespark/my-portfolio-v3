@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/latte-favicon.png">
+<title>Umami — Annie S. Koo</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+<style>
+/* ─── UMAMI DESIGN TOKENS ─────────────────────────────── */
+:root {
+  --paper:      #ece5d4;
+  --cream:      #f5efe0;
+  --wheat:      #e0d2b0;
+  --wheat-deep: #71653f;
+  --ink:        #221d18;
+  --ink-2:      #6a6151;
+  --ink-3:      #a89d8b;
+  --brick:      #a83629;
+  --brick-deep: #85271d;
+  --line:       rgba(34,29,24,0.12);
+  --line-soft:  rgba(34,29,24,0.08);
+
+  --serif: "Fraunces", Georgia, serif;
+  --sans:  "Hanken Grotesk", -apple-system, Helvetica, Arial, sans-serif;
+  --mono:  ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+
+  --shadow-screen: 0 18px 40px -22px rgba(34,20,12,0.45);
+  --shadow-card:   0 2px 16px rgba(34,20,12,0.08);
+}
+
+/* ─── RESET ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* ─── NAV ─────────────────────────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 40px;
+  background: rgba(236,229,212,0.93);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-brand {
+  font-family: var(--serif);
+  font-size: 20px; font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.nav-links {
+  display: flex; align-items: center; gap: 32px;
+}
+.nav-links a {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-2); transition: color .2s;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-contact {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--brick); border: 1.5px solid var(--brick);
+  padding: 10px 18px; transition: background .2s, color .2s;
+}
+.nav-contact:hover { background: var(--brick); color: var(--cream); }
+
+.nav-toggle {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer;
+  padding: 4px; color: var(--ink);
+}
+.nav-toggle span {
+  display: block; width: 22px; height: 2px;
+  background: currentColor; border-radius: 1px;
+  transition: transform .22s, opacity .22s;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── LAYOUT HELPERS ──────────────────────────────────── */
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 48px; }
+.wrap--narrow { max-width: 800px; margin: 0 auto; padding: 0 48px; }
+
+/* ─── EYEBROW ─────────────────────────────────────────── */
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.eyebrow--brick { color: var(--brick); }
+
+/* ─── SECTION RHYTHM ──────────────────────────────────── */
+.section { padding: 96px 0; border-bottom: 1px solid var(--line); }
+.section:last-of-type { border-bottom: none; }
+.section-header { margin-bottom: 56px; }
+.section-header .eyebrow { margin-bottom: 12px; }
+.section-header h2 {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  margin: 0;
+  color: var(--ink);
+}
+.section-header h2 em {
+  font-style: italic;
+  color: var(--brick);
+}
+.section-header p {
+  margin: 20px 0 0;
+  font-size: 17px; line-height: 1.75;
+  color: var(--ink-2);
+  max-width: 620px;
+}
+
+/* ─── HERO ────────────────────────────────────────────── */
+.hero {
+  background: var(--brick);
+  padding: 0 0 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero-top {
+  padding: 64px 48px 48px;
+}
+.hero-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(245,239,224,0.6);
+  margin-bottom: 48px;
+  transition: color .2s;
+}
+.hero-back:hover { color: rgba(245,239,224,1); }
+.hero-kicker {
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(245,239,224,0.5);
+  margin-bottom: 20px;
+}
+.hero-wordmark {
+  font-family: var(--serif);
+  font-size: clamp(56px, 9vw, 120px);
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: var(--cream);
+  margin: 0 0 24px;
+  font-variation-settings: "opsz" 144;
+}
+.hero-sub {
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 400;
+  color: rgba(245,239,224,0.65);
+  margin: 0 0 48px;
+  max-width: 560px;
+  line-height: 1.55;
+}
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: 32px;
+  border-top: 1px solid rgba(245,239,224,0.15);
+  padding-top: 32px;
+}
+.hero-meta-item .hm-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(245,239,224,0.4);
+  margin-bottom: 4px;
+}
+.hero-meta-item .hm-val {
+  font-family: var(--serif);
+  font-size: 17px; font-weight: 500;
+  color: var(--cream);
+}
+.hero-wip {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin: 32px 48px 0;
+  padding: 10px 16px;
+  background: rgba(245,239,224,0.08);
+  border: 1px solid rgba(245,239,224,0.2);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(245,239,224,0.7);
+}
+.hero-wip-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #e8a444;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px rgba(232,164,68,0.3);
+}
+.hero-screens {
+  display: flex; align-items: flex-end; gap: 24px;
+  padding: 0 48px;
+  margin-top: 32px;
+  overflow: hidden;
+}
+
+/* ─── IPHONE FRAME ────────────────────────────────────── */
+.iphone {
+  flex-shrink: 0;
+  width: 240px;
+  aspect-ratio: 393 / 852;
+  background: #121212;
+  border-radius: 38px;
+  border: 7px solid #1c1c1e;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-screen);
+}
+.iphone--lg { width: 280px; }
+.iphone--sm { width: 200px; opacity: 0.6; }
+/* Dynamic Island */
+.iphone::before {
+  content: '';
+  position: absolute; top: 10px; left: 50%;
+  transform: translateX(-50%);
+  width: 88px; height: 28px;
+  background: #0a0a0a;
+  border-radius: 20px;
+  z-index: 10;
+}
+.iphone-screen {
+  width: 100%; height: 100%;
+  background: var(--paper);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px;
+  padding: 12px;
+}
+.iphone-screen--dark { background: #1c1108; }
+.iphone-screen--cream { background: var(--cream); }
+.screen-ph-label {
+  font-family: var(--sans);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-3); text-align: center;
+  line-height: 1.5;
+}
+.screen-ph-label--dark { color: rgba(236,229,212,0.4); }
+
+/* Real screenshots — swap placeholder div for img */
+.iphone-screen img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top;
+}
+
+/* ─── IFRAME SCREEN EMBED ──────────────────────────────── */
+.iphone-screen--iframe {
+  padding: 0;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+.screen-iframe {
+  border: none;
+  display: block;
+  flex-shrink: 0;
+  width: 393px;
+  height: 852px;
+  transform-origin: 0 0;
+  transform: scale(0.575); /* default .iphone 240px: inner 226px / 393 */
+}
+/* lg iphone hero (280px, inner 266px → 266/393 = 0.677) */
+.iphone--lg .screen-iframe { transform: scale(0.677); }
+/* sm iphone hero (200px, inner 186px → 186/393 = 0.473) */
+.iphone--sm .screen-iframe { transform: scale(0.473); }
+/* walkthrough iphones (260px, inner 246px → 246/393 = 0.626) */
+.wt-screen-wrap .iphone .screen-iframe { transform: scale(0.626); }
+
+@media (max-width: 640px) {
+  /* wt 220px: inner 206px → 0.524 */
+  .wt-screen-wrap .iphone .screen-iframe { transform: scale(0.524); }
+  /* cook 160px: inner 146px → 0.371 */
+  .cook-screen-item .iphone .screen-iframe { transform: scale(0.371); }
+}
+
+/* ─── OVERVIEW ────────────────────────────────────────── */
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 48px;
+}
+.overview-cell {
+  background: var(--cream);
+  padding: 32px 28px;
+}
+.overview-cell .oc-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 10px;
+}
+.overview-cell .oc-val {
+  font-family: var(--serif);
+  font-size: 20px; font-weight: 500;
+  color: var(--ink); line-height: 1.25;
+}
+.overview-cell .oc-sub {
+  font-size: 13px; color: var(--ink-2);
+  margin-top: 6px; line-height: 1.55;
+}
+
+/* ─── PROBLEM CARDS ───────────────────────────────────── */
+/* ─── SYSTEM SECTION ──────────────────────────────────── */
+.swatch-row {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 40px;
+}
+.swatch {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 10px;
+  width: 88px;
+}
+.swatch-color {
+  width: 88px; height: 56px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+}
+.swatch-name {
+  font-family: var(--mono);
+  font-size: 9px; letter-spacing: 0.06em;
+  color: var(--ink-2); text-align: center;
+  line-height: 1.4;
+}
+
+.type-specimens {
+  margin-top: 48px;
+  display: flex; flex-direction: column; gap: 1px;
+  border: 1px solid var(--line); background: var(--line);
+}
+.type-row {
+  background: var(--cream);
+  padding: 32px 36px;
+  display: grid; grid-template-columns: 180px 1fr;
+  gap: 32px; align-items: center;
+}
+.type-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.type-specimen-fraunces-display {
+  font-family: var(--serif);
+  font-size: 40px; font-weight: 500; font-style: italic;
+  letter-spacing: -0.025em; line-height: 1;
+  color: var(--ink);
+  font-variation-settings: "opsz" 144;
+}
+.type-specimen-fraunces-body {
+  font-family: var(--serif);
+  font-size: 22px; font-weight: 400;
+  line-height: 1.35; color: var(--ink);
+  font-variation-settings: "opsz" 36;
+}
+.type-specimen-hanken-riso {
+  font-family: var(--sans);
+  font-size: 24px; font-weight: 800;
+  letter-spacing: -0.02em; text-transform: uppercase;
+  color: var(--ink);
+}
+.type-specimen-hanken-body {
+  font-family: var(--sans);
+  font-size: 16px; font-weight: 400;
+  line-height: 1.65; color: var(--ink-2);
+}
+.type-specimen-eyebrow {
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.ios-frame-spec {
+  margin-top: 48px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  padding: 40px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 48px; align-items: center;
+}
+.frame-diagram {
+  display: flex; justify-content: center;
+}
+.frame-iphone-spec {
+  width: 180px;
+  aspect-ratio: 393/852;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.frame-zone {
+  position: absolute; left: 0; right: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.fz-status { top: 0; height: 10%; background: rgba(168,54,41,0.12); }
+.fz-nav    { top: 10%; height: 8.6%; background: rgba(168,54,41,0.07); }
+.fz-content{ top: 18.6%; bottom: 5.2%; background: transparent; }
+.fz-home   { bottom: 0; height: 5.2%; background: rgba(168,54,41,0.12); }
+.fz-label {
+  font-family: var(--mono);
+  font-size: 7px; letter-spacing: 0.04em;
+  color: var(--brick);
+}
+.frame-spec-list {
+  display: flex; flex-direction: column; gap: 16px;
+}
+.frame-spec-item {
+  display: grid; grid-template-columns: 100px 1fr;
+  gap: 12px; align-items: baseline;
+  padding-bottom: 16px; border-bottom: 1px solid var(--line-soft);
+}
+.frame-spec-item:last-child { border-bottom: none; padding-bottom: 0; }
+.fsi-val {
+  font-family: var(--mono);
+  font-size: 16px; font-weight: 500;
+  color: var(--brick); letter-spacing: -0.01em;
+}
+.fsi-label {
+  font-size: 13px; color: var(--ink-2); line-height: 1.5;
+}
+
+/* ─── ANNOTATED SCREEN SECTION ────────────────────────── */
+.walkthrough {
+  display: flex; flex-direction: column; gap: 80px;
+}
+.wt-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.wt-row--flip {
+  grid-template-columns: 1fr auto;
+}
+.wt-row--flip .wt-screen { order: 2; }
+.wt-row--flip .wt-notes  { order: 1; }
+
+.wt-screen-wrap {
+  position: relative;
+}
+.wt-screen-wrap .iphone {
+  width: 260px;
+}
+
+/* Annotation dots on the phone */
+.ann-dot {
+  position: absolute;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--brick);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 10px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  cursor: default;
+  z-index: 20;
+}
+
+.wt-notes { padding-top: 8px; }
+.wt-notes h3 {
+  font-family: var(--serif);
+  font-size: 26px; font-weight: 500;
+  letter-spacing: -0.02em; line-height: 1.15;
+  margin: 0 0 20px; color: var(--ink);
+  font-variation-settings: "opsz" 72;
+}
+.wt-notes p {
+  font-size: 15px; line-height: 1.78;
+  color: var(--ink-2); margin: 0 0 32px;
+}
+.ann-list {
+  display: flex; flex-direction: column; gap: 16px;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 24px;
+}
+.ann-item {
+  display: grid; grid-template-columns: 28px 1fr;
+  gap: 12px; align-items: baseline;
+}
+.ann-item .a-num {
+  width: 22px; height: 22px;
+  border-radius: 50%; background: var(--brick);
+  color: #fff;
+  font-size: 10px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.ann-item .a-text {
+  font-size: 14px; line-height: 1.65;
+  color: var(--ink-2);
+}
+.ann-item .a-text strong {
+  color: var(--ink); font-weight: 600;
+}
+
+/* ─── TWO WORLDS ─────────────────────────────────────── */
+.two-worlds {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 48px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.tw-problem {
+  background: #1c1108;
+  color: var(--cream);
+  padding: 48px 40px;
+}
+.tw-solution {
+  background: var(--cream);
+  color: var(--ink);
+  padding: 48px 40px;
+  border-left: 1px solid var(--line);
+}
+.tw-world-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  opacity: 0.5; margin-bottom: 18px;
+}
+.tw-headline {
+  font-family: var(--serif);
+  font-size: 30px; font-weight: 400;
+  line-height: 1.1; margin-bottom: 36px;
+  max-width: 320px;
+}
+.tw-headline em { font-style: italic; }
+.tw-problem .tw-headline em { color: var(--brick); }
+.tw-solution .tw-headline em { color: #3c6b4a; }
+.tw-items { list-style: none; }
+.tw-item {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 14px;
+  padding: 18px 0;
+  border-top: 1px solid rgba(245,239,224,0.10);
+}
+.tw-solution .tw-item { border-top-color: rgba(34,29,24,0.10); }
+.tw-sym {
+  font-family: var(--serif);
+  font-size: 18px; font-style: italic;
+  line-height: 1.3; margin-top: 1px;
+}
+.tw-problem .tw-sym { color: var(--brick); }
+.tw-solution .tw-sym { color: #3c6b4a; }
+.tw-item-head {
+  font-family: var(--serif);
+  font-size: 16px; font-weight: 400;
+  margin-bottom: 4px; display: block;
+  color: var(--cream);
+}
+.tw-solution .tw-item-head { color: var(--ink); }
+.tw-item-body { font-size: 13px; line-height: 1.65; }
+.tw-problem .tw-item-body { color: rgba(245,239,224,0.55); }
+.tw-solution .tw-item-body { color: var(--ink-2); }
+.tw-source {
+  font-family: var(--mono);
+  font-size: 9px; letter-spacing: 0.08em;
+  text-transform: uppercase; margin-top: 6px;
+  display: block; opacity: 0.4;
+}
+
+/* ─── COMPETITIVE MAP ─────────────────────────────────── */
+.comp-map-wrap {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  padding: 32px;
+  margin-top: 48px;
+}
+.comp-map-wrap svg text { font-family: "Hanken Grotesk", -apple-system, sans-serif; }
+.comp-legend {
+  display: flex; gap: 20px; flex-wrap: wrap;
+  margin-top: 12px;
+}
+.comp-legend-item {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 12px; color: var(--ink-2);
+}
+.comp-legend-dot {
+  width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0;
+}
+
+/* ─── RESEARCH SIGNALS ────────────────────────────────── */
+.r-signals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 48px;
+}
+.r-signals .r-signal:last-child:nth-child(odd) {
+  grid-column: 1 / -1; /* full-width if odd count */
+}
+.r-signal {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--brick);
+  padding: 26px 28px;
+}
+.r-sig-source {
+  font-family: var(--mono);
+  font-size: 9px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-3);
+  margin-bottom: 12px;
+}
+.r-sig-quote {
+  font-family: var(--serif);
+  font-size: 16px; font-style: italic;
+  line-height: 1.6; color: var(--ink);
+  margin-bottom: 10px;
+}
+.r-sig-insight {
+  font-size: 12.5px; color: var(--ink-2); line-height: 1.65;
+}
+.r-sig-insight mark {
+  background: rgba(168,54,41,0.08);
+  color: var(--brick);
+  padding: 0 3px;
+  font-style: normal;
+}
+
+/* ─── BRAND PROMISE INTERSTITIAL ─────────────────────── */
+.brand-promise {
+  background: var(--wheat);
+  border-bottom: 1px solid var(--line);
+  padding: 40px 48px;
+  text-align: center;
+}
+.bp-quote {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.2vw, 26px);
+  font-weight: 400; font-style: italic;
+  line-height: 1.45; color: var(--ink);
+  margin: 0 0 12px;
+  font-variation-settings: "opsz" 48;
+}
+.bp-attr {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+@media (max-width: 640px) {
+  .brand-promise { padding: 32px 20px; }
+}
+
+/* ─── PROCESS IMAGES ──────────────────────────────────── */
+.process-image {
+  margin-top: 32px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.process-image img {
+  width: 100%; height: auto;
+  display: block;
+}
+.process-caption {
+  padding: 14px 18px;
+  font-family: var(--mono);
+  font-size: 10.5px; letter-spacing: 0.06em;
+  color: var(--ink-3);
+  line-height: 1.6;
+  background: var(--cream);
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 900px) {
+  .two-worlds { grid-template-columns: 1fr; }
+  .r-signals { grid-template-columns: 1fr; }
+}
+
+/* ─── PULL QUOTE ──────────────────────────────────────── */
+.pull-quote {
+  border-left: 3px solid var(--brick);
+  padding: 8px 0 8px 28px;
+  margin: 40px 0;
+}
+.pull-quote blockquote {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-weight: 400; font-style: italic;
+  line-height: 1.45; color: var(--ink);
+  margin: 0 0 10px;
+  font-variation-settings: "opsz" 48;
+}
+.pull-quote .pq-attr {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* ─── COOK MODE — TIMER LIFECYCLE ─────────────────────── */
+.timer-states {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 40px;
+}
+.timer-state {
+  background: var(--cream);
+  padding: 28px 22px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.timer-state--fired { background: var(--brick); }
+.ts-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.timer-state--fired .ts-label { color: rgba(245,239,224,0.6); }
+.ts-display {
+  font-family: var(--mono);
+  font-size: 28px; font-weight: 500;
+  color: var(--ink); letter-spacing: -0.02em;
+}
+.timer-state--fired .ts-display { color: var(--cream); }
+.ts-note {
+  font-size: 12px; line-height: 1.6;
+  color: var(--ink-2);
+}
+.timer-state--fired .ts-note { color: rgba(245,239,224,0.65); }
+.ts-arrow {
+  align-self: center; font-size: 18px;
+  color: var(--ink-3); padding-top: 28px;
+}
+
+/* ─── DECISION BLOCKS ─────────────────────────────────── */
+.decision-grid {
+  display: flex; flex-direction: column; gap: 1px;
+  border: 1px solid var(--line); background: var(--line);
+  margin-top: 40px;
+}
+.decision-item {
+  background: var(--cream);
+  display: grid; grid-template-columns: 240px 1fr;
+  gap: 0;
+}
+.di-label {
+  padding: 32px 28px;
+  border-right: 1px solid var(--line);
+}
+.di-num {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 8px;
+}
+.di-title {
+  font-family: var(--serif);
+  font-size: 18px; font-weight: 500;
+  color: var(--ink); line-height: 1.3;
+  font-variation-settings: "opsz" 48;
+}
+.di-body {
+  padding: 32px 36px;
+}
+.di-body p {
+  font-size: 14px; line-height: 1.75;
+  color: var(--ink-2); margin: 0 0 16px;
+}
+.di-body p:last-child { margin: 0; }
+.di-rationale {
+  margin-top: 16px; padding-top: 14px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--brick);
+}
+
+/* ─── iOS COMPLIANCE ──────────────────────────────────── */
+.compliance-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 40px;
+}
+.compliance-item {
+  background: var(--cream);
+  padding: 28px 32px;
+  display: grid; grid-template-columns: 28px 1fr;
+  gap: 16px; align-items: start;
+}
+.ci-check {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: rgba(168,54,41,0.1);
+  color: var(--brick);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.ci-check svg { width: 12px; height: 12px; }
+.ci-body .ci-title {
+  font-size: 14px; font-weight: 600;
+  color: var(--ink); margin-bottom: 4px;
+}
+.ci-body .ci-detail {
+  font-size: 13px; line-height: 1.6;
+  color: var(--ink-2);
+}
+.ci-body .ci-spec {
+  font-family: var(--mono);
+  font-size: 11px; color: var(--brick);
+  margin-top: 4px;
+}
+
+/* ─── COOK MODE MULTI-SCREEN ──────────────────────────── */
+.cook-screens {
+  display: flex; align-items: flex-start; gap: 20px;
+  overflow-x: auto; padding-bottom: 8px;
+  margin-top: 48px;
+}
+.cook-screen-item {
+  flex-shrink: 0;
+  display: flex; flex-direction: column; gap: 14px;
+  align-items: center;
+}
+.cook-screen-item .iphone { width: 200px; }
+.cook-screen-caption {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-3); text-align: center;
+  max-width: 180px; line-height: 1.5;
+}
+
+/* ─── WHAT'S NEXT ─────────────────────────────────────── */
+.next-list {
+  display: flex; flex-direction: column; gap: 0;
+  border-top: 1px solid var(--line);
+  margin-top: 40px;
+}
+.next-item {
+  display: grid; grid-template-columns: 56px 1fr;
+  gap: 16px; align-items: baseline;
+  padding: 20px 0; border-bottom: 1px solid var(--line-soft);
+}
+.next-item:last-child { border-bottom: none; }
+.ni-num {
+  font-family: var(--mono);
+  font-size: 12px; color: var(--brick);
+  font-weight: 500;
+}
+.ni-text {
+  font-size: 15px; line-height: 1.65;
+  color: var(--ink-2);
+}
+.ni-text strong { color: var(--ink); }
+
+/* ─── NEXT PROJECT NAV ────────────────────────────────── */
+.next-project {
+  padding: 72px 48px;
+  display: flex; justify-content: space-between;
+  align-items: center; gap: 40px;
+  border-top: 1px solid var(--line);
+  background: var(--cream);
+}
+.np-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 8px;
+}
+.np-title {
+  font-family: var(--serif);
+  font-size: 32px; font-weight: 500;
+  letter-spacing: -0.02em; color: var(--ink);
+  font-variation-settings: "opsz" 72;
+}
+.arrow-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--brick); border: 1.5px solid var(--brick);
+  padding: 14px 24px; white-space: nowrap;
+  transition: background .2s, color .2s;
+}
+.arrow-btn:hover { background: var(--brick); color: var(--cream); }
+
+/* ─── SCROLL REVEAL ───────────────────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 900px) {
+  .wrap, .wrap--narrow { padding: 0 28px; }
+  .wt-row, .wt-row--flip {
+    grid-template-columns: 1fr;
+  }
+  .wt-row--flip .wt-screen,
+  .wt-row--flip .wt-notes { order: unset; }
+  .wt-screen-wrap { display: flex; justify-content: center; }
+  .timer-states { grid-template-columns: 1fr 1fr; }
+  .compliance-grid { grid-template-columns: 1fr; }
+  .decision-item { grid-template-columns: 1fr; }
+  .di-label { border-right: none; border-bottom: 1px solid var(--line); }
+  .ios-frame-spec { grid-template-columns: 1fr; }
+  .overview-grid { grid-template-columns: 1fr; }
+  .type-row { grid-template-columns: 1fr; gap: 16px; }
+  .next-project { flex-direction: column; align-items: flex-start; padding: 56px 28px; }
+}
+@media (max-width: 640px) {
+  .nav { padding: 14px 20px; flex-wrap: wrap; }
+  .nav-toggle { display: flex; }
+  .nav-links {
+    display: none; flex-direction: column;
+    width: 100%; gap: 0; order: 3;
+    border-top: 1px solid var(--line); padding: 8px 0 4px;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a {
+    padding: 12px 0; border-bottom: 1px solid var(--line-soft);
+  }
+  .nav-links a:last-child { border-bottom: none; }
+  .nav-contact { display: none; }
+  .hero-top { padding: 48px 24px 36px; }
+  .hero-screens { padding: 0 24px; gap: 12px; }
+  .iphone--sm { display: none; }
+  .section { padding: 64px 0; }
+  .wrap, .wrap--narrow { padding: 0 20px; }
+  .timer-states { grid-template-columns: 1fr 1fr; }
+  .wt-screen-wrap .iphone { width: 220px; }
+  .cook-screens { gap: 14px; }
+  .cook-screen-item .iphone { width: 160px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────────── -->
+<header class="nav" id="nav">
+  <a href="index.html" class="nav-brand">Annie S. Koo</a>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav-links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#about">About</a>
+    <a href="assets/Annie_Koo_Senior_Product_Designer_2026.pdf" target="_blank" rel="noopener">Resume</a>
+    <a href="index.html#contact" class="nav-contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ── HERO ─────────────────────────────────────────────── -->
+<section class="hero" aria-label="Hero">
+  <div class="hero-top">
+    <a href="index.html#work" class="hero-back">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 2L4 7l5 5"/></svg>
+      All Work
+    </a>
+    <div class="hero-kicker">iOS · Curated recipe search · Self-directed concept · 2026</div>
+    <h1 class="hero-wordmark">Umami</h1>
+    <p class="hero-sub">A curated search engine for authentic Asian recipes — designed for cooks who already know how to cook, but keep getting results that taste off because the recipe was the problem, not them.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hm-label">Role</div>
+        <div class="hm-val">Solo Product Designer</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hm-label">Platform</div>
+        <div class="hm-val">iOS · iPhone-first</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hm-label">Scope</div>
+        <div class="hm-val">Recipe Detail + Cook Mode</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hm-label">Status</div>
+        <div class="hm-val">Mid-fi · Hi-fi in Figma next</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-wip">
+    <span class="hero-wip-dot"></span>
+    Work in progress — mid-fidelity prototype. Architecture &amp; interaction decisions are final. Visual polish is next.
+  </div>
+  <div class="hero-screens">
+    <div class="iphone iphone--sm" aria-hidden="true">
+      <div class="iphone-screen iphone-screen--iframe">
+        <iframe src="umami-screens.html?screen=cook-step3-running" width="393" height="852" frameborder="0" scrolling="no" class="screen-iframe" title="Cook Mode — step in progress"></iframe>
+      </div>
+    </div>
+    <div class="iphone iphone--lg">
+      <div class="iphone-screen iphone-screen--iframe">
+        <iframe src="umami-screens.html?screen=detail-top" width="393" height="852" frameborder="0" scrolling="no" class="screen-iframe" title="Recipe Detail — Kimchi Jjigae hero state"></iframe>
+      </div>
+    </div>
+    <div class="iphone iphone--sm" aria-hidden="true">
+      <div class="iphone-screen iphone-screen--iframe">
+        <iframe src="umami-screens.html?screen=detail-swapped" width="393" height="852" frameborder="0" scrolling="no" class="screen-iframe" title="Ingredients with swap applied"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="brand-promise">
+  <p class="bp-quote">"The recipe a knowledgeable friend would send you —<br>without needing that friend."</p>
+  <div class="bp-attr">Umami's north star</div>
+</div>
+
+<!-- ── 01 OVERVIEW ───────────────────────────────────────── -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-header reveal">
+      <div class="eyebrow">01 — Overview</div>
+      <h2>Designed for the cook who<br><em>already knows how to cook.</em></h2>
+      <p>A self-directed iOS concept — no PM, no engineering, no stakeholders. Two surfaces designed from the system up: Recipe Detail (where trust is established) and Cook Mode (where the recipe is actually used). Mid-fidelity is intentional — evaluate the decisions, not the visual finish.</p>
+    </div>
+
+    <div class="overview-grid reveal">
+      <div class="overview-cell">
+        <div class="oc-label">What it is</div>
+        <div class="oc-val">Curated search for authentic Asian recipes</div>
+        <div class="oc-sub">Only recipes from culturally credible, vetted sources surface in results. Korean Bapsang shows up. Allrecipes doesn't. The editorial layer does the trust work the algorithm can't.</div>
+      </div>
+      <div class="overview-cell">
+        <div class="oc-label">Who it's for</div>
+        <div class="oc-val">Cooks who already cook</div>
+        <div class="oc-sub">Not beginners. Not infinite-recipe-browsers. Someone competent in the kitchen who keeps getting disappointing results when cooking dishes outside their own culinary background — and suspects the recipe was the problem.</div>
+      </div>
+      <div class="overview-cell">
+        <div class="oc-label">Scope this phase</div>
+        <div class="oc-val">Find → Read → Cook</div>
+        <div class="oc-sub">Three flows, each designed for its context. Search returns only vetted sources. Recipe view shows attribution and handles substitutions. Cook Mode is a separate surface for the actual kitchen.</div>
+      </div>
+      <div class="overview-cell">
+        <div class="oc-label">Process</div>
+        <div class="oc-val">System → mid-fi → Figma hi-fi</div>
+        <div class="oc-sub">Design system and brand board built before a single screen. This mid-fidelity prototype validates structure and decisions. Hi-fi execution in Figma is next.</div>
+      </div>
+    </div>
+
+    <div class="eyebrow" style="margin:64px 0 10px;" aria-hidden="true">System Architecture</div>
+    <p style="font-size:14px;color:var(--ink-2);margin-bottom:0;max-width:600px;line-height:1.65;">Full scope of Find → Read → Cook, mapped before any screens were designed. The deferred auth gate — sign-in only when a user tries to save — is an intentional architectural decision, not an afterthought.</p>
+    <div class="process-image reveal">
+      <img src="assets/Umami_UserFlow.png" alt="User flow diagram: launch → search → recipe list → trust signals → recipe detail → cook mode, with deferred auth at save and grocery list actions" loading="lazy">
+      <div class="process-caption">User flow · Figma · Scope: search → recipe detail → cook mode · Deferred auth at save / grocery list</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── 02 THE PROBLEM ─────────────────────────────────────── -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-header reveal">
+      <div class="eyebrow">02 — The Problem</div>
+      <h2>The gap isn't search.<br><em>It's trust.</em></h2>
+      <p>You can find a Kimchi Jjigae recipe in seconds. Maangchi has millions of fans. Cultural authorship is visible. And yet a competent cook still can't tell — before spending money on ingredients — whether this particular recipe will actually taste right in their kitchen. That's the gap. Trust isn't a follower count.</p>
+    </div>
+
+    <!-- Two Worlds -->
+    <div class="two-worlds reveal">
+      <div class="tw-problem">
+        <div class="tw-world-label">How it works today</div>
+        <h3 class="tw-headline">Find it. Hope it's <em>right.</em></h3>
+        <ul class="tw-items">
+          <li class="tw-item">
+            <span class="tw-sym">×</span>
+            <div>
+              <span class="tw-item-head">47 results that all sound right.</span>
+              <span class="tw-item-body">No signal for which will taste like the dish you're trying to make.
+                <span class="tw-source">Sunset Magazine</span>
+              </span>
+            </div>
+          </li>
+          <li class="tw-item">
+            <span class="tw-sym">×</span>
+            <div>
+              <span class="tw-item-head">SEO ranks, not flavor.</span>
+              <span class="tw-item-body">"Random ideas hoping to land on page one." Keyword stuffing beats culinary knowledge.
+                <span class="tw-source">Madeleine Kitchen</span>
+              </span>
+            </div>
+          </li>
+          <li class="tw-item">
+            <span class="tw-sym">×</span>
+            <div>
+              <span class="tw-item-head">Even trusted sources fail.</span>
+              <span class="tw-item-body">Tried Maangchi, Seonkyoung Longest, Aaron &amp; Claire. Still missed. <em style="color:rgba(245,239,224,0.55);">"Maybe it's me."</em>
+                <span class="tw-source">r/KoreanFood · 1 year, unanswered</span>
+              </span>
+            </div>
+          </li>
+          <li class="tw-item">
+            <span class="tw-sym">×</span>
+            <div>
+              <span class="tw-item-head">Reading mode ≠ cooking mode.</span>
+              <span class="tw-item-body">No app separates the experience of browsing a recipe from the experience of cooking it — messy hands, glancing from across a kitchen.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="tw-solution">
+        <div class="tw-world-label">How it should work</div>
+        <h3 class="tw-headline">Find it. Know you can <em>trust it.</em></h3>
+        <ul class="tw-items">
+          <li class="tw-item">
+            <span class="tw-sym">◆</span>
+            <div>
+              <span class="tw-item-head">Curated sources only.</span>
+              <span class="tw-item-body">Korean Bapsang shows up. Allrecipes doesn't. The editorial layer replaces the search algorithm as the trust mechanism.
+                <span class="tw-source">Umami's curation model</span>
+              </span>
+            </div>
+          </li>
+          <li class="tw-item">
+            <span class="tw-sym">◆</span>
+            <div>
+              <span class="tw-item-head">Attribution, not aggregation.</span>
+              <span class="tw-item-body">Every recipe carries the name of who wrote it and why they're worth trusting. Not buried in a footnote — above the fold.</span>
+            </div>
+          </li>
+          <li class="tw-item">
+            <span class="tw-sym">◆</span>
+            <div>
+              <span class="tw-item-head">Cook Mode is a different surface.</span>
+              <span class="tw-item-body">Full-screen modal. One step at a time. Large type, screen stays awake, per-step timers. Designed for messy hands and distance.
+                <span class="tw-source">Recipe Detail → Cook Mode</span>
+              </span>
+            </div>
+          </li>
+          <li class="tw-item">
+            <span class="tw-sym">◆</span>
+            <div>
+              <span class="tw-item-head">Gate appears when it's earned.</span>
+              <span class="tw-item-body">Browse and cook without an account. Sign-in only triggers when you want to save — the exact moment it makes sense.
+                <span class="tw-source">Just-in-time auth</span>
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Competitive map -->
+    <div class="eyebrow" style="margin:64px 0 10px;" aria-hidden="true">Competitive Landscape</div>
+    <p style="font-size:14px;color:var(--ink-2);margin-bottom:0;max-width:580px;line-height:1.65;">The market splits into broad curated apps (NYT Cooking, Epicurious) and culturally specific but unvetted sources (Maangchi, Woks of Life). The top-right quadrant — curated <em>and</em> culturally specific — is empty.</p>
+    <div class="comp-map-wrap reveal">
+      <svg viewBox="0 0 580 380" width="100%" role="img" aria-label="Positioning map: broad/generic on left axis, culturally specific on right; user-generated at bottom, editorially curated at top. Umami occupies the empty top-right quadrant.">
+        <!-- axes -->
+        <line x1="40" y1="190" x2="548" y2="190" stroke="rgba(34,29,24,0.15)" stroke-width="0.8"/>
+        <line x1="294" y1="18" x2="294" y2="368" stroke="rgba(34,29,24,0.15)" stroke-width="0.8"/>
+        <!-- axis labels -->
+        <text x="294" y="13" font-size="10.5" fill="#a89d8b" text-anchor="middle" font-weight="600" letter-spacing="0.05em">EDITORIALLY CURATED</text>
+        <text x="294" y="379" font-size="10.5" fill="#a89d8b" text-anchor="middle" font-weight="600" letter-spacing="0.05em">USER-GENERATED / UNVETTED</text>
+        <text x="22" y="194" font-size="10.5" fill="#a89d8b" text-anchor="middle" font-weight="600" letter-spacing="0.05em" transform="rotate(-90,22,194)">BROAD / GENERIC</text>
+        <text x="558" y="194" font-size="10.5" fill="#a89d8b" text-anchor="middle" font-weight="600" letter-spacing="0.05em" transform="rotate(90,558,194)">CULTURALLY SPECIFIC</text>
+        <!-- opportunity zone -->
+        <rect x="296" y="20" width="250" height="168" rx="4" fill="rgba(168,54,41,0.06)"/>
+        <text x="421" y="40" font-size="10" fill="#a83629" text-anchor="middle" font-weight="700" letter-spacing="0.08em">OPPORTUNITY SPACE</text>
+        <!-- existing apps -->
+        <circle cx="148" cy="68" r="5.5" fill="#a89d8b"/>
+        <text x="159" y="65" font-size="11" fill="#6a6151">NYT Cooking</text>
+        <circle cx="118" cy="105" r="5.5" fill="#a89d8b"/>
+        <text x="129" y="102" font-size="11" fill="#6a6151">Epicurious</text>
+        <circle cx="168" cy="140" r="5.5" fill="#a89d8b"/>
+        <text x="179" y="137" font-size="11" fill="#6a6151">America's Test Kitchen</text>
+        <circle cx="135" cy="272" r="5.5" fill="#c8c0b4"/>
+        <text x="146" y="269" font-size="11" fill="#6a6151">Cookpad</text>
+        <circle cx="98" cy="305" r="5.5" fill="#c8c0b4"/>
+        <text x="109" y="302" font-size="11" fill="#6a6151">Yummly</text>
+        <circle cx="378" cy="275" r="5.5" fill="#c8c0b4"/>
+        <text x="389" y="272" font-size="11" fill="#6a6151">Woks of Life (web)</text>
+        <circle cx="410" cy="308" r="5.5" fill="#c8c0b4"/>
+        <text x="421" y="305" font-size="11" fill="#6a6151">Maangchi (web)</text>
+        <!-- Umami -->
+        <circle cx="382" cy="115" r="7.5" fill="#a83629"/>
+        <circle cx="382" cy="115" r="12" fill="none" stroke="#a83629" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <text x="400" y="106" font-size="13" fill="#a83629" font-style="italic" font-weight="500">Umami</text>
+        <text x="400" y="120" font-size="10.5" fill="#a83629">curated + culturally specific</text>
+      </svg>
+      <div class="comp-legend">
+        <div class="comp-legend-item"><div class="comp-legend-dot" style="background:#a89d8b;"></div>Broad curated apps</div>
+        <div class="comp-legend-item"><div class="comp-legend-dot" style="background:#c8c0b4;"></div>Cultural sites (web-only)</div>
+        <div class="comp-legend-item"><div class="comp-legend-dot" style="background:#a83629;"></div>Umami</div>
+      </div>
+    </div>
+
+    <!-- Research signals -->
+    <div class="eyebrow" style="margin:64px 0 10px;" aria-hidden="true">What the research found</div>
+    <p style="font-size:14px;color:var(--ink-2);margin-bottom:0;max-width:580px;line-height:1.65;">Three signals — all organic, no user interviews. Secondary research from forums, cooking blogs, and a Reddit thread that sat unanswered for a year.</p>
+    <div class="r-signals reveal">
+      <div class="r-signal">
+        <div class="r-sig-source">r/KoreanFood · Secondary research · H1 + H2 + H3</div>
+        <p class="r-sig-quote">"I've tried Maangchi's recipe, Seonkyoung Longest's, and Aaron &amp; Claire on YouTube. My wife thinks they're just ok. <mark>Maybe it's me.</mark>"</p>
+        <p class="r-sig-insight">He had the popularity signals. He had the cultural authorship. He still couldn't get it right — and blamed himself. One reply, unhelpful. Thread unanswered for a year. This is the whole product rationale in one Reddit post: <mark>trust isn't a follower count or a cultural credential. It's editorial judgment applied to sources.</mark> That's what the app provides.</p>
+      </div>
+      <div class="r-signal">
+        <div class="r-sig-source">Sunset Magazine + Madeleine Kitchen · Secondary research · H2</div>
+        <p class="r-sig-quote">"Many sites are run by people posting random ideas, hoping to land on page one of a search engine. <mark>Throwing keywords into a recipe doesn't guarantee flavour or accuracy.</mark>"</p>
+        <p class="r-sig-insight">SEO incentives and user-generated volume have broken recipe search by design. The information architecture of the web actively surfaces the worst results first. This isn't fixable with a better algorithm — it requires a curated layer above search.</p>
+      </div>
+      <div class="r-signal">
+        <div class="r-sig-source">Discuss Cooking forum + Plan to Eat blog · Secondary research · H3</div>
+        <p class="r-sig-quote">"I get tired of sites that <mark>parrot what the other cooking blogs say.</mark> I'm looking for a bit more authenticity. Any ideas?"</p>
+        <p class="r-sig-insight">The workaround already exists: experienced cooks build personal stashes of trusted sources over years. What Umami does is give everyone that trust layer from day one — without requiring years of accumulated kitchen judgment to know which sites are worth bookmarking.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── 03 THE SYSTEM ──────────────────────────────────────── -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-header reveal">
+      <div class="eyebrow">03 — The Visual System</div>
+      <h2>Brick &amp; Wheat —<br><em>warm, editorial, food-forward.</em></h2>
+      <p>The design system was built before a single screen. Palette, type, and spacing decisions were made as a coherent system — not screen by screen. This is what makes the product feel intentional rather than assembled.</p>
+    </div>
+
+    <!-- Visual direction exploration -->
+    <div class="eyebrow" style="margin-bottom:10px;" aria-hidden="true">Direction Exploration</div>
+    <p style="font-size:14px;color:var(--ink-2);margin-bottom:0;max-width:600px;line-height:1.65;">Three visual directions evaluated before committing: Editorial Calm (muted, Kinfolk-adjacent), Craft Cookbook (warm, tactile, handmade), and Subtle (restrained, type-led). Craft Cookbook won — it carried the most trust signal without feeling clinical or trendy.</p>
+    <div class="process-image reveal">
+      <img src="assets/Umami_Visual_1.png" alt="Three visual direction explorations side by side: Editorial Calm, Craft Cookbook, and Subtle — showing the decision point before the design system was built" loading="lazy">
+      <div class="process-caption">Visual direction exploration · Claude Design · Editorial Calm / Craft Cookbook / Subtle — Craft Cookbook selected</div>
+    </div>
+
+    <!-- Color palette -->
+    <div class="eyebrow" style="margin:48px 0 20px;" aria-hidden="true">Palette</div>
+    <div class="swatch-row reveal">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#ece5d4;"></div>
+        <div class="swatch-name">--paper<br>#ece5d4<br>Background</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#f5efe0;"></div>
+        <div class="swatch-name">--cream<br>#f5efe0<br>Cards</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#e0d2b0;"></div>
+        <div class="swatch-name">--wheat<br>#e0d2b0<br>Secondary</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#221d18;"></div>
+        <div class="swatch-name">--ink<br>#221d18<br>Primary text</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#6a6151;"></div>
+        <div class="swatch-name">--ink-2<br>#6a6151<br>Secondary</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#a89d8b;"></div>
+        <div class="swatch-name">--ink-3<br>#a89d8b<br>Hints</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#a83629; border:none;"></div>
+        <div class="swatch-name">--brick<br>#a83629<br>CTA / Accent</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#85271d; border:none;"></div>
+        <div class="swatch-name">--brick-deep<br>#85271d<br>Pressed state</div>
+      </div>
+    </div>
+
+    <!-- Type pairing -->
+    <div class="eyebrow" style="margin:48px 0 20px;" aria-hidden="true">Typography Pairing</div>
+    <div class="type-specimens reveal">
+      <div class="type-row">
+        <div class="type-label">Fraunces · Display<br>opsz 144, wght 500 italic<br>Recipe titles, hero moments</div>
+        <div class="type-specimen-fraunces-display">Kimchi Jjigae</div>
+      </div>
+      <div class="type-row">
+        <div class="type-label">Hanken Grotesk · Utility<br>wght 800, uppercase<br>Mode labels, CTAs, eyebrows</div>
+        <div class="type-specimen-hanken-riso">Cook Mode</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── 04 RECIPE DETAIL ───────────────────────────────────── -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-header reveal">
+      <div class="eyebrow">04 — Recipe Detail</div>
+      <h2>The recipe as an<br><em>editorial object.</em></h2>
+      <p>Recipe Detail is the core surface — where a cook decides whether to commit. It has to earn trust immediately and get out of the way just as fast. Every element is there because it earns its place.</p>
+    </div>
+
+    <!-- Direction exploration -->
+    <div class="eyebrow" style="margin-bottom:10px;" aria-hidden="true">Direction Exploration</div>
+    <p style="font-size:14px;color:var(--ink-2);margin-bottom:0;max-width:600px;line-height:1.65;">The core layout question: where does trust live? Early explorations tested trust signals buried in body text vs. a dedicated trust block vs. attribution above the fold. The handwritten annotation made the decision clear: <em>"attribution = trust, not followers."</em></p>
+    <div class="process-image reveal" style="margin-bottom:72px;">
+      <img src="assets/Umami_Wireframe_1.png" alt="Recipe Detail direction exploration with handwritten annotations — attribution placement above the fold, trust-first layout rationale" loading="lazy">
+      <div class="process-caption">Recipe Detail · direction exploration · Wireframe with annotations — trust-first layout selected · Attribution above the fold</div>
+    </div>
+
+    <div class="walkthrough">
+
+      <!-- Row 1: Hero state -->
+      <div class="wt-row reveal">
+        <div class="wt-screen-wrap">
+          <div class="iphone">
+            <div class="iphone-screen iphone-screen--iframe">
+              <iframe src="umami-screens.html?screen=detail-top" width="393" height="852" frameborder="0" scrolling="no" class="screen-iframe" title="Recipe Detail — hero and nav"></iframe>
+            </div>
+          </div>
+          <div class="ann-dot" style="position:absolute;top:18%;left:82%;">1</div>
+          <div class="ann-dot" style="position:absolute;top:48%;left:82%;">2</div>
+          <div class="ann-dot" style="position:absolute;top:62%;left:82%;">3</div>
+        </div>
+        <div class="wt-notes">
+          <h3>Hero, attribution, and a translucent nav that earns its place.</h3>
+          <p>The first screen a cook sees must answer two questions instantly: "Is this the right dish?" and "Should I trust this recipe?" The hero image handles the first. Attribution handles the second.</p>
+          <div class="ann-list">
+            <div class="ann-item">
+              <div class="a-num">1</div>
+              <div class="a-text"><strong>Translucent nav, transparent over hero.</strong> The nav bar is invisible over the full-bleed hero image. On scroll, it collapses to a solid translucent bar with the recipe title — following iOS presentation grammar exactly, so the UI feels native from first touch.</div>
+            </div>
+            <div class="ann-item">
+              <div class="a-num">2</div>
+              <div class="a-text"><strong>Honest attribution, not aggregation.</strong> "Adapted from Hyosun, Korean Bapsang" is displayed prominently — not buried in a footnote. If a cook trusts Korean Bapsang, this is the signal they need. If they don't know the source, the attribution gives them somewhere to look.</div>
+            </div>
+            <div class="ann-item">
+              <div class="a-num">3</div>
+              <div class="a-text"><strong>Time, yield, and a single CTA above the fold.</strong> 15 min active / 35 min total, serves 4, and one clear action: Cook Mode. A cook shouldn't have to scroll to find out whether this recipe is feasible for tonight.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Ingredients (flip) -->
+      <div class="wt-row wt-row--flip reveal">
+        <div class="wt-notes">
+          <h3>Ingredients that respond to how you cook.</h3>
+          <p>Two controls at the top of ingredients that should exist in every recipe app — and mostly don't. Scaling and unit conversion are utility features, but they change whether someone can actually use the recipe.</p>
+          <div class="ann-list">
+            <div class="ann-item">
+              <div class="a-num">1</div>
+              <div class="a-text"><strong>Serves stepper with live rescaling.</strong> Tap + or − and every ingredient quantity updates instantly. Cooking for 2 instead of 4 means half the pork belly, half the kimchi — not mental arithmetic mid-prep.</div>
+            </div>
+            <div class="ann-item">
+              <div class="a-num">2</div>
+              <div class="a-text"><strong>US / Metric toggle.</strong> A persistent toggle at the top of the ingredients section. The preference is remembered. No hunting through settings.</div>
+            </div>
+            <div class="ann-item">
+              <div class="a-num">3</div>
+              <div class="a-text"><strong>AI ingredient substitution.</strong> Swappable ingredients show an indicator. Tapping opens a swap panel — options ranked by taste impact, with a note on how each swap changes the dish. Reverting restores the original. The authenticity thesis made into a feature.</div>
+            </div>
+          </div>
+        </div>
+        <div class="wt-screen-wrap">
+          <div class="iphone">
+            <div class="iphone-screen iphone-screen--iframe">
+              <iframe src="umami-screens.html?screen=detail-swapped" width="393" height="852" frameborder="0" scrolling="no" class="screen-iframe" title="Ingredients — serves stepper and unit toggle"></iframe>
+            </div>
+          </div>
+          <div class="ann-dot" style="position:absolute;top:22%;right:82%;">1</div>
+          <div class="ann-dot" style="position:absolute;top:38%;right:82%;">2</div>
+          <div class="ann-dot" style="position:absolute;top:55%;right:82%;">3</div>
+        </div>
+      </div>
+
+      <!-- Row 3: Ingredient swap -->
+      <div class="wt-row reveal">
+        <div class="wt-screen-wrap">
+          <div class="iphone">
+            <div class="iphone-screen iphone-screen--iframe">
+              <iframe src="umami-screens.html?screen=ai-swap" width="393" height="852" frameborder="0" scrolling="no" class="screen-iframe" title="AI ingredient swap sheet open"></iframe>
+            </div>
+          </div>
+          <div class="ann-dot" style="position:absolute;top:35%;left:82%;">1</div>
+          <div class="ann-dot" style="position:absolute;top:55%;left:82%;">2</div>
+          <div class="ann-dot" style="position:absolute;top:72%;left:82%;">3</div>
+        </div>
+        <div class="wt-notes">
+          <h3>Substitutions framed by <em>taste impact</em>, not just availability.</h3>
+          <p>Most substitution features answer "what can I use instead?" Umami answers a harder question: "if I make this swap, how much does it move the dish from authentic?" That distinction is the product thesis made tangible.</p>
+          <div class="ann-list">
+            <div class="ann-item">
+              <div class="a-num">1</div>
+              <div class="a-text"><strong>Bottom sheet presentation.</strong> Follows iOS presentation grammar for focused, dismissible tasks. The sheet appears over the recipe without replacing it — the cook can see context while making a swap decision.</div>
+            </div>
+            <div class="ann-item">
+              <div class="a-num">2</div>
+              <div class="a-text"><strong>Taste impact scale.</strong> Each substitute is ranked 1–3 dots: how much does this swap move the dish from authentic? A cook using miso paste instead of doenjang deserves to know that's a meaningful change, not just a convenient one.</div>
+            </div>
+            <div class="ann-item">
+              <div class="a-num">3</div>
+              <div class="a-text"><strong>Revert to original.</strong> Any swap can be undone. The original ingredient is always restorable — no destructive state changes.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.walkthrough -->
+  </div>
+</section>
+
+<!-- ── 05 COOK MODE ───────────────────────────────────────── -->
+<section class="section" style="background:var(--ink);">
+  <div class="wrap">
+    <div class="section-header reveal">
+      <div class="eyebrow eyebrow--brick">05 — Cook Mode</div>
+      <h2 style="color:var(--cream);">A full-screen modal.<br><em>One step. Full attention.</em></h2>
+      <p style="color:rgba(236,229,212,0.6);">Cook Mode is the most complex surface in the app and the centerpiece of the design system. It required solving for kitchen ergonomics, real-state progress, per-step timers, and destructive-action confirmation — all within iOS conventions.</p>
+    </div>
+
+    <!-- Cook mode screens row -->
+    <div class="cook-screens reveal">
+      <div class="cook-screen-item">
+        <div class="iphone">
+          <div class="iphone-screen iphone-screen--iframe">
+            <iframe src="umami-screens.html?screen=cook-step1" width="393" height="852" frameborder="0" scrolling="no" class="screen-iframe" title="Cook Mode — active step"></iframe>
+          </div>
+        </div>
+        <div class="cook-screen-caption" style="color:rgba(236,229,212,0.5);">Active step<br>timer running</div>
+      </div>
+      <div class="cook-screen-item">
+        <div class="iphone">
+          <div class="iphone-screen iphone-screen--iframe">
+            <iframe src="umami-screens.html?screen=cook-step3-fired" width="393" height="852" frameborder="0" scrolling="no" class="screen-iframe" title="Cook Mode — timer fired"></iframe>
+          </div>
+        </div>
+        <div class="cook-screen-caption" style="color:rgba(236,229,212,0.5);">Timer done —<br>brick accent</div>
+      </div>
+      <div class="cook-screen-item">
+        <div class="iphone">
+          <div class="iphone-screen iphone-screen--iframe">
+            <iframe src="umami-screens.html?screen=cook-exit" width="393" height="852" frameborder="0" scrolling="no" class="screen-iframe" title="Stop cooking action sheet"></iframe>
+          </div>
+        </div>
+        <div class="cook-screen-caption" style="color:rgba(236,229,212,0.5);">Confirm exit /<br>save progress</div>
+      </div>
+      <div class="cook-screen-item">
+        <div class="iphone">
+          <div class="iphone-screen iphone-screen--iframe">
+            <iframe src="umami-screens.html?screen=cook-step5" width="393" height="852" frameborder="0" scrolling="no" class="screen-iframe" title="Cook Mode — resume step"></iframe>
+          </div>
+        </div>
+        <div class="cook-screen-caption" style="color:rgba(236,229,212,0.5);">Resume at step N<br>or cook again</div>
+      </div>
+      <div class="cook-screen-item">
+        <div class="iphone">
+          <div class="iphone-screen iphone-screen--iframe">
+            <iframe src="umami-screens.html?screen=cook-complete" width="393" height="852" frameborder="0" scrolling="no" class="screen-iframe" title="Dish complete state"></iframe>
+          </div>
+        </div>
+        <div class="cook-screen-caption" style="color:rgba(236,229,212,0.5);">Rate + save<br>after finishing</div>
+      </div>
+    </div>
+
+    <!-- Cook Mode direction exploration -->
+    <div style="margin-top:72px;">
+      <div class="eyebrow eyebrow--brick" style="margin-bottom:10px;" aria-hidden="true">Direction Exploration</div>
+      <p style="font-size:14px;color:rgba(236,229,212,0.55);margin-bottom:0;max-width:600px;line-height:1.65;">Three Cook Mode layouts evaluated: light surface (legible at desk, high glare at counter), dark surface (high contrast, kitchen-readable from distance), and peek-ahead (shows the next step before you need it). Dark won — a phone glanced between stirring, at arm's length, in a bright kitchen reads better dark.</p>
+      <div class="process-image reveal" style="border-color:rgba(245,239,224,0.12);">
+        <img src="assets/Umami_Wireframe_3.png" alt="Cook Mode direction exploration: light surface, dark surface, and peek-ahead layout variants" loading="lazy">
+        <div class="process-caption" style="background:rgba(245,239,224,0.05);border-top-color:rgba(245,239,224,0.12);color:rgba(236,229,212,0.4);">Cook Mode · direction exploration · Light / Dark / Peek-ahead — dark selected for kitchen ergonomics</div>
+      </div>
+    </div>
+
+    <!-- Timer lifecycle -->
+    <div style="margin-top:72px;">
+      <div class="eyebrow eyebrow--brick" style="margin-bottom:20px;" aria-hidden="true">Timer Lifecycle</div>
+      <div class="timer-states reveal">
+        <div class="timer-state">
+          <div class="ts-label">Idle</div>
+          <div class="ts-display">10:00</div>
+          <div class="ts-note">Timer is set. Tap to start. Screen behavior: normal (no keep-awake).</div>
+        </div>
+        <div class="timer-state">
+          <div class="ts-label">Running</div>
+          <div class="ts-display">08:42</div>
+          <div class="ts-note">Timer is counting. Screen stays awake — UIApplication.shared.isIdleTimerDisabled = true. Tap to pause.</div>
+        </div>
+        <div class="timer-state">
+          <div class="ts-label">Paused</div>
+          <div class="ts-display">08:42</div>
+          <div class="ts-note">User paused mid-simmer. Time is held. Tap to resume. Screen-awake behavior paused.</div>
+        </div>
+        <div class="timer-state timer-state--fired">
+          <div class="ts-label">Fired</div>
+          <div class="ts-display">Done</div>
+          <div class="ts-note">Timer block flips to brick accent. "Timer done" shown. Screen stayed awake throughout. Alert was sent.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key decisions -->
+    <div style="margin-top:72px;">
+      <div class="eyebrow eyebrow--brick" style="margin-bottom:20px;" aria-hidden="true">Key Cook Mode Decisions</div>
+      <div class="decision-grid reveal">
+
+        <div class="decision-item" style="background:rgba(245,239,224,0.04);">
+          <div class="di-label" style="border-right-color:rgba(245,239,224,0.08); background:rgba(245,239,224,0.03);">
+            <div class="di-num" style="color:var(--brick);">Decision 01</div>
+            <div class="di-title" style="color:var(--cream);">Modal, not a pushed page</div>
+          </div>
+          <div class="di-body">
+            <p style="color:rgba(236,229,212,0.6);">Cook Mode is a <strong style="color:var(--cream);">full-screen modal cover</strong> — not a navigation push. It gets a single ✕ close affordance, not a back chevron. This isn't aesthetic preference; it's iOS presentation grammar. Cook Mode is a distinct mode of use. The modal model communicates that clearly: entering Cook Mode is a commitment, and leaving it requires a deliberate action.</p>
+            <div class="di-rationale">→ Full-screen cover (UIModalPresentationFullScreen). ✕ to dismiss — not a back chevron.</div>
+          </div>
+        </div>
+
+        <div class="decision-item" style="background:rgba(245,239,224,0.04);">
+          <div class="di-label" style="border-right-color:rgba(245,239,224,0.08); background:rgba(245,239,224,0.03);">
+            <div class="di-num" style="color:var(--brick);">Decision 02</div>
+            <div class="di-title" style="color:var(--cream);">Confirm-on-exit with real resume</div>
+          </div>
+          <div class="di-body">
+            <p style="color:rgba(236,229,212,0.6);">Closing Cook Mode past step 1 triggers an iOS action sheet: <strong style="color:var(--cream);">Save &amp; Exit</strong> (keeps your place in state) or <strong style="color:var(--cream);">Discard Progress</strong> (destructive, shown in red per iOS convention). Returning to the recipe later offers <em>Resume at Step N</em> or <em>Cook Again</em>. This isn't cosmetic — progress is real state, persisted, and restorable. Interruptions are part of cooking.</p>
+            <div class="di-rationale">→ Action sheet (UIAlertControllerStyleActionSheet). Destructive action in red, secondary outlined.</div>
+          </div>
+        </div>
+
+        <div class="decision-item" style="background:rgba(245,239,224,0.04);">
+          <div class="di-label" style="border-right-color:rgba(245,239,224,0.08); background:rgba(245,239,224,0.03);">
+            <div class="di-num" style="color:var(--brick);">Decision 03</div>
+            <div class="di-title" style="color:var(--cream);">Dark surface for kitchen ergonomics</div>
+          </div>
+          <div class="di-body">
+            <p style="color:rgba(236,229,212,0.6);">Cook Mode uses a dark surface — not because dark mode is fashionable, but because <strong style="color:var(--cream);">kitchens are bright</strong>. A white screen at arm's length, glanced between stirring, creates glare and makes text hard to read. A dark, high-contrast layout is readable from across a counter with messy hands. Large type. High contrast. The visual shift also signals the mode change — entering Cook Mode feels different from browsing.</p>
+            <div class="di-rationale">→ bg: #1c1108 (warm near-black). Type: var(--cream) at 28–36pt for step text.</div>
+          </div>
+        </div>
+
+        <div class="decision-item" style="background:rgba(245,239,224,0.04);">
+          <div class="di-label" style="border-right-color:rgba(245,239,224,0.08); background:rgba(245,239,224,0.03);">
+            <div class="di-num" style="color:var(--brick);">Decision 04</div>
+            <div class="di-title" style="color:var(--cream);">Completion as a moment, not a prompt</div>
+          </div>
+          <div class="di-body">
+            <p style="color:rgba(236,229,212,0.6);">Finishing the last step yields a <strong style="color:var(--cream);">dish complete</strong> state — not an immediate rating modal. The cook just made something. The app acknowledges it. Then it surfaces Save + 5-star rating + Share — actions that make sense <em>after</em> the accomplishment, not as an interruption of it. The completion moment is also the natural, unforced moment to ask for a rating.</p>
+            <div class="di-rationale">→ Completion state → rating + save CTA. No forced review prompt mid-session.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── 06 iOS COMPLIANCE ──────────────────────────────────── -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-header reveal">
+      <div class="eyebrow">06 — Platform Decisions</div>
+      <h2>iOS isn't a skin.<br><em>It's a contract.</em></h2>
+      <p>Every platform has conventions users have internalized without knowing it. Breaking them creates friction that designers blame on the content, when it's actually the container. These are the decisions that keep Umami feeling native.</p>
+    </div>
+
+    <!-- Frame specification -->
+    <div class="eyebrow" style="margin-bottom:20px;" aria-hidden="true">The Contract: Frame Specification</div>
+    <div class="ios-frame-spec reveal">
+      <div class="frame-diagram">
+        <div class="frame-iphone-spec" aria-label="iOS frame zones diagram">
+          <div class="frame-zone fz-status"><span class="fz-label">Status 54pt</span></div>
+          <div class="frame-zone fz-nav"><span class="fz-label">Nav 46pt</span></div>
+          <div class="frame-zone fz-content"></div>
+          <div class="frame-zone fz-home"><span class="fz-label">Home 22pt</span></div>
+        </div>
+      </div>
+      <div class="frame-spec-list">
+        <div class="frame-spec-item">
+          <div class="fsi-val">393<span style="font-size:14px">×</span>852</div>
+          <div class="fsi-label">iPhone 14/15/16 Pro logical resolution (pt). The iOS design standard — every constraint flows from this.</div>
+        </div>
+        <div class="frame-spec-item">
+          <div class="fsi-val">54pt</div>
+          <div class="fsi-label">Status bar height, including Dynamic Island allowance.</div>
+        </div>
+        <div class="frame-spec-item">
+          <div class="fsi-val">46pt</div>
+          <div class="fsi-label">Navigation bar. Translucent over hero image; collapses to solid with title on scroll.</div>
+        </div>
+        <div class="frame-spec-item">
+          <div class="fsi-val">44pt+</div>
+          <div class="fsi-label">Minimum hit target on all interactive controls. Actual buttons are 46–54pt tall.</div>
+        </div>
+        <div class="frame-spec-item">
+          <div class="fsi-val">22pt</div>
+          <div class="fsi-label">Safe-area / home-indicator inset. No interactive elements below this line.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="eyebrow" style="margin:48px 0 20px;" aria-hidden="true">Applied Decisions</div>
+    <div class="compliance-grid reveal">
+
+      <div class="compliance-item">
+        <div class="ci-check">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 6l3 3 5-5"/></svg>
+        </div>
+        <div class="ci-body">
+          <div class="ci-title">Correct presentation grammar</div>
+          <div class="ci-detail">Bottom sheets for focused tasks (ingredient swaps, sign-in). Full-screen modal cover for Cook Mode — not a pushed page. Action sheets for destructive confirms. Each presentation style is semantically correct for its use case, not chosen for aesthetics.</div>
+          <div class="ci-spec">UISheet · UIModalPresentationFullScreen · UIAlertControllerStyleActionSheet</div>
+        </div>
+      </div>
+
+      <div class="compliance-item">
+        <div class="ci-check">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 6l3 3 5-5"/></svg>
+        </div>
+        <div class="ci-body">
+          <div class="ci-title">Translucent nav with scroll collapse</div>
+          <div class="ci-detail">Nav bar is transparent over the full-bleed recipe hero image. On scroll, it collapses to solid translucent with the recipe title — the iOS large-title pattern that users have internalized without ever naming it. Violating it would feel wrong without anyone knowing why.</div>
+          <div class="ci-spec">UINavigationBar · transparent → blur on scroll</div>
+        </div>
+      </div>
+
+      <div class="compliance-item">
+        <div class="ci-check">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 6l3 3 5-5"/></svg>
+        </div>
+        <div class="ci-body">
+          <div class="ci-title">Destructive actions in red</div>
+          <div class="ci-detail">"Discard Progress" in the stop-cooking action sheet uses red — iOS convention for irreversible actions. A cook who just spent 20 minutes on step 4 needs that visual signal to register before tapping. Not decoration. A safety mechanism.</div>
+          <div class="ci-spec">.destructive role · UIAlertAction</div>
+        </div>
+      </div>
+
+      <div class="compliance-item">
+        <div class="ci-check">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 6l3 3 5-5"/></svg>
+        </div>
+        <div class="ci-body">
+          <div class="ci-title">Screen stay-awake during active cooking</div>
+          <div class="ci-detail">Cook Mode disables the idle timer while a step timer is running. The screen stays on. A cook shouldn't have to unlock their phone mid-simmer with floury hands to see what comes next — the app knows it's being actively used even when the user isn't touching the screen.</div>
+          <div class="ci-spec">UIApplication.shared.isIdleTimerDisabled = true</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── 07 WHAT'S NEXT ─────────────────────────────────────── -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-header reveal">
+      <div class="eyebrow">07 — What's Next</div>
+      <h2>Mid-fidelity proves<br>the decisions. <em>Figma makes them real.</em></h2>
+      <p>The interactive prototype exists to validate structure and interaction decisions before committing to high-fidelity execution. That validation is done. The next phase is craft.</p>
+    </div>
+
+    <div class="next-list reveal">
+      <div class="next-item">
+        <div class="ni-num">01</div>
+        <div class="ni-text"><strong>Hi-fi execution in Figma.</strong> The design system is built. Decisions are locked. Next step is applying the full Craft Cookbook visual language — Brick × Wheat palette, texture, illustration — to Recipe Detail and Cook Mode, then expanding to search and onboarding.</div>
+      </div>
+      <div class="next-item">
+        <div class="ni-num">02</div>
+        <div class="ni-text"><strong>Validate the trust signals before committing to hi-fi.</strong> Attribution above the fold and deferred auth are architectural bets — not yet confirmed by user research. The key question: does attribution read as a trust signal before a cook decides to scroll? Does the curated-source model earn enough confidence on its own, or does it need explicit explanation? Those answers change the visual hierarchy of Recipe Detail, and they should be answered before the hi-fi pass begins.</div>
+      </div>
+      <div class="next-item">
+        <div class="ni-num">03</div>
+        <div class="ni-text"><strong>Motion and handoff spec.</strong> Cook Mode modal entry, timer-fired state, and dish completion all have implied motion that needs to be specified before handoff. Motion that communicates state, not decoration. Component annotations and token mapping follow — so a developer can build from the file without a walkthrough call.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── NEXT PROJECT ──────────────────────────────────────── -->
+<div class="next-project">
+  <div>
+    <div class="np-label">Next Project</div>
+    <div class="np-title">Acts2 Journey — AI-Native Strategy</div>
+  </div>
+  <a href="acts2-journey.html" class="arrow-btn">
+    View Case Study
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+  </a>
+</div>
+
+<!-- ── SCRIPTS ───────────────────────────────────────────── -->
+<script>
+/* Nav mobile toggle */
+(function () {
+  const toggle = document.querySelector('.nav-toggle');
+  const links  = document.querySelector('.nav-links');
+  if (!toggle || !links) return;
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+})();
+</script>
+
+<script>
+/* Scroll reveal */
+(function () {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), (i % 4) * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.04 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+</script>
+
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

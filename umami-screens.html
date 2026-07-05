@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Umami — Mid-fi screens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   Umami — Corrected mid-fi screens for the Figma HTML to Design plugin.
+   - static class-based styles (no JS, no runtime React)
+   - flex / grid with gap          -> Auto Layout
+   - inline <svg> currentColor     -> vectors
+   - explicit 393x852 frames       -> fixed Figma frames
+   - sheets / action sheets shown as separate frames so the plugin
+     captures both the modal AND its backdrop context.
+   ============================================================ */
+
+:root{
+  --paper:#ece5d4; --cream:#f5efe0; --wheat:#e0d2b0; --wheat-deep:#71653f;
+  --ink:#221d18; --ink-2:#6a6151; --ink-3:#a89d8b;
+  --brick:#a83629; --brick-deep:#85271d;
+  --line:rgba(34,29,24,0.10); --line-2:rgba(34,29,24,0.16);
+  --sans:'Hanken Grotesk',-apple-system,system-ui,sans-serif;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;}
+body{
+  background:#d8cdb6;
+  font-family:var(--sans);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  padding:56px;
+}
+
+/* ---- sheet layout for arranging frames (NOT exported to Figma) ---- */
+.sheet-head{margin:0 0 40px;}
+.sheet-head h1{font-family:var(--serif);font-weight:500;font-size:36px;letter-spacing:-0.01em;margin:0 0 8px;color:var(--ink);}
+.sheet-head p{font-family:var(--sans);font-size:14px;line-height:1.5;color:var(--ink-2);margin:0;max-width:740px;}
+.group{margin:0 0 72px;}
+.group-title{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:0.14em;font-size:12px;color:var(--ink-2);margin:0 0 6px;}
+.group-sub{font-family:var(--sans);font-size:13px;line-height:1.5;color:var(--ink-3);margin:0 0 28px;max-width:720px;}
+.row{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;}
+.board{display:flex;flex-direction:column;gap:12px;}
+.board-label{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:0.04em;color:var(--ink-2);}
+
+/* ============================================================
+   FRAME — 393×852 mobile frame (fixed) or content-height variant
+   ============================================================ */
+.frame{
+  width:393px; height:852px;
+  position:relative;
+  background:var(--paper);
+  overflow:hidden;
+  font-family:var(--sans);
+  color:var(--ink);
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 30px 60px -28px rgba(38,28,15,0.40);
+}
+.frame--tall{height:auto;}
+
+/* ---- status bar (in-flow at top of every frame, 54 tall) ---- */
+.statusbar{
+  height:54px;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 32px;
+  font-family:-apple-system,system-ui,sans-serif;
+  position:relative;z-index:6;
+}
+.statusbar .time{font-weight:600;font-size:16px;letter-spacing:0.2px;margin-top:6px;}
+.statusbar .glyphs{display:flex;gap:7px;align-items:center;margin-top:6px;}
+.statusbar--light{color:#fff;text-shadow:0 0 12px rgba(0,0,0,0.28);}
+.statusbar--dark{color:var(--ink);}
+
+/* ---- home indicator ---- */
+.home-indicator{position:absolute;bottom:9px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:99px;background:rgba(38,34,27,0.32);z-index:8;}
+.home-indicator--light{background:rgba(255,255,255,0.85);}
+
+/* ---- nav bar (44pt buttons, transparent or solid translucent) ---- */
+.navbar{
+  height:46px;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 6px;position:relative;z-index:5;
+}
+.navbar--solid{background:rgba(236,229,212,0.86);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:0.5px solid var(--line-2);}
+.navbar--over{position:absolute;left:0;right:0;top:54px;}
+.navbar-title{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;font-size:15px;color:var(--ink);}
+.navbar-actions{display:flex;}
+
+/* 44pt borderless bar button */
+.barbtn{
+  width:44px;height:44px;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;
+  border:none;background:transparent;color:var(--ink);padding:0;margin:0;cursor:pointer;
+}
+.barbtn--light{color:var(--cream);}
+.barbtn--brick{color:var(--brick);}
+
+/* ---- bottom docked action bar (safe-area aware) ---- */
+.bottombar{
+  position:absolute;left:0;right:0;bottom:0;z-index:7;
+  background:rgba(236,229,212,0.92);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-top:0.5px solid var(--line-2);
+  padding:12px 16px 30px;
+  display:flex;gap:11px;
+}
+.bottombar .secondary{
+  width:58px;height:56px;flex:0 0 auto;
+  border:1.5px solid var(--ink);background:transparent;color:var(--ink);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+}
+.bottombar .secondary--on{background:var(--brick);color:var(--cream);border-color:var(--brick);}
+.bottombar .primary{
+  flex:1;height:56px;border:none;background:var(--brick);color:var(--cream);
+  font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:0.06em;font-size:15px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 22px;cursor:pointer;white-space:nowrap;
+}
+.bottombar .primary .meta{opacity:0.72;font-size:13px;}
+
+/* ============================================================
+   Recipe Detail content
+   ============================================================ */
+.hero{background:var(--brick);color:var(--cream);padding-top:100px;}
+.hero--scrolled{padding-top:0;}
+.hero-title-block{padding:4px 20px 24px;}
+.hero-tags{display:flex;gap:7px;margin-bottom:18px;}
+.hero-title{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;font-size:58px;line-height:0.86;color:var(--cream);}
+.hero-hangul{font-family:var(--serif);font-weight:500;font-size:30px;color:var(--cream);opacity:0.82;margin-top:10px;}
+
+.tag{font-family:var(--sans);font-weight:800;text-transform:uppercase;font-size:10px;letter-spacing:0.14em;padding:4px 8px;display:inline-block;}
+.tag--cream{background:var(--cream);color:var(--brick);}
+.tag--ghost{background:rgba(255,255,255,0.18);color:var(--cream);}
+
+.photo-band{background:var(--wheat);padding:18px;}
+.photo-band .cap{font-family:var(--sans);font-weight:700;text-transform:uppercase;letter-spacing:0.04em;font-size:11px;color:var(--wheat-deep);margin:12px 2px 0;line-height:1.4;}
+
+/* placeholder block */
+.ph{
+  width:100%;position:relative;color:var(--wheat-deep);
+  background:
+    repeating-linear-gradient(135deg, rgba(140,98,57,0.06) 0 14px, rgba(140,98,57,0.11) 14px 28px),
+    var(--wheat);
+  border:1px dashed rgba(140,98,57,0.40);
+  display:flex;align-items:center;justify-content:center;
+}
+.ph span{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.04em;color:var(--wheat-deep);opacity:0.85;}
+
+/* meta row */
+.meta{display:flex;border-bottom:2px solid var(--ink);}
+.meta .cell{flex:1;padding:16px 18px;border-right:1px solid rgba(34,31,26,0.18);}
+.meta .cell:last-child{border-right:none;}
+.meta .cell--serves{flex:1.15;padding:12px 18px;}
+.meta .lbl{font-family:var(--sans);font-weight:700;text-transform:uppercase;font-size:9.5px;letter-spacing:0.16em;color:var(--ink-2);}
+.meta .val{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;font-size:22px;margin-top:5px;color:var(--ink);}
+.meta .lbl--serves{margin-bottom:5px;}
+
+.stepper{display:flex;align-items:center;gap:12px;}
+.stepper .sbtn{width:34px;height:34px;border-radius:50%;border:1px solid var(--line-2);background:transparent;color:var(--ink);display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer;}
+.stepper .sval{min-width:16px;text-align:center;font-family:var(--serif);font-size:22px;font-weight:500;font-variant-numeric:tabular-nums;}
+
+.toggle{display:inline-flex;padding:3px;border-radius:99px;background:var(--cream);border:1px solid var(--line);}
+.toggle .opt{padding:7px 14px;border-radius:99px;border:none;font-family:var(--sans);font-weight:600;font-size:12.5px;color:var(--ink-2);background:transparent;cursor:pointer;}
+.toggle .opt--on{color:var(--cream);background:var(--brick);}
+
+.ing-section{padding:28px 20px 0;}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+.h2{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;font-size:20px;color:var(--ink);}
+
+/* Adjust entry button */
+.adjust-row{
+  width:100%;display:flex;align-items:center;gap:10px;padding:12px 14px;margin:8px 0 4px;
+  background:var(--cream);border:1px solid var(--line-2);cursor:pointer;text-align:left;
+}
+.adjust-row .name{flex:1;font-family:var(--sans);font-weight:700;font-size:13.5px;color:var(--ink);}
+.adjust-row .meta-r{font-size:12px;color:var(--ink-2);}
+
+/* ingredient grid */
+.ing-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:16px;margin-top:8px;}
+.ing-item{padding:11px 0;border-top:1.5px solid var(--ink);display:flex;flex-direction:column;gap:3px;background:transparent;border-left:none;border-right:none;border-bottom:none;text-align:left;cursor:pointer;}
+.ing-item .qty{font-family:var(--sans);font-weight:800;text-transform:uppercase;font-size:13px;color:var(--brick);letter-spacing:0.02em;}
+.ing-item .name{font-size:13.5px;line-height:1.25;color:var(--ink);display:flex;align-items:center;gap:6px;}
+.ing-item .swapped{font-family:var(--sans);font-weight:700;font-size:8.5px;letter-spacing:0.12em;color:var(--brick);text-transform:uppercase;}
+.ing-hint{font-size:12px;color:var(--ink-3);margin:12px 2px 0;line-height:1.4;}
+
+/* method */
+.method-section{padding:32px 20px 8px;}
+.method-section .h2{margin-bottom:18px;}
+.method-step{display:flex;gap:16px;padding-bottom:22px;align-items:flex-start;}
+.method-step .num{font-family:var(--sans);font-weight:800;font-size:42px;line-height:0.8;color:var(--cream);background:var(--brick);width:54px;height:54px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;}
+.method-step p{margin:2px 0 0;font-size:15px;line-height:1.5;color:var(--ink);text-wrap:pretty;}
+
+.source-card{margin:4px 20px 28px;background:var(--wheat);padding:20px;display:flex;align-items:center;gap:14px;}
+.source-card .meta-col{flex:1;line-height:1.3;}
+.source-card .by{font-family:var(--sans);font-weight:700;text-transform:uppercase;font-size:9.5px;letter-spacing:0.16em;color:var(--wheat-deep);margin-bottom:4px;}
+.source-card .who{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;font-size:17px;color:var(--ink);}
+.source-card .src{font-size:12.5px;color:var(--wheat-deep);}
+
+.avatar{
+  width:42px;height:42px;border-radius:50%;flex:0 0 auto;
+  background:radial-gradient(120% 120% at 30% 25%, #b88a5a, #8c6239 70%);
+  color:#fdf6ec;display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-weight:500;font-size:19px;
+  box-shadow:0 0 0 2px rgba(255,255,255,0.4);
+}
+
+/* scroll body wrapper */
+.scroll-body{flex:1;overflow:hidden;}
+.scroll-body--padded{padding-bottom:130px;}
+
+/* ============================================================
+   Cook mode (modal)
+   ============================================================ */
+.cook-header{flex:0 0 auto;}
+.cook-topbar{display:flex;align-items:center;justify-content:space-between;padding:4px 6px 0;}
+.cook-topbar .dish{font-family:var(--sans);font-weight:800;font-size:12px;letter-spacing:0.14em;color:var(--ink-2);}
+.cook-topbar .count{width:44px;text-align:center;font-family:var(--sans);font-weight:800;font-size:12px;letter-spacing:0.06em;color:var(--ink);font-variant-numeric:tabular-nums;}
+
+.progress{display:flex;gap:5px;padding:12px 18px 0;}
+.progress .seg{flex:1;height:5px;background:rgba(34,29,24,0.14);}
+.progress .seg--on{background:var(--brick);}
+
+.cook-body{flex:1;padding:24px 22px 0;display:flex;flex-direction:column;overflow:hidden;}
+.cook-numrow{display:flex;align-items:flex-end;gap:16px;}
+.cook-num{font-family:var(--sans);font-weight:800;font-size:92px;line-height:0.78;color:var(--brick);}
+.cook-numrow .lbl{padding-bottom:10px;}
+.eyebrow{font-family:var(--sans);font-weight:700;font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;}
+.cook-numrow .e1{color:var(--ink-2);line-height:1.5;white-space:nowrap;}
+.cook-numrow .e2{color:var(--ink-3);line-height:1.5;white-space:nowrap;}
+.cook-text{margin:24px 0 0;font-size:25px;line-height:1.34;color:var(--ink);text-wrap:pretty;font-weight:400;}
+
+.cook-photo{margin-top:22px;}
+
+/* timer states */
+.cook-timer{margin-top:22px;padding:15px 16px;background:var(--wheat);}
+.cook-timer--fired{background:var(--brick);}
+.cook-timer .row1{display:flex;align-items:center;justify-content:space-between;}
+.cook-timer .tlbl{color:var(--wheat-deep);}
+.cook-timer--fired .tlbl{color:rgba(255,239,224,0.85);}
+.cook-timer .ttime{font-family:ui-monospace,Menlo,monospace;font-size:40px;line-height:1.05;margin-top:2px;color:var(--ink);letter-spacing:0.02em;}
+.cook-timer--fired .ttime{color:var(--cream);}
+.cook-timer .actions{display:flex;gap:9px;align-items:center;}
+.cook-timer .reset{width:46px;height:46px;border:1.5px solid var(--wheat-deep);background:transparent;color:var(--wheat-deep);display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.cook-timer .start{height:46px;padding:0 20px;border:none;background:var(--brick);color:var(--cream);cursor:pointer;font-family:var(--sans);font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:0.08em;display:flex;align-items:center;gap:8px;}
+.cook-timer .track{height:4px;background:rgba(34,29,24,0.14);margin-top:13px;}
+.cook-timer .track .fill{height:100%;background:var(--brick);}
+.cook-timer .fired-meta{font-family:var(--sans);font-weight:700;font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,239,224,0.85);margin-top:11px;}
+
+/* per-step ingredient chips */
+.for-step{margin-top:auto;padding:26px 0 20px;}
+.for-step .lbl{color:var(--ink-3);margin-bottom:11px;}
+.chips{display:flex;flex-wrap:wrap;gap:7px;}
+.chip{
+  background:var(--wheat);color:var(--wheat-deep);font-family:var(--sans);font-weight:700;font-size:12px;
+  letter-spacing:0.01em;padding:7px 11px;white-space:nowrap;display:inline-flex;gap:6px;align-items:baseline;
+}
+.chip b{color:var(--brick);font-weight:800;}
+
+.cook-footer{flex:0 0 auto;padding:12px 18px 30px;border-top:1px solid var(--line-2);background:var(--paper);display:flex;gap:12px;position:relative;z-index:5;}
+.cook-footer .back{width:58px;height:56px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.cook-footer .next{flex:1;height:56px;border:none;background:var(--brick);color:var(--cream);cursor:pointer;font-family:var(--sans);font-weight:800;text-transform:uppercase;font-size:14px;letter-spacing:0.06em;display:flex;align-items:center;justify-content:space-between;padding:0 22px;white-space:nowrap;}
+.cook-footer .next .arr{opacity:0.72;}
+
+/* ============================================================
+   Cook complete
+   ============================================================ */
+.done-topbar{display:flex;justify-content:flex-end;padding:4px 8px 0;}
+.done-body{flex:1;display:flex;flex-direction:column;padding:8px 24px 30px;overflow:hidden;}
+.done-head{margin-top:14px;}
+.done-head .e{color:var(--brick);}
+.done-hangul{font-family:var(--serif);font-weight:500;font-size:70px;line-height:0.92;color:var(--ink);letter-spacing:-0.02em;margin:10px 0 4px;}
+.done-served{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;font-size:34px;color:var(--brick);}
+.done-photo{margin:20px 0 0;}
+.done-stats{display:flex;margin-top:18px;border-top:2px solid var(--ink);border-bottom:1px solid var(--line-2);}
+.done-stats .cell{flex:1;padding:12px 4px;border-right:1px solid var(--line-2);}
+.done-stats .cell:last-child{border-right:none;}
+.done-stats .lbl{font-family:var(--sans);font-weight:700;text-transform:uppercase;font-size:9px;letter-spacing:0.14em;color:var(--ink-2);}
+.done-stats .val{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;font-size:18px;margin-top:4px;color:var(--ink);}
+
+.rating-row{margin-top:18px;display:flex;align-items:center;justify-content:space-between;}
+.rating-row .lbl{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-2);}
+.rating-row .stars{display:flex;gap:4px;}
+.rating-row .star{width:40px;height:40px;border:none;background:transparent;cursor:pointer;color:var(--ink-3);padding:0;display:flex;align-items:center;justify-content:center;}
+.rating-row .star--on{color:var(--brick);}
+
+.done-actions{margin-top:auto;padding-top:18px;}
+.done-actions .done-primary{width:100%;height:56px;border:none;background:var(--brick);color:var(--cream);cursor:pointer;font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:0.06em;font-size:15px;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:11px;}
+.done-actions .secondary-row{display:flex;gap:11px;}
+.done-actions .sec{flex:1;height:48px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;font-family:var(--sans);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;gap:8px;}
+.done-actions .sec--on{border-color:var(--brick);color:var(--brick);}
+
+/* ============================================================
+   Sheets — bottom sheets and iOS action sheet
+   ============================================================ */
+.backdrop{position:absolute;inset:0;background:rgba(20,15,10,0.42);z-index:9;}
+
+.sheet{
+  position:absolute;left:0;right:0;bottom:0;
+  background:var(--paper);
+  border-top-left-radius:26px;border-top-right-radius:26px;
+  display:flex;flex-direction:column;
+  box-shadow:0 -20px 50px -20px rgba(20,15,10,0.4);
+  z-index:10;
+}
+.sheet .handle-row{padding-top:10px;display:flex;justify-content:center;}
+.sheet .handle{width:38px;height:5px;border-radius:99px;background:var(--line-2);}
+.sheet .sheet-head-row{display:flex;align-items:center;justify-content:space-between;padding:8px 12px 6px 22px;}
+.sheet .sheet-title{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;font-size:20px;color:var(--ink);}
+.sheet .sheet-body{padding:4px 0 28px;}
+
+/* Adjust sheet rows */
+.adj-row{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-bottom:1px solid var(--line);}
+.adj-row .label{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;font-size:14px;color:var(--ink);}
+.adj-row .sub{font-size:12px;color:var(--ink-2);margin-top:2px;}
+.adj-section-label{font-family:var(--sans);font-weight:700;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-2);padding:20px 22px 8px;}
+.swap-row{display:flex;align-items:center;gap:12px;padding:13px 22px;border-top:1px solid var(--line);background:transparent;border-left:none;border-right:none;border-bottom:none;cursor:pointer;text-align:left;width:100%;}
+.swap-row .name{flex:1;font-size:14.5px;color:var(--ink);}
+.swap-row .badge{font-family:var(--sans);font-weight:700;font-size:8.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--brick);}
+
+/* AI swap sheet */
+.ai-note{display:flex;align-items:center;gap:9px;background:var(--cream);border:1px solid var(--line-2);padding:11px 13px;margin:0 22px 14px;}
+.ai-note span{font-size:12.5px;line-height:1.4;color:var(--ink-2);text-wrap:pretty;}
+.swap-options{display:flex;flex-direction:column;gap:10px;padding:0 22px;}
+.swap-opt{background:transparent;border:1.5px solid var(--line-2);padding:13px 14px;cursor:pointer;display:flex;flex-direction:column;gap:5px;text-align:left;}
+.swap-opt--on{background:var(--wheat);border-color:var(--brick);}
+.swap-opt .head{display:flex;align-items:center;gap:8px;}
+.swap-opt .head .name{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;font-size:14px;color:var(--ink);}
+.swap-opt--on .head .name{color:var(--brick);}
+.swap-opt .head .orig{font-family:var(--sans);font-weight:700;font-size:8.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-3);}
+.swap-opt .head .check{margin-left:auto;color:var(--brick);}
+.swap-opt .taste{font-size:12.5px;line-height:1.45;color:var(--ink-2);text-wrap:pretty;}
+
+/* sign-in sheet */
+.signin-body{padding:4px 22px 28px;}
+.signin-body p{font-size:14px;line-height:1.5;color:var(--ink-2);margin:2px 0 20px;text-wrap:pretty;}
+.signin-body .primary{width:100%;height:54px;border:none;background:var(--brick);color:var(--cream);cursor:pointer;font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:0.06em;font-size:15px;margin-bottom:11px;}
+.signin-body .ghost{width:100%;height:48px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;font-family:var(--sans);font-weight:700;font-size:13.5px;}
+
+/* iOS action sheet (destructive confirm) */
+.action-sheet{position:absolute;left:10px;right:10px;bottom:10px;z-index:11;}
+.action-sheet .group-card{background:rgba(245,239,224,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:16px;overflow:hidden;margin-bottom:8px;}
+.action-sheet .as-head{padding:18px 20px 16px;text-align:center;border-bottom:1px solid var(--line);}
+.action-sheet .as-title{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;font-size:15px;color:var(--ink);margin-bottom:6px;}
+.action-sheet .as-msg{font-size:13px;line-height:1.45;color:var(--ink-2);text-wrap:pretty;}
+.action-sheet .as-action{width:100%;height:56px;border:none;background:transparent;cursor:pointer;font-family:var(--sans);font-size:17px;font-weight:500;color:var(--ink);}
+.action-sheet .as-action + .as-action{border-top:1px solid var(--line);}
+.action-sheet .as-action--bold{font-weight:700;}
+.action-sheet .as-action--destructive{color:var(--brick);}
+.action-sheet .cancel{width:100%;height:56px;border:none;border-radius:16px;background:var(--cream);cursor:pointer;font-family:var(--sans);font-size:17px;font-weight:700;color:var(--ink);}
+
+</style>
+<style>
+/* Single-frame isolation: JS drives visibility to avoid !important conflicts */
+body.single-frame {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+</style>
+</head>
+<body>
+
+
+<div class="sheet-head">
+  <h1>Umami — Mid-fi screens (corrected)</h1>
+  <p>Static HTML/CSS authored for the Figma HTML to Design plugin. Class-based styles, flex &amp; grid (Auto Layout), inline SVG icons (vectors), explicit 393×852 frames. Includes the structural corrections from review — collapsing nav, docked bottom bar, AI swap sheet, modal cook mode with Close+confirm, timer lifecycle, sign-in gate, and a completion state with inline rating.</p>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     RE-USABLE STATUS BAR + NAV BAR SVG MARKUP (inline below as needed)
+     ════════════════════════════════════════════════════════════ -->
+
+<!-- ════════════════════════════════════════════════════════════
+     GROUP 1 — RECIPE DETAIL
+     ════════════════════════════════════════════════════════════ -->
+<section class="group">
+  <h2 class="group-title">Recipe Detail · entry + collapsed states</h2>
+  <p class="group-sub">Hero exposed at scroll-top with a transparent nav bar; collapses to a solid translucent nav with the recipe title once the user scrolls. Docked bottom action bar pairs <em>Add to grocery</em> with the primary <em>Start cooking</em> CTA.</p>
+  <div class="row">
+
+    <!-- 1.1 Detail · top -->
+    <div class="board">
+      <div class="board-label">Detail · top of scroll (393×852)</div>
+      <div id="detail-top" class="frame" data-screen-label="Detail · top">
+
+        <!-- status bar (over brick hero) -->
+        <div class="statusbar statusbar--light">
+          <span class="time">9:41</span>
+          <span class="glyphs">
+            <svg width="18" height="11" viewBox="0 0 18 11" fill="#fff"><rect x="0" y="7" width="3" height="4" rx=".6"></rect><rect x="4.5" y="4.7" width="3" height="6.3" rx=".6"></rect><rect x="9" y="2.4" width="3" height="8.6" rx=".6"></rect><rect x="13.5" y="0" width="3" height="11" rx=".6"></rect></svg>
+            <svg width="22" height="11" viewBox="0 0 24 12"><rect x="0.5" y="0.5" width="20" height="11" rx="3" stroke="#fff" stroke-opacity=".4" fill="none"></rect><rect x="2" y="2" width="16" height="8" rx="1.6" fill="#fff"></rect><rect x="21.5" y="3.5" width="1.8" height="5" rx=".9" fill="#fff" fill-opacity=".5"></rect></svg>
+          </span>
+        </div>
+
+        <!-- nav bar (transparent over hero) -->
+        <div class="navbar">
+          <button class="barbtn barbtn--light" aria-label="Back">
+            <svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 7 10l5.5 6"></path></svg>
+          </button>
+          <div class="navbar-actions">
+            <button class="barbtn barbtn--light" aria-label="Share">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 9v6.5a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V9"></path><path d="M10 3v9.5"></path><path d="M6.6 6.4 10 3l3.4 3.4"></path></svg>
+            </button>
+            <button class="barbtn barbtn--light" aria-label="Save">
+              <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.6h10v15l-5-4-5 4z"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- scroll body (top state) -->
+        <div class="scroll-body scroll-body--padded">
+          <!-- brick hero title block -->
+          <div style="background:var(--brick);color:var(--cream);">
+            <div class="hero-title-block">
+              <div class="hero-tags">
+                <span class="tag tag--cream">Korean</span>
+                <span class="tag tag--ghost">Stew · No.01</span>
+              </div>
+              <div class="hero-title">KIMCHI<br>JJIGAE</div>
+              <div class="hero-hangul">김치찌개</div>
+            </div>
+          </div>
+
+          <!-- photo band -->
+          <div class="photo-band">
+            <div class="ph" style="height:236px;"><span>dish photo · kimchi jjigae</span></div>
+            <p class="cap">Bubbling stew · pork belly · fermented kimchi · soft tofu</p>
+          </div>
+
+          <!-- meta -->
+          <div class="meta">
+            <div class="cell"><div class="lbl">Active</div><div class="val">15 min</div></div>
+            <div class="cell"><div class="lbl">Total</div><div class="val">35 min</div></div>
+            <div class="cell cell--serves">
+              <div class="lbl lbl--serves">Serves</div>
+              <div class="stepper">
+                <button class="sbtn" aria-label="Decrease serves"><svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12"></path></svg></button>
+                <span class="sval">2</span>
+                <button class="sbtn" aria-label="Increase serves"><svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4v12"></path><path d="M4 10h12"></path></svg></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ingredients header + adjust entry -->
+          <div class="ing-section">
+            <div class="section-head">
+              <div class="h2">Ingredients</div>
+              <div class="toggle"><button class="opt opt--on">US</button><button class="opt">Metric</button></div>
+            </div>
+            <button class="adjust-row">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="var(--brick)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.2l1.2 3.3 3.3 1.2-3.3 1.2L10 12.2 8.8 8.9 5.5 7.7l3.3-1.2z" fill="var(--brick)" stroke="none"></path><path d="M15 12.5l.6 1.6 1.6.6-1.6.6-.6 1.6-.6-1.6-1.6-.6 1.6-.6z" fill="var(--brick)" stroke="none"></path></svg>
+              <span class="name">Adjust recipe</span>
+              <span class="meta-r">scale · units · swaps</span>
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="var(--ink-3)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5l5 5-5 5"></path></svg>
+            </button>
+            <!-- ingredients grid (truncated visible portion at top) -->
+            <div class="ing-grid">
+              <div class="ing-item"><span class="qty">2 cups</span><span class="name">napa cabbage kimchi <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="var(--ink-3)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 7.2h9l-2.3-2.4"></path><path d="M15.5 12.8h-9l2.3 2.4"></path></svg></span></div>
+              <div class="ing-item"><span class="qty">4 oz</span><span class="name">pork belly <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="var(--ink-3)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 7.2h9l-2.3-2.4"></path><path d="M15.5 12.8h-9l2.3 2.4"></path></svg></span></div>
+              <div class="ing-item"><span class="qty">1–3 tsp</span><span class="name">gochugaru</span></div>
+              <div class="ing-item"><span class="qty">1 tsp</span><span class="name">garlic, minced</span></div>
+            </div>
+            <p class="ing-hint">Tap any swap icon to substitute an ingredient — we'll explain how it changes the taste.</p>
+          </div>
+        </div>
+
+        <!-- docked bottom action bar -->
+        <div class="bottombar">
+          <button class="secondary" aria-label="Add to grocery list">
+            <svg width="21" height="21" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h12l-1.2 8.2a1 1 0 0 1-1 .8H6.2a1 1 0 0 1-1-.8z"></path><path d="M7.5 8 10 3.5 12.5 8"></path></svg>
+          </button>
+          <button class="primary"><span>Start cooking</span><span class="meta">5 STEPS →</span></button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 1.2 Detail · scrolled (nav bar collapsed) -->
+    <div class="board">
+      <div class="board-label">Detail · scrolled · nav collapsed (393×852)</div>
+      <div id="detail-scrolled" class="frame" data-screen-label="Detail · scrolled">
+
+        <!-- status bar dark over paper -->
+        <div class="statusbar statusbar--dark">
+          <span class="time">9:41</span>
+          <span class="glyphs">
+            <svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx=".6"></rect><rect x="4.5" y="4.7" width="3" height="6.3" rx=".6"></rect><rect x="9" y="2.4" width="3" height="8.6" rx=".6"></rect><rect x="13.5" y="0" width="3" height="11" rx=".6"></rect></svg>
+            <svg width="22" height="11" viewBox="0 0 24 12"><rect x="0.5" y="0.5" width="20" height="11" rx="3" stroke="currentColor" stroke-opacity=".4" fill="none"></rect><rect x="2" y="2" width="16" height="8" rx="1.6" fill="currentColor"></rect><rect x="21.5" y="3.5" width="1.8" height="5" rx=".9" fill="currentColor" fill-opacity=".5"></rect></svg>
+          </span>
+        </div>
+
+        <!-- solid collapsed nav with title -->
+        <div class="navbar navbar--solid">
+          <button class="barbtn" aria-label="Back">
+            <svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 7 10l5.5 6"></path></svg>
+          </button>
+          <div class="navbar-title">Kimchi Jjigae</div>
+          <div class="navbar-actions">
+            <button class="barbtn" aria-label="Share">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 9v6.5a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V9"></path><path d="M10 3v9.5"></path><path d="M6.6 6.4 10 3l3.4 3.4"></path></svg>
+            </button>
+            <button class="barbtn barbtn--brick" aria-label="Save" aria-pressed="true">
+              <svg width="19" height="19" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.6h10v15l-5-4-5 4z"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- scrolled-down body: method visible -->
+        <div class="scroll-body scroll-body--padded">
+          <div class="method-section">
+            <div class="h2">Method</div>
+            <div class="method-step"><div class="num">1</div><p>Cut the kimchi into bite-size pieces. Slice the pork into thin bite-size pieces.</p></div>
+            <div class="method-step"><div class="num">2</div><p>Heat a small, heavy pot over medium-high with the oil. Add the kimchi, pork, gochugaru and garlic. Cook, stirring, until the kimchi softens and the pork is cooked through, 5–7 minutes.</p></div>
+            <div class="method-step"><div class="num">3</div><p>Pour in the kimchi brine and 2–2½ cups water (or anchovy stock). Bring to a boil, let it bubble hard 5 min, then cover, lower to a steady simmer, and cook 15 min.</p></div>
+          </div>
+          <div class="source-card">
+            <div class="avatar">H</div>
+            <div class="meta-col">
+              <div class="by">Recipe by</div>
+              <div class="who">Hyosun</div>
+              <div class="src">Korean Bapsang</div>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="var(--brick-deep)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 14 14 6"></path><path d="M7.5 6H14v6.5"></path></svg>
+          </div>
+        </div>
+
+        <div class="bottombar">
+          <button class="secondary secondary--on" aria-label="Added to grocery list">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.4 8.4 14.4 15.5 6.4"></path></svg>
+          </button>
+          <button class="primary"><span>Start cooking</span><span class="meta">5 STEPS →</span></button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 1.3 Detail · ingredients with swap applied -->
+    <div class="board">
+      <div class="board-label">Detail · ingredient swapped state (393×852)</div>
+      <div id="detail-swapped" class="frame" data-screen-label="Detail · swap applied">
+
+        <div class="statusbar statusbar--dark">
+          <span class="time">9:41</span>
+          <span class="glyphs">
+            <svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx=".6"></rect><rect x="4.5" y="4.7" width="3" height="6.3" rx=".6"></rect><rect x="9" y="2.4" width="3" height="8.6" rx=".6"></rect><rect x="13.5" y="0" width="3" height="11" rx=".6"></rect></svg>
+            <svg width="22" height="11" viewBox="0 0 24 12"><rect x="0.5" y="0.5" width="20" height="11" rx="3" stroke="currentColor" stroke-opacity=".4" fill="none"></rect><rect x="2" y="2" width="16" height="8" rx="1.6" fill="currentColor"></rect><rect x="21.5" y="3.5" width="1.8" height="5" rx=".9" fill="currentColor" fill-opacity=".5"></rect></svg>
+          </span>
+        </div>
+        <div class="navbar navbar--solid">
+          <button class="barbtn"><svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 7 10l5.5 6"></path></svg></button>
+          <div class="navbar-title">Kimchi Jjigae</div>
+          <div class="navbar-actions">
+            <button class="barbtn"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 9v6.5a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V9"></path><path d="M10 3v9.5"></path><path d="M6.6 6.4 10 3l3.4 3.4"></path></svg></button>
+            <button class="barbtn"><svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.6h10v15l-5-4-5 4z"></path></svg></button>
+          </div>
+        </div>
+
+        <div class="scroll-body scroll-body--padded">
+          <div class="ing-section">
+            <div class="section-head">
+              <div class="h2">Ingredients</div>
+              <div class="toggle"><button class="opt">US</button><button class="opt opt--on">Metric</button></div>
+            </div>
+            <button class="adjust-row">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 3.2l1.2 3.3 3.3 1.2-3.3 1.2L10 12.2 8.8 8.9 5.5 7.7l3.3-1.2z" fill="var(--brick)"></path></svg>
+              <span class="name">Adjust recipe</span>
+              <span class="meta-r">scale · units · swaps</span>
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="var(--ink-3)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5l5 5-5 5"></path></svg>
+            </button>
+            <div class="ing-grid">
+              <div class="ing-item">
+                <span class="qty">300 g</span>
+                <span class="name">napa cabbage kimchi <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="var(--ink-3)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 7.2h9l-2.3-2.4"></path><path d="M15.5 12.8h-9l2.3 2.4"></path></svg></span>
+              </div>
+              <div class="ing-item">
+                <span class="qty">115 g</span>
+                <span class="name">firm tofu (double) <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="var(--brick)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 7.2h9l-2.3-2.4"></path><path d="M15.5 12.8h-9l2.3 2.4"></path></svg></span>
+                <span class="swapped">Swapped</span>
+              </div>
+              <div class="ing-item"><span class="qty">1–3 tsp</span><span class="name">gochugaru</span></div>
+              <div class="ing-item"><span class="qty">1 tsp</span><span class="name">garlic, minced</span></div>
+              <div class="ing-item"><span class="qty">15 ml</span><span class="name">cooking oil <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="var(--ink-3)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 7.2h9l-2.3-2.4"></path><path d="M15.5 12.8h-9l2.3 2.4"></path></svg></span></div>
+              <div class="ing-item"><span class="qty">120 ml</span><span class="name">kimchi brine</span></div>
+              <div class="ing-item"><span class="qty">170 g</span><span class="name">tofu <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="var(--ink-3)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 7.2h9l-2.3-2.4"></path><path d="M15.5 12.8h-9l2.3 2.4"></path></svg></span></div>
+              <div class="ing-item"><span class="qty">2</span><span class="name">scallions</span></div>
+            </div>
+            <p class="ing-hint">Tap any swap icon to substitute an ingredient — we'll explain how it changes the taste.</p>
+          </div>
+        </div>
+
+        <div class="bottombar">
+          <button class="secondary"><svg width="21" height="21" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h12l-1.2 8.2a1 1 0 0 1-1 .8H6.2a1 1 0 0 1-1-.8z"></path><path d="M7.5 8 10 3.5 12.5 8"></path></svg></button>
+          <button class="primary"><span>Start cooking</span><span class="meta">5 STEPS →</span></button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     GROUP 2 — ADJUST + AI SWAP SHEETS
+     ════════════════════════════════════════════════════════════ -->
+<section class="group">
+  <h2 class="group-title">Adjust + AI swap · bottom sheets</h2>
+  <p class="group-sub">Adjust opens a sheet for scale, units, and the list of swappable ingredients. Picking one opens the AI swap sheet, which explains how each option changes the dish.</p>
+  <div class="row">
+
+    <!-- 2.1 Adjust sheet -->
+    <div class="board">
+      <div class="board-label">Adjust recipe · sheet (393×852)</div>
+      <div id="adjust-sheet" class="frame" data-screen-label="Adjust sheet">
+        <!-- background: detail blurred -->
+        <div class="statusbar statusbar--dark">
+          <span class="time">9:41</span>
+          <span class="glyphs">
+            <svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx=".6"></rect><rect x="4.5" y="4.7" width="3" height="6.3" rx=".6"></rect><rect x="9" y="2.4" width="3" height="8.6" rx=".6"></rect><rect x="13.5" y="0" width="3" height="11" rx=".6"></rect></svg>
+            <svg width="22" height="11" viewBox="0 0 24 12"><rect x="0.5" y="0.5" width="20" height="11" rx="3" stroke="currentColor" stroke-opacity=".4" fill="none"></rect><rect x="2" y="2" width="16" height="8" rx="1.6" fill="currentColor"></rect><rect x="21.5" y="3.5" width="1.8" height="5" rx=".9" fill="currentColor" fill-opacity=".5"></rect></svg>
+          </span>
+        </div>
+        <div class="navbar"><button class="barbtn"><svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 7 10l5.5 6"></path></svg></button></div>
+        <div style="background:var(--brick);height:130px;"></div>
+        <div style="background:var(--wheat);height:140px;"></div>
+        <div class="backdrop"></div>
+
+        <!-- sheet -->
+        <div class="sheet" style="max-height:580px;">
+          <div class="handle-row"><div class="handle"></div></div>
+          <div class="sheet-head-row">
+            <div class="sheet-title">Adjust recipe</div>
+            <button class="barbtn" aria-label="Close">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l10 10"></path><path d="M15 5 5 15"></path></svg>
+            </button>
+          </div>
+          <div class="sheet-body">
+            <div class="adj-row">
+              <div>
+                <div class="label">Serves</div>
+                <div class="sub">Scales every quantity</div>
+              </div>
+              <div class="stepper">
+                <button class="sbtn"><svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12"></path></svg></button>
+                <span class="sval">2</span>
+                <button class="sbtn"><svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4v12"></path><path d="M4 10h12"></path></svg></button>
+              </div>
+            </div>
+            <div class="adj-row">
+              <div>
+                <div class="label">Units</div>
+                <div class="sub">US cups · metric grams</div>
+              </div>
+              <div class="toggle"><button class="opt opt--on">US</button><button class="opt">Metric</button></div>
+            </div>
+            <div class="adj-section-label">Swap an ingredient</div>
+            <button class="swap-row">
+              <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 3.2l1.2 3.3 3.3 1.2-3.3 1.2L10 12.2 8.8 8.9 5.5 7.7l3.3-1.2z" fill="var(--brick)"></path></svg>
+              <span class="name">napa cabbage kimchi</span>
+              <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="var(--ink-3)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5l5 5-5 5"></path></svg>
+            </button>
+            <button class="swap-row">
+              <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 3.2l1.2 3.3 3.3 1.2-3.3 1.2L10 12.2 8.8 8.9 5.5 7.7l3.3-1.2z" fill="var(--brick)"></path></svg>
+              <span class="name">pork belly</span>
+              <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="var(--ink-3)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5l5 5-5 5"></path></svg>
+            </button>
+            <button class="swap-row">
+              <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 3.2l1.2 3.3 3.3 1.2-3.3 1.2L10 12.2 8.8 8.9 5.5 7.7l3.3-1.2z" fill="var(--brick)"></path></svg>
+              <span class="name">cooking oil</span>
+              <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="var(--ink-3)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5l5 5-5 5"></path></svg>
+            </button>
+            <button class="swap-row">
+              <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 3.2l1.2 3.3 3.3 1.2-3.3 1.2L10 12.2 8.8 8.9 5.5 7.7l3.3-1.2z" fill="var(--brick)"></path></svg>
+              <span class="name">tofu</span>
+              <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="var(--ink-3)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5l5 5-5 5"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.2 AI swap sheet -->
+    <div class="board">
+      <div class="board-label">AI swap · pork belly (393×852)</div>
+      <div id="ai-swap" class="frame" data-screen-label="AI swap · pork belly">
+        <div class="statusbar statusbar--dark">
+          <span class="time">9:41</span>
+          <span class="glyphs">
+            <svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx=".6"></rect><rect x="4.5" y="4.7" width="3" height="6.3" rx=".6"></rect><rect x="9" y="2.4" width="3" height="8.6" rx=".6"></rect><rect x="13.5" y="0" width="3" height="11" rx=".6"></rect></svg>
+            <svg width="22" height="11" viewBox="0 0 24 12"><rect x="0.5" y="0.5" width="20" height="11" rx="3" stroke="currentColor" stroke-opacity=".4" fill="none"></rect><rect x="2" y="2" width="16" height="8" rx="1.6" fill="currentColor"></rect><rect x="21.5" y="3.5" width="1.8" height="5" rx=".9" fill="currentColor" fill-opacity=".5"></rect></svg>
+          </span>
+        </div>
+        <div class="navbar"><button class="barbtn"><svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 7 10l5.5 6"></path></svg></button></div>
+        <div style="background:var(--brick);height:120px;"></div>
+        <div style="background:var(--wheat);height:150px;"></div>
+        <div class="backdrop"></div>
+
+        <div class="sheet" style="max-height:640px;">
+          <div class="handle-row"><div class="handle"></div></div>
+          <div class="sheet-head-row">
+            <div class="sheet-title">Swap · pork belly</div>
+            <button class="barbtn"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l10 10"></path><path d="M15 5 5 15"></path></svg></button>
+          </div>
+          <div class="sheet-body">
+            <div class="ai-note">
+              <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 3.2l1.2 3.3 3.3 1.2-3.3 1.2L10 12.2 8.8 8.9 5.5 7.7l3.3-1.2z" fill="var(--brick)"></path></svg>
+              <span>Umami AI suggests swaps and tells you how each one changes the dish.</span>
+            </div>
+            <div class="swap-options">
+              <button class="swap-opt swap-opt--on">
+                <div class="head">
+                  <span class="name">pork belly</span>
+                  <span class="orig">Original</span>
+                  <svg class="check" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.4 8.4 14.4 15.5 6.4"></path></svg>
+                </div>
+                <span class="taste">The original — fully fermented for the deepest, funkiest broth.</span>
+              </button>
+              <button class="swap-opt">
+                <div class="head"><span class="name">pork shoulder</span></div>
+                <span class="taste">Leaner, so the stew is lighter. Slice thin and add 1 tsp oil to make up for lost fat.</span>
+              </button>
+              <button class="swap-opt">
+                <div class="head"><span class="name">firm tofu (double)</span></div>
+                <span class="taste">Makes it vegetarian. You lose the rendered pork richness — lean on the kimchi brine and a little sesame oil.</span>
+              </button>
+              <button class="swap-opt">
+                <div class="head"><span class="name">canned tuna</span></div>
+                <span class="taste">A classic Korean budget version (chamchi jjigae). Briny and rich; add near the end so it doesn't break apart.</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     GROUP 3 — COOK MODE (full-screen modal)
+     ════════════════════════════════════════════════════════════ -->
+<section class="group">
+  <h2 class="group-title">Cook mode · full-screen modal</h2>
+  <p class="group-sub">Presented as <code>fullScreenCover</code>. Single Close (✕) replaces the previous double-back; per-step timer has idle → running → fired states; exit confirmation uses an iOS action sheet with a destructive option.</p>
+  <div class="row">
+
+    <!-- 3.1 Cook · step 1 (photo) -->
+    <div class="board">
+      <div class="board-label">Cook · step 1 · photo (393×852)</div>
+      <div id="cook-step1" class="frame" data-screen-label="Cook · step 1">
+        <div class="statusbar statusbar--dark">
+          <span class="time">9:41</span>
+          <span class="glyphs">
+            <svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx=".6"></rect><rect x="4.5" y="4.7" width="3" height="6.3" rx=".6"></rect><rect x="9" y="2.4" width="3" height="8.6" rx=".6"></rect><rect x="13.5" y="0" width="3" height="11" rx=".6"></rect></svg>
+            <svg width="22" height="11" viewBox="0 0 24 12"><rect x="0.5" y="0.5" width="20" height="11" rx="3" stroke="currentColor" stroke-opacity=".4" fill="none"></rect><rect x="2" y="2" width="16" height="8" rx="1.6" fill="currentColor"></rect><rect x="21.5" y="3.5" width="1.8" height="5" rx=".9" fill="currentColor" fill-opacity=".5"></rect></svg>
+          </span>
+        </div>
+
+        <div class="cook-header">
+          <div class="cook-topbar">
+            <button class="barbtn" aria-label="Close cooking">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l10 10"></path><path d="M15 5 5 15"></path></svg>
+            </button>
+            <div class="dish">KIMCHI JJIGAE</div>
+            <div class="count">1/5</div>
+          </div>
+          <div class="progress">
+            <div class="seg seg--on"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div>
+          </div>
+        </div>
+
+        <div class="cook-body">
+          <div class="cook-numrow">
+            <span class="cook-num">1</span>
+            <div class="lbl">
+              <div class="eyebrow e1">Step One</div>
+              <div class="eyebrow e2">of Five</div>
+            </div>
+          </div>
+          <p class="cook-text">Cut the kimchi into bite-size pieces. Slice the pork into thin bite-size pieces.</p>
+          <div class="cook-photo"><div class="ph" style="height:150px;"><span>step photo</span></div></div>
+          <div class="for-step">
+            <div class="eyebrow lbl">For this step</div>
+            <div class="chips">
+              <span class="chip"><b>2 cups</b> kimchi</span>
+              <span class="chip"><b>4 oz</b> pork belly</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cook-footer">
+          <button class="back" style="opacity:0.4;" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 7 10l5.5 6"></path></svg></button>
+          <button class="next"><span>Next step</span><span class="arr">→</span></button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 3.2 Cook · step 3 · timer running -->
+    <div class="board">
+      <div class="board-label">Cook · step 3 · timer running (393×852)</div>
+      <div id="cook-step3-running" class="frame" data-screen-label="Cook · step 3 running">
+        <div class="statusbar statusbar--dark">
+          <span class="time">9:41</span>
+          <span class="glyphs">
+            <svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx=".6"></rect><rect x="4.5" y="4.7" width="3" height="6.3" rx=".6"></rect><rect x="9" y="2.4" width="3" height="8.6" rx=".6"></rect><rect x="13.5" y="0" width="3" height="11" rx=".6"></rect></svg>
+            <svg width="22" height="11" viewBox="0 0 24 12"><rect x="0.5" y="0.5" width="20" height="11" rx="3" stroke="currentColor" stroke-opacity=".4" fill="none"></rect><rect x="2" y="2" width="16" height="8" rx="1.6" fill="currentColor"></rect><rect x="21.5" y="3.5" width="1.8" height="5" rx=".9" fill="currentColor" fill-opacity=".5"></rect></svg>
+          </span>
+        </div>
+
+        <div class="cook-header">
+          <div class="cook-topbar">
+            <button class="barbtn"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l10 10"></path><path d="M15 5 5 15"></path></svg></button>
+            <div class="dish">KIMCHI JJIGAE</div>
+            <div class="count">3/5</div>
+          </div>
+          <div class="progress">
+            <div class="seg seg--on"></div><div class="seg seg--on"></div><div class="seg seg--on"></div><div class="seg"></div><div class="seg"></div>
+          </div>
+        </div>
+
+        <div class="cook-body">
+          <div class="cook-numrow">
+            <span class="cook-num">3</span>
+            <div class="lbl">
+              <div class="eyebrow e1">Step Three</div>
+              <div class="eyebrow e2">of Five</div>
+            </div>
+          </div>
+          <p class="cook-text">Pour in the kimchi brine and 2–2½ cups water. Bring to a boil, let it bubble hard 5 min, then cover, lower to a steady simmer, and cook 15 min.</p>
+          <div class="cook-timer">
+            <div class="row1">
+              <div>
+                <div class="eyebrow tlbl">Simmer</div>
+                <div class="ttime">11:24</div>
+              </div>
+              <div class="actions">
+                <button class="reset" aria-label="Reset timer"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5.4 6.6v3.2h3.2"></path><path d="M5.7 9.8a4.8 4.8 0 1 1 .6 4.2"></path></svg></button>
+                <button class="start"><svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path d="M7.5 5v10"></path><path d="M12.5 5v10"></path><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 5v10"></path><path d="M12.5 5v10"></path></g></svg>Pause</button>
+              </div>
+            </div>
+            <div class="track"><div class="fill" style="width:24%;"></div></div>
+          </div>
+          <div class="for-step">
+            <div class="eyebrow lbl">For this step</div>
+            <div class="chips">
+              <span class="chip"><b>½ cup</b> kimchi brine</span>
+              <span class="chip"><b>2½ cups</b> water</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cook-footer">
+          <button class="back"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 7 10l5.5 6"></path></svg></button>
+          <button class="next"><span>Next step</span><span class="arr">→</span></button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 3.3 Cook · step 3 · timer fired -->
+    <div class="board">
+      <div class="board-label">Cook · step 3 · timer fired (393×852)</div>
+      <div id="cook-step3-fired" class="frame" data-screen-label="Cook · step 3 fired">
+        <div class="statusbar statusbar--dark">
+          <span class="time">9:41</span>
+          <span class="glyphs">
+            <svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx=".6"></rect><rect x="4.5" y="4.7" width="3" height="6.3" rx=".6"></rect><rect x="9" y="2.4" width="3" height="8.6" rx=".6"></rect><rect x="13.5" y="0" width="3" height="11" rx=".6"></rect></svg>
+            <svg width="22" height="11" viewBox="0 0 24 12"><rect x="0.5" y="0.5" width="20" height="11" rx="3" stroke="currentColor" stroke-opacity=".4" fill="none"></rect><rect x="2" y="2" width="16" height="8" rx="1.6" fill="currentColor"></rect><rect x="21.5" y="3.5" width="1.8" height="5" rx=".9" fill="currentColor" fill-opacity=".5"></rect></svg>
+          </span>
+        </div>
+
+        <div class="cook-header">
+          <div class="cook-topbar">
+            <button class="barbtn"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l10 10"></path><path d="M15 5 5 15"></path></svg></button>
+            <div class="dish">KIMCHI JJIGAE</div>
+            <div class="count">3/5</div>
+          </div>
+          <div class="progress">
+            <div class="seg seg--on"></div><div class="seg seg--on"></div><div class="seg seg--on"></div><div class="seg"></div><div class="seg"></div>
+          </div>
+        </div>
+
+        <div class="cook-body">
+          <div class="cook-numrow">
+            <span class="cook-num">3</span>
+            <div class="lbl">
+              <div class="eyebrow e1">Step Three</div>
+              <div class="eyebrow e2">of Five</div>
+            </div>
+          </div>
+          <p class="cook-text">Pour in the kimchi brine and 2–2½ cups water. Bring to a boil, let it bubble hard 5 min, then cover, lower to a steady simmer, and cook 15 min.</p>
+          <div class="cook-timer cook-timer--fired">
+            <div class="row1">
+              <div>
+                <div class="eyebrow tlbl">Timer done</div>
+                <div class="ttime">0:00</div>
+              </div>
+              <svg width="30" height="30" viewBox="0 0 20 20" fill="none" stroke="var(--cream)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.4 8.4 14.4 15.5 6.4"></path></svg>
+            </div>
+            <div class="fired-meta">⏰ Alert sent · screen stayed awake</div>
+          </div>
+          <div class="for-step">
+            <div class="eyebrow lbl">For this step</div>
+            <div class="chips">
+              <span class="chip"><b>½ cup</b> kimchi brine</span>
+              <span class="chip"><b>2½ cups</b> water</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cook-footer">
+          <button class="back"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 7 10l5.5 6"></path></svg></button>
+          <button class="next"><span>Next step</span><span class="arr">→</span></button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 3.4 Exit confirm action sheet -->
+    <div class="board">
+      <div class="board-label">Cook · exit confirm · action sheet (393×852)</div>
+      <div id="cook-exit" class="frame" data-screen-label="Cook · exit confirm">
+        <div class="statusbar statusbar--dark">
+          <span class="time">9:41</span>
+          <span class="glyphs">
+            <svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx=".6"></rect><rect x="4.5" y="4.7" width="3" height="6.3" rx=".6"></rect><rect x="9" y="2.4" width="3" height="8.6" rx=".6"></rect><rect x="13.5" y="0" width="3" height="11" rx=".6"></rect></svg>
+            <svg width="22" height="11" viewBox="0 0 24 12"><rect x="0.5" y="0.5" width="20" height="11" rx="3" stroke="currentColor" stroke-opacity=".4" fill="none"></rect><rect x="2" y="2" width="16" height="8" rx="1.6" fill="currentColor"></rect><rect x="21.5" y="3.5" width="1.8" height="5" rx=".9" fill="currentColor" fill-opacity=".5"></rect></svg>
+          </span>
+        </div>
+
+        <!-- background: step 3 dimmed -->
+        <div class="cook-header">
+          <div class="cook-topbar">
+            <button class="barbtn"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l10 10"></path><path d="M15 5 5 15"></path></svg></button>
+            <div class="dish">KIMCHI JJIGAE</div>
+            <div class="count">3/5</div>
+          </div>
+          <div class="progress">
+            <div class="seg seg--on"></div><div class="seg seg--on"></div><div class="seg seg--on"></div><div class="seg"></div><div class="seg"></div>
+          </div>
+        </div>
+        <div class="cook-body">
+          <div class="cook-numrow">
+            <span class="cook-num">3</span>
+            <div class="lbl">
+              <div class="eyebrow e1">Step Three</div>
+              <div class="eyebrow e2">of Five</div>
+            </div>
+          </div>
+          <p class="cook-text">Pour in the kimchi brine and 2–2½ cups water. Bring to a boil, let it bubble hard 5 min, then cover, lower to a steady simmer, and cook 15 min.</p>
+        </div>
+
+        <div class="backdrop"></div>
+
+        <div class="action-sheet">
+          <div class="group-card">
+            <div class="as-head">
+              <div class="as-title">Stop cooking?</div>
+              <div class="as-msg">You're on step 3 of 5. We'll keep your place so you can pick up right where you left off.</div>
+            </div>
+            <button class="as-action as-action--bold">Save &amp; exit</button>
+            <button class="as-action as-action--destructive">Discard progress</button>
+          </div>
+          <button class="cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3.5 Cook · step 5 -->
+    <div class="board">
+      <div class="board-label">Cook · step 5 · finish (393×852)</div>
+      <div id="cook-step5" class="frame" data-screen-label="Cook · step 5">
+        <div class="statusbar statusbar--dark">
+          <span class="time">9:41</span>
+          <span class="glyphs">
+            <svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx=".6"></rect><rect x="4.5" y="4.7" width="3" height="6.3" rx=".6"></rect><rect x="9" y="2.4" width="3" height="8.6" rx=".6"></rect><rect x="13.5" y="0" width="3" height="11" rx=".6"></rect></svg>
+            <svg width="22" height="11" viewBox="0 0 24 12"><rect x="0.5" y="0.5" width="20" height="11" rx="3" stroke="currentColor" stroke-opacity=".4" fill="none"></rect><rect x="2" y="2" width="16" height="8" rx="1.6" fill="currentColor"></rect><rect x="21.5" y="3.5" width="1.8" height="5" rx=".9" fill="currentColor" fill-opacity=".5"></rect></svg>
+          </span>
+        </div>
+        <div class="cook-header">
+          <div class="cook-topbar">
+            <button class="barbtn"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l10 10"></path><path d="M15 5 5 15"></path></svg></button>
+            <div class="dish">KIMCHI JJIGAE</div>
+            <div class="count">5/5</div>
+          </div>
+          <div class="progress">
+            <div class="seg seg--on"></div><div class="seg seg--on"></div><div class="seg seg--on"></div><div class="seg seg--on"></div><div class="seg seg--on"></div>
+          </div>
+        </div>
+        <div class="cook-body">
+          <div class="cook-numrow">
+            <span class="cook-num">5</span>
+            <div class="lbl">
+              <div class="eyebrow e1">Step Five</div>
+              <div class="eyebrow e2">of Five</div>
+            </div>
+          </div>
+          <p class="cook-text">Serve straight from the pot while furiously bubbling, with a bowl of short-grain rice alongside.</p>
+          <div class="for-step">
+            <div class="eyebrow lbl">For this step</div>
+            <div class="chips"><span class="chip">short-grain rice</span></div>
+          </div>
+        </div>
+        <div class="cook-footer">
+          <button class="back"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 7 10l5.5 6"></path></svg></button>
+          <button class="next"><span>Finish dish</span><span class="arr">→</span></button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     GROUP 4 — COMPLETE + SIGN-IN GATE
+     ════════════════════════════════════════════════════════════ -->
+<section class="group">
+  <h2 class="group-title">Completion + gated actions</h2>
+  <p class="group-sub">Terminal modal state with <em>Done</em>; inline rating reinforces the "Authentic" trust loop. Gated actions (save, grocery, rate) surface a sign-in sheet when the user is logged out.</p>
+  <div class="row">
+
+    <!-- 4.1 Cook complete -->
+    <div class="board">
+      <div class="board-label">Cook · complete (393×852)</div>
+      <div id="cook-complete" class="frame" data-screen-label="Cook · complete">
+        <div class="statusbar statusbar--dark">
+          <span class="time">9:41</span>
+          <span class="glyphs">
+            <svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx=".6"></rect><rect x="4.5" y="4.7" width="3" height="6.3" rx=".6"></rect><rect x="9" y="2.4" width="3" height="8.6" rx=".6"></rect><rect x="13.5" y="0" width="3" height="11" rx=".6"></rect></svg>
+            <svg width="22" height="11" viewBox="0 0 24 12"><rect x="0.5" y="0.5" width="20" height="11" rx="3" stroke="currentColor" stroke-opacity=".4" fill="none"></rect><rect x="2" y="2" width="16" height="8" rx="1.6" fill="currentColor"></rect><rect x="21.5" y="3.5" width="1.8" height="5" rx=".9" fill="currentColor" fill-opacity=".5"></rect></svg>
+          </span>
+        </div>
+        <div class="done-topbar">
+          <button class="barbtn"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l10 10"></path><path d="M15 5 5 15"></path></svg></button>
+        </div>
+        <div class="done-body">
+          <div class="done-head">
+            <div class="eyebrow e">Done · No.01</div>
+            <div class="done-hangul">김치찌개</div>
+            <div class="done-served">SERVED.</div>
+          </div>
+          <div class="done-photo"><div class="ph" style="height:196px;"><span>finished dish photo</span></div></div>
+          <div class="done-stats">
+            <div class="cell"><div class="lbl">Steps</div><div class="val">5</div></div>
+            <div class="cell"><div class="lbl">Total</div><div class="val">35 min</div></div>
+            <div class="cell"><div class="lbl">Serves</div><div class="val">2</div></div>
+          </div>
+          <div class="rating-row">
+            <div class="lbl">Rate this recipe</div>
+            <div class="stars">
+              <button class="star star--on"><svg width="26" height="26" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2.6l2.1 4.6 5 .5-3.7 3.4 1 4.9L10 14l-4.4 2.4 1-4.9L2.9 7.7l5-.5z"></path></svg></button>
+              <button class="star star--on"><svg width="26" height="26" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2.6l2.1 4.6 5 .5-3.7 3.4 1 4.9L10 14l-4.4 2.4 1-4.9L2.9 7.7l5-.5z"></path></svg></button>
+              <button class="star star--on"><svg width="26" height="26" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2.6l2.1 4.6 5 .5-3.7 3.4 1 4.9L10 14l-4.4 2.4 1-4.9L2.9 7.7l5-.5z"></path></svg></button>
+              <button class="star star--on"><svg width="26" height="26" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2.6l2.1 4.6 5 .5-3.7 3.4 1 4.9L10 14l-4.4 2.4 1-4.9L2.9 7.7l5-.5z"></path></svg></button>
+              <button class="star"><svg width="26" height="26" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.6l2.1 4.6 5 .5-3.7 3.4 1 4.9L10 14l-4.4 2.4 1-4.9L2.9 7.7l5-.5z"></path></svg></button>
+            </div>
+          </div>
+          <div class="done-actions">
+            <button class="done-primary">Done</button>
+            <div class="secondary-row">
+              <button class="sec sec--on">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path d="M5 3.6h10v15l-5-4-5 4z"></path></svg>
+                Saved
+              </button>
+              <button class="sec">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 9v6.5a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V9"></path><path d="M10 3v9.5"></path><path d="M6.6 6.4 10 3l3.4 3.4"></path></svg>
+                Share
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4.2 Sign-in sheet -->
+    <div class="board">
+      <div class="board-label">Sign-in · gated action (393×852)</div>
+      <div id="signin" class="frame" data-screen-label="Sign-in gate">
+        <div class="statusbar statusbar--dark">
+          <span class="time">9:41</span>
+          <span class="glyphs">
+            <svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx=".6"></rect><rect x="4.5" y="4.7" width="3" height="6.3" rx=".6"></rect><rect x="9" y="2.4" width="3" height="8.6" rx=".6"></rect><rect x="13.5" y="0" width="3" height="11" rx=".6"></rect></svg>
+            <svg width="22" height="11" viewBox="0 0 24 12"><rect x="0.5" y="0.5" width="20" height="11" rx="3" stroke="currentColor" stroke-opacity=".4" fill="none"></rect><rect x="2" y="2" width="16" height="8" rx="1.6" fill="currentColor"></rect><rect x="21.5" y="3.5" width="1.8" height="5" rx=".9" fill="currentColor" fill-opacity=".5"></rect></svg>
+          </span>
+        </div>
+        <div class="navbar"><button class="barbtn"><svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4 7 10l5.5 6"></path></svg></button></div>
+        <div style="background:var(--brick);height:160px;"></div>
+        <div style="background:var(--wheat);height:160px;"></div>
+        <div class="backdrop"></div>
+        <div class="sheet" style="max-height:380px;">
+          <div class="handle-row"><div class="handle"></div></div>
+          <div class="sheet-head-row">
+            <div class="sheet-title">Sign in to Umami</div>
+            <button class="barbtn"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l10 10"></path><path d="M15 5 5 15"></path></svg></button>
+          </div>
+          <div class="signin-body">
+            <p>Create a free account to save this recipe. Your collection, grocery lists and ratings sync across devices.</p>
+            <button class="primary">Sign in / Sign up</button>
+            <button class="ghost">Not now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+</body>
+<script>
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var screenId = params.get('screen');
+  if (!screenId) return;
+
+  // Hide all frames via JS (avoids !important CSS conflicts)
+  var allFrames = document.querySelectorAll('.frame');
+  allFrames.forEach(function(f) { f.style.display = 'none'; });
+
+  var target = document.getElementById(screenId);
+  if (!target) return;
+
+  // Body: transparent, no padding, no scroll
+  var b = document.body;
+  b.classList.add('single-frame');
+  b.style.background = 'transparent';
+  b.style.padding = '0';
+  b.style.margin = '0';
+  b.style.overflow = 'hidden';
+  b.style.width = '393px';
+  b.style.height = '852px';
+
+  // Pin the target frame to fill the viewport
+  target.style.display = 'flex';
+  target.style.position = 'fixed';
+  target.style.top = '0';
+  target.style.left = '0';
+  target.style.width = '393px';
+  target.style.height = '852px';
+  target.style.boxShadow = 'none';
+  target.style.zIndex = '1';
+})();
+</script>
+</html>
