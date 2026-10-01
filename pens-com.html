@@ -1067,7 +1067,7 @@
       <div style="background:var(--cream-2); padding:32px 28px;">
         <div class="lbl" style="margin-bottom:14px;">02 · The MVP</div>
         <div style="font-family:var(--serif); font-size:22px; font-weight:500; font-style:italic; color:var(--ink); margin-bottom:14px; line-height:1.2;">Same principles. Scoped to reality.</div>
-        <p style="font-size:14px; line-height:1.72; color:var(--ink-2); margin:0;">Price transparency, reduced friction, clearer progress — without restructuring the page architecture. Built with the PM to reflect exactly what was shippable within the Braintree migration and marketing constraints.</p>
+        <p style="font-size:14px; line-height:1.72; color:var(--ink-2); margin:0;">Price transparency, reduced friction, clearer progress, without restructuring the page architecture. Built with the PM to reflect exactly what was shippable within the Braintree migration and marketing constraints.</p>
       </div>
     </div>
 
@@ -1102,7 +1102,7 @@
       With scope aligned, I produced the final handoff: component-documented screens covering the website checkout and all three payment portals, built for visual consistency across four separate experiences and ready for engineering.
     </p>
     <p style="margin-top:16px;">
-      The three portals (OPP, IPP, and OFP) weren't merged into a single system. They were redesigned to share the same design language and tech stack, so future updates could scale across all four surfaces without touching each one separately.
+      The three portals (OPP, IPP, and OFP) weren't merged into a single system. They were redesigned to share the same design language and tech stack, so future updates could scale across all four surfaces without touching each one separately. Accessibility checks were part of the design system setup. We used Stark to validate button and CTA contrast ratios before they were standardized across the checkout.
     </p>
 
     <div class="lbl" style="margin-top:24px; margin-bottom:16px;">MVP Handoff · Review &amp; Payment · scroll to explore</div>
@@ -1165,30 +1165,30 @@
       </div>
     </div>
 
-    <div style="background:var(--cream-2); border-left:3px solid var(--rust); padding:16px 20px; margin:48px 0 0;">
-      <div class="lbl" style="color:var(--rust); margin-bottom:8px;">Post-launch outcome · reported by a coworker after I left</div>
-      <p style="margin:0; font-size:15px; line-height:1.72; color:var(--ink-2);">After I left Pens, a coworker shared that the MVP delivered a statistically significant 4.6% conversion rate lift across all flows. Rolled out globally, the cumulative impact was substantial.</p>
+    <div style="background:rgba(239,236,224,.07); border-left:3px solid var(--rust); padding:16px 20px; margin:48px 0 0;">
+      <div class="lbl" style="color:#efece0; margin-bottom:8px;">Post-launch outcome · reported by a coworker after I left</div>
+      <p style="margin:0; font-size:15px; line-height:1.72; color:#efece0;">After I left Pens, a coworker shared that the MVP delivered a statistically significant 4.6% conversion rate lift across all flows. Rolled out globally, the cumulative impact was substantial.</p>
     </div>
 
     <div style="margin-top:48px; border-top:1px solid var(--line-soft); padding-top:40px;">
       <div class="lbl" style="margin-bottom:24px;">What this work taught me</div>
-      <div style="display:flex; flex-direction:column; gap:20px;">
-        <div>
-          <div style="font-family:var(--serif); font-size:17px; font-weight:500; font-style:italic; color:var(--ink); margin-bottom:6px;">Coherence, not consolidation</div>
-          <p style="margin:0; font-size:14px; line-height:1.72; color:var(--ink-2);">The portals existed for real reasons. The work was to unify the primitives so they could all move together, not flatten what made them distinct.</p>
+      <div class="heuristic-list" style="margin-top:0;">
+        <div class="heuristic-item">
+          <div class="h-label" style="font-family:var(--serif); font-size:17px; font-weight:500; font-style:italic; letter-spacing:0; text-transform:none; color:var(--rust);">Coherence, not consolidation</div>
+          <div class="h-finding" style="color:#efece0;">The portals existed for real reasons. The work was to unify the primitives so they could move together, not to flatten what made them distinct.</div>
         </div>
-        <div>
-          <div style="font-family:var(--serif); font-size:17px; font-weight:500; font-style:italic; color:var(--ink); margin-bottom:6px;">Constraint as clarity</div>
-          <p style="margin:0; font-size:14px; line-height:1.72; color:var(--ink-2);">The rebrand block didn't delay the work, it redirected it. The microsite pivot gave me proof of concept, stakeholder trust, and a foundation that seeded the direction for the whole checkout.</p>
+        <div class="heuristic-item">
+          <div class="h-label" style="font-family:var(--serif); font-size:17px; font-weight:500; font-style:italic; letter-spacing:0; text-transform:none; color:var(--rust);">Constraint as clarity</div>
+          <div class="h-finding" style="color:#efece0;">The rebrand block didn't delay the work, it redirected it. The microsite pivot gave me proof of concept, stakeholder trust, and a foundation that seeded the direction for the whole checkout.</div>
         </div>
-        <div>
-          <div style="font-family:var(--serif); font-size:17px; font-weight:500; font-style:italic; color:var(--ink); margin-bottom:6px;">Design systems as byproducts of shipping</div>
-          <p style="margin:0; font-size:14px; line-height:1.72; color:var(--ink-2);">The component library that spans four surfaces came out of the work, not before it. Building the system meant shipping first and extracting patterns, not waiting for abstraction alignment before writing a spec.</p>
+        <div class="heuristic-item">
+          <div class="h-label" style="font-family:var(--serif); font-size:17px; font-weight:500; font-style:italic; letter-spacing:0; text-transform:none; color:var(--rust);">Design systems as byproducts of shipping</div>
+          <div class="h-finding" style="color:#efece0;">The component library that spans four surfaces came out of the work, not before it. Building the system meant shipping first and extracting patterns, not waiting for abstraction alignment before writing a spec.</div>
         </div>
       </div>
     </div>
 
-    <p style="margin-top:48px; font-size:16px; line-height:1.78; color:var(--ink-2);">No one handed me the microsite. I saw a live product with no design ownership and proposed taking it on. And when the main site got blocked by a migration and a brand update. I didn't wait, but rather, I mapped the system, aligned with the PM on what was actually shippable, and delivered a handoff ready for engineering the moment the constraints lifted. The pattern recognition to find the work before it's on anyone's roadmap, and the follow-through to move it forward anyway.</p>
+    <p style="margin-top:48px; font-size:16px; line-height:1.78; color:var(--ink-2);">No one handed me the microsite. I saw a live product with no design ownership and proposed taking it on. When the main site got blocked by a migration and a brand update, I didn't wait. I mapped the system, aligned with the PM on what was actually shippable, and delivered a handoff ready for engineering the moment the constraints lifted. That's the pattern: find the work before it's on anyone's roadmap, and follow through anyway.</p>
 
   </div>
 </div>
