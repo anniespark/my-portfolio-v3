@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en" data-mood="earth" data-voice="editorial" data-rhythm="balanced">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/latte-favicon.png">
+<title>Irvine HQ · Annie S. Koo</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Nunito+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+<style>
+  :root{
+    --cream: #f5f2e8;
+    --cream-2: #e7e3d4;
+    --cream-3: #dcd7c4;
+    --ink: #1e1c18;
+    --ink-2: #2a2824;
+    --ink-mute: #6d675a;
+    --ink-faint: #8a7f6e;
+    --forest: #1f3a2c;
+    --forest-2: #142a1c;
+    --rust: #7a5a2e;
+    --line: #bfb9a4;
+    --line-soft: #d3cdb8;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Nunito Sans", -apple-system, Helvetica, Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --display-weight: 500;
+    --display-italic-style: italic;
+    --display-tracking: -0.015em;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--cream); color:var(--ink);
+    font-family:var(--sans); font-size:15px; line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; text-decoration:none; }
+
+  /* ── NAV ── */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 40px;
+    background:rgba(231,227,212,.92); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav .brand{ font-family:var(--serif); font-size:22px; font-weight:500; letter-spacing:.2px; }
+  .nav .links{ display:flex; align-items:center; gap:28px; }
+  .nav .links a{
+    font-family:var(--mono); font-size:11px; letter-spacing:.18em;
+    text-transform:uppercase; padding:6px 2px; opacity:.85; transition:opacity .2s;
+  }
+  .nav .links a:hover{ opacity:1; }
+  .nav .contact-btn{
+    background:transparent; color:var(--rust); border:none;
+    padding:14px 22px; font-family:var(--mono); font-size:11px;
+    letter-spacing:.22em; text-transform:uppercase; opacity:.95;
+    transition:opacity .2s;
+  }
+  .nav .contact-btn:hover{ opacity:1; }
+  .nav-toggle{
+    display:none; flex-direction:column; justify-content:center; gap:5px;
+    background:none; border:none; padding:6px 4px; cursor:pointer; color:inherit; flex-shrink:0;
+  }
+  .nav-toggle span{ display:block; width:22px; height:2px; background:currentColor; border-radius:1px; transition:transform .22s ease, opacity .22s ease; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){ opacity:0; transform:scaleX(0); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  @media(max-width:640px){
+    .nav{ padding:16px 20px; flex-wrap:wrap; }
+    .nav-toggle{ display:flex; }
+    .nav .links{ display:none; flex-direction:column; width:100%; gap:0; padding:8px 0 4px; order:3; border-top:1px solid var(--line-soft); }
+    .nav .links.open{ display:flex; }
+    .nav .links a{ padding:13px 0; font-size:12px; opacity:1; border-bottom:1px solid var(--line-soft); }
+    .nav .links a:last-child{ border-bottom:none; }
+    .nav .contact-btn{ margin-top:6px; padding:12px 0; text-align:center; border:none; border-top:1px solid var(--line-soft) !important; }
+    .container{ padding:0 20px; }
+  }
+
+  /* ── SHARED ── */
+  .container{ max-width:1080px; margin:0 auto; padding:0 40px; }
+  .chip{
+    font-family:var(--mono); font-size:10px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--ink-mute); border:1px solid var(--line); padding:5px 10px;
+  }
+  .lbl{
+    font-family:var(--mono); font-size:10px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--ink-faint);
+  }
+  .cap{
+    font-family:var(--mono); font-size:10px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--ink-faint);
+  }
+
+  /* ── HERO ── */
+  .case-hero{ padding:72px 40px 80px; border-bottom:1px solid var(--line-soft); }
+  .case-hero .back{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--ink-mute); display:inline-flex; align-items:center; gap:8px;
+    margin-bottom:52px; transition:color .2s;
+  }
+  .case-hero .back:hover{ color:var(--ink); }
+  .case-hero .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px; }
+  .case-hero .kicker{
+    font-family:var(--mono); font-size:11px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--ink-mute); margin-bottom:16px;
+  }
+  .case-hero h1{
+    font-family:var(--serif); font-weight:var(--display-weight);
+    font-size:clamp(44px,5.4vw,80px); line-height:1.02;
+    letter-spacing:var(--display-tracking); margin:0 0 20px; color:var(--ink);
+  }
+  .case-hero h1 em{ font-style:var(--display-italic-style); color:var(--rust); }
+  .case-hero .role-line{
+    font-family:var(--mono); font-size:11px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--ink-mute); margin-bottom:56px;
+  }
+
+  /* Hero metrics */
+  .metric-grid{
+    border-top:1px solid var(--line-soft);
+    display:grid; grid-template-columns:repeat(3,1fr);
+  }
+  .metric-grid .mg{
+    padding:28px 28px 28px 0;
+    border-right:1px solid var(--line-soft);
+  }
+  .metric-grid .mg:last-child{ border-right:0; }
+  .metric-grid .mg:not(:first-child){ padding-left:28px; }
+  .metric-grid .mg .val{
+    font-family:var(--mono); font-size:clamp(24px,2.8vw,38px);
+    font-weight:400; letter-spacing:-.02em; color:var(--forest); line-height:1.1; margin-bottom:6px;
+  }
+  .metric-grid .mg .desc{ font-size:13px; color:var(--ink-2); line-height:1.5; }
+  .metric-grid .mg .sub{
+    font-family:var(--mono); font-size:9px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--ink-faint); margin-top:4px;
+  }
+
+  /* ── SECTION BLOCKS ── */
+  .block{ padding:80px 40px; border-bottom:1px solid var(--line-soft); }
+  .block .section-label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.26em;
+    text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px;
+  }
+  .block h2{
+    font-family:var(--serif); font-weight:var(--display-weight);
+    font-size:clamp(30px,3.6vw,52px); line-height:1.06;
+    letter-spacing:var(--display-tracking); margin:0 0 32px; color:var(--ink);
+  }
+  .block h2 em{ font-style:var(--display-italic-style); color:var(--rust); }
+  .block p{ font-size:16px; line-height:1.78; color:var(--ink-2); margin:0 0 20px; }
+  .block p:last-child{ margin-bottom:0; }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote{
+    border-left:3px solid var(--forest); padding:22px 0 22px 28px; margin:36px 0;
+  }
+  .pull-quote p{
+    font-family:var(--serif); font-size:clamp(20px,2.2vw,26px);
+    font-weight:var(--display-weight); line-height:1.35;
+    color:var(--ink); font-style:italic; margin:0;
+  }
+
+  /* ── TWO-COL SPLIT ── */
+  .context-split{
+    display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-top:36px;
+  }
+  .context-split .col h3{
+    font-family:var(--mono); font-size:10px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--ink-mute); margin:0 0 14px;
+  }
+  .context-split .col p{ font-size:15px; line-height:1.75; color:var(--ink-2); margin:0 0 14px; }
+  .context-split .col p:last-child{ margin:0; }
+
+  /* ── DECISION LIST ── */
+  .decision-list{ margin-top:40px; border-top:1px solid var(--line-soft); }
+  .decision-row{
+    display:grid; grid-template-columns:44px 1fr;
+    gap:24px; padding:24px 0; border-bottom:1px solid var(--line-soft); align-items:start;
+  }
+  .decision-row .d-num{
+    font-family:var(--mono); font-size:11px; letter-spacing:.18em;
+    color:var(--rust); font-weight:500; padding-top:3px;
+  }
+  .decision-row .d-body{ }
+  .decision-row .d-body strong{ display:block; font-size:15px; font-weight:600; color:var(--ink); margin-bottom:6px; }
+  .decision-row .d-body p{ font-size:14px; line-height:1.7; color:var(--ink-mute); margin:0; }
+
+  /* ── TECH GRID ── */
+  .tech-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line-soft); border:1px solid var(--line-soft); margin-top:40px;
+  }
+  .tech-cell{
+    background:var(--cream); padding:28px 24px;
+  }
+  .tech-cell .tc-label{
+    font-family:var(--mono); font-size:9px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px;
+  }
+  .tech-cell .tc-name{
+    font-family:var(--serif); font-size:20px; font-weight:var(--display-weight);
+    color:var(--ink); margin-bottom:8px; line-height:1.1;
+  }
+  .tech-cell .tc-desc{ font-size:12px; line-height:1.65; color:var(--ink-mute); }
+
+  /* ── PROCESS STEPS ── */
+  .steps{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line-soft); border:1px solid var(--line-soft); margin-top:40px;
+  }
+  .step{ background:var(--cream); padding:24px 22px; }
+  .step .st-num{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; color:var(--rust); margin-bottom:10px; }
+  .step .st-name{ font-family:var(--serif); font-size:21px; font-weight:var(--display-weight); line-height:1.15; color:var(--ink); margin-bottom:8px; }
+  .step .st-tool{ font-family:var(--mono); font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px; }
+  .step .st-desc{ font-size:13px; line-height:1.65; color:var(--ink-mute); }
+  .shot-pair{ display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start; }
+  .shot-pair .shot{ margin-top:32px; }
+
+  /* ── CALLOUT ── */
+  .callout{ margin-top:40px; padding:26px 28px; background:var(--cream-2); border-left:3px solid var(--rust); }
+  .callout .lbl{ margin-bottom:10px; color:var(--rust); }
+  .callout p{ font-size:15px; line-height:1.7; color:var(--ink-2); margin:0 0 12px; }
+  .callout p:last-child{ margin:0; }
+
+  /* ── ROADMAP STATUS ── */
+  .rm-status{
+    display:inline-block; font-family:var(--mono); font-size:9px; letter-spacing:.18em; text-transform:uppercase;
+    padding:3px 8px; margin-bottom:8px; border:1px solid var(--line);
+  }
+  .rm-status.shipped{ background:var(--forest); color:var(--cream); border-color:var(--forest); }
+  .rm-status.next{ color:var(--ink-mute); }
+
+  /* ── PRODUCT SCREENSHOTS ── */
+  .shot{ margin:48px 0 0; border:1px solid var(--line); overflow:hidden; }
+  .shot img{ width:100%; height:auto; display:block; }
+  .shot figcaption{
+    padding:14px 18px; font-family:var(--mono); font-size:10.5px; letter-spacing:.06em;
+    color:var(--ink-mute); line-height:1.6; background:var(--cream); border-top:1px solid var(--line-soft);
+  }
+
+  /* ── STATUS CHIP LEGEND ── */
+  .status-grid{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-top:32px;
+  }
+  .status-chip{
+    border-radius:8px; padding:14px 16px;
+  }
+  .status-chip .sc-label{
+    font-family:var(--mono); font-size:9px; letter-spacing:.18em;
+    text-transform:uppercase; font-weight:700; margin-bottom:6px;
+  }
+  .status-chip .sc-desc{ font-size:12px; line-height:1.5; }
+
+  /* ── OUTCOME BANNER ── */
+  .outcome-banner{
+    background:var(--forest); color:var(--cream); padding:64px 40px;
+  }
+  .outcome-banner .container{
+    display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
+  }
+  .outcome-banner .ob-eyebrow{
+    font-family:var(--mono); font-size:10px; letter-spacing:.24em;
+    text-transform:uppercase; color:rgba(239,236,224,.5); margin-bottom:20px;
+  }
+  .outcome-banner h2{
+    font-family:var(--serif); font-weight:var(--display-weight);
+    font-size:clamp(30px,3.6vw,48px); line-height:1.08;
+    letter-spacing:var(--display-tracking); margin:0; color:var(--cream);
+  }
+  .outcome-banner h2 em{ font-style:var(--display-italic-style); color:rgba(239,236,224,.65); }
+  .outcome-metrics{ display:grid; grid-template-columns:1fr 1fr; gap:20px 32px; }
+  .outcome-metric .val{
+    font-family:var(--mono); font-size:28px; color:var(--cream);
+    margin-bottom:5px; letter-spacing:-.01em; line-height:1;
+  }
+  .outcome-metric .label{ font-size:12px; color:rgba(239,236,224,.6); line-height:1.5; }
+
+  /* ── NEXT PROJECT ── */
+  .next-project{
+    padding:72px 40px; display:flex; justify-content:space-between;
+    align-items:center; gap:40px; border-top:1px solid var(--line-soft);
+  }
+  .next-project .label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--ink-mute); margin-bottom:10px;
+  }
+  .next-project h3{
+    font-family:var(--serif); font-size:34px; font-weight:var(--display-weight); margin:0; color:var(--ink);
+  }
+  .arrow-btn{
+    font-family:var(--mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--forest); border:1px solid var(--forest); padding:14px 22px;
+    white-space:nowrap; display:inline-flex; align-items:center; gap:10px;
+    transition:opacity .2s;
+  }
+  .arrow-btn:hover{ background:var(--forest); color:var(--cream); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    .context-split{ grid-template-columns:1fr; gap:40px; }
+    .tech-grid{ grid-template-columns:1fr 1fr; }
+    .metric-grid{ grid-template-columns:1fr 1fr; }
+    .metric-grid .mg{ border-right:0; border-bottom:1px solid var(--line-soft); padding-left:0 !important; padding-right:0; }
+    .metric-grid .mg:last-child{ border-bottom:0; }
+    .outcome-banner .container{ grid-template-columns:1fr; gap:48px; }
+    .status-grid{ grid-template-columns:1fr 1fr; }
+    .steps{ grid-template-columns:1fr 1fr; }
+  }
+  @media(max-width:640px){
+    .block,.case-hero{ padding:60px 20px; }
+    .outcome-banner{ padding:48px 20px; }
+    .next-project{ flex-direction:column; align-items:flex-start; padding:60px 20px; }
+    .container{ padding:0 20px; }
+    .outcome-metrics{ grid-template-columns:1fr; }
+    .tech-grid{ grid-template-columns:1fr; }
+    .status-grid{ grid-template-columns:1fr; }
+    .steps{ grid-template-columns:1fr; }
+    .shot-pair{ grid-template-columns:1fr; gap:0; }
+  }
+</style>
+<link rel="stylesheet" href="v2-polish.css">
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <a href="index.html" class="brand">Annie S. Koo</a>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#about">About</a>
+    <a href="assets/Annie_Koo_Senior_Product_Designer_2026.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+    <a href="index.html#contact" class="contact-btn">Contact</a>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<div class="case-hero">
+  <div class="container">
+
+    <a href="index.html#work" class="back">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg>
+      All Work
+    </a>
+
+    <div class="tags">
+      <span class="chip">AI-Native</span>
+      <span class="chip">Design + Build</span>
+      <span class="chip">Shipped</span>
+      <span class="chip">Systems Design</span>
+    </div>
+
+    <div class="kicker">Acts2 Network · Contract · Irvine, CA · 2026</div>
+    <h1>A campus planning tool,<br><em>designed and built with AI.</em></h1>
+    <div class="role-line">Solo Designer & Builder · v1 July 2026 · v2 In Progress</div>
+
+    <div class="lbl" style="margin-bottom:16px;">Build Facts</div>
+    <div class="metric-grid">
+      <div class="mg">
+        <div class="val">Hours</div>
+        <div class="desc">Idea to working v1</div>
+        <div class="sub">Right after an Acts2 AI bootcamp</div>
+      </div>
+      <div class="mg">
+        <div class="val">1 hr</div>
+        <div class="desc">v1 to first redesign</div>
+        <div class="sub">6 weeks to the full 17-week term</div>
+      </div>
+      <div class="mg">
+        <div class="val">7</div>
+        <div class="desc">Campuses in the v2 Year View</div>
+        <div class="sub">UCI, CUI, IVC, Chapman, Soka, Biola, OCC</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     01 · THE PROBLEM
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">01 · The Problem</div>
+    <h2>Planning across five campuses<br><em>with no shared calendar.</em></h2>
+
+    <p>Acts2 Network's college ministry team in Irvine meets on Sundays to plan outreach and outings. UCI is our main campus. Concordia, Irvine Valley College, Chapman, and Soka help us spot openings when UCI is busy.</p>
+
+    <p>UCI is on quarters and the others are on semesters, so exams and breaks rarely line up. Each campus also posts events differently, and some don't post them anywhere a tool can read.</p>
+
+    <div class="context-split">
+      <div class="col">
+        <h3>Why It's Hard</h3>
+        <p>Two academic systems and five event sources. An outing during UCI finals won't get turnout, and deadlines like club fair sign-ups are easy to miss.</p>
+      </div>
+      <div class="col">
+        <h3>Constraints</h3>
+        <p>It's projected during the meeting, so it has to be readable from across the room. It's a public link, so no private team info.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     02 · HOW I BUILT IT WITH AI
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">02 · How I Built It With AI</div>
+    <h2>From idea to working tool<br><em>in a few hours.</em></h2>
+
+    <p>I built v1 as part of my Acts2 Network contract, right after an AI bootcamp Acts2 ran for its staff. AI generated the wireframe, visual design, and code. I wrote the brief, reviewed each stage, and decided what to change.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="st-num">01</div>
+        <div class="st-name">Lo-fi</div>
+        <div class="st-tool">AI-generated wireframe</div>
+        <div class="st-desc">A four-week grid with UCI first, plus event and outing panels.</div>
+      </div>
+      <div class="step">
+        <div class="st-num">02</div>
+        <div class="st-name">Mid-fi</div>
+        <div class="st-tool">Claude Design</div>
+        <div class="st-desc">Visual style, status colors, and two views. I marked it up and sent it back.</div>
+      </div>
+      <div class="step">
+        <div class="st-num">03</div>
+        <div class="st-name">v1</div>
+        <div class="st-tool">Claude Code</div>
+        <div class="st-desc">Next.js, Turso, and daily event feeds on Vercel. Shipped July 12.</div>
+      </div>
+      <div class="step">
+        <div class="st-num">04</div>
+        <div class="st-name">Redesign</div>
+        <div class="st-tool">Claude Code</div>
+        <div class="st-desc">An hour later, I swapped the 6-week view for the full 17-week term.</div>
+      </div>
+    </div>
+
+    <div class="shot-pair">
+      <figure class="shot">
+        <img src="assets/IrvineHQ_LoFi_Wireframe.png" alt="Low-fidelity wireframe of Irvine HQ: a four-week grid with UCI as the main row above four other campuses, each week labeled normal, midterms, finals, break, or welcome week, with curated campus events and outing ideas panels below" loading="lazy">
+        <figcaption>01 · Lo-fi wireframe, AI-generated from my brief</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/IrvineHQ_MidFi_Markup.png" alt="Mid-fidelity Claude Design mockup of the Overlap Calendar showing six weeks of term status for five campuses, with a hand-drawn red circle around the Dashboard and Present Reality view switcher" loading="lazy">
+        <figcaption>02 · Claude Design mid-fi with my markup. The two tabs became one View control in v1.</figcaption>
+      </figure>
+    </div>
+
+    <div class="decision-list">
+      <div class="decision-row">
+        <div class="d-num">01</div>
+        <div class="d-body">
+          <strong>I logged every decision.</strong>
+          <p>Each choice and its reason went into a DECISIONS.md file. When I came back months later for v2, I didn't have to guess why I'd done anything.</p>
+        </div>
+      </div>
+      <div class="decision-row">
+        <div class="d-num">02</div>
+        <div class="d-body">
+          <strong>I fact-checked the AI.</strong>
+          <p>In October I found that some event details the AI filled in were wrong, like the date and location of UCI's involvement fair. I replaced all UCI info with data from official UCI pages. The v1 screenshots below still show the old placeholder events.</p>
+        </div>
+      </div>
+      <div class="decision-row">
+        <div class="d-num">03</div>
+        <div class="d-body">
+          <strong>I worked around tool limits.</strong>
+          <p>Background agents in my setup couldn't write files, so I used them for research only and made all code changes in the main session.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     03 · V1
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">03 · v1</div>
+    <h2>Two views:<br><em>Term Overview and Present Reality.</em></h2>
+
+    <p>Term Overview shows when each campus is free. Present Reality summarizes what students are dealing with right now.</p>
+
+    <figure class="shot">
+      <img src="assets/IrvineHQ_Term_Overview.png" alt="Irvine HQ Term Overview view: a 17-week Fall 2026 grid with UCI as the dominant navy row above Concordia, Irvine Valley, Chapman, and Soka, each week color-coded by term status, a clear window badge for Sep 7 to Dec 7, and Campus Events and Outing Ideas panels below" loading="lazy">
+      <figcaption>Term Overview (v1) · Five campuses across 17 weeks, with the clear window calculated</figcaption>
+    </figure>
+
+    <div class="decision-list">
+      <div class="decision-row">
+        <div class="d-num">01</div>
+        <div class="d-body">
+          <strong>UCI comes first.</strong>
+          <p>It's our main campus, so its row is bigger and uses UCI's navy and gold.</p>
+        </div>
+      </div>
+      <div class="decision-row">
+        <div class="d-num">02</div>
+        <div class="d-body">
+          <strong>Stripes mean "not in session."</strong>
+          <p>Semester schools start in August and UCI starts in late September. Blank cells were confusing, so I added stripes.</p>
+        </div>
+      </div>
+      <div class="decision-row">
+        <div class="d-num">03</div>
+        <div class="d-body">
+          <strong>The clear window is calculated.</strong>
+          <p>The tool finds the weeks when every campus is in a normal week and labels them. That's usually the first question in the meeting.</p>
+        </div>
+      </div>
+      <div class="decision-row">
+        <div class="d-num">04</div>
+        <div class="d-body">
+          <strong>Dots and toggles keep it simple.</strong>
+          <p>A dot means a week has campus events. The event and outing panels can be hidden while projecting.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:48px;">
+      <div class="lbl" style="margin-bottom:16px;">Status Colors</div>
+      <div class="status-grid">
+        <div class="status-chip" style="background:#EAEEF3; border:1px solid #CBD3DE;">
+          <div class="sc-label" style="color:#5A6472;">Normal</div>
+          <div class="sc-desc" style="color:#3A4252;">Plan freely.</div>
+        </div>
+        <div class="status-chip" style="background:#E8A33D; border:1px solid #C8841F;">
+          <div class="sc-label" style="color:#3A2600;">Midterms</div>
+          <div class="sc-desc" style="color:#3A2600;">Plan lighter.</div>
+        </div>
+        <div class="status-chip" style="background:#D1402A; border:1px solid #B33320;">
+          <div class="sc-label" style="color:#fff;">Finals</div>
+          <div class="sc-desc" style="color:rgba(255,255,255,.85);">Don't schedule.</div>
+        </div>
+        <div class="status-chip" style="background:#6FC3E0; border:1px solid #4FA8C8;">
+          <div class="sc-label" style="color:#003A5D;">Break</div>
+          <div class="sc-desc" style="color:#003A5D;">Most students are away.</div>
+        </div>
+        <div class="status-chip" style="background:#C77DAE; border:1px solid #AE5C97;">
+          <div class="sc-label" style="color:#fff;">Welcome Wk</div>
+          <div class="sc-desc" style="color:rgba(255,255,255,.9);">Best time for outreach.</div>
+        </div>
+      </div>
+      <div class="cap" style="margin-top:14px; line-height:1.7;">Known gap: Term Overview uses color only, which doesn't work for colorblind users. The v2 Year View adds text labels, and Term Overview is next.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     04 · PRESENT REALITY
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">04 · AI-Drafted Content</div>
+    <h2>Making AI-drafted content<br><em>easy to check.</em></h2>
+
+    <p>These cards summarize published research on college students, plus local context like commuting. An LLM drafted them from published sources, and I reviewed and approved each one.</p>
+
+    <figure class="shot">
+      <img src="assets/IrvineHQ_Present_Reality.png" alt="Irvine HQ Present Reality view: an approved-by badge in the header, four College Ministry Insight cards on third places, tone, cadence, and follow-up, each with a cited source, and Irvine Students cards on commuter campus and culture and food" loading="lazy">
+      <figcaption>Present Reality (v1) · LLM-drafted cards with sources and an approval badge</figcaption>
+    </figure>
+
+    <div class="decision-list">
+      <div class="decision-row">
+        <div class="d-num">01</div>
+        <div class="d-body">
+          <strong>Approval is visible.</strong>
+          <p>The header shows who approved the content and when, so the team knows a person reviewed it.</p>
+        </div>
+      </div>
+      <div class="decision-row">
+        <div class="d-num">02</div>
+        <div class="d-body">
+          <strong>Every card has a source.</strong>
+          <p>Each card links to where the claim came from, so anyone can check it.</p>
+        </div>
+      </div>
+      <div class="decision-row">
+        <div class="d-num">03</div>
+        <div class="d-body">
+          <strong>Updates are manual.</strong>
+          <p>I review new notes by hand. For this content, source quality matters more than speed.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="lbl">October Link Check</div>
+      <p>When I checked the sources for v2, one link returned a 404, two no longer loaded, and several only linked to a homepage. Fixing these so each card links to its exact source is part of v2.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     05 · V2 IN PROGRESS
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">05 · v2 In Progress</div>
+    <h2>What I'm<br><em>building now.</em></h2>
+
+    <p>I'm still improving Irvine HQ, one feature at a time. The next features send the team updates and suggestions, so they don't have to go looking.</p>
+
+    <figure class="shot">
+      <img src="assets/IrvineHQ_Year_View.png" alt="Irvine HQ Year View: the 2026 to 2027 academic year split into fall, winter, and spring timelines for seven campuses, with a joint window row rated prime, mixed, or avoid above the campus rows, longest prime windows called out in the header, a legend explaining the rating rule, and a source link for each campus calendar" loading="lazy">
+      <figcaption>Year View (v2) · Seven campuses, rated planning windows, text labels, and a source for each calendar</figcaption>
+    </figure>
+
+    <div class="decision-list">
+      <div class="decision-row">
+        <div class="d-num">01</div>
+        <div class="d-body">
+          <strong>Ratings come with the rule.</strong>
+          <p>Each day is rated Prime, Mixed, or Avoid, and the rule is printed under the grid so the team can check it. I'm taking the same approach with the AI suggestion.</p>
+        </div>
+      </div>
+      <div class="decision-row">
+        <div class="d-num">02</div>
+        <div class="d-body">
+          <strong>Missing data is called out.</strong>
+          <p>No campus publishes midterm dates, so the Year View leaves them out and says so.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lbl" style="margin:48px 0 0;">Roadmap</div>
+    <div class="decision-list" style="margin-top:16px;">
+      <div class="decision-row">
+        <div class="d-num">01</div>
+        <div class="d-body">
+          <span class="rm-status shipped">Shipped</span>
+          <strong>Monthly and Year views</strong>
+          <p>A day-by-day monthly calendar, and a full-year view that adds Biola and Orange Coast College.</p>
+        </div>
+      </div>
+      <div class="decision-row">
+        <div class="d-num">02</div>
+        <div class="d-body">
+          <span class="rm-status shipped">Shipped</span>
+          <strong>Verified UCI data</strong>
+          <p>Term dates, class times, and tabling rules now come from official UCI pages.</p>
+        </div>
+      </div>
+      <div class="decision-row">
+        <div class="d-num">03</div>
+        <div class="d-body">
+          <span class="rm-status next">Next</span>
+          <strong>Two-zone dashboard</strong>
+          <p>This week on top (actions, deadlines, events, tabling times) and upcoming plans below. We once missed a tabling rush because we didn't know UCI's class schedule.</p>
+        </div>
+      </div>
+      <div class="decision-row">
+        <div class="d-num">04</div>
+        <div class="d-body">
+          <span class="rm-status next">Next</span>
+          <strong>Weekly meeting brief</strong>
+          <p>An automatic message before the Sunday meeting with only what the team needs to know.</p>
+        </div>
+      </div>
+      <div class="decision-row">
+        <div class="d-num">05</div>
+        <div class="d-body">
+          <span class="rm-status next">Next</span>
+          <strong>AI suggestion with reasoning</strong>
+          <p>One recommended next step, with the reasons shown so the team can decide for themselves.</p>
+        </div>
+      </div>
+      <div class="decision-row">
+        <div class="d-num">06</div>
+        <div class="d-body">
+          <span class="rm-status next">Next</span>
+          <strong>Thumbs up or down</strong>
+          <p>Quick feedback on each suggestion. With a small team, I'll read it as qualitative feedback.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     06 · TECHNICAL ARCHITECTURE
+════════════════════════════════════════ -->
+<div class="block">
+  <div class="container">
+    <div class="section-label">06 · Tech Stack</div>
+    <h2>Built to run<br><em>on free tiers.</em></h2>
+
+    <p>I maintain this alone on free plans, so I kept the stack simple.</p>
+
+    <div class="tech-grid">
+      <div class="tech-cell">
+        <div class="tc-label">Frontend</div>
+        <div class="tc-name">Next.js + React</div>
+        <div class="tc-desc">Server components fetch the data. Components map to the grid and cards.</div>
+      </div>
+      <div class="tech-cell">
+        <div class="tc-label">Database</div>
+        <div class="tc-name">Turso</div>
+        <div class="tc-desc">SQLite with raw SQL. Shows static data if the database isn't set up.</div>
+      </div>
+      <div class="tech-cell">
+        <div class="tc-label">Hosting</div>
+        <div class="tc-name">Vercel</div>
+        <div class="tc-desc">Pulls event feeds once a day, the limit on the free plan.</div>
+      </div>
+      <div class="tech-cell">
+        <div class="tc-label">Event Feeds</div>
+        <div class="tc-name">Per campus</div>
+        <div class="tc-desc">UCI uses iCal, Concordia RSS, Soka JSON. Chapman and IVC are entered by hand.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:36px; padding:24px; background:var(--cream-2); border-left:3px solid var(--line);">
+      <div class="lbl" style="margin-bottom:12px;">Other Choices</div>
+      <p style="font-size:14px; color:var(--ink-mute); line-height:1.7; margin:0;">
+        A small iCal parser in place of a library. Only the next 90 days of UCI events are stored. Duplicate Soka events are removed.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     OUTCOME
+════════════════════════════════════════ -->
+<div class="outcome-banner">
+  <div class="container">
+    <div>
+      <div class="ob-eyebrow">Summary</div>
+      <h2>Shipped in hours,<br><em>still improving.</em></h2>
+    </div>
+    <div class="outcome-metrics">
+      <div class="outcome-metric">
+        <div class="val">Hours</div>
+        <div class="label">Idea to working v1</div>
+      </div>
+      <div class="outcome-metric">
+        <div class="val">1 hr</div>
+        <div class="label">v1 to first redesign</div>
+      </div>
+      <div class="outcome-metric">
+        <div class="val">7</div>
+        <div class="label">Campuses in the Year View</div>
+      </div>
+      <div class="outcome-metric">
+        <div class="val">Live</div>
+        <div class="label">Used by the Acts2 team in Irvine</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     NEXT PROJECT
+════════════════════════════════════════ -->
+<div class="next-project">
+  <div>
+    <div class="label">Next Case Study</div>
+    <h3>Events.com: Research to Roadmap</h3>
+  </div>
+  <a href="events-com.html" class="arrow-btn">
+    View Case Study
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+  </a>
+</div>
+
+<script>
+(function(){
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinksEl = document.querySelector('.nav .links');
+  if (navToggle && navLinksEl) {
+    navToggle.addEventListener('click', () => {
+      const open = navLinksEl.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+    navLinksEl.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinksEl.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+})();
+</script>
+
+<script>
+  (function(){
+    const revealSelectors = ['.step','.context-split .col','.decision-row','.tech-cell','.status-chip','.outcome-metric','.case-hero h1','.case-hero p','.section-label + h2','figure'];
+    const els = [];
+    revealSelectors.forEach(sel => document.querySelectorAll(sel).forEach(el => { if(!el.classList.contains('reveal')){ el.classList.add('reveal'); els.push(el); } }));
+    if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('in')); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting){
+          const idx = els.indexOf(e.target);
+          setTimeout(() => e.target.classList.add('in'), Math.min(idx % 6, 5) * 60);
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    els.forEach(el => io.observe(el));
+  })();
+</script>
+<script src="section-labels.js"></script>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
