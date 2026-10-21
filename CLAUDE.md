@@ -11,7 +11,7 @@
 - Every new page (About, Work, Case Studies) must inherit the same grid, spacing logic, typography system, and CSS variables defined in the landing page.
 
 ## 3. The "Senior" Filter (Mandatory)
-- Every project must lead with a **Hero Metric** that is true to the resume (e.g., +17.47% mobile transactions).
+- Every project must lead with a **Hero Metric** that is true to the resume (e.g., +13.24% transaction rate, US). For Pens.com, numbers and story must match the Indeed interview deck.
 - No fluff. Content must focus on **Architecting Systems** and **Cross-functional Leadership** — not task execution.
 - If a page reads like a list of tasks, rewrite it as a strategic case study.
 

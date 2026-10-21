@@ -687,19 +687,22 @@
 
 
     <div style="margin-top:40px;">
-      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:16px;">Microsite · A/B Test · 94% confidence · First 12 days</div>
+      <div style="font-family:var(--mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:16px;">Results · Microsite A/B test and main site checkout</div>
       <div class="metric-trio">
         <div class="m">
-          <div class="val">+17.47%</div>
-          <div class="desc">Mobile Transaction Lift</div>
-        </div>
-        <div class="m">
           <div class="val">+13.24%</div>
-          <div class="desc">Conversion Rate Lift</div>
+          <div class="desc">Transaction Rate Lift, US</div>
+          <div class="sub">Microsite · 94% chance to win</div>
         </div>
         <div class="m">
-          <div class="val">+$15k</div>
-          <div class="desc">Revenue Recovered</div>
+          <div class="val">~$15K</div>
+          <div class="desc">Revenue Uplift, US</div>
+          <div class="sub">Microsite · first 12 days</div>
+        </div>
+        <div class="m">
+          <div class="val">+4.6%</div>
+          <div class="desc">Conversion Rate Lift</div>
+          <div class="sub">Main site · all flows · reported after I left</div>
         </div>
       </div>
     </div>
@@ -717,8 +720,9 @@
 
     <p>Pens.com runs two separate checkout experiences: the <strong style="color:var(--ink);">main site</strong>, a full multi-step flow across their entire product catalog, and the <strong style="color:var(--ink);">microsite</strong>, a stripped-down single-product experience built for email and direct mail campaigns.</p>
 
-    <p>The main site checkout was the original project. A Braintree infrastructure migration and a company-wide brand update put it on hold.</p>
-    <p>While it was on hold, I looked at the microsite. It brought in significant revenue with no designer on it, and what I learned there could carry over to the main site. So I proposed owning it.</p>
+    <p>The main site checkout was my original assignment, and the goal was to get more people through it. A company-wide rebrand put it on hold.</p>
+    <p>While it was on hold, I looked at the microsite. It brought in real revenue with no designer on it, and the rebrand didn't touch it.</p>
+    <p>It was a full checkout flow for one product, so what I learned there could carry over to the main site. So I proposed owning it instead of waiting.</p>
 
   </div>
 </div>
@@ -750,8 +754,11 @@
       </div>
     </div>
 
-    <p style="margin-bottom:6px;">Then I brought the findings back across two working sessions with the experimentation manager, web developer, design team, and key stakeholders to align on what was technically feasible and what would meet our business needs.</p>
-    <p>What I found: mobile had friction stacking up across 8 steps, and desktop had one layout flaw that was costing conversions every day.</p>
+    <p>One heuristic finding was an Error Prevention problem on mobile. The default payment option was 'Pay Later,' but it sat below the fold under a sticky 'Place Order' button.</p>
+    <p>Users tapped the button thinking they were moving forward and submitted a Pay Later order they didn't mean to. That matched something I'd already heard from the business: a lot of Pay Later orders were submitted but never paid.</p>
+    <p>In user testing, several participants missed the imprint preview. One said, “I think it would be neat if you could, if you wrote like my name, you would see it on the image, I thought instead of your logo, it would say John as I type JOHN.” The preview existed, but it wasn't easy to find at the moment they wanted it.</p>
+    <p>Most of our customers were ordering custom merch for their boss or company, so if it came out wrong, it looked bad on them. The reassurance had to be in the right place at the right time.</p>
+    <p>Overall, the research split into two different problems: desktop had one layout flaw that was costing conversions every day, and mobile had friction stacking up across 8 steps, with 2 surprise pop-ups.</p>
 
     <!-- Desktop row -->
     <div style="margin-top:48px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;">
@@ -767,7 +774,7 @@
         </div>
       </div>
       <div style="min-width:0; padding-top:36px;">
-        <p style="margin-bottom:16px;">The CTA was buried below the fold. Users who'd finished customization had to scroll past pre-filled information to find the action they came for.</p>
+        <p style="margin-bottom:16px;">The CTA was buried below the fold. Most users came in from an email or a QR code on a mailer with their info already pre-filled, and the one action they came to take was hidden under a scroll.</p>
         <p style="font-size:14px; color:var(--ink-mute); font-style:italic; display:flex; align-items:flex-start; gap:8px; margin:0;">
           <span style="font-style:normal; font-size:18px; line-height:1.2; flex-shrink:0;">↓</span>
           <span>Scroll the screenshot to find the CTA, the same way users had to.</span>
@@ -871,10 +878,11 @@
 <div class="block">
   <div class="container">
     <div class="section-label">03 · Project 1: Microsite</div>
-    <h2>Desktop first, <em>then mobile.</em></h2>
+    <h2>The fastest win first, <em>then the rest of the microsite.</em></h2>
 
-    <p>Desktop had a glaring issue: the CTA was buried. I partnered with the Experimentation Manager and a web developer dedicated to A/B testing to scope and run the fix: a sticky CTA bar built entirely through the testing tool, no product code changes required.</p>
-    <p>My hypothesis was that keeping the CTA visible would raise conversion. After 12 days the test confirmed it, and we rolled it out globally.</p>
+    <p>I proposed going after desktop first, on purpose. I wanted to prove value fast, then earn the right to tackle the rest of the microsite.</p>
+    <p>My hypothesis was that keeping the CTA visible would raise conversion, especially for returning customers with pre-filled info, where that one action is the whole point of their visit.</p>
+    <p>I designed a sticky CTA bar with a clear Checkout button and a preview of the quantity and price they picked. It was built entirely in AB Tasty with the Experimentation Manager and a web developer dedicated to A/B testing, so there was no dev sprint and no roadmap negotiation.</p>
 
     <div style="display:flex; justify-content:center; margin-top:28px; margin-bottom:32px;">
       <div style="width:min(660px, 100%);">
@@ -895,14 +903,17 @@
       </div>
     </div>
 
+    <p>Within 12 days we had a clear read. In the US, transaction rate went from about 46% to 52%.</p>
+    <p>It was a small sample, about 350 visitors per variant, so I treated it as a strong directional signal. But it fixed a clear usability problem and was easy to roll back, so we rolled it out globally as a permanent change.</p>
+
     <div class="stat-callout" style="margin-top:32px;">
-      <div class="stat-val">+$15k</div>
-      <div class="stat-desc">Revenue recovered in the first 12 days · cross-functional execution with Experimentation Manager and web developer · no dev sprint required</div>
+      <div class="stat-val">~$15K</div>
+      <div class="stat-desc">Revenue uplift in the US in the first 12 days · cross-functional execution with Experimentation Manager and web developer · no dev sprint required</div>
     </div>
 
     <figure style="margin:40px 0 0; display:flex; gap:40px; align-items:flex-start;">
       <div style="flex:0 0 auto; width:min(520px, 100%);">
-        <a href="assets/Pens_Microsite_AB_Analytics.png" target="_blank" class="img-link"><img src="assets/Pens_Microsite_AB_Analytics.png" alt="AB Tasty dashboard: +13.24% conversion rate lift at 94% confidence" style="width:100%; display:block; border:1px solid var(--line-soft);"></a>
+        <a href="assets/Pens_Microsite_AB_Analytics.png" target="_blank" class="img-link"><img src="assets/Pens_Microsite_AB_Analytics.png" alt="AB Tasty dashboard: +13.24% transaction rate lift in the US with a 94% chance to win" style="width:100%; display:block; border:1px solid var(--line-soft);"></a>
         <div class="cap" style="margin-top:10px;">AB Tasty Dashboard (A/B testing tool) · test results snapshot</div>
       </div>
       <div style="flex:1; min-width:0; padding-top:4px;">
@@ -910,15 +921,15 @@
         <div style="display:flex; flex-direction:column; gap:14px;">
           <div style="display:flex; gap:16px; align-items:baseline;">
             <div style="font-family:var(--mono); font-size:28px; color:var(--rust); letter-spacing:-.02em; flex-shrink:0;">+13.24%</div>
-            <div style="font-size:13.5px; line-height:1.55; color:var(--ink-mute);">Conversion rate lift · 94% confidence</div>
+            <div style="font-size:13.5px; line-height:1.55; color:var(--ink-mute);">Transaction rate lift, US · 94% chance to win</div>
           </div>
           <div style="display:flex; gap:16px; align-items:baseline;">
-            <div style="font-family:var(--mono); font-size:28px; color:var(--rust); letter-spacing:-.02em; flex-shrink:0;">+15.21%</div>
-            <div style="font-size:13.5px; line-height:1.55; color:var(--ink-mute);">CTR on order review · 96% confidence</div>
+            <div style="font-family:var(--mono); font-size:28px; color:var(--rust); letter-spacing:-.02em; flex-shrink:0;">Global</div>
+            <div style="font-size:13.5px; line-height:1.55; color:var(--ink-mute);">Rolled out as a permanent change</div>
           </div>
           <div style="display:flex; gap:16px; align-items:baseline;">
-            <div style="font-family:var(--mono); font-size:28px; color:var(--rust); letter-spacing:-.02em; flex-shrink:0;">+$15k</div>
-            <div style="font-size:13.5px; line-height:1.55; color:var(--ink-mute);">Revenue recovered in first 12 days</div>
+            <div style="font-family:var(--mono); font-size:28px; color:var(--rust); letter-spacing:-.02em; flex-shrink:0;">~$15K</div>
+            <div style="font-size:13.5px; line-height:1.55; color:var(--ink-mute);">Revenue uplift, US · first 12 days</div>
           </div>
         </div>
       </div>
@@ -929,8 +940,10 @@
       <p style="margin:0; font-size:14px; line-height:1.65; color:var(--ink-2);">Returning customers and new prospects receive fundamentally different experiences via unique URL parameters, with prospect conversion in North America tracking lower. So we measured every test against the right audience segment.</p>
     </div>
 
-    <p style="margin-top:40px;">The result also built trust. The Experimentation Team and stakeholders were now eager to make more changes to the microsite.</p>
-    <p>I used that to drive a second round of ideation with the Experimentation Team and a web developer: mapping the next wave of A/B tests and critical mobile fixes, then aligning on priority in a working session. The output was a structured backlog, organized by impact and effort, handed off and ready to run.</p>
+    <p style="margin-top:40px;">The result also bought credibility. The Experimentation Team and stakeholders wanted more.</p>
+    <p>So I ran two working sessions with the Experimentation Manager, the web developer, and stakeholders. I came in with a few concrete options instead of a list of problems, so people were reacting to something real, and it moved a lot faster.</p>
+    <p>We prioritized together on an impact/effort matrix, and I handed off a backlog that went from quick wins, like a default quantity, to bigger ones, like price transparency at review and consolidating eight steps into three pages.</p>
+    <p>The whole project took about three to four months, and everything up to this point was the first two weeks. The main site, my original assignment, took up the rest of the time.</p>
     <!-- Structured backlog -->
     <div style="margin-top:36px;">
       <div class="lbl" style="margin-bottom:0;">Experimentation Team Handoff (5 Examples)</div>
@@ -1023,8 +1036,17 @@
     <h2>A full vision, <em>and an MVP we could ship.</em></h2>
 
     <p>
-      Before any concepts, I mapped the checkout system as it existed. I found one main checkout plus three separate payment portals, each with its own decision tree, UI, and abandonment risk.
-</p>
+      The rebrand was still in progress, but instead of waiting for it to be done, I wanted to keep the main site project moving. For this part of the project, I was the only designer, working with two PMs who each owned different parts of checkout, and an engineer as our point of contact.
+    </p>
+    <p>
+      Before any concepts, I mapped the checkout system as it existed and tried it out myself to see how it all works. I found one main checkout plus three separate payment portals, each with its own decision tree, UI, and abandonment risk.
+    </p>
+    <p>
+      The main site is where customers check out on their own. The portals are where customers pay invoices or balances, usually after our customer care team reaches out with a call or an emailed link. So it's the same customers in two very different situations: buying something new, or paying for something they already ordered.
+    </p>
+    <p>
+      Every time checkout needed an update, engineering also had to rebuild it separately on each one. So this was a UX problem for customers and a bandwidth problem for engineering at the same time. I benchmarked the whole map against Baymard Institute's checkout research to see where we stood against best practice.
+    </p>
 
     <!-- Checkout flow complexity -->
     <div class="scroll-strip" style="margin-top:32px; margin-bottom:32px;">
@@ -1054,22 +1076,11 @@
     </div>
 
     <p>
-      The Braintree migration and brand changes were still in progress, which limited what we could ship. I worked with the PM to define what was realistic and built a scoping document to make the tradeoffs clear. What I presented to the PM:
+      Once I understood the system, I designed the full vision: a one-page checkout instead of the multi-page flow we had. The price is clear up front, with nothing hidden until the end.
     </p>
-
-    <!-- Vision + MVP two-card row -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); margin-top:28px;">
-      <div style="background:var(--cream-2); padding:32px 28px;">
-        <div class="lbl" style="margin-bottom:14px;">01 · The Full Vision</div>
-        <div style="font-family:var(--serif); font-size:22px; font-weight:500; font-style:italic; color:var(--ink); margin-bottom:14px; line-height:1.2;">One-page experience</div>
-        <p style="font-size:14px; line-height:1.72; color:var(--ink-2); margin:0;">A single continuous scroll that compressed the entire multi-step checkout. Goal: to show what "better" could look like before constraining to what was currently buildable.</p>
-      </div>
-      <div style="background:var(--cream-2); padding:32px 28px;">
-        <div class="lbl" style="margin-bottom:14px;">02 · The MVP</div>
-        <div style="font-family:var(--serif); font-size:22px; font-weight:500; font-style:italic; color:var(--ink); margin-bottom:14px; line-height:1.2;">Same principles, scoped to what we could build.</div>
-        <p style="font-size:14px; line-height:1.72; color:var(--ink-2); margin:0;">Price transparency, reduced friction, clearer progress, without restructuring the page architecture. Built with the PM to reflect exactly what was shippable within the Braintree migration and marketing constraints.</p>
-      </div>
-    </div>
+    <p>
+      The product and order summary stay visible on the right the whole time. For a returning customer, shipping and contact info are already filled in, so they just add payment and they're done.
+    </p>
 
     <!-- Interactive prototype -->
     <div style="margin-top:40px;">
@@ -1091,18 +1102,60 @@
     
     </div>
 
+    <p style="margin-top:32px;">
+      Then the plan for checkout changed from improving conversion to just the Braintree payments migration, with no UI changes. Because of the rebrand, nothing else was supposed to change.
+    </p>
+    <p>
+      I understood why, but I pushed back, because I wanted to advocate for our customers. The same customer could check out on the main site and then pay an invoice in a portal that looked and worked completely differently. Fixing that would help the business too, since fewer people getting stuck means more completed orders.
+    </p>
+    <p>
+      And since engineering was already going to be in every checkout page for the migration, it was the right time to fix problems we already knew about, instead of opening those pages back up later. It was also a chance to start fixing the four-separate-systems problem.
+    </p>
+    <p>
+      So I used the vision as a starting point and pulled out every UX improvement we could make without changing the site structure. I went through it with the PMs and our engineer to decide what ships with the migration, what waits, and what each choice costs. That became a scoping document with the tradeoffs laid out, and it went through a few more rounds before the final handoff.
+    </p>
+
+    <!-- Vision + MVP two-card row -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); margin-top:28px;">
+      <div style="background:var(--cream-2); padding:32px 28px;">
+        <div class="lbl" style="margin-bottom:14px;">01 · The Full Vision</div>
+        <div style="font-family:var(--serif); font-size:22px; font-weight:500; font-style:italic; color:var(--ink); margin-bottom:14px; line-height:1.2;">One-page experience</div>
+        <p style="font-size:14px; line-height:1.72; color:var(--ink-2); margin:0;">A single continuous scroll that compressed the entire multi-step checkout. Goal: to show what "better" could look like before constraining to what was currently buildable.</p>
+      </div>
+      <div style="background:var(--cream-2); padding:32px 28px;">
+        <div class="lbl" style="margin-bottom:14px;">02 · The MVP</div>
+        <div style="font-family:var(--serif); font-size:22px; font-weight:500; font-style:italic; color:var(--ink); margin-bottom:14px; line-height:1.2;">Same principles, scoped to what we could build.</div>
+        <p style="font-size:14px; line-height:1.72; color:var(--ink-2); margin:0;">Price transparency, reduced friction, clearer progress, without restructuring the page architecture. Built with the PMs and our engineer to reflect what could ship with the Braintree migration during the rebrand.</p>
+      </div>
+    </div>
+
     <!-- MVP handoff screens -->
     <div style="margin-top:40px;">
-      <div class="lbl" style="margin-bottom:12px;">PM scoping document · what's changeable given constraints</div>
-      <a href="assets/Pens_Checkout_MVP.jpg" target="_blank" class="img-link"><img src="assets/Pens_Checkout_MVP.jpg" alt="PM scoping document: annotated checkout screens showing feasible changes" style="width:100%; display:block; border:1px solid var(--line-soft);"></a>
-      <div class="ph-caption">Annotated for PM · translating design decisions into engineering feasibility within Braintree migration + marketing priority shift</div>
+      <div class="lbl" style="margin-bottom:12px;">Scoping document · what's changeable given constraints</div>
+      <a href="assets/Pens_Checkout_MVP.jpg" target="_blank" class="img-link"><img src="assets/Pens_Checkout_MVP.jpg" alt="Scoping document: annotated checkout screens showing feasible changes" style="width:100%; display:block; border:1px solid var(--line-soft);"></a>
+      <div class="ph-caption">Annotated for the PMs and engineering · what could ship with the Braintree migration during the rebrand</div>
     </div>
 
     <p style="margin-top:32px;">
-      With scope aligned, I produced the final handoff: component-documented screens covering the website checkout and all three payment portals, built for visual consistency across four separate experiences and ready for engineering.
+      A couple of the decisions in the MVP: in mid-fidelity, I explored three spots for the main button. Below the payment options felt safe, but it separated the action from the decision. Inside the order summary kept the button under the amount you pay, but it was easy to miss.
     </p>
-    <p style="margin-top:16px;">
-      I redesigned the three portals (OPP, IPP, and OFP) to share the same design language and tech stack, so future updates could apply to all four surfaces at once. Accessibility checks were part of the design system setup. We used Stark to validate button and CTA contrast ratios before they were standardized across the checkout.
+    <p>
+      I went with putting it inside each payment option, so the button changes with the payment you pick and reinforces your choice.
+    </p>
+    <p>
+      I also renamed 'Pay Later' to 'Pay by Invoice.' 'Pay Later' reads like buy now, pay later financing, but for us it meant 'invoice me.' That tied back to something I'd heard from the business early on: a lot of Pay Later orders were submitted but never paid. The new label made the commitment clear.
+    </p>
+    <p>
+      The structure had to stay at three steps instead of the one page from the vision. So I focused on the step where people actually commit, which is payment. That's where they hesitate, and it's also where our Pay Later problem was coming from.
+    </p>
+    <p>
+      The steps are shown up top now, so you always know where you are and what's left. In "How do you want to pay?", Pay Now and Pay by Invoice are separated into two tabs instead of one radio list. The business wanted more people paying up front, so Pay Now is the main path, but Pay by Invoice is still right there for the customers who need it.
+    </p>
+    <p>
+      If you pick Pay by Invoice, a message says payment is due upon receipt of your invoice, so you know exactly what you're signing up for. We also took the price off the buttons, since it's already in the order summary, and added a "Where is my security code?" image based on Baymard's research.
+    </p>
+    <p>
+      None of these were big changes on their own, but together they made the moment of paying a lot clearer. That's the version that went into development.
     </p>
 
     <div class="lbl" style="margin-top:24px; margin-bottom:16px;">MVP Handoff · Review &amp; Payment · scroll to explore</div>
@@ -1140,7 +1193,20 @@
       </div>
 
     </div>
-    <div class="ph-caption" style="margin-top:32px;">3-step progress, price transparency surfaced, payment options clarified · same principles as the vision, scoped to the MVP</div>
+    <div class="ph-caption" style="margin-top:32px;">3-step progress · Pay Now and Pay by Invoice tabs · invoice terms stated up front · scoped to the MVP</div>
+
+    <p style="margin-top:32px;">
+      With scope aligned, I produced the final handoff covering the website checkout and all three payment portals. I organized it by desktop, breakpoints, and mobile, with the components on the side, so engineering had every screen and state in one place.
+    </p>
+    <p style="margin-top:16px;">
+      Instead of merging the portals into one, since each served a different business need, I redesigned OPP, IPP, and OFP to share the same design language and tech stack, with variants only where a portal really needed to be different. Some of those components, like tooltips with small imagery and the updated radio button that expands into form fields, went back into our design system.
+    </p>
+    <p style="margin-top:16px;">
+      So a checkout update can be designed once and applied across all four surfaces, instead of being rebuilt four times. Whether a customer checks out on the main site or pays an invoice from a link, it looks and works the same.
+    </p>
+    <p style="margin-top:16px;">
+      Accessibility checks were part of the design system setup. We used Stark to validate button and CTA contrast ratios before they were standardized across the checkout.
+    </p>
 
     <!-- Handoff evidence -->
     <div style="margin-top:48px;">
@@ -1166,29 +1232,33 @@
     </div>
 
     <div style="background:rgba(239,236,224,.07); border-left:3px solid var(--rust); padding:16px 20px; margin:48px 0 0;">
-      <div class="lbl" style="color:#efece0; margin-bottom:8px;">Post-launch outcome · reported by a coworker after I left</div>
-      <p style="margin:0; font-size:15px; line-height:1.72; color:#efece0;">After I left Pens, a coworker shared that the MVP delivered a statistically significant 4.6% conversion rate lift across all flows, and it was rolled out globally.</p>
+      <div class="lbl" style="color:#efece0; margin-bottom:8px;">Post-launch outcome · shared by the Experimentation Manager after I left</div>
+      <p style="margin:0; font-size:15px; line-height:1.72; color:#efece0;">I designed the system and worked through development with the team right up until I left, and the results came in after. The Experimentation Manager shared this: “Statistically significant CR lift of 4.6%. Given that this change rolled out across all flows and affects every transaction, the cumulative impact was pretty substantial.” There was no preset target.</p>
     </div>
 
     <div style="margin-top:48px; border-top:1px solid var(--line-soft); padding-top:40px;">
       <div class="lbl" style="margin-bottom:24px;">What this work taught me</div>
       <div class="heuristic-list" style="margin-top:0;">
         <div class="heuristic-item">
-          <div class="h-label" style="font-family:var(--serif); font-size:17px; font-weight:500; font-style:italic; letter-spacing:0; text-transform:none; color:var(--rust);">Shared foundation, separate portals</div>
-          <div class="h-finding" style="color:#efece0;">Each portal existed for a reason. I gave them shared components so they could be updated together while keeping what made each one different.</div>
+          <div class="h-label" style="font-family:var(--serif); font-size:17px; font-weight:500; font-style:italic; letter-spacing:0; text-transform:none; color:var(--rust);">When the roadmap stalls, find another path to the same goal</div>
+          <div class="h-finding" style="color:#efece0;">The main site was blocked, but the goal was still getting more people through checkout. The microsite let me keep working toward that, and twelve days of test results got me more buy-in than any presentation could have.</div>
         </div>
         <div class="heuristic-item">
-          <div class="h-label" style="font-family:var(--serif); font-size:17px; font-weight:500; font-style:italic; letter-spacing:0; text-transform:none; color:var(--rust);">Constraints changed the plan</div>
-          <div class="h-finding" style="color:#efece0;">The rebrand block sent me to the microsite first. That gave me a proof of concept, stakeholder trust, and a direction for the whole checkout.</div>
+          <div class="h-label" style="font-family:var(--serif); font-size:17px; font-weight:500; font-style:italic; letter-spacing:0; text-transform:none; color:var(--rust);">Design for the same person across every touchpoint</div>
+          <div class="h-finding" style="color:#efece0;">Customers didn't see the main site and portals as different products. To them it was just Pens.com.</div>
         </div>
         <div class="heuristic-item">
-          <div class="h-label" style="font-family:var(--serif); font-size:17px; font-weight:500; font-style:italic; letter-spacing:0; text-transform:none; color:var(--rust);">The system came from shipping</div>
-          <div class="h-finding" style="color:#efece0;">The component library across four surfaces came out of real work. I shipped screens first, then pulled out the patterns.</div>
+          <div class="h-label" style="font-family:var(--serif); font-size:17px; font-weight:500; font-style:italic; letter-spacing:0; text-transform:none; color:var(--rust);">Keep advocating for the user</div>
+          <div class="h-finding" style="color:#efece0;">When the plan became just the Braintree migration, it would have been easy to go along with it. I pushed to fix what we already knew was hurting customers, and came in with options so the PMs, our engineer, and I could decide together.</div>
+        </div>
+        <div class="heuristic-item">
+          <div class="h-label" style="font-family:var(--serif); font-size:17px; font-weight:500; font-style:italic; letter-spacing:0; text-transform:none; color:var(--rust);">What I'd do differently: anticipate shifts and reach out early</div>
+          <div class="h-finding" style="color:#efece0;">I built a high-fidelity prototype of the one-page vision while the rebrand was still going on, which was a sign priorities could shift. It became the starting point for the MVP, but now I reach out to the PM and engineering before going deep.</div>
         </div>
       </div>
     </div>
 
-    <p style="margin-top:48px; font-size:16px; line-height:1.78; color:var(--ink-2);">I took on the microsite because it had no designer. When the main site was blocked by a migration and a brand update, I mapped the system, agreed on scope with the PM, and had a handoff ready for engineering when the constraints lifted.</p>
+    <p style="margin-top:48px; font-size:16px; line-height:1.78; color:var(--ink-2);">Nobody assigned me the microsite or the push to fix UX during the migration. I took on the microsite while the rebrand blocked the main site, used that win to come back to the main site with more weight behind my recommendations, and used the Braintree migration to bring all four checkout surfaces onto one system.</p>
 
   </div>
 </div>
